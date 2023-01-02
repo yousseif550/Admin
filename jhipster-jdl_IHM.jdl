@@ -1,0 +1,147 @@
+entity Mouvement {
+  date LocalDate,
+  type Type,
+  source String,
+  destination String,
+  user String
+}
+
+ enum Type {
+    Demande, Modification, Suppression, Deplacement
+  } 
+  
+  
+entity Suivi {
+	EnvoiKitAccueil Etat,
+    DocumentSigner Etat,
+    CommandePCDom Etat,
+    CompteSSG Etat,
+    ListeNTIC Etat,
+    AccesTeams Etat,
+    AccesPulseDGFiP Etat,
+    ProfilPCDom Etat,
+    CommanderPCDGFiP Etat,
+    CreationBALPDGFiP Etat,
+    CreationCompteAD Etat,
+    SoclagePC Etat,
+    DmocssIpTT Etat,
+    InstallationLogiciel Etat,
+    Commentaires String
+}
+
+ enum Etat {
+    NonRealiser, EnCours, Envoyer, OK, EnAttenteDeReponse
+  } 
+  
+entity Collaborateurs {
+    Nom String,
+    Prenom String,
+    Identifiant Long,
+    Tel Long,
+    Prestataire Boolean,
+    IsActif Boolean,
+    DateEntree LocalDate,
+    DateSortie LocalDate
+}
+
+entity Projet {
+	Nom String,
+  	/*CollabList String,*/
+    DP String,
+    Stucture String
+}
+
+entity InformationsTech {
+	Nom String,
+	Prenom String,
+	PcDom String,
+	PcDGFiP String,
+    AdresseSSG String,
+    AdresseDGFiP String,
+}
+
+entity Ticket {
+	Nom String required,
+    Type String,
+    /*Proprietaire String,*/
+    Beneficiaire String 
+    Statut String,
+    DateCreation LocalDate,
+    DateFin LocalDate
+}
+
+/* enum TypeTicket {
+    PCDGFiP, PCDomicile, AccesPulse, ActivationAD
+  } */
+  
+entity Localisation {
+	Batiment String,
+	Bureau String,
+    Site String,
+    Ville String
+}
+
+entity Materiel {
+	Type String,
+    Libelle String,
+    Modele String,
+    Asset String,
+    Commentaire String,
+    Actif Boolean,
+    DateAttribution LocalDate,
+    DateRendu LocalDate,
+    /*Collaborateur String,*/
+    IsHS Boolean
+}
+
+entity Historique {
+    PC String,
+    Zone String,
+    AncienProprietaire String,
+    NouveauProprietaire String,
+    DateMouvement LocalDate
+}
+
+entity NumeroInventaire {
+    Zone String,
+    Valeur Long,
+    Disponible Boolean,
+    AncienMateriel String,
+    DateModification LocalDate
+    MaterielActuel String
+}
+
+entity ExtracDMOCSS {
+	Nom String,
+    Date LocalDate,
+    Prenom String,
+    Bureau String,
+    IpPcDGFiP String,
+    IpVpnIPSEC String,
+    AdressePhysiqueDGFiP String,
+    BureauActuel String,
+    BureauDeplacement String
+}
+	
+
+relationship ManyToMany {
+	Projet{collaborateurs} to Collaborateurs{projet}
+}
+
+relationship ManyToOne {
+    Materiel{collaborateurs} to Collaborateurs{materiel}
+	Ticket{proprietaire} to Collaborateurs{ticket} 
+}
+
+relationship OneToOne {
+	Collaborateurs{Informations} to InformationsTech
+	Collaborateurs{Suivi} to Suivi
+    Materiel{localisation} to Localisation
+    NumeroInventaire{materiel} to Materiel
+    Historique{materiel} to Materiel
+    ExtracDMOCSS{materiel} to Materiel
+}
+
+
+
+
