@@ -1,0 +1,67 @@
+{
+  "applications": "*",
+  "changelogDate": "20230102135243",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "materiel",
+  "fields": [
+    {
+      "fieldName": "type",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "modele",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "asset",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "commentaire",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "actif",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "dateAttribution",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "dateRendu",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "isHS",
+      "fieldType": "Boolean"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Materiel",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "numeroInventaire",
+      "ownerSide": true,
+      "relationshipName": "numeroInventaire",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "localisation",
+      "ownerSide": true,
+      "relationshipName": "localisation",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "collaborateurs",
+      "otherEntityRelationshipName": "materiel",
+      "relationshipName": "collaborateurs",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

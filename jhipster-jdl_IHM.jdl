@@ -35,7 +35,6 @@ entity Suivi {
   
 entity Collaborateurs {
     Nom String,
-    Prenom String,
     Identifiant Long,
     Tel Long,
     Prestataire Boolean,
@@ -48,12 +47,11 @@ entity Projet {
 	Nom String,
   	/*CollabList String,*/
     DP String,
-    Stucture String
+    Stucture String,
+    Informations String
 }
 
 entity InformationsTech {
-	Nom String,
-	Prenom String,
 	PcDom String,
 	PcDGFiP String,
     AdresseSSG String,
@@ -61,11 +59,9 @@ entity InformationsTech {
 }
 
 entity Ticket {
-	Nom String required,
     Type String,
     /*Proprietaire String,*/
-    Beneficiaire String 
-    Statut String,
+    Statut Etat,
     DateCreation LocalDate,
     DateFin LocalDate
 }
@@ -83,7 +79,6 @@ entity Localisation {
 
 entity Materiel {
 	Type String,
-    Libelle String,
     Modele String,
     Asset String,
     Commentaire String,
@@ -97,8 +92,6 @@ entity Materiel {
 entity Historique {
     PC String,
     Zone String,
-    AncienProprietaire String,
-    NouveauProprietaire String,
     DateMouvement LocalDate
 }
 
@@ -108,19 +101,17 @@ entity NumeroInventaire {
     Disponible Boolean,
     AncienMateriel String,
     DateModification LocalDate
-    MaterielActuel String
 }
 
 entity ExtracDMOCSS {
-	Nom String,
-    Date LocalDate,
-    Prenom String,
-    Bureau String,
-    IpPcDGFiP String,
-    IpVpnIPSEC String,
     AdressePhysiqueDGFiP String,
     BureauActuel String,
     BureauDeplacement String
+    Date LocalDate,
+    IpPcDGFiP String,
+    IpVpnIPSEC String,
+    NMac
+    NMac
 }
 	
 
@@ -134,12 +125,18 @@ relationship ManyToOne {
 }
 
 relationship OneToOne {
-	Collaborateurs{Informations} to InformationsTech
-	Collaborateurs{Suivi} to Suivi
+	InformationsTech{Collaborateur} to Collaborateurs
+	Suivi{Collaborateur} to Collaborateurs
+    Materiel{NumeroInventaire} to NumeroInventaire
     Materiel{localisation} to Localisation
-    NumeroInventaire{materiel} to Materiel
+    NumeroInventaire{materielActuel} to Materiel
+    Historique{AncienProprietaire} to Collaborateurs
+    Historique{NouveauProprietaire} to Collaborateurs
     Historique{materiel} to Materiel
+    ExtracDMOCSS{Collaborateur} to Collaborateurs
     ExtracDMOCSS{materiel} to Materiel
+    ExtracDMOCSS{Localisation} to Localisation
+	Ticket{Beneficiaire} to Collaborateurs
 }
 
 

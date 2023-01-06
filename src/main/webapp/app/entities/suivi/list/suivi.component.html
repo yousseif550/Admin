@@ -1,0 +1,187 @@
+<div>
+  <h2 id="page-heading" data-cy="SuiviHeading">
+    <span jhiTranslate="ihmApp.suivi.home.title">Suivis</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="ihmApp.suivi.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-suivi"
+        [routerLink]="['/suivi/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="ihmApp.suivi.home.createLabel"> Create a new Suivi </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="suivis?.length === 0">
+    <span jhiTranslate="ihmApp.suivi.home.notFound">No Suivis found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="suivis && suivis.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="envoiKitAccueil">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.suivi.envoiKitAccueil">Envoi Kit Accueil</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="documentSigner">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.suivi.documentSigner">Document Signer</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="commandePCDom">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.suivi.commandePCDom">Commande PC Dom</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="compteSSG">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.suivi.compteSSG">Compte SSG</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="listeNTIC">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.suivi.listeNTIC">Liste NTIC</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="accesTeams">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.suivi.accesTeams">Acces Teams</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="accesPulseDGFiP">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.suivi.accesPulseDGFiP">Acces Pulse DG Fi P</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="profilPCDom">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.suivi.profilPCDom">Profil PC Dom</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="commanderPCDGFiP">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.suivi.commanderPCDGFiP">Commander PCDG Fi P</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="creationBALPDGFiP">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.suivi.creationBALPDGFiP">Creation BALPDG Fi P</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="creationCompteAD">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.suivi.creationCompteAD">Creation Compte AD</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="soclagePC">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.suivi.soclagePC">Soclage PC</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="dmocssIpTT">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.suivi.dmocssIpTT">Dmocss Ip TT</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="installationLogiciel">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.suivi.installationLogiciel">Installation Logiciel</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="commentaires">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.suivi.commentaires">Commentaires</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="collaborateur.id">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.suivi.collaborateur">Collaborateur</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let suivi of suivis; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/suivi', suivi.id, 'view']">{{ suivi.id }}</a>
+          </td>
+          <td jhiTranslate="{{ 'ihmApp.Etat.' + suivi.envoiKitAccueil }}">{{ suivi.envoiKitAccueil }}</td>
+          <td jhiTranslate="{{ 'ihmApp.Etat.' + suivi.documentSigner }}">{{ suivi.documentSigner }}</td>
+          <td jhiTranslate="{{ 'ihmApp.Etat.' + suivi.commandePCDom }}">{{ suivi.commandePCDom }}</td>
+          <td jhiTranslate="{{ 'ihmApp.Etat.' + suivi.compteSSG }}">{{ suivi.compteSSG }}</td>
+          <td jhiTranslate="{{ 'ihmApp.Etat.' + suivi.listeNTIC }}">{{ suivi.listeNTIC }}</td>
+          <td jhiTranslate="{{ 'ihmApp.Etat.' + suivi.accesTeams }}">{{ suivi.accesTeams }}</td>
+          <td jhiTranslate="{{ 'ihmApp.Etat.' + suivi.accesPulseDGFiP }}">{{ suivi.accesPulseDGFiP }}</td>
+          <td jhiTranslate="{{ 'ihmApp.Etat.' + suivi.profilPCDom }}">{{ suivi.profilPCDom }}</td>
+          <td jhiTranslate="{{ 'ihmApp.Etat.' + suivi.commanderPCDGFiP }}">{{ suivi.commanderPCDGFiP }}</td>
+          <td jhiTranslate="{{ 'ihmApp.Etat.' + suivi.creationBALPDGFiP }}">{{ suivi.creationBALPDGFiP }}</td>
+          <td jhiTranslate="{{ 'ihmApp.Etat.' + suivi.creationCompteAD }}">{{ suivi.creationCompteAD }}</td>
+          <td jhiTranslate="{{ 'ihmApp.Etat.' + suivi.soclagePC }}">{{ suivi.soclagePC }}</td>
+          <td jhiTranslate="{{ 'ihmApp.Etat.' + suivi.dmocssIpTT }}">{{ suivi.dmocssIpTT }}</td>
+          <td jhiTranslate="{{ 'ihmApp.Etat.' + suivi.installationLogiciel }}">{{ suivi.installationLogiciel }}</td>
+          <td>{{ suivi.commentaires }}</td>
+          <td>
+            <div *ngIf="suivi.collaborateur">
+              <a [routerLink]="['/collaborateurs', suivi.collaborateur.id, 'view']">{{ suivi.collaborateur.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/suivi', suivi.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/suivi', suivi.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(suivi)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

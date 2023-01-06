@@ -1,0 +1,51 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="projet">
+      <h2 data-cy="projetDetailsHeading"><span jhiTranslate="ihmApp.projet.detail.title">Projet</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ projet.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.projet.nom">Nom</span></dt>
+        <dd>
+          <span>{{ projet.nom }}</span>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.projet.dP">D P</span></dt>
+        <dd>
+          <span>{{ projet.dP }}</span>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.projet.stucture">Stucture</span></dt>
+        <dd>
+          <span>{{ projet.stucture }}</span>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.projet.informations">Informations</span></dt>
+        <dd>
+          <span>{{ projet.informations }}</span>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.projet.collaborateurs">Collaborateurs</span></dt>
+        <dd>
+          <span *ngFor="let collaborateurs of projet.collaborateurs; let last = last">
+            <a [routerLink]="['/collaborateurs', collaborateurs.id, 'view']">{{ collaborateurs.id }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/projet', projet.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

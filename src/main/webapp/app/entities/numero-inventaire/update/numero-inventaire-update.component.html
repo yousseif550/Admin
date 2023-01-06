@@ -1,0 +1,108 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-numero-inventaire-heading"
+        data-cy="NumeroInventaireCreateUpdateHeading"
+        jhiTranslate="ihmApp.numeroInventaire.home.createOrEditLabel"
+      >
+        Create or edit a Numero Inventaire
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="text" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ihmApp.numeroInventaire.zone" for="field_zone">Zone</label>
+          <input type="text" class="form-control" name="zone" id="field_zone" data-cy="zone" formControlName="zone" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ihmApp.numeroInventaire.valeur" for="field_valeur">Valeur</label>
+          <input type="number" class="form-control" name="valeur" id="field_valeur" data-cy="valeur" formControlName="valeur" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ihmApp.numeroInventaire.disponible" for="field_disponible">Disponible</label>
+          <input
+            type="checkbox"
+            class="form-check"
+            name="disponible"
+            id="field_disponible"
+            data-cy="disponible"
+            formControlName="disponible"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ihmApp.numeroInventaire.ancienMateriel" for="field_ancienMateriel">Ancien Materiel</label>
+          <input
+            type="text"
+            class="form-control"
+            name="ancienMateriel"
+            id="field_ancienMateriel"
+            data-cy="ancienMateriel"
+            formControlName="ancienMateriel"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ihmApp.numeroInventaire.dateModification" for="field_dateModification"
+            >Date Modification</label
+          >
+          <div class="input-group">
+            <input
+              id="field_dateModification"
+              data-cy="dateModification"
+              type="text"
+              class="form-control"
+              name="dateModification"
+              ngbDatepicker
+              #dateModificationDp="ngbDatepicker"
+              formControlName="dateModification"
+            />
+            <button type="button" class="btn btn-secondary" (click)="dateModificationDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ihmApp.numeroInventaire.materielActuel" for="field_materielActuel">Materiel Actuel</label>
+          <select
+            class="form-control"
+            id="field_materielActuel"
+            data-cy="materielActuel"
+            name="materielActuel"
+            formControlName="materielActuel"
+            [compareWith]="compareMateriel"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="materielOption" *ngFor="let materielOption of materielsSharedCollection">{{ materielOption.asset }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,127 @@
+<div>
+  <h2 id="page-heading" data-cy="NumeroInventaireHeading">
+    <span jhiTranslate="ihmApp.numeroInventaire.home.title">Numero Inventaires</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="ihmApp.numeroInventaire.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-numero-inventaire"
+        [routerLink]="['/numero-inventaire/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="ihmApp.numeroInventaire.home.createLabel"> Create a new Numero Inventaire </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="numeroInventaires?.length === 0">
+    <span jhiTranslate="ihmApp.numeroInventaire.home.notFound">No Numero Inventaires found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="numeroInventaires && numeroInventaires.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="zone">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.numeroInventaire.zone">Zone</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="valeur">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.numeroInventaire.valeur">Valeur</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="disponible">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.numeroInventaire.disponible">Disponible</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="ancienMateriel">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.numeroInventaire.ancienMateriel">Ancien Materiel</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="dateModification">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.numeroInventaire.dateModification">Date Modification</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="materielActuel.id">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.numeroInventaire.materielActuel">Materiel Actuel</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let numeroInventaire of numeroInventaires; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/numero-inventaire', numeroInventaire.id, 'view']">{{ numeroInventaire.id }}</a>
+          </td>
+          <td>{{ numeroInventaire.zone }}</td>
+          <td>{{ numeroInventaire.valeur }}</td>
+          <td>{{ numeroInventaire.disponible }}</td>
+          <td>{{ numeroInventaire.ancienMateriel }}</td>
+          <td>{{ numeroInventaire.dateModification | formatMediumDate }}</td>
+          <td>
+            <div *ngIf="numeroInventaire.materielActuel">
+              <a [routerLink]="['/materiel', numeroInventaire.materielActuel.id, 'view']">{{ numeroInventaire.materielActuel.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/numero-inventaire', numeroInventaire.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/numero-inventaire', numeroInventaire.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(numeroInventaire)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

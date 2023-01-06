@@ -1,0 +1,161 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-extrac-dmocss-heading"
+        data-cy="ExtracDMOCSSCreateUpdateHeading"
+        jhiTranslate="ihmApp.extracDMOCSS.home.createOrEditLabel"
+      >
+        Create or edit a Extrac DMOCSS
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="text" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ihmApp.extracDMOCSS.adressePhysiqueDGFiP" for="field_adressePhysiqueDGFiP"
+            >Adresse Physique DG Fi P</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="adressePhysiqueDGFiP"
+            id="field_adressePhysiqueDGFiP"
+            data-cy="adressePhysiqueDGFiP"
+            formControlName="adressePhysiqueDGFiP"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ihmApp.extracDMOCSS.bureauActuel" for="field_bureauActuel">Bureau Actuel</label>
+          <input
+            type="text"
+            class="form-control"
+            name="bureauActuel"
+            id="field_bureauActuel"
+            data-cy="bureauActuel"
+            formControlName="bureauActuel"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ihmApp.extracDMOCSS.bureauDeplacement" for="field_bureauDeplacement"
+            >Bureau Deplacement</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="bureauDeplacement"
+            id="field_bureauDeplacement"
+            data-cy="bureauDeplacement"
+            formControlName="bureauDeplacement"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ihmApp.extracDMOCSS.date" for="field_date">Date</label>
+          <div class="input-group">
+            <input
+              id="field_date"
+              data-cy="date"
+              type="text"
+              class="form-control"
+              name="date"
+              ngbDatepicker
+              #dateDp="ngbDatepicker"
+              formControlName="date"
+            />
+            <button type="button" class="btn btn-secondary" (click)="dateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ihmApp.extracDMOCSS.ipPcDGFiP" for="field_ipPcDGFiP">Ip Pc DG Fi P</label>
+          <input type="text" class="form-control" name="ipPcDGFiP" id="field_ipPcDGFiP" data-cy="ipPcDGFiP" formControlName="ipPcDGFiP" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ihmApp.extracDMOCSS.ipVpnIPSEC" for="field_ipVpnIPSEC">Ip Vpn IPSEC</label>
+          <input
+            type="text"
+            class="form-control"
+            name="ipVpnIPSEC"
+            id="field_ipVpnIPSEC"
+            data-cy="ipVpnIPSEC"
+            formControlName="ipVpnIPSEC"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ihmApp.extracDMOCSS.collaborateur" for="field_collaborateur">Collaborateur</label>
+          <select
+            class="form-control"
+            id="field_collaborateur"
+            data-cy="collaborateur"
+            name="collaborateur"
+            formControlName="collaborateur"
+            [compareWith]="compareCollaborateurs"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="collaborateursOption" *ngFor="let collaborateursOption of collaborateursSharedCollection">
+              {{ collaborateursOption.nom }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ihmApp.extracDMOCSS.materiel" for="field_materiel">Materiel</label>
+          <select
+            class="form-control"
+            id="field_materiel"
+            data-cy="materiel"
+            name="materiel"
+            formControlName="materiel"
+            [compareWith]="compareMateriel"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="materielOption" *ngFor="let materielOption of materielsSharedCollection">{{ materielOption.asset }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ihmApp.extracDMOCSS.localisation" for="field_localisation">Localisation</label>
+          <select
+            class="form-control"
+            id="field_localisation"
+            data-cy="localisation"
+            name="localisation"
+            formControlName="localisation"
+            [compareWith]="compareLocalisation"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="localisationOption" *ngFor="let localisationOption of localisationsSharedCollection">
+              {{ localisationOption.site }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

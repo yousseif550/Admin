@@ -1,0 +1,46 @@
+{
+  "applications": "*",
+  "changelogDate": "20230102135241",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "ticket",
+  "fields": [
+    {
+      "fieldName": "type",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "statut",
+      "fieldType": "Etat",
+      "fieldValues": "NonRealiser,EnCours,Envoyer,OK,EnAttenteDeReponse"
+    },
+    {
+      "fieldName": "dateCreation",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "dateFin",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Ticket",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "collaborateurs",
+      "ownerSide": true,
+      "relationshipName": "beneficiaire",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "collaborateurs",
+      "otherEntityRelationshipName": "ticket",
+      "relationshipName": "proprietaire",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

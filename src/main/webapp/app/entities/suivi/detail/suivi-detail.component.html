@@ -1,0 +1,94 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="suivi">
+      <h2 data-cy="suiviDetailsHeading"><span jhiTranslate="ihmApp.suivi.detail.title">Suivi</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ suivi.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.suivi.envoiKitAccueil">Envoi Kit Accueil</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'ihmApp.Etat.' + suivi.envoiKitAccueil }}">{{ suivi.envoiKitAccueil }}</span>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.suivi.documentSigner">Document Signer</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'ihmApp.Etat.' + suivi.documentSigner }}">{{ suivi.documentSigner }}</span>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.suivi.commandePCDom">Commande PC Dom</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'ihmApp.Etat.' + suivi.commandePCDom }}">{{ suivi.commandePCDom }}</span>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.suivi.compteSSG">Compte SSG</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'ihmApp.Etat.' + suivi.compteSSG }}">{{ suivi.compteSSG }}</span>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.suivi.listeNTIC">Liste NTIC</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'ihmApp.Etat.' + suivi.listeNTIC }}">{{ suivi.listeNTIC }}</span>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.suivi.accesTeams">Acces Teams</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'ihmApp.Etat.' + suivi.accesTeams }}">{{ suivi.accesTeams }}</span>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.suivi.accesPulseDGFiP">Acces Pulse DG Fi P</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'ihmApp.Etat.' + suivi.accesPulseDGFiP }}">{{ suivi.accesPulseDGFiP }}</span>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.suivi.profilPCDom">Profil PC Dom</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'ihmApp.Etat.' + suivi.profilPCDom }}">{{ suivi.profilPCDom }}</span>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.suivi.commanderPCDGFiP">Commander PCDG Fi P</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'ihmApp.Etat.' + suivi.commanderPCDGFiP }}">{{ suivi.commanderPCDGFiP }}</span>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.suivi.creationBALPDGFiP">Creation BALPDG Fi P</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'ihmApp.Etat.' + suivi.creationBALPDGFiP }}">{{ suivi.creationBALPDGFiP }}</span>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.suivi.creationCompteAD">Creation Compte AD</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'ihmApp.Etat.' + suivi.creationCompteAD }}">{{ suivi.creationCompteAD }}</span>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.suivi.soclagePC">Soclage PC</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'ihmApp.Etat.' + suivi.soclagePC }}">{{ suivi.soclagePC }}</span>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.suivi.dmocssIpTT">Dmocss Ip TT</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'ihmApp.Etat.' + suivi.dmocssIpTT }}">{{ suivi.dmocssIpTT }}</span>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.suivi.installationLogiciel">Installation Logiciel</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'ihmApp.Etat.' + suivi.installationLogiciel }}">{{ suivi.installationLogiciel }}</span>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.suivi.commentaires">Commentaires</span></dt>
+        <dd>
+          <span>{{ suivi.commentaires }}</span>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.suivi.collaborateur">Collaborateur</span></dt>
+        <dd>
+          <div *ngIf="suivi.collaborateur">
+            <a [routerLink]="['/collaborateurs', suivi.collaborateur.id, 'view']">{{ suivi.collaborateur.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/suivi', suivi.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

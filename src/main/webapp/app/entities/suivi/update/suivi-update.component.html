@@ -1,0 +1,225 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-suivi-heading" data-cy="SuiviCreateUpdateHeading" jhiTranslate="ihmApp.suivi.home.createOrEditLabel">
+        Create or edit a Suivi
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="text" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ihmApp.suivi.envoiKitAccueil" for="field_envoiKitAccueil">Envoi Kit Accueil</label>
+          <select
+            class="form-control"
+            name="envoiKitAccueil"
+            formControlName="envoiKitAccueil"
+            id="field_envoiKitAccueil"
+            data-cy="envoiKitAccueil"
+          >
+            <option [ngValue]="null">{{ 'ihmApp.Etat.null' | translate }}</option>
+            <option *ngFor="let etat of etatValues" [value]="etat">{{ 'ihmApp.Etat.' + etat | translate }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ihmApp.suivi.documentSigner" for="field_documentSigner">Document Signer</label>
+          <select
+            class="form-control"
+            name="documentSigner"
+            formControlName="documentSigner"
+            id="field_documentSigner"
+            data-cy="documentSigner"
+          >
+            <option [ngValue]="null">{{ 'ihmApp.Etat.null' | translate }}</option>
+            <option *ngFor="let etat of etatValues" [value]="etat">{{ 'ihmApp.Etat.' + etat | translate }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ihmApp.suivi.commandePCDom" for="field_commandePCDom">Commande PC Dom</label>
+          <select
+            class="form-control"
+            name="commandePCDom"
+            formControlName="commandePCDom"
+            id="field_commandePCDom"
+            data-cy="commandePCDom"
+          >
+            <option [ngValue]="null">{{ 'ihmApp.Etat.null' | translate }}</option>
+            <option *ngFor="let etat of etatValues" [value]="etat">{{ 'ihmApp.Etat.' + etat | translate }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ihmApp.suivi.compteSSG" for="field_compteSSG">Compte SSG</label>
+          <select class="form-control" name="compteSSG" formControlName="compteSSG" id="field_compteSSG" data-cy="compteSSG">
+            <option [ngValue]="null">{{ 'ihmApp.Etat.null' | translate }}</option>
+            <option *ngFor="let etat of etatValues" [value]="etat">{{ 'ihmApp.Etat.' + etat | translate }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ihmApp.suivi.listeNTIC" for="field_listeNTIC">Liste NTIC</label>
+          <select class="form-control" name="listeNTIC" formControlName="listeNTIC" id="field_listeNTIC" data-cy="listeNTIC">
+            <option [ngValue]="null">{{ 'ihmApp.Etat.null' | translate }}</option>
+            <option *ngFor="let etat of etatValues" [value]="etat">{{ 'ihmApp.Etat.' + etat | translate }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ihmApp.suivi.accesTeams" for="field_accesTeams">Acces Teams</label>
+          <select class="form-control" name="accesTeams" formControlName="accesTeams" id="field_accesTeams" data-cy="accesTeams">
+            <option [ngValue]="null">{{ 'ihmApp.Etat.null' | translate }}</option>
+            <option *ngFor="let etat of etatValues" [value]="etat">{{ 'ihmApp.Etat.' + etat | translate }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ihmApp.suivi.accesPulseDGFiP" for="field_accesPulseDGFiP">Acces Pulse DG Fi P</label>
+          <select
+            class="form-control"
+            name="accesPulseDGFiP"
+            formControlName="accesPulseDGFiP"
+            id="field_accesPulseDGFiP"
+            data-cy="accesPulseDGFiP"
+          >
+            <option [ngValue]="null">{{ 'ihmApp.Etat.null' | translate }}</option>
+            <option *ngFor="let etat of etatValues" [value]="etat">{{ 'ihmApp.Etat.' + etat | translate }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ihmApp.suivi.profilPCDom" for="field_profilPCDom">Profil PC Dom</label>
+          <select class="form-control" name="profilPCDom" formControlName="profilPCDom" id="field_profilPCDom" data-cy="profilPCDom">
+            <option [ngValue]="null">{{ 'ihmApp.Etat.null' | translate }}</option>
+            <option *ngFor="let etat of etatValues" [value]="etat">{{ 'ihmApp.Etat.' + etat | translate }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ihmApp.suivi.commanderPCDGFiP" for="field_commanderPCDGFiP">Commander PCDG Fi P</label>
+          <select
+            class="form-control"
+            name="commanderPCDGFiP"
+            formControlName="commanderPCDGFiP"
+            id="field_commanderPCDGFiP"
+            data-cy="commanderPCDGFiP"
+          >
+            <option [ngValue]="null">{{ 'ihmApp.Etat.null' | translate }}</option>
+            <option *ngFor="let etat of etatValues" [value]="etat">{{ 'ihmApp.Etat.' + etat | translate }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ihmApp.suivi.creationBALPDGFiP" for="field_creationBALPDGFiP">Creation BALPDG Fi P</label>
+          <select
+            class="form-control"
+            name="creationBALPDGFiP"
+            formControlName="creationBALPDGFiP"
+            id="field_creationBALPDGFiP"
+            data-cy="creationBALPDGFiP"
+          >
+            <option [ngValue]="null">{{ 'ihmApp.Etat.null' | translate }}</option>
+            <option *ngFor="let etat of etatValues" [value]="etat">{{ 'ihmApp.Etat.' + etat | translate }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ihmApp.suivi.creationCompteAD" for="field_creationCompteAD">Creation Compte AD</label>
+          <select
+            class="form-control"
+            name="creationCompteAD"
+            formControlName="creationCompteAD"
+            id="field_creationCompteAD"
+            data-cy="creationCompteAD"
+          >
+            <option [ngValue]="null">{{ 'ihmApp.Etat.null' | translate }}</option>
+            <option *ngFor="let etat of etatValues" [value]="etat">{{ 'ihmApp.Etat.' + etat | translate }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ihmApp.suivi.soclagePC" for="field_soclagePC">Soclage PC</label>
+          <select class="form-control" name="soclagePC" formControlName="soclagePC" id="field_soclagePC" data-cy="soclagePC">
+            <option [ngValue]="null">{{ 'ihmApp.Etat.null' | translate }}</option>
+            <option *ngFor="let etat of etatValues" [value]="etat">{{ 'ihmApp.Etat.' + etat | translate }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ihmApp.suivi.dmocssIpTT" for="field_dmocssIpTT">Dmocss Ip TT</label>
+          <select class="form-control" name="dmocssIpTT" formControlName="dmocssIpTT" id="field_dmocssIpTT" data-cy="dmocssIpTT">
+            <option [ngValue]="null">{{ 'ihmApp.Etat.null' | translate }}</option>
+            <option *ngFor="let etat of etatValues" [value]="etat">{{ 'ihmApp.Etat.' + etat | translate }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ihmApp.suivi.installationLogiciel" for="field_installationLogiciel"
+            >Installation Logiciel</label
+          >
+          <select
+            class="form-control"
+            name="installationLogiciel"
+            formControlName="installationLogiciel"
+            id="field_installationLogiciel"
+            data-cy="installationLogiciel"
+          >
+            <option [ngValue]="null">{{ 'ihmApp.Etat.null' | translate }}</option>
+            <option *ngFor="let etat of etatValues" [value]="etat">{{ 'ihmApp.Etat.' + etat | translate }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ihmApp.suivi.commentaires" for="field_commentaires">Commentaires</label>
+          <input
+            type="text"
+            class="form-control"
+            name="commentaires"
+            id="field_commentaires"
+            data-cy="commentaires"
+            formControlName="commentaires"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ihmApp.suivi.collaborateur" for="field_collaborateur">Collaborateur</label>
+          <select
+            class="form-control"
+            id="field_collaborateur"
+            data-cy="collaborateur"
+            name="collaborateur"
+            formControlName="collaborateur"
+            [compareWith]="compareCollaborateurs"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="collaborateursOption" *ngFor="let collaborateursOption of collaborateursSharedCollection">
+              {{ collaborateursOption.nom }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

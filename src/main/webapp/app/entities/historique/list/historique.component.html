@@ -1,0 +1,135 @@
+<div>
+  <h2 id="page-heading" data-cy="HistoriqueHeading">
+    <span jhiTranslate="ihmApp.historique.home.title">Historiques</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="ihmApp.historique.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-historique"
+        [routerLink]="['/historique/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="ihmApp.historique.home.createLabel"> Create a new Historique </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="historiques?.length === 0">
+    <span jhiTranslate="ihmApp.historique.home.notFound">No Historiques found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="historiques && historiques.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="pC">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.historique.pC">P C</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="zone">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.historique.zone">Zone</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="dateMouvement">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.historique.dateMouvement">Date Mouvement</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="ancienProprietaire.id">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.historique.ancienProprietaire">Ancien Proprietaire</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="nouveauProprietaire.id">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.historique.nouveauProprietaire">Nouveau Proprietaire</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="materiel.id">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.historique.materiel">Materiel</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let historique of historiques; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/historique', historique.id, 'view']">{{ historique.id }}</a>
+          </td>
+          <td>{{ historique.pC }}</td>
+          <td>{{ historique.zone }}</td>
+          <td>{{ historique.dateMouvement | formatMediumDate }}</td>
+          <td>
+            <div *ngIf="historique.ancienProprietaire">
+              <a [routerLink]="['/collaborateurs', historique.ancienProprietaire.id, 'view']">{{ historique.ancienProprietaire.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="historique.nouveauProprietaire">
+              <a [routerLink]="['/collaborateurs', historique.nouveauProprietaire.id, 'view']">{{ historique.nouveauProprietaire.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="historique.materiel">
+              <a [routerLink]="['/materiel', historique.materiel.id, 'view']">{{ historique.materiel.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/historique', historique.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/historique', historique.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(historique)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

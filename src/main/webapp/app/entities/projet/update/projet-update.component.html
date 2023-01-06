@@ -1,0 +1,78 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-projet-heading" data-cy="ProjetCreateUpdateHeading" jhiTranslate="ihmApp.projet.home.createOrEditLabel">
+        Create or edit a Projet
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="text" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ihmApp.projet.nom" for="field_nom">Nom</label>
+          <input type="text" class="form-control" name="nom" id="field_nom" data-cy="nom" formControlName="nom" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ihmApp.projet.dP" for="field_dP">D P</label>
+          <input type="text" class="form-control" name="dP" id="field_dP" data-cy="dP" formControlName="dP" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ihmApp.projet.stucture" for="field_stucture">Stucture</label>
+          <input type="text" class="form-control" name="stucture" id="field_stucture" data-cy="stucture" formControlName="stucture" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ihmApp.projet.informations" for="field_informations">Informations</label>
+          <input
+            type="text"
+            class="form-control"
+            name="informations"
+            id="field_informations"
+            data-cy="informations"
+            formControlName="informations"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label jhiTranslate="ihmApp.projet.collaborateurs" for="field_collaborateurs">Collaborateurs</label>
+          <select
+            class="form-control"
+            id="field_collaborateurs"
+            data-cy="collaborateurs"
+            multiple
+            name="collaborateurs"
+            formControlName="collaborateurs"
+            [compareWith]="compareCollaborateurs"
+          >
+            <option [ngValue]="collaborateursOption" *ngFor="let collaborateursOption of collaborateursSharedCollection">
+              {{ collaborateursOption.nom }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

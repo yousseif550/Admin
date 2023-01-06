@@ -1,0 +1,39 @@
+{
+  "applications": "*",
+  "changelogDate": "20230102135240",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "informations_tech",
+  "fields": [
+    {
+      "fieldName": "pcDom",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "pcDGFiP",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "adresseSSG",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "adresseDGFiP",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "InformationsTech",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "collaborateurs",
+      "ownerSide": true,
+      "relationshipName": "collaborateur",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "no"
+}

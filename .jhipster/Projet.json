@@ -1,0 +1,40 @@
+{
+  "applications": "*",
+  "changelogDate": "20230102135239",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "projet",
+  "fields": [
+    {
+      "fieldName": "nom",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dP",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "stucture",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "informations",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Projet",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "collaborateurs",
+      "otherEntityRelationshipName": "projet",
+      "ownerSide": true,
+      "relationshipName": "collaborateurs",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "no"
+}

@@ -1,0 +1,156 @@
+<div>
+  <h2 id="page-heading" data-cy="ExtracDMOCSSHeading">
+    <span jhiTranslate="ihmApp.extracDMOCSS.home.title">Extrac DMOCSSES</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="ihmApp.extracDMOCSS.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-extrac-dmocss"
+        [routerLink]="['/extrac-dmocss/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="ihmApp.extracDMOCSS.home.createLabel"> Create a new Extrac DMOCSS </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="extracDMOCSSES?.length === 0">
+    <span jhiTranslate="ihmApp.extracDMOCSS.home.notFound">No Extrac DMOCSSES found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="extracDMOCSSES && extracDMOCSSES.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="adressePhysiqueDGFiP">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.extracDMOCSS.adressePhysiqueDGFiP">Adresse Physique DG Fi P</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="bureauActuel">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.extracDMOCSS.bureauActuel">Bureau Actuel</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="bureauDeplacement">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.extracDMOCSS.bureauDeplacement">Bureau Deplacement</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="date">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.extracDMOCSS.date">Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="ipPcDGFiP">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.extracDMOCSS.ipPcDGFiP">Ip Pc DG Fi P</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="ipVpnIPSEC">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.extracDMOCSS.ipVpnIPSEC">Ip Vpn IPSEC</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="collaborateur.id">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.extracDMOCSS.collaborateur">Collaborateur</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="materiel.id">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.extracDMOCSS.materiel">Materiel</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="localisation.id">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.extracDMOCSS.localisation">Localisation</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let extracDMOCSS of extracDMOCSSES; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/extrac-dmocss', extracDMOCSS.id, 'view']">{{ extracDMOCSS.id }}</a>
+          </td>
+          <td>{{ extracDMOCSS.adressePhysiqueDGFiP }}</td>
+          <td>{{ extracDMOCSS.bureauActuel }}</td>
+          <td>{{ extracDMOCSS.bureauDeplacement }}</td>
+          <td>{{ extracDMOCSS.date | formatMediumDate }}</td>
+          <td>{{ extracDMOCSS.ipPcDGFiP }}</td>
+          <td>{{ extracDMOCSS.ipVpnIPSEC }}</td>
+          <td>
+            <div *ngIf="extracDMOCSS.collaborateur">
+              <a [routerLink]="['/collaborateurs', extracDMOCSS.collaborateur.id, 'view']">{{ extracDMOCSS.collaborateur.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="extracDMOCSS.materiel">
+              <a [routerLink]="['/materiel', extracDMOCSS.materiel.id, 'view']">{{ extracDMOCSS.materiel.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="extracDMOCSS.localisation">
+              <a [routerLink]="['/localisation', extracDMOCSS.localisation.id, 'view']">{{ extracDMOCSS.localisation.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/extrac-dmocss', extracDMOCSS.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/extrac-dmocss', extracDMOCSS.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(extracDMOCSS)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

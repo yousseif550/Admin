@@ -1,0 +1,33 @@
+{
+  "ihmApp": {
+    "collaborateurs": {
+      "home": {
+        "title": "Collaborateurs",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Collaborateurs",
+        "createOrEditLabel": "Create or edit a Collaborateurs",
+        "notFound": "No Collaborateurs found"
+      },
+      "created": "A new Collaborateurs is created with identifier {{ param }}",
+      "updated": "A Collaborateurs is updated with identifier {{ param }}",
+      "deleted": "A Collaborateurs is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Collaborateurs {{ id }}?"
+      },
+      "detail": {
+        "title": "Collaborateurs"
+      },
+      "id": "ID",
+      "nom": "Nom",
+      "identifiant": "Identifiant",
+      "tel": "Tel",
+      "prestataire": "Prestataire",
+      "isActif": "Is Actif",
+      "dateEntree": "Date Entree",
+      "dateSortie": "Date Sortie",
+      "materiel": "Materiel",
+      "ticket": "Ticket",
+      "projet": "Projet"
+    }
+  }
+}

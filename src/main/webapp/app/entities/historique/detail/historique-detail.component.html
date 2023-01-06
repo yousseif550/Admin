@@ -1,0 +1,58 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="historique">
+      <h2 data-cy="historiqueDetailsHeading"><span jhiTranslate="ihmApp.historique.detail.title">Historique</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ historique.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.historique.pC">P C</span></dt>
+        <dd>
+          <span>{{ historique.pC }}</span>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.historique.zone">Zone</span></dt>
+        <dd>
+          <span>{{ historique.zone }}</span>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.historique.dateMouvement">Date Mouvement</span></dt>
+        <dd>
+          <span>{{ historique.dateMouvement | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.historique.ancienProprietaire">Ancien Proprietaire</span></dt>
+        <dd>
+          <div *ngIf="historique.ancienProprietaire">
+            <a [routerLink]="['/collaborateurs', historique.ancienProprietaire.id, 'view']">{{ historique.ancienProprietaire.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.historique.nouveauProprietaire">Nouveau Proprietaire</span></dt>
+        <dd>
+          <div *ngIf="historique.nouveauProprietaire">
+            <a [routerLink]="['/collaborateurs', historique.nouveauProprietaire.id, 'view']">{{ historique.nouveauProprietaire.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.historique.materiel">Materiel</span></dt>
+        <dd>
+          <div *ngIf="historique.materiel">
+            <a [routerLink]="['/materiel', historique.materiel.id, 'view']">{{ historique.materiel.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/historique', historique.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,56 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="collaborateurs">
+      <h2 data-cy="collaborateursDetailsHeading"><span jhiTranslate="ihmApp.collaborateurs.detail.title">Collaborateurs</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ collaborateurs.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.collaborateurs.nom">Nom</span></dt>
+        <dd>
+          <span>{{ collaborateurs.nom }}</span>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.collaborateurs.identifiant">Identifiant</span></dt>
+        <dd>
+          <span>{{ collaborateurs.identifiant }}</span>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.collaborateurs.tel">Tel</span></dt>
+        <dd>
+          <span>{{ collaborateurs.tel }}</span>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.collaborateurs.prestataire">Prestataire</span></dt>
+        <dd>
+          <span>{{ collaborateurs.prestataire }}</span>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.collaborateurs.isActif">Is Actif</span></dt>
+        <dd>
+          <span>{{ collaborateurs.isActif }}</span>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.collaborateurs.dateEntree">Date Entree</span></dt>
+        <dd>
+          <span>{{ collaborateurs.dateEntree | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.collaborateurs.dateSortie">Date Sortie</span></dt>
+        <dd>
+          <span>{{ collaborateurs.dateSortie | formatMediumDate }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/collaborateurs', collaborateurs.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

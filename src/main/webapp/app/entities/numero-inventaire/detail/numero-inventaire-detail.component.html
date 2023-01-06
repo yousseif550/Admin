@@ -1,0 +1,54 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="numeroInventaire">
+      <h2 data-cy="numeroInventaireDetailsHeading"><span jhiTranslate="ihmApp.numeroInventaire.detail.title">Numero Inventaire</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ numeroInventaire.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.numeroInventaire.zone">Zone</span></dt>
+        <dd>
+          <span>{{ numeroInventaire.zone }}</span>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.numeroInventaire.valeur">Valeur</span></dt>
+        <dd>
+          <span>{{ numeroInventaire.valeur }}</span>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.numeroInventaire.disponible">Disponible</span></dt>
+        <dd>
+          <span>{{ numeroInventaire.disponible }}</span>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.numeroInventaire.ancienMateriel">Ancien Materiel</span></dt>
+        <dd>
+          <span>{{ numeroInventaire.ancienMateriel }}</span>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.numeroInventaire.dateModification">Date Modification</span></dt>
+        <dd>
+          <span>{{ numeroInventaire.dateModification | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.numeroInventaire.materielActuel">Materiel Actuel</span></dt>
+        <dd>
+          <div *ngIf="numeroInventaire.materielActuel">
+            <a [routerLink]="['/materiel', numeroInventaire.materielActuel.id, 'view']">{{ numeroInventaire.materielActuel.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/numero-inventaire', numeroInventaire.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

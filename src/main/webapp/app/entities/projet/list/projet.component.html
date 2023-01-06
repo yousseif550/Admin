@@ -1,0 +1,111 @@
+<div>
+  <h2 id="page-heading" data-cy="ProjetHeading">
+    <span jhiTranslate="ihmApp.projet.home.title">Projets</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="ihmApp.projet.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-projet"
+        [routerLink]="['/projet/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="ihmApp.projet.home.createLabel"> Create a new Projet </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="projets?.length === 0">
+    <span jhiTranslate="ihmApp.projet.home.notFound">No Projets found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="projets && projets.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="nom">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.projet.nom">Nom</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="dP">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.projet.dP">D P</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="stucture">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.projet.stucture">Stucture</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="informations">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.projet.informations">Informations</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="collaborateurs.id">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.projet.collaborateurs">Collaborateurs</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let projet of projets; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/projet', projet.id, 'view']">{{ projet.id }}</a>
+          </td>
+          <td>{{ projet.nom }}</td>
+          <td>{{ projet.dP }}</td>
+          <td>{{ projet.stucture }}</td>
+          <td>{{ projet.informations }}</td>
+          <td>
+            <span *ngFor="let collaborateurs of projet.collaborateurs; let last = last">
+              <a class="form-control-static" [routerLink]="['/collaborateurs', collaborateurs.id, 'view']">{{ collaborateurs.id }}</a
+              >{{ last ? '' : ', ' }}
+            </span>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/projet', projet.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/projet', projet.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(projet)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

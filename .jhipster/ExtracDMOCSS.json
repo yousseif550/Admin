@@ -1,0 +1,59 @@
+{
+  "applications": "*",
+  "changelogDate": "20230102135246",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "extrac_dmocss",
+  "fields": [
+    {
+      "fieldName": "adressePhysiqueDGFiP",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "bureauActuel",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "bureauDeplacement",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "date",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "ipPcDGFiP",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ipVpnIPSEC",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "ExtracDMOCSS",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "collaborateurs",
+      "ownerSide": true,
+      "relationshipName": "collaborateur",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "materiel",
+      "ownerSide": true,
+      "relationshipName": "materiel",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "localisation",
+      "ownerSide": true,
+      "relationshipName": "localisation",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "no"
+}

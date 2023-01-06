@@ -1,0 +1,32 @@
+{
+  "applications": "*",
+  "changelogDate": "20230102135242",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "localisation",
+  "fields": [
+    {
+      "fieldName": "batiment",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "bureau",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "site",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ville",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Localisation",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "no"
+}

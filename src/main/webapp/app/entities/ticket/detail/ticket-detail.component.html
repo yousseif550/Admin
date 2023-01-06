@@ -1,0 +1,56 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="ticket">
+      <h2 data-cy="ticketDetailsHeading"><span jhiTranslate="ihmApp.ticket.detail.title">Ticket</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ ticket.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.ticket.type">Type</span></dt>
+        <dd>
+          <span>{{ ticket.type }}</span>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.ticket.statut">Statut</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'ihmApp.Etat.' + ticket.statut }}">{{ ticket.statut }}</span>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.ticket.dateCreation">Date Creation</span></dt>
+        <dd>
+          <span>{{ ticket.dateCreation | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.ticket.dateFin">Date Fin</span></dt>
+        <dd>
+          <span>{{ ticket.dateFin | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.ticket.beneficiaire">Beneficiaire</span></dt>
+        <dd>
+          <div *ngIf="ticket.beneficiaire">
+            <a [routerLink]="['/collaborateurs', ticket.beneficiaire.id, 'view']">{{ ticket.beneficiaire.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.ticket.proprietaire">Proprietaire</span></dt>
+        <dd>
+          <div *ngIf="ticket.proprietaire">
+            <a [routerLink]="['/collaborateurs', ticket.proprietaire.id, 'view']">{{ ticket.proprietaire.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/ticket', ticket.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

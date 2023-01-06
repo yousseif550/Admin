@@ -1,0 +1,32 @@
+{
+  "ihmApp": {
+    "extracDMOCSS": {
+      "home": {
+        "title": "Extrac DMOCSSES",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Extrac DMOCSS",
+        "createOrEditLabel": "Create or edit a Extrac DMOCSS",
+        "notFound": "No Extrac DMOCSSES found"
+      },
+      "created": "A new Extrac DMOCSS is created with identifier {{ param }}",
+      "updated": "A Extrac DMOCSS is updated with identifier {{ param }}",
+      "deleted": "A Extrac DMOCSS is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Extrac DMOCSS {{ id }}?"
+      },
+      "detail": {
+        "title": "Extrac DMOCSS"
+      },
+      "id": "ID",
+      "adressePhysiqueDGFiP": "Adresse Physique DG Fi P",
+      "bureauActuel": "Bureau Actuel",
+      "bureauDeplacement": "Bureau Deplacement",
+      "date": "Date",
+      "ipPcDGFiP": "Ip Pc DG Fi P",
+      "ipVpnIPSEC": "Ip Vpn IPSEC",
+      "collaborateur": "Collaborateur",
+      "materiel": "Materiel",
+      "localisation": "Localisation"
+    }
+  }
+}

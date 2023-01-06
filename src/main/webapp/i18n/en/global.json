@@ -7,6 +7,17 @@
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Entities",
+        "mouvement": "Mouvement",
+        "suivi": "Suivi",
+        "collaborateurs": "Collaborateurs",
+        "projet": "Projet",
+        "informationsTech": "Informations Tech",
+        "ticket": "Ticket",
+        "localisation": "Localisation",
+        "materiel": "Materiel",
+        "historique": "Historique",
+        "numeroInventaire": "Numero Inventaire",
+        "extracDmocss": "Extrac DMOCSS",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

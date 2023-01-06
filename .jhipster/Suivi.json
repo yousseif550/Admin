@@ -1,0 +1,97 @@
+{
+  "applications": "*",
+  "changelogDate": "20230102135237",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "suivi",
+  "fields": [
+    {
+      "fieldName": "envoiKitAccueil",
+      "fieldType": "Etat",
+      "fieldValues": "NonRealiser,EnCours,Envoyer,OK,EnAttenteDeReponse"
+    },
+    {
+      "fieldName": "documentSigner",
+      "fieldType": "Etat",
+      "fieldValues": "NonRealiser,EnCours,Envoyer,OK,EnAttenteDeReponse"
+    },
+    {
+      "fieldName": "commandePCDom",
+      "fieldType": "Etat",
+      "fieldValues": "NonRealiser,EnCours,Envoyer,OK,EnAttenteDeReponse"
+    },
+    {
+      "fieldName": "compteSSG",
+      "fieldType": "Etat",
+      "fieldValues": "NonRealiser,EnCours,Envoyer,OK,EnAttenteDeReponse"
+    },
+    {
+      "fieldName": "listeNTIC",
+      "fieldType": "Etat",
+      "fieldValues": "NonRealiser,EnCours,Envoyer,OK,EnAttenteDeReponse"
+    },
+    {
+      "fieldName": "accesTeams",
+      "fieldType": "Etat",
+      "fieldValues": "NonRealiser,EnCours,Envoyer,OK,EnAttenteDeReponse"
+    },
+    {
+      "fieldName": "accesPulseDGFiP",
+      "fieldType": "Etat",
+      "fieldValues": "NonRealiser,EnCours,Envoyer,OK,EnAttenteDeReponse"
+    },
+    {
+      "fieldName": "profilPCDom",
+      "fieldType": "Etat",
+      "fieldValues": "NonRealiser,EnCours,Envoyer,OK,EnAttenteDeReponse"
+    },
+    {
+      "fieldName": "commanderPCDGFiP",
+      "fieldType": "Etat",
+      "fieldValues": "NonRealiser,EnCours,Envoyer,OK,EnAttenteDeReponse"
+    },
+    {
+      "fieldName": "creationBALPDGFiP",
+      "fieldType": "Etat",
+      "fieldValues": "NonRealiser,EnCours,Envoyer,OK,EnAttenteDeReponse"
+    },
+    {
+      "fieldName": "creationCompteAD",
+      "fieldType": "Etat",
+      "fieldValues": "NonRealiser,EnCours,Envoyer,OK,EnAttenteDeReponse"
+    },
+    {
+      "fieldName": "soclagePC",
+      "fieldType": "Etat",
+      "fieldValues": "NonRealiser,EnCours,Envoyer,OK,EnAttenteDeReponse"
+    },
+    {
+      "fieldName": "dmocssIpTT",
+      "fieldType": "Etat",
+      "fieldValues": "NonRealiser,EnCours,Envoyer,OK,EnAttenteDeReponse"
+    },
+    {
+      "fieldName": "installationLogiciel",
+      "fieldType": "Etat",
+      "fieldValues": "NonRealiser,EnCours,Envoyer,OK,EnAttenteDeReponse"
+    },
+    {
+      "fieldName": "commentaires",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Suivi",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "collaborateurs",
+      "ownerSide": true,
+      "relationshipName": "collaborateur",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "no"
+}

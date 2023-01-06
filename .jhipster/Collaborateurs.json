@@ -1,0 +1,64 @@
+{
+  "applications": "*",
+  "changelogDate": "20230102135238",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "collaborateurs",
+  "fields": [
+    {
+      "fieldName": "nom",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "identifiant",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "tel",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "prestataire",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "isActif",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "dateEntree",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "dateSortie",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Collaborateurs",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "materiel",
+      "otherEntityRelationshipName": "collaborateurs",
+      "relationshipName": "materiel",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "ticket",
+      "otherEntityRelationshipName": "proprietaire",
+      "relationshipName": "ticket",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "projet",
+      "otherEntityRelationshipName": "collaborateurs",
+      "ownerSide": false,
+      "relationshipName": "projet",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "no"
+}

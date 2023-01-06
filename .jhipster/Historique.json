@@ -1,0 +1,47 @@
+{
+  "applications": "*",
+  "changelogDate": "20230102135244",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "historique",
+  "fields": [
+    {
+      "fieldName": "pC",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "zone",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dateMouvement",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Historique",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "collaborateurs",
+      "ownerSide": true,
+      "relationshipName": "ancienProprietaire",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "collaborateurs",
+      "ownerSide": true,
+      "relationshipName": "nouveauProprietaire",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "materiel",
+      "ownerSide": true,
+      "relationshipName": "materiel",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "no"
+}

@@ -1,0 +1,70 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="extracDMOCSS">
+      <h2 data-cy="extracDMOCSSDetailsHeading"><span jhiTranslate="ihmApp.extracDMOCSS.detail.title">Extrac DMOCSS</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ extracDMOCSS.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.extracDMOCSS.adressePhysiqueDGFiP">Adresse Physique DG Fi P</span></dt>
+        <dd>
+          <span>{{ extracDMOCSS.adressePhysiqueDGFiP }}</span>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.extracDMOCSS.bureauActuel">Bureau Actuel</span></dt>
+        <dd>
+          <span>{{ extracDMOCSS.bureauActuel }}</span>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.extracDMOCSS.bureauDeplacement">Bureau Deplacement</span></dt>
+        <dd>
+          <span>{{ extracDMOCSS.bureauDeplacement }}</span>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.extracDMOCSS.date">Date</span></dt>
+        <dd>
+          <span>{{ extracDMOCSS.date | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.extracDMOCSS.ipPcDGFiP">Ip Pc DG Fi P</span></dt>
+        <dd>
+          <span>{{ extracDMOCSS.ipPcDGFiP }}</span>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.extracDMOCSS.ipVpnIPSEC">Ip Vpn IPSEC</span></dt>
+        <dd>
+          <span>{{ extracDMOCSS.ipVpnIPSEC }}</span>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.extracDMOCSS.collaborateur">Collaborateur</span></dt>
+        <dd>
+          <div *ngIf="extracDMOCSS.collaborateur">
+            <a [routerLink]="['/collaborateurs', extracDMOCSS.collaborateur.id, 'view']">{{ extracDMOCSS.collaborateur.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.extracDMOCSS.materiel">Materiel</span></dt>
+        <dd>
+          <div *ngIf="extracDMOCSS.materiel">
+            <a [routerLink]="['/materiel', extracDMOCSS.materiel.id, 'view']">{{ extracDMOCSS.materiel.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.extracDMOCSS.localisation">Localisation</span></dt>
+        <dd>
+          <div *ngIf="extracDMOCSS.localisation">
+            <a [routerLink]="['/localisation', extracDMOCSS.localisation.id, 'view']">{{ extracDMOCSS.localisation.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/extrac-dmocss', extracDMOCSS.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,43 @@
+{
+  "applications": "*",
+  "changelogDate": "20230102135245",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "numero_inventaire",
+  "fields": [
+    {
+      "fieldName": "zone",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "valeur",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "disponible",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "ancienMateriel",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dateModification",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "NumeroInventaire",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "materiel",
+      "ownerSide": true,
+      "relationshipName": "materielActuel",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "no"
+}

@@ -1,0 +1,11 @@
+{
+  "ihmApp": {
+    "Type": {
+      "null": "",
+      "Demande": "Demande",
+      "Modification": "Modification",
+      "Suppression": "Suppression",
+      "Deplacement": "Deplacement"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "ihmApp": {
+    "numeroInventaire": {
+      "home": {
+        "title": "Numero Inventaires",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Numero Inventaire",
+        "createOrEditLabel": "Create or edit a Numero Inventaire",
+        "notFound": "No Numero Inventaires found"
+      },
+      "created": "A new Numero Inventaire is created with identifier {{ param }}",
+      "updated": "A Numero Inventaire is updated with identifier {{ param }}",
+      "deleted": "A Numero Inventaire is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Numero Inventaire {{ id }}?"
+      },
+      "detail": {
+        "title": "Numero Inventaire"
+      },
+      "id": "ID",
+      "zone": "Zone",
+      "valeur": "Valeur",
+      "disponible": "Disponible",
+      "ancienMateriel": "Ancien Materiel",
+      "dateModification": "Date Modification",
+      "materielActuel": "Materiel Actuel"
+    }
+  }
+}

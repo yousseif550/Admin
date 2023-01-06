@@ -1,0 +1,28 @@
+{
+  "ihmApp": {
+    "informationsTech": {
+      "home": {
+        "title": "Informations Teches",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Informations Tech",
+        "createOrEditLabel": "Create or edit a Informations Tech",
+        "notFound": "No Informations Teches found"
+      },
+      "created": "A new Informations Tech is created with identifier {{ param }}",
+      "updated": "A Informations Tech is updated with identifier {{ param }}",
+      "deleted": "A Informations Tech is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Informations Tech {{ id }}?"
+      },
+      "detail": {
+        "title": "Informations Tech"
+      },
+      "id": "ID",
+      "pcDom": "Pc Dom",
+      "pcDGFiP": "Pc DG Fi P",
+      "adresseSSG": "Adresse SSG",
+      "adresseDGFiP": "Adresse DG Fi P",
+      "collaborateur": "Collaborateur"
+    }
+  }
+}

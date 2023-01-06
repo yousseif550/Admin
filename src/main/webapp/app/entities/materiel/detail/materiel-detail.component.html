@@ -1,0 +1,78 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="materiel">
+      <h2 data-cy="materielDetailsHeading"><span jhiTranslate="ihmApp.materiel.detail.title">Materiel</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ materiel.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.materiel.type">Type</span></dt>
+        <dd>
+          <span>{{ materiel.type }}</span>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.materiel.modele">Modele</span></dt>
+        <dd>
+          <span>{{ materiel.modele }}</span>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.materiel.asset">Asset</span></dt>
+        <dd>
+          <span>{{ materiel.asset }}</span>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.materiel.commentaire">Commentaire</span></dt>
+        <dd>
+          <span>{{ materiel.commentaire }}</span>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.materiel.actif">Actif</span></dt>
+        <dd>
+          <span>{{ materiel.actif }}</span>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.materiel.dateAttribution">Date Attribution</span></dt>
+        <dd>
+          <span>{{ materiel.dateAttribution | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.materiel.dateRendu">Date Rendu</span></dt>
+        <dd>
+          <span>{{ materiel.dateRendu | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.materiel.isHS">Is HS</span></dt>
+        <dd>
+          <span>{{ materiel.isHS }}</span>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.materiel.numeroInventaire">Numero Inventaire</span></dt>
+        <dd>
+          <div *ngIf="materiel.numeroInventaire">
+            <a [routerLink]="['/numero-inventaire', materiel.numeroInventaire.id, 'view']">{{ materiel.numeroInventaire.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.materiel.localisation">Localisation</span></dt>
+        <dd>
+          <div *ngIf="materiel.localisation">
+            <a [routerLink]="['/localisation', materiel.localisation.id, 'view']">{{ materiel.localisation.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.materiel.collaborateurs">Collaborateurs</span></dt>
+        <dd>
+          <div *ngIf="materiel.collaborateurs">
+            <a [routerLink]="['/collaborateurs', materiel.collaborateurs.id, 'view']">{{ materiel.collaborateurs.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/materiel', materiel.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

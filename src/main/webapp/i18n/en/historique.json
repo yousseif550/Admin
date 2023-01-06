@@ -1,0 +1,29 @@
+{
+  "ihmApp": {
+    "historique": {
+      "home": {
+        "title": "Historiques",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Historique",
+        "createOrEditLabel": "Create or edit a Historique",
+        "notFound": "No Historiques found"
+      },
+      "created": "A new Historique is created with identifier {{ param }}",
+      "updated": "A Historique is updated with identifier {{ param }}",
+      "deleted": "A Historique is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Historique {{ id }}?"
+      },
+      "detail": {
+        "title": "Historique"
+      },
+      "id": "ID",
+      "pC": "P C",
+      "zone": "Zone",
+      "dateMouvement": "Date Mouvement",
+      "ancienProprietaire": "Ancien Proprietaire",
+      "nouveauProprietaire": "Nouveau Proprietaire",
+      "materiel": "Materiel"
+    }
+  }
+}

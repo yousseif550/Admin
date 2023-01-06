@@ -1,0 +1,170 @@
+<div>
+  <h2 id="page-heading" data-cy="MaterielHeading">
+    <span jhiTranslate="ihmApp.materiel.home.title">Materiels</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="ihmApp.materiel.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-materiel"
+        [routerLink]="['/materiel/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="ihmApp.materiel.home.createLabel"> Create a new Materiel </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="materiels?.length === 0">
+    <span jhiTranslate="ihmApp.materiel.home.notFound">No Materiels found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="materiels && materiels.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="type">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.materiel.type">Type</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="modele">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.materiel.modele">Modele</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="asset">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.materiel.asset">Asset</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="commentaire">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.materiel.commentaire">Commentaire</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="actif">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.materiel.actif">Actif</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="dateAttribution">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.materiel.dateAttribution">Date Attribution</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="dateRendu">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.materiel.dateRendu">Date Rendu</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="isHS">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.materiel.isHS">Is HS</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="numeroInventaire.id">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.materiel.numeroInventaire">Numero Inventaire</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="localisation.id">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.materiel.localisation">Localisation</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="collaborateurs.id">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.materiel.collaborateurs">Collaborateurs</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let materiel of materiels; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/materiel', materiel.id, 'view']">{{ materiel.id }}</a>
+          </td>
+          <td>{{ materiel.type }}</td>
+          <td>{{ materiel.modele }}</td>
+          <td>{{ materiel.asset }}</td>
+          <td>{{ materiel.commentaire }}</td>
+          <td>{{ materiel.actif }}</td>
+          <td>{{ materiel.dateAttribution | formatMediumDate }}</td>
+          <td>{{ materiel.dateRendu | formatMediumDate }}</td>
+          <td>{{ materiel.isHS }}</td>
+          <td>
+            <div *ngIf="materiel.numeroInventaire">
+              <a [routerLink]="['/numero-inventaire', materiel.numeroInventaire.id, 'view']">{{ materiel.numeroInventaire.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="materiel.localisation">
+              <a [routerLink]="['/localisation', materiel.localisation.id, 'view']">{{ materiel.localisation.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="materiel.collaborateurs">
+              <a [routerLink]="['/collaborateurs', materiel.collaborateurs.id, 'view']">{{ materiel.collaborateurs.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/materiel', materiel.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/materiel', materiel.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(materiel)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

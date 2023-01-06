@@ -1,0 +1,158 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-materiel-heading" data-cy="MaterielCreateUpdateHeading" jhiTranslate="ihmApp.materiel.home.createOrEditLabel">
+        Create or edit a Materiel
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="text" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ihmApp.materiel.type" for="field_type">Type</label>
+          <input type="text" class="form-control" name="type" id="field_type" data-cy="type" formControlName="type" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ihmApp.materiel.modele" for="field_modele">Modele</label>
+          <input type="text" class="form-control" name="modele" id="field_modele" data-cy="modele" formControlName="modele" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ihmApp.materiel.asset" for="field_asset">Asset</label>
+          <input type="text" class="form-control" name="asset" id="field_asset" data-cy="asset" formControlName="asset" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ihmApp.materiel.commentaire" for="field_commentaire">Commentaire</label>
+          <input
+            type="text"
+            class="form-control"
+            name="commentaire"
+            id="field_commentaire"
+            data-cy="commentaire"
+            formControlName="commentaire"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ihmApp.materiel.actif" for="field_actif">Actif</label>
+          <input type="checkbox" class="form-check" name="actif" id="field_actif" data-cy="actif" formControlName="actif" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ihmApp.materiel.dateAttribution" for="field_dateAttribution">Date Attribution</label>
+          <div class="input-group">
+            <input
+              id="field_dateAttribution"
+              data-cy="dateAttribution"
+              type="text"
+              class="form-control"
+              name="dateAttribution"
+              ngbDatepicker
+              #dateAttributionDp="ngbDatepicker"
+              formControlName="dateAttribution"
+            />
+            <button type="button" class="btn btn-secondary" (click)="dateAttributionDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ihmApp.materiel.dateRendu" for="field_dateRendu">Date Rendu</label>
+          <div class="input-group">
+            <input
+              id="field_dateRendu"
+              data-cy="dateRendu"
+              type="text"
+              class="form-control"
+              name="dateRendu"
+              ngbDatepicker
+              #dateRenduDp="ngbDatepicker"
+              formControlName="dateRendu"
+            />
+            <button type="button" class="btn btn-secondary" (click)="dateRenduDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ihmApp.materiel.isHS" for="field_isHS">Is HS</label>
+          <input type="checkbox" class="form-check" name="isHS" id="field_isHS" data-cy="isHS" formControlName="isHS" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ihmApp.materiel.numeroInventaire" for="field_numeroInventaire">Numero Inventaire</label>
+          <select
+            class="form-control"
+            id="field_numeroInventaire"
+            data-cy="numeroInventaire"
+            name="numeroInventaire"
+            formControlName="numeroInventaire"
+            [compareWith]="compareNumeroInventaire"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="numeroInventaireOption" *ngFor="let numeroInventaireOption of numeroInventairesSharedCollection">
+              {{ numeroInventaireOption.valeur }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ihmApp.materiel.localisation" for="field_localisation">Localisation</label>
+          <select
+            class="form-control"
+            id="field_localisation"
+            data-cy="localisation"
+            name="localisation"
+            formControlName="localisation"
+            [compareWith]="compareLocalisation"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="localisationOption" *ngFor="let localisationOption of localisationsSharedCollection">
+              {{ localisationOption.site }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ihmApp.materiel.collaborateurs" for="field_collaborateurs">Collaborateurs</label>
+          <select
+            class="form-control"
+            id="field_collaborateurs"
+            data-cy="collaborateurs"
+            name="collaborateurs"
+            formControlName="collaborateurs"
+            [compareWith]="compareCollaborateurs"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="collaborateursOption" *ngFor="let collaborateursOption of collaborateursSharedCollection">
+              {{ collaborateursOption.nom }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

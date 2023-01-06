@@ -1,0 +1,28 @@
+{
+  "ihmApp": {
+    "mouvement": {
+      "home": {
+        "title": "Mouvements",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Mouvement",
+        "createOrEditLabel": "Create or edit a Mouvement",
+        "notFound": "No Mouvements found"
+      },
+      "created": "A new Mouvement is created with identifier {{ param }}",
+      "updated": "A Mouvement is updated with identifier {{ param }}",
+      "deleted": "A Mouvement is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Mouvement {{ id }}?"
+      },
+      "detail": {
+        "title": "Mouvement"
+      },
+      "id": "ID",
+      "date": "Date",
+      "type": "Type",
+      "source": "Source",
+      "destination": "Destination",
+      "user": "User"
+    }
+  }
+}
