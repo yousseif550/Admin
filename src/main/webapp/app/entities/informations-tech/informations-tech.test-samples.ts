@@ -5,17 +5,18 @@ export const sampleWithRequiredData: IInformationsTech = {
 };
 
 export const sampleWithPartialData: IInformationsTech = {
-  id: '19cd2ee0-1e8d-415a-bc14-a12c892eb85b',
-  pcDGFiP: 'Shoes',
-  adresseDGFiP: 'quantifying Baby Internal',
+  id: '9cd2ee01-e8d1-45ab-814a-12c892eb85b4',
+  ipfixDMOCSS: 'Buckinghamshire',
+  iPTeletravail: 'payment Escudo IB',
 };
 
 export const sampleWithFullData: IInformationsTech = {
-  id: '607838f3-a6fd-4866-bf98-7999f9796300',
-  pcDom: 'Regional',
-  pcDGFiP: 'Dollar',
-  adresseSSG: 'communities',
-  adresseDGFiP: 'pink',
+  id: '07838f3a-6fd8-4663-b987-999f97963000',
+  ipdfipConnexion: 'incubate Dollar Practical',
+  ipfixDMOCSS: 'Electronics compressing Home',
+  adressMAC: 'workforce',
+  iPTeletravail: 'turquoise portal withdrawal',
+  adresseDGFiP: 'Applications Tasty Lebanon',
 };
 
 export const sampleWithNewData: NewInformationsTech = {

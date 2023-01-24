@@ -80,6 +80,18 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
+          <th scope="col" jhiSortBy="localisation.id">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.collaborateurs.localisation">Localisation</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="projet.id">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.collaborateurs.projet">Projet</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
           <th scope="col"></th>
         </tr>
       </thead>
@@ -95,6 +107,17 @@
           <td>{{ collaborateurs.isActif }}</td>
           <td>{{ collaborateurs.dateEntree | formatMediumDate }}</td>
           <td>{{ collaborateurs.dateSortie | formatMediumDate }}</td>
+          <td>
+            <div *ngIf="collaborateurs.localisation">
+              <a [routerLink]="['/localisation', collaborateurs.localisation.id, 'view']">{{ collaborateurs.localisation.id }}</a>
+            </div>
+          </td>
+          <td>
+            <span *ngFor="let projet of collaborateurs.projets; let last = last">
+              <a class="form-control-static" [routerLink]="['/projet', projet.id, 'view']">{{ projet.id }}</a
+              >{{ last ? '' : ', ' }}
+            </span>
+          </td>
           <td class="text-end">
             <div class="btn-group">
               <button

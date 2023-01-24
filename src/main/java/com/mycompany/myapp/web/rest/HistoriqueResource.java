@@ -144,8 +144,8 @@ public class HistoriqueResource {
                 Mono<Historique> result = historiqueRepository
                     .findById(historique.getId())
                     .map(existingHistorique -> {
-                        if (historique.getpC() != null) {
-                            existingHistorique.setpC(historique.getpC());
+                        if (historique.getPc() != null) {
+                            existingHistorique.setPc(historique.getPc());
                         }
                         if (historique.getZone() != null) {
                             existingHistorique.setZone(historique.getZone());

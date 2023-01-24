@@ -11,7 +11,7 @@
     },
     {
       "fieldName": "identifiant",
-      "fieldType": "Long"
+      "fieldType": "String"
     },
     {
       "fieldName": "tel",
@@ -41,21 +41,15 @@
   "readOnly": false,
   "relationships": [
     {
-      "otherEntityName": "materiel",
-      "otherEntityRelationshipName": "collaborateurs",
-      "relationshipName": "materiel",
-      "relationshipType": "one-to-many"
-    },
-    {
-      "otherEntityName": "ticket",
-      "otherEntityRelationshipName": "proprietaire",
-      "relationshipName": "ticket",
-      "relationshipType": "one-to-many"
+      "otherEntityName": "localisation",
+      "ownerSide": true,
+      "relationshipName": "localisation",
+      "relationshipType": "one-to-one"
     },
     {
       "otherEntityName": "projet",
       "otherEntityRelationshipName": "collaborateurs",
-      "ownerSide": false,
+      "ownerSide": true,
       "relationshipName": "projet",
       "relationshipType": "many-to-many"
     }

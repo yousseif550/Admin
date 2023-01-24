@@ -4,7 +4,7 @@ import { IMateriel } from 'app/entities/materiel/materiel.model';
 
 export interface IHistorique {
   id: string;
-  pC?: string | null;
+  pc?: string | null;
   zone?: string | null;
   dateMouvement?: dayjs.Dayjs | null;
   ancienProprietaire?: Pick<ICollaborateurs, 'id'> | null;

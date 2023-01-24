@@ -25,7 +25,7 @@
         <div class="row mb-3">
           <label class="form-label" jhiTranslate="ihmApp.collaborateurs.identifiant" for="field_identifiant">Identifiant</label>
           <input
-            type="number"
+            type="text"
             class="form-control"
             name="identifiant"
             id="field_identifiant"
@@ -88,6 +88,38 @@
             />
             <button type="button" class="btn btn-secondary" (click)="dateSortieDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
           </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ihmApp.collaborateurs.localisation" for="field_localisation">Localisation</label>
+          <select
+            class="form-control"
+            id="field_localisation"
+            data-cy="localisation"
+            name="localisation"
+            formControlName="localisation"
+            [compareWith]="compareLocalisation"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="localisationOption" *ngFor="let localisationOption of localisationsSharedCollection">
+              {{ localisationOption.batiment }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label jhiTranslate="ihmApp.collaborateurs.projet" for="field_projets">Projet</label>
+          <select
+            class="form-control"
+            id="field_projets"
+            data-cy="projet"
+            multiple
+            name="projets"
+            formControlName="projets"
+            [compareWith]="compareProjet"
+          >
+            <option [ngValue]="projetOption" *ngFor="let projetOption of projetsSharedCollection">{{ projetOption.nom }}</option>
+          </select>
         </div>
       </div>
 

@@ -7,8 +7,8 @@ import { finalize, map } from 'rxjs/operators';
 import { InformationsTechFormService, InformationsTechFormGroup } from './informations-tech-form.service';
 import { IInformationsTech } from '../informations-tech.model';
 import { InformationsTechService } from '../service/informations-tech.service';
-import { ICollaborateurs } from 'app/entities/collaborateurs/collaborateurs.model';
-import { CollaborateursService } from 'app/entities/collaborateurs/service/collaborateurs.service';
+import { IMateriel } from 'app/entities/materiel/materiel.model';
+import { MaterielService } from 'app/entities/materiel/service/materiel.service';
 
 @Component({
   selector: 'jhi-informations-tech-update',
@@ -18,19 +18,18 @@ export class InformationsTechUpdateComponent implements OnInit {
   isSaving = false;
   informationsTech: IInformationsTech | null = null;
 
-  collaborateursSharedCollection: ICollaborateurs[] = [];
+  materielsSharedCollection: IMateriel[] = [];
 
   editForm: InformationsTechFormGroup = this.informationsTechFormService.createInformationsTechFormGroup();
 
   constructor(
     protected informationsTechService: InformationsTechService,
     protected informationsTechFormService: InformationsTechFormService,
-    protected collaborateursService: CollaborateursService,
+    protected materielService: MaterielService,
     protected activatedRoute: ActivatedRoute
   ) {}
 
-  compareCollaborateurs = (o1: ICollaborateurs | null, o2: ICollaborateurs | null): boolean =>
-    this.collaborateursService.compareCollaborateurs(o1, o2);
+  compareMateriel = (o1: IMateriel | null, o2: IMateriel | null): boolean => this.materielService.compareMateriel(o1, o2);
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ informationsTech }) => {
@@ -80,24 +79,21 @@ export class InformationsTechUpdateComponent implements OnInit {
     this.informationsTech = informationsTech;
     this.informationsTechFormService.resetForm(this.editForm, informationsTech);
 
-    this.collaborateursSharedCollection = this.collaborateursService.addCollaborateursToCollectionIfMissing<ICollaborateurs>(
-      this.collaborateursSharedCollection,
-      informationsTech.collaborateur
+    this.materielsSharedCollection = this.materielService.addMaterielToCollectionIfMissing<IMateriel>(
+      this.materielsSharedCollection,
+      informationsTech.pcDGFiP
     );
   }
 
   protected loadRelationshipsOptions(): void {
-    this.collaborateursService
+    this.materielService
       .query()
-      .pipe(map((res: HttpResponse<ICollaborateurs[]>) => res.body ?? []))
+      .pipe(map((res: HttpResponse<IMateriel[]>) => res.body ?? []))
       .pipe(
-        map((collaborateurs: ICollaborateurs[]) =>
-          this.collaborateursService.addCollaborateursToCollectionIfMissing<ICollaborateurs>(
-            collaborateurs,
-            this.informationsTech?.collaborateur
-          )
+        map((materiels: IMateriel[]) =>
+          this.materielService.addMaterielToCollectionIfMissing<IMateriel>(materiels, this.informationsTech?.pcDGFiP)
         )
       )
-      .subscribe((collaborateurs: ICollaborateurs[]) => (this.collaborateursSharedCollection = collaborateurs));
+      .subscribe((materiels: IMateriel[]) => (this.materielsSharedCollection = materiels));
   }
 }

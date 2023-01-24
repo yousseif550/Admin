@@ -18,10 +18,6 @@
       "fieldType": "String"
     },
     {
-      "fieldName": "commentaire",
-      "fieldType": "String"
-    },
-    {
       "fieldName": "actif",
       "fieldType": "Boolean"
     },
@@ -34,7 +30,11 @@
       "fieldType": "LocalDate"
     },
     {
-      "fieldName": "isHS",
+      "fieldName": "commentaire",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "isHs",
       "fieldType": "Boolean"
     }
   ],
@@ -45,12 +45,6 @@
   "readOnly": false,
   "relationships": [
     {
-      "otherEntityName": "numeroInventaire",
-      "ownerSide": true,
-      "relationshipName": "numeroInventaire",
-      "relationshipType": "one-to-one"
-    },
-    {
       "otherEntityName": "localisation",
       "ownerSide": true,
       "relationshipName": "localisation",
@@ -58,9 +52,9 @@
     },
     {
       "otherEntityName": "collaborateurs",
-      "otherEntityRelationshipName": "materiel",
+      "ownerSide": true,
       "relationshipName": "collaborateurs",
-      "relationshipType": "many-to-one"
+      "relationshipType": "one-to-one"
     }
   ],
   "service": "no"

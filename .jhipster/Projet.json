@@ -31,7 +31,7 @@
     {
       "otherEntityName": "collaborateurs",
       "otherEntityRelationshipName": "projet",
-      "ownerSide": true,
+      "ownerSide": false,
       "relationshipName": "collaborateurs",
       "relationshipType": "many-to-many"
     }

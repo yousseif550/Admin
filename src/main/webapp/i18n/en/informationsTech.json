@@ -2,27 +2,28 @@
   "ihmApp": {
     "informationsTech": {
       "home": {
-        "title": "Informations Teches",
+        "title": "Informations Techniques",
         "refreshListLabel": "Refresh list",
-        "createLabel": "Create a new Informations Tech",
-        "createOrEditLabel": "Create or edit a Informations Tech",
-        "notFound": "No Informations Teches found"
+        "createLabel": "Create a new Informations Techniques",
+        "createOrEditLabel": "Create or edit a Informations Techniques",
+        "notFound": "No Informations Techniques found"
       },
-      "created": "A new Informations Tech is created with identifier {{ param }}",
-      "updated": "A Informations Tech is updated with identifier {{ param }}",
-      "deleted": "A Informations Tech is deleted with identifier {{ param }}",
+      "created": "A new Informations Techniques is created with identifier {{ param }}",
+      "updated": "A Informations Techniques is updated with identifier {{ param }}",
+      "deleted": "A Informations Techniques is deleted with identifier {{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Informations Tech {{ id }}?"
+        "question": "Are you sure you want to delete Informations Techniques {{ id }}?"
       },
       "detail": {
-        "title": "Informations Tech"
+        "title": "Informations Techniques"
       },
       "id": "ID",
-      "pcDom": "Pc Dom",
-      "pcDGFiP": "Pc DG Fi P",
-      "adresseSSG": "Adresse SSG",
-      "adresseDGFiP": "Adresse DG Fi P",
-      "collaborateur": "Collaborateur"
+      "ipdfipConnexion": "Ipdfip Connexion",
+      "ipfixDMOCSS": "Ipfix DMOCSS",
+      "adressMAC": "Adress MAC",
+      "iPTeletravail": "IP Teletravail",
+      "adresseDGFiP": "Adresse DGFiP",
+      "pcDGFiP": "Pc DGFiP"
     }
   }
 }

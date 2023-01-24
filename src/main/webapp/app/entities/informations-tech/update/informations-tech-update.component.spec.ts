@@ -9,8 +9,8 @@ import { of, Subject, from } from 'rxjs';
 import { InformationsTechFormService } from './informations-tech-form.service';
 import { InformationsTechService } from '../service/informations-tech.service';
 import { IInformationsTech } from '../informations-tech.model';
-import { ICollaborateurs } from 'app/entities/collaborateurs/collaborateurs.model';
-import { CollaborateursService } from 'app/entities/collaborateurs/service/collaborateurs.service';
+import { IMateriel } from 'app/entities/materiel/materiel.model';
+import { MaterielService } from 'app/entities/materiel/service/materiel.service';
 
 import { InformationsTechUpdateComponent } from './informations-tech-update.component';
 
@@ -20,7 +20,7 @@ describe('InformationsTech Management Update Component', () => {
   let activatedRoute: ActivatedRoute;
   let informationsTechFormService: InformationsTechFormService;
   let informationsTechService: InformationsTechService;
-  let collaborateursService: CollaborateursService;
+  let materielService: MaterielService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -43,43 +43,43 @@ describe('InformationsTech Management Update Component', () => {
     activatedRoute = TestBed.inject(ActivatedRoute);
     informationsTechFormService = TestBed.inject(InformationsTechFormService);
     informationsTechService = TestBed.inject(InformationsTechService);
-    collaborateursService = TestBed.inject(CollaborateursService);
+    materielService = TestBed.inject(MaterielService);
 
     comp = fixture.componentInstance;
   });
 
   describe('ngOnInit', () => {
-    it('Should call Collaborateurs query and add missing value', () => {
+    it('Should call Materiel query and add missing value', () => {
       const informationsTech: IInformationsTech = { id: 'CBA' };
-      const collaborateur: ICollaborateurs = { id: '7b5245e9-7eac-4aa8-be3c-4e56e3409edc' };
-      informationsTech.collaborateur = collaborateur;
+      const pcDGFiP: IMateriel = { id: '5c1ccc4c-ab39-46c6-b7b0-4b7cfaf4c637' };
+      informationsTech.pcDGFiP = pcDGFiP;
 
-      const collaborateursCollection: ICollaborateurs[] = [{ id: 'ec8a6469-8416-4a84-b3c2-c59ef8f828a5' }];
-      jest.spyOn(collaborateursService, 'query').mockReturnValue(of(new HttpResponse({ body: collaborateursCollection })));
-      const additionalCollaborateurs = [collaborateur];
-      const expectedCollection: ICollaborateurs[] = [...additionalCollaborateurs, ...collaborateursCollection];
-      jest.spyOn(collaborateursService, 'addCollaborateursToCollectionIfMissing').mockReturnValue(expectedCollection);
+      const materielCollection: IMateriel[] = [{ id: 'bb3c094e-88b0-496f-86da-0c9e3c4f66de' }];
+      jest.spyOn(materielService, 'query').mockReturnValue(of(new HttpResponse({ body: materielCollection })));
+      const additionalMateriels = [pcDGFiP];
+      const expectedCollection: IMateriel[] = [...additionalMateriels, ...materielCollection];
+      jest.spyOn(materielService, 'addMaterielToCollectionIfMissing').mockReturnValue(expectedCollection);
 
       activatedRoute.data = of({ informationsTech });
       comp.ngOnInit();
 
-      expect(collaborateursService.query).toHaveBeenCalled();
-      expect(collaborateursService.addCollaborateursToCollectionIfMissing).toHaveBeenCalledWith(
-        collaborateursCollection,
-        ...additionalCollaborateurs.map(expect.objectContaining)
+      expect(materielService.query).toHaveBeenCalled();
+      expect(materielService.addMaterielToCollectionIfMissing).toHaveBeenCalledWith(
+        materielCollection,
+        ...additionalMateriels.map(expect.objectContaining)
       );
-      expect(comp.collaborateursSharedCollection).toEqual(expectedCollection);
+      expect(comp.materielsSharedCollection).toEqual(expectedCollection);
     });
 
     it('Should update editForm', () => {
       const informationsTech: IInformationsTech = { id: 'CBA' };
-      const collaborateur: ICollaborateurs = { id: '4ea2a19a-0c44-485f-8e6b-2aa989d4a044' };
-      informationsTech.collaborateur = collaborateur;
+      const pcDGFiP: IMateriel = { id: '94bb06e1-0ab7-4e71-9fa3-b460b9d5604c' };
+      informationsTech.pcDGFiP = pcDGFiP;
 
       activatedRoute.data = of({ informationsTech });
       comp.ngOnInit();
 
-      expect(comp.collaborateursSharedCollection).toContain(collaborateur);
+      expect(comp.materielsSharedCollection).toContain(pcDGFiP);
       expect(comp.informationsTech).toEqual(informationsTech);
     });
   });
@@ -153,13 +153,13 @@ describe('InformationsTech Management Update Component', () => {
   });
 
   describe('Compare relationships', () => {
-    describe('compareCollaborateurs', () => {
-      it('Should forward to collaborateursService', () => {
+    describe('compareMateriel', () => {
+      it('Should forward to materielService', () => {
         const entity = { id: 'ABC' };
         const entity2 = { id: 'CBA' };
-        jest.spyOn(collaborateursService, 'compareCollaborateurs');
-        comp.compareCollaborateurs(entity, entity2);
-        expect(collaborateursService.compareCollaborateurs).toHaveBeenCalledWith(entity, entity2);
+        jest.spyOn(materielService, 'compareMateriel');
+        comp.compareMateriel(entity, entity2);
+        expect(materielService.compareMateriel).toHaveBeenCalledWith(entity, entity2);
       });
     });
   });

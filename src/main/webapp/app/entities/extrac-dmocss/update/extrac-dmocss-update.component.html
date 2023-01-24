@@ -19,7 +19,7 @@
 
         <div class="row mb-3">
           <label class="form-label" jhiTranslate="ihmApp.extracDMOCSS.adressePhysiqueDGFiP" for="field_adressePhysiqueDGFiP"
-            >Adresse Physique DG Fi P</label
+            >Adresse Physique DGFiP</label
           >
           <input
             type="text"
@@ -75,8 +75,8 @@
         </div>
 
         <div class="row mb-3">
-          <label class="form-label" jhiTranslate="ihmApp.extracDMOCSS.ipPcDGFiP" for="field_ipPcDGFiP">Ip Pc DG Fi P</label>
-          <input type="text" class="form-control" name="ipPcDGFiP" id="field_ipPcDGFiP" data-cy="ipPcDGFiP" formControlName="ipPcDGFiP" />
+          <label class="form-label" jhiTranslate="ihmApp.extracDMOCSS.ipPcDgfip" for="field_ipPcDgfip">Ip Pc Dgfip</label>
+          <input type="text" class="form-control" name="ipPcDgfip" id="field_ipPcDgfip" data-cy="ipPcDgfip" formControlName="ipPcDgfip" />
         </div>
 
         <div class="row mb-3">
@@ -88,6 +88,38 @@
             id="field_ipVpnIPSEC"
             data-cy="ipVpnIPSEC"
             formControlName="ipVpnIPSEC"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ihmApp.extracDMOCSS.ioTeletravail" for="field_ioTeletravail">Io Teletravail</label>
+          <input
+            type="text"
+            class="form-control"
+            name="ioTeletravail"
+            id="field_ioTeletravail"
+            data-cy="ioTeletravail"
+            formControlName="ioTeletravail"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ihmApp.extracDMOCSS.statut" for="field_statut">Statut</label>
+          <select class="form-control" name="statut" formControlName="statut" id="field_statut" data-cy="statut">
+            <option [ngValue]="null">{{ 'ihmApp.Etat.null' | translate }}</option>
+            <option *ngFor="let etat of etatValues" [value]="etat">{{ 'ihmApp.Etat.' + etat | translate }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ihmApp.extracDMOCSS.numVersion" for="field_numVersion">Num Version</label>
+          <input
+            type="text"
+            class="form-control"
+            name="numVersion"
+            id="field_numVersion"
+            data-cy="numVersion"
+            formControlName="numVersion"
           />
         </div>
 
@@ -135,7 +167,7 @@
           >
             <option [ngValue]="null"></option>
             <option [ngValue]="localisationOption" *ngFor="let localisationOption of localisationsSharedCollection">
-              {{ localisationOption.site }}
+              {{ localisationOption.batiment }}
             </option>
           </select>
         </div>

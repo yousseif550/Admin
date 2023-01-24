@@ -38,9 +38,9 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="pC">
+          <th scope="col" jhiSortBy="pc">
             <div class="d-flex">
-              <span jhiTranslate="ihmApp.historique.pC">P C</span>
+              <span jhiTranslate="ihmApp.historique.pc">Pc</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
@@ -82,7 +82,7 @@
           <td>
             <a [routerLink]="['/historique', historique.id, 'view']">{{ historique.id }}</a>
           </td>
-          <td>{{ historique.pC }}</td>
+          <td>{{ historique.pc }}</td>
           <td>{{ historique.zone }}</td>
           <td>{{ historique.dateMouvement | formatMediumDate }}</td>
           <td>

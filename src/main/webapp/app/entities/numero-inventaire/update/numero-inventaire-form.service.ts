@@ -18,12 +18,14 @@ type NumeroInventaireFormDefaults = Pick<NewNumeroInventaire, 'id' | 'disponible
 
 type NumeroInventaireFormGroupContent = {
   id: FormControl<INumeroInventaire['id'] | NewNumeroInventaire['id']>;
-  zone: FormControl<INumeroInventaire['zone']>;
-  valeur: FormControl<INumeroInventaire['valeur']>;
+  type: FormControl<INumeroInventaire['type']>;
   disponible: FormControl<INumeroInventaire['disponible']>;
   ancienMateriel: FormControl<INumeroInventaire['ancienMateriel']>;
   dateModification: FormControl<INumeroInventaire['dateModification']>;
+  commentaire: FormControl<INumeroInventaire['commentaire']>;
   materielActuel: FormControl<INumeroInventaire['materielActuel']>;
+  ancienProprietaire: FormControl<INumeroInventaire['ancienProprietaire']>;
+  nouveauProprietaire: FormControl<INumeroInventaire['nouveauProprietaire']>;
 };
 
 export type NumeroInventaireFormGroup = FormGroup<NumeroInventaireFormGroupContent>;
@@ -43,12 +45,14 @@ export class NumeroInventaireFormService {
           validators: [Validators.required],
         }
       ),
-      zone: new FormControl(numeroInventaireRawValue.zone),
-      valeur: new FormControl(numeroInventaireRawValue.valeur),
+      type: new FormControl(numeroInventaireRawValue.type),
       disponible: new FormControl(numeroInventaireRawValue.disponible),
       ancienMateriel: new FormControl(numeroInventaireRawValue.ancienMateriel),
       dateModification: new FormControl(numeroInventaireRawValue.dateModification),
+      commentaire: new FormControl(numeroInventaireRawValue.commentaire),
       materielActuel: new FormControl(numeroInventaireRawValue.materielActuel),
+      ancienProprietaire: new FormControl(numeroInventaireRawValue.ancienProprietaire),
+      nouveauProprietaire: new FormControl(numeroInventaireRawValue.nouveauProprietaire),
     });
   }
 

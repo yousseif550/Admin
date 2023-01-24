@@ -13,6 +13,7 @@ import { IMateriel } from 'app/entities/materiel/materiel.model';
 import { MaterielService } from 'app/entities/materiel/service/materiel.service';
 import { ILocalisation } from 'app/entities/localisation/localisation.model';
 import { LocalisationService } from 'app/entities/localisation/service/localisation.service';
+import { Etat } from 'app/entities/enumerations/etat.model';
 
 @Component({
   selector: 'jhi-extrac-dmocss-update',
@@ -21,6 +22,7 @@ import { LocalisationService } from 'app/entities/localisation/service/localisat
 export class ExtracDMOCSSUpdateComponent implements OnInit {
   isSaving = false;
   extracDMOCSS: IExtracDMOCSS | null = null;
+  etatValues = Object.keys(Etat);
 
   collaborateursSharedCollection: ICollaborateurs[] = [];
   materielsSharedCollection: IMateriel[] = [];

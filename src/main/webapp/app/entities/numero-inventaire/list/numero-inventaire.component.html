@@ -38,15 +38,9 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="zone">
+          <th scope="col" jhiSortBy="type">
             <div class="d-flex">
-              <span jhiTranslate="ihmApp.numeroInventaire.zone">Zone</span>
-              <fa-icon class="p-1" icon="sort"></fa-icon>
-            </div>
-          </th>
-          <th scope="col" jhiSortBy="valeur">
-            <div class="d-flex">
-              <span jhiTranslate="ihmApp.numeroInventaire.valeur">Valeur</span>
+              <span jhiTranslate="ihmApp.numeroInventaire.type">Type</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
@@ -68,9 +62,27 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
+          <th scope="col" jhiSortBy="commentaire">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.numeroInventaire.commentaire">Commentaire</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
           <th scope="col" jhiSortBy="materielActuel.id">
             <div class="d-flex">
               <span jhiTranslate="ihmApp.numeroInventaire.materielActuel">Materiel Actuel</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="ancienProprietaire.id">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.numeroInventaire.ancienProprietaire">Ancien Proprietaire</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="nouveauProprietaire.id">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.numeroInventaire.nouveauProprietaire">Nouveau Proprietaire</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
@@ -82,14 +94,28 @@
           <td>
             <a [routerLink]="['/numero-inventaire', numeroInventaire.id, 'view']">{{ numeroInventaire.id }}</a>
           </td>
-          <td>{{ numeroInventaire.zone }}</td>
-          <td>{{ numeroInventaire.valeur }}</td>
+          <td>{{ numeroInventaire.type }}</td>
           <td>{{ numeroInventaire.disponible }}</td>
           <td>{{ numeroInventaire.ancienMateriel }}</td>
           <td>{{ numeroInventaire.dateModification | formatMediumDate }}</td>
+          <td>{{ numeroInventaire.commentaire }}</td>
           <td>
             <div *ngIf="numeroInventaire.materielActuel">
               <a [routerLink]="['/materiel', numeroInventaire.materielActuel.id, 'view']">{{ numeroInventaire.materielActuel.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="numeroInventaire.ancienProprietaire">
+              <a [routerLink]="['/collaborateurs', numeroInventaire.ancienProprietaire.id, 'view']">{{
+                numeroInventaire.ancienProprietaire.id
+              }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="numeroInventaire.nouveauProprietaire">
+              <a [routerLink]="['/collaborateurs', numeroInventaire.nouveauProprietaire.id, 'view']">{{
+                numeroInventaire.nouveauProprietaire.id
+              }}</a>
             </div>
           </td>
           <td class="text-end">

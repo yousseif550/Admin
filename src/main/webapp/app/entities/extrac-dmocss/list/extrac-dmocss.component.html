@@ -40,7 +40,7 @@
           </th>
           <th scope="col" jhiSortBy="adressePhysiqueDGFiP">
             <div class="d-flex">
-              <span jhiTranslate="ihmApp.extracDMOCSS.adressePhysiqueDGFiP">Adresse Physique DG Fi P</span>
+              <span jhiTranslate="ihmApp.extracDMOCSS.adressePhysiqueDGFiP">Adresse Physique DGFiP</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
@@ -62,15 +62,33 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="ipPcDGFiP">
+          <th scope="col" jhiSortBy="ipPcDgfip">
             <div class="d-flex">
-              <span jhiTranslate="ihmApp.extracDMOCSS.ipPcDGFiP">Ip Pc DG Fi P</span>
+              <span jhiTranslate="ihmApp.extracDMOCSS.ipPcDgfip">Ip Pc Dgfip</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
           <th scope="col" jhiSortBy="ipVpnIPSEC">
             <div class="d-flex">
               <span jhiTranslate="ihmApp.extracDMOCSS.ipVpnIPSEC">Ip Vpn IPSEC</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="ioTeletravail">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.extracDMOCSS.ioTeletravail">Io Teletravail</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="statut">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.extracDMOCSS.statut">Statut</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="numVersion">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.extracDMOCSS.numVersion">Num Version</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
@@ -104,8 +122,11 @@
           <td>{{ extracDMOCSS.bureauActuel }}</td>
           <td>{{ extracDMOCSS.bureauDeplacement }}</td>
           <td>{{ extracDMOCSS.date | formatMediumDate }}</td>
-          <td>{{ extracDMOCSS.ipPcDGFiP }}</td>
+          <td>{{ extracDMOCSS.ipPcDgfip }}</td>
           <td>{{ extracDMOCSS.ipVpnIPSEC }}</td>
+          <td>{{ extracDMOCSS.ioTeletravail }}</td>
+          <td jhiTranslate="{{ 'ihmApp.Etat.' + extracDMOCSS.statut }}">{{ extracDMOCSS.statut }}</td>
+          <td>{{ extracDMOCSS.numVersion }}</td>
           <td>
             <div *ngIf="extracDMOCSS.collaborateur">
               <a [routerLink]="['/collaborateurs', extracDMOCSS.collaborateur.id, 'view']">{{ extracDMOCSS.collaborateur.id }}</a>

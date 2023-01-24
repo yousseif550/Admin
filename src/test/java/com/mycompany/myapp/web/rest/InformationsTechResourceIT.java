@@ -26,14 +26,17 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 @WithMockUser
 class InformationsTechResourceIT {
 
-    private static final String DEFAULT_PC_DOM = "AAAAAAAAAA";
-    private static final String UPDATED_PC_DOM = "BBBBBBBBBB";
+    private static final String DEFAULT_IPDFIP_CONNEXION = "AAAAAAAAAA";
+    private static final String UPDATED_IPDFIP_CONNEXION = "BBBBBBBBBB";
 
-    private static final String DEFAULT_PC_DG_FI_P = "AAAAAAAAAA";
-    private static final String UPDATED_PC_DG_FI_P = "BBBBBBBBBB";
+    private static final String DEFAULT_IPFIX_DMOCSS = "AAAAAAAAAA";
+    private static final String UPDATED_IPFIX_DMOCSS = "BBBBBBBBBB";
 
-    private static final String DEFAULT_ADRESSE_SSG = "AAAAAAAAAA";
-    private static final String UPDATED_ADRESSE_SSG = "BBBBBBBBBB";
+    private static final String DEFAULT_ADRESS_MAC = "AAAAAAAAAA";
+    private static final String UPDATED_ADRESS_MAC = "BBBBBBBBBB";
+
+    private static final String DEFAULT_I_P_TELETRAVAIL = "AAAAAAAAAA";
+    private static final String UPDATED_I_P_TELETRAVAIL = "BBBBBBBBBB";
 
     private static final String DEFAULT_ADRESSE_DG_FI_P = "AAAAAAAAAA";
     private static final String UPDATED_ADRESSE_DG_FI_P = "BBBBBBBBBB";
@@ -57,9 +60,10 @@ class InformationsTechResourceIT {
      */
     public static InformationsTech createEntity() {
         InformationsTech informationsTech = new InformationsTech()
-            .pcDom(DEFAULT_PC_DOM)
-            .pcDGFiP(DEFAULT_PC_DG_FI_P)
-            .adresseSSG(DEFAULT_ADRESSE_SSG)
+            .ipdfipConnexion(DEFAULT_IPDFIP_CONNEXION)
+            .ipfixDMOCSS(DEFAULT_IPFIX_DMOCSS)
+            .adressMAC(DEFAULT_ADRESS_MAC)
+            .iPTeletravail(DEFAULT_I_P_TELETRAVAIL)
             .adresseDGFiP(DEFAULT_ADRESSE_DG_FI_P);
         return informationsTech;
     }
@@ -72,9 +76,10 @@ class InformationsTechResourceIT {
      */
     public static InformationsTech createUpdatedEntity() {
         InformationsTech informationsTech = new InformationsTech()
-            .pcDom(UPDATED_PC_DOM)
-            .pcDGFiP(UPDATED_PC_DG_FI_P)
-            .adresseSSG(UPDATED_ADRESSE_SSG)
+            .ipdfipConnexion(UPDATED_IPDFIP_CONNEXION)
+            .ipfixDMOCSS(UPDATED_IPFIX_DMOCSS)
+            .adressMAC(UPDATED_ADRESS_MAC)
+            .iPTeletravail(UPDATED_I_P_TELETRAVAIL)
             .adresseDGFiP(UPDATED_ADRESSE_DG_FI_P);
         return informationsTech;
     }
@@ -102,9 +107,10 @@ class InformationsTechResourceIT {
         List<InformationsTech> informationsTechList = informationsTechRepository.findAll().collectList().block();
         assertThat(informationsTechList).hasSize(databaseSizeBeforeCreate + 1);
         InformationsTech testInformationsTech = informationsTechList.get(informationsTechList.size() - 1);
-        assertThat(testInformationsTech.getPcDom()).isEqualTo(DEFAULT_PC_DOM);
-        assertThat(testInformationsTech.getPcDGFiP()).isEqualTo(DEFAULT_PC_DG_FI_P);
-        assertThat(testInformationsTech.getAdresseSSG()).isEqualTo(DEFAULT_ADRESSE_SSG);
+        assertThat(testInformationsTech.getIpdfipConnexion()).isEqualTo(DEFAULT_IPDFIP_CONNEXION);
+        assertThat(testInformationsTech.getIpfixDMOCSS()).isEqualTo(DEFAULT_IPFIX_DMOCSS);
+        assertThat(testInformationsTech.getAdressMAC()).isEqualTo(DEFAULT_ADRESS_MAC);
+        assertThat(testInformationsTech.getiPTeletravail()).isEqualTo(DEFAULT_I_P_TELETRAVAIL);
         assertThat(testInformationsTech.getAdresseDGFiP()).isEqualTo(DEFAULT_ADRESSE_DG_FI_P);
     }
 
@@ -153,9 +159,10 @@ class InformationsTechResourceIT {
         assertThat(informationsTechList).isNotNull();
         assertThat(informationsTechList).hasSize(1);
         InformationsTech testInformationsTech = informationsTechList.get(0);
-        assertThat(testInformationsTech.getPcDom()).isEqualTo(DEFAULT_PC_DOM);
-        assertThat(testInformationsTech.getPcDGFiP()).isEqualTo(DEFAULT_PC_DG_FI_P);
-        assertThat(testInformationsTech.getAdresseSSG()).isEqualTo(DEFAULT_ADRESSE_SSG);
+        assertThat(testInformationsTech.getIpdfipConnexion()).isEqualTo(DEFAULT_IPDFIP_CONNEXION);
+        assertThat(testInformationsTech.getIpfixDMOCSS()).isEqualTo(DEFAULT_IPFIX_DMOCSS);
+        assertThat(testInformationsTech.getAdressMAC()).isEqualTo(DEFAULT_ADRESS_MAC);
+        assertThat(testInformationsTech.getiPTeletravail()).isEqualTo(DEFAULT_I_P_TELETRAVAIL);
         assertThat(testInformationsTech.getAdresseDGFiP()).isEqualTo(DEFAULT_ADRESSE_DG_FI_P);
     }
 
@@ -177,12 +184,14 @@ class InformationsTechResourceIT {
             .expectBody()
             .jsonPath("$.[*].id")
             .value(hasItem(informationsTech.getId()))
-            .jsonPath("$.[*].pcDom")
-            .value(hasItem(DEFAULT_PC_DOM))
-            .jsonPath("$.[*].pcDGFiP")
-            .value(hasItem(DEFAULT_PC_DG_FI_P))
-            .jsonPath("$.[*].adresseSSG")
-            .value(hasItem(DEFAULT_ADRESSE_SSG))
+            .jsonPath("$.[*].ipdfipConnexion")
+            .value(hasItem(DEFAULT_IPDFIP_CONNEXION))
+            .jsonPath("$.[*].ipfixDMOCSS")
+            .value(hasItem(DEFAULT_IPFIX_DMOCSS))
+            .jsonPath("$.[*].adressMAC")
+            .value(hasItem(DEFAULT_ADRESS_MAC))
+            .jsonPath("$.[*].iPTeletravail")
+            .value(hasItem(DEFAULT_I_P_TELETRAVAIL))
             .jsonPath("$.[*].adresseDGFiP")
             .value(hasItem(DEFAULT_ADRESSE_DG_FI_P));
     }
@@ -205,12 +214,14 @@ class InformationsTechResourceIT {
             .expectBody()
             .jsonPath("$.id")
             .value(is(informationsTech.getId()))
-            .jsonPath("$.pcDom")
-            .value(is(DEFAULT_PC_DOM))
-            .jsonPath("$.pcDGFiP")
-            .value(is(DEFAULT_PC_DG_FI_P))
-            .jsonPath("$.adresseSSG")
-            .value(is(DEFAULT_ADRESSE_SSG))
+            .jsonPath("$.ipdfipConnexion")
+            .value(is(DEFAULT_IPDFIP_CONNEXION))
+            .jsonPath("$.ipfixDMOCSS")
+            .value(is(DEFAULT_IPFIX_DMOCSS))
+            .jsonPath("$.adressMAC")
+            .value(is(DEFAULT_ADRESS_MAC))
+            .jsonPath("$.iPTeletravail")
+            .value(is(DEFAULT_I_P_TELETRAVAIL))
             .jsonPath("$.adresseDGFiP")
             .value(is(DEFAULT_ADRESSE_DG_FI_P));
     }
@@ -237,9 +248,10 @@ class InformationsTechResourceIT {
         // Update the informationsTech
         InformationsTech updatedInformationsTech = informationsTechRepository.findById(informationsTech.getId()).block();
         updatedInformationsTech
-            .pcDom(UPDATED_PC_DOM)
-            .pcDGFiP(UPDATED_PC_DG_FI_P)
-            .adresseSSG(UPDATED_ADRESSE_SSG)
+            .ipdfipConnexion(UPDATED_IPDFIP_CONNEXION)
+            .ipfixDMOCSS(UPDATED_IPFIX_DMOCSS)
+            .adressMAC(UPDATED_ADRESS_MAC)
+            .iPTeletravail(UPDATED_I_P_TELETRAVAIL)
             .adresseDGFiP(UPDATED_ADRESSE_DG_FI_P);
 
         webTestClient
@@ -255,9 +267,10 @@ class InformationsTechResourceIT {
         List<InformationsTech> informationsTechList = informationsTechRepository.findAll().collectList().block();
         assertThat(informationsTechList).hasSize(databaseSizeBeforeUpdate);
         InformationsTech testInformationsTech = informationsTechList.get(informationsTechList.size() - 1);
-        assertThat(testInformationsTech.getPcDom()).isEqualTo(UPDATED_PC_DOM);
-        assertThat(testInformationsTech.getPcDGFiP()).isEqualTo(UPDATED_PC_DG_FI_P);
-        assertThat(testInformationsTech.getAdresseSSG()).isEqualTo(UPDATED_ADRESSE_SSG);
+        assertThat(testInformationsTech.getIpdfipConnexion()).isEqualTo(UPDATED_IPDFIP_CONNEXION);
+        assertThat(testInformationsTech.getIpfixDMOCSS()).isEqualTo(UPDATED_IPFIX_DMOCSS);
+        assertThat(testInformationsTech.getAdressMAC()).isEqualTo(UPDATED_ADRESS_MAC);
+        assertThat(testInformationsTech.getiPTeletravail()).isEqualTo(UPDATED_I_P_TELETRAVAIL);
         assertThat(testInformationsTech.getAdresseDGFiP()).isEqualTo(UPDATED_ADRESSE_DG_FI_P);
     }
 
@@ -332,7 +345,7 @@ class InformationsTechResourceIT {
         InformationsTech partialUpdatedInformationsTech = new InformationsTech();
         partialUpdatedInformationsTech.setId(informationsTech.getId());
 
-        partialUpdatedInformationsTech.adresseSSG(UPDATED_ADRESSE_SSG);
+        partialUpdatedInformationsTech.adressMAC(UPDATED_ADRESS_MAC);
 
         webTestClient
             .patch()
@@ -347,9 +360,10 @@ class InformationsTechResourceIT {
         List<InformationsTech> informationsTechList = informationsTechRepository.findAll().collectList().block();
         assertThat(informationsTechList).hasSize(databaseSizeBeforeUpdate);
         InformationsTech testInformationsTech = informationsTechList.get(informationsTechList.size() - 1);
-        assertThat(testInformationsTech.getPcDom()).isEqualTo(DEFAULT_PC_DOM);
-        assertThat(testInformationsTech.getPcDGFiP()).isEqualTo(DEFAULT_PC_DG_FI_P);
-        assertThat(testInformationsTech.getAdresseSSG()).isEqualTo(UPDATED_ADRESSE_SSG);
+        assertThat(testInformationsTech.getIpdfipConnexion()).isEqualTo(DEFAULT_IPDFIP_CONNEXION);
+        assertThat(testInformationsTech.getIpfixDMOCSS()).isEqualTo(DEFAULT_IPFIX_DMOCSS);
+        assertThat(testInformationsTech.getAdressMAC()).isEqualTo(UPDATED_ADRESS_MAC);
+        assertThat(testInformationsTech.getiPTeletravail()).isEqualTo(DEFAULT_I_P_TELETRAVAIL);
         assertThat(testInformationsTech.getAdresseDGFiP()).isEqualTo(DEFAULT_ADRESSE_DG_FI_P);
     }
 
@@ -365,9 +379,10 @@ class InformationsTechResourceIT {
         partialUpdatedInformationsTech.setId(informationsTech.getId());
 
         partialUpdatedInformationsTech
-            .pcDom(UPDATED_PC_DOM)
-            .pcDGFiP(UPDATED_PC_DG_FI_P)
-            .adresseSSG(UPDATED_ADRESSE_SSG)
+            .ipdfipConnexion(UPDATED_IPDFIP_CONNEXION)
+            .ipfixDMOCSS(UPDATED_IPFIX_DMOCSS)
+            .adressMAC(UPDATED_ADRESS_MAC)
+            .iPTeletravail(UPDATED_I_P_TELETRAVAIL)
             .adresseDGFiP(UPDATED_ADRESSE_DG_FI_P);
 
         webTestClient
@@ -383,9 +398,10 @@ class InformationsTechResourceIT {
         List<InformationsTech> informationsTechList = informationsTechRepository.findAll().collectList().block();
         assertThat(informationsTechList).hasSize(databaseSizeBeforeUpdate);
         InformationsTech testInformationsTech = informationsTechList.get(informationsTechList.size() - 1);
-        assertThat(testInformationsTech.getPcDom()).isEqualTo(UPDATED_PC_DOM);
-        assertThat(testInformationsTech.getPcDGFiP()).isEqualTo(UPDATED_PC_DG_FI_P);
-        assertThat(testInformationsTech.getAdresseSSG()).isEqualTo(UPDATED_ADRESSE_SSG);
+        assertThat(testInformationsTech.getIpdfipConnexion()).isEqualTo(UPDATED_IPDFIP_CONNEXION);
+        assertThat(testInformationsTech.getIpfixDMOCSS()).isEqualTo(UPDATED_IPFIX_DMOCSS);
+        assertThat(testInformationsTech.getAdressMAC()).isEqualTo(UPDATED_ADRESS_MAC);
+        assertThat(testInformationsTech.getiPTeletravail()).isEqualTo(UPDATED_I_P_TELETRAVAIL);
         assertThat(testInformationsTech.getAdresseDGFiP()).isEqualTo(UPDATED_ADRESSE_DG_FI_P);
     }
 

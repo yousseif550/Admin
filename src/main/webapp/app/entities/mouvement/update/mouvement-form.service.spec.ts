@@ -25,6 +25,9 @@ describe('Mouvement Form Service', () => {
             source: expect.any(Object),
             destination: expect.any(Object),
             user: expect.any(Object),
+            commentaire: expect.any(Object),
+            asset: expect.any(Object),
+            localisation: expect.any(Object),
           })
         );
       });
@@ -40,6 +43,9 @@ describe('Mouvement Form Service', () => {
             source: expect.any(Object),
             destination: expect.any(Object),
             user: expect.any(Object),
+            commentaire: expect.any(Object),
+            asset: expect.any(Object),
+            localisation: expect.any(Object),
           })
         );
       });

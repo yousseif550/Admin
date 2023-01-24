@@ -6,15 +6,19 @@
   "entityTableName": "informations_tech",
   "fields": [
     {
-      "fieldName": "pcDom",
+      "fieldName": "ipdfipConnexion",
       "fieldType": "String"
     },
     {
-      "fieldName": "pcDGFiP",
+      "fieldName": "ipfixDMOCSS",
       "fieldType": "String"
     },
     {
-      "fieldName": "adresseSSG",
+      "fieldName": "adressMAC",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "iPTeletravail",
       "fieldType": "String"
     },
     {
@@ -29,9 +33,9 @@
   "readOnly": false,
   "relationships": [
     {
-      "otherEntityName": "collaborateurs",
+      "otherEntityName": "materiel",
       "ownerSide": true,
-      "relationshipName": "collaborateur",
+      "relationshipName": "pcDGFiP",
       "relationshipType": "one-to-one"
     }
   ],

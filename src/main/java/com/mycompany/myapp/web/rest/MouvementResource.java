@@ -159,6 +159,9 @@ public class MouvementResource {
                         if (mouvement.getUser() != null) {
                             existingMouvement.setUser(mouvement.getUser());
                         }
+                        if (mouvement.getCommentaire() != null) {
+                            existingMouvement.setCommentaire(mouvement.getCommentaire());
+                        }
 
                         return existingMouvement;
                     })

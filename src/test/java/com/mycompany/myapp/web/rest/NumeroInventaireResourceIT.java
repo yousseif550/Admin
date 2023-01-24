@@ -28,11 +28,8 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 @WithMockUser
 class NumeroInventaireResourceIT {
 
-    private static final String DEFAULT_ZONE = "AAAAAAAAAA";
-    private static final String UPDATED_ZONE = "BBBBBBBBBB";
-
-    private static final Long DEFAULT_VALEUR = 1L;
-    private static final Long UPDATED_VALEUR = 2L;
+    private static final String DEFAULT_TYPE = "AAAAAAAAAA";
+    private static final String UPDATED_TYPE = "BBBBBBBBBB";
 
     private static final Boolean DEFAULT_DISPONIBLE = false;
     private static final Boolean UPDATED_DISPONIBLE = true;
@@ -42,6 +39,9 @@ class NumeroInventaireResourceIT {
 
     private static final LocalDate DEFAULT_DATE_MODIFICATION = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_DATE_MODIFICATION = LocalDate.now(ZoneId.systemDefault());
+
+    private static final String DEFAULT_COMMENTAIRE = "AAAAAAAAAA";
+    private static final String UPDATED_COMMENTAIRE = "BBBBBBBBBB";
 
     private static final String ENTITY_API_URL = "/api/numero-inventaires";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
@@ -62,11 +62,11 @@ class NumeroInventaireResourceIT {
      */
     public static NumeroInventaire createEntity() {
         NumeroInventaire numeroInventaire = new NumeroInventaire()
-            .zone(DEFAULT_ZONE)
-            .valeur(DEFAULT_VALEUR)
+            .type(DEFAULT_TYPE)
             .disponible(DEFAULT_DISPONIBLE)
             .ancienMateriel(DEFAULT_ANCIEN_MATERIEL)
-            .dateModification(DEFAULT_DATE_MODIFICATION);
+            .dateModification(DEFAULT_DATE_MODIFICATION)
+            .commentaire(DEFAULT_COMMENTAIRE);
         return numeroInventaire;
     }
 
@@ -78,11 +78,11 @@ class NumeroInventaireResourceIT {
      */
     public static NumeroInventaire createUpdatedEntity() {
         NumeroInventaire numeroInventaire = new NumeroInventaire()
-            .zone(UPDATED_ZONE)
-            .valeur(UPDATED_VALEUR)
+            .type(UPDATED_TYPE)
             .disponible(UPDATED_DISPONIBLE)
             .ancienMateriel(UPDATED_ANCIEN_MATERIEL)
-            .dateModification(UPDATED_DATE_MODIFICATION);
+            .dateModification(UPDATED_DATE_MODIFICATION)
+            .commentaire(UPDATED_COMMENTAIRE);
         return numeroInventaire;
     }
 
@@ -109,11 +109,11 @@ class NumeroInventaireResourceIT {
         List<NumeroInventaire> numeroInventaireList = numeroInventaireRepository.findAll().collectList().block();
         assertThat(numeroInventaireList).hasSize(databaseSizeBeforeCreate + 1);
         NumeroInventaire testNumeroInventaire = numeroInventaireList.get(numeroInventaireList.size() - 1);
-        assertThat(testNumeroInventaire.getZone()).isEqualTo(DEFAULT_ZONE);
-        assertThat(testNumeroInventaire.getValeur()).isEqualTo(DEFAULT_VALEUR);
+        assertThat(testNumeroInventaire.getType()).isEqualTo(DEFAULT_TYPE);
         assertThat(testNumeroInventaire.getDisponible()).isEqualTo(DEFAULT_DISPONIBLE);
         assertThat(testNumeroInventaire.getAncienMateriel()).isEqualTo(DEFAULT_ANCIEN_MATERIEL);
         assertThat(testNumeroInventaire.getDateModification()).isEqualTo(DEFAULT_DATE_MODIFICATION);
+        assertThat(testNumeroInventaire.getCommentaire()).isEqualTo(DEFAULT_COMMENTAIRE);
     }
 
     @Test
@@ -161,11 +161,11 @@ class NumeroInventaireResourceIT {
         assertThat(numeroInventaireList).isNotNull();
         assertThat(numeroInventaireList).hasSize(1);
         NumeroInventaire testNumeroInventaire = numeroInventaireList.get(0);
-        assertThat(testNumeroInventaire.getZone()).isEqualTo(DEFAULT_ZONE);
-        assertThat(testNumeroInventaire.getValeur()).isEqualTo(DEFAULT_VALEUR);
+        assertThat(testNumeroInventaire.getType()).isEqualTo(DEFAULT_TYPE);
         assertThat(testNumeroInventaire.getDisponible()).isEqualTo(DEFAULT_DISPONIBLE);
         assertThat(testNumeroInventaire.getAncienMateriel()).isEqualTo(DEFAULT_ANCIEN_MATERIEL);
         assertThat(testNumeroInventaire.getDateModification()).isEqualTo(DEFAULT_DATE_MODIFICATION);
+        assertThat(testNumeroInventaire.getCommentaire()).isEqualTo(DEFAULT_COMMENTAIRE);
     }
 
     @Test
@@ -186,16 +186,16 @@ class NumeroInventaireResourceIT {
             .expectBody()
             .jsonPath("$.[*].id")
             .value(hasItem(numeroInventaire.getId()))
-            .jsonPath("$.[*].zone")
-            .value(hasItem(DEFAULT_ZONE))
-            .jsonPath("$.[*].valeur")
-            .value(hasItem(DEFAULT_VALEUR.intValue()))
+            .jsonPath("$.[*].type")
+            .value(hasItem(DEFAULT_TYPE))
             .jsonPath("$.[*].disponible")
             .value(hasItem(DEFAULT_DISPONIBLE.booleanValue()))
             .jsonPath("$.[*].ancienMateriel")
             .value(hasItem(DEFAULT_ANCIEN_MATERIEL))
             .jsonPath("$.[*].dateModification")
-            .value(hasItem(DEFAULT_DATE_MODIFICATION.toString()));
+            .value(hasItem(DEFAULT_DATE_MODIFICATION.toString()))
+            .jsonPath("$.[*].commentaire")
+            .value(hasItem(DEFAULT_COMMENTAIRE));
     }
 
     @Test
@@ -216,16 +216,16 @@ class NumeroInventaireResourceIT {
             .expectBody()
             .jsonPath("$.id")
             .value(is(numeroInventaire.getId()))
-            .jsonPath("$.zone")
-            .value(is(DEFAULT_ZONE))
-            .jsonPath("$.valeur")
-            .value(is(DEFAULT_VALEUR.intValue()))
+            .jsonPath("$.type")
+            .value(is(DEFAULT_TYPE))
             .jsonPath("$.disponible")
             .value(is(DEFAULT_DISPONIBLE.booleanValue()))
             .jsonPath("$.ancienMateriel")
             .value(is(DEFAULT_ANCIEN_MATERIEL))
             .jsonPath("$.dateModification")
-            .value(is(DEFAULT_DATE_MODIFICATION.toString()));
+            .value(is(DEFAULT_DATE_MODIFICATION.toString()))
+            .jsonPath("$.commentaire")
+            .value(is(DEFAULT_COMMENTAIRE));
     }
 
     @Test
@@ -250,11 +250,11 @@ class NumeroInventaireResourceIT {
         // Update the numeroInventaire
         NumeroInventaire updatedNumeroInventaire = numeroInventaireRepository.findById(numeroInventaire.getId()).block();
         updatedNumeroInventaire
-            .zone(UPDATED_ZONE)
-            .valeur(UPDATED_VALEUR)
+            .type(UPDATED_TYPE)
             .disponible(UPDATED_DISPONIBLE)
             .ancienMateriel(UPDATED_ANCIEN_MATERIEL)
-            .dateModification(UPDATED_DATE_MODIFICATION);
+            .dateModification(UPDATED_DATE_MODIFICATION)
+            .commentaire(UPDATED_COMMENTAIRE);
 
         webTestClient
             .put()
@@ -269,11 +269,11 @@ class NumeroInventaireResourceIT {
         List<NumeroInventaire> numeroInventaireList = numeroInventaireRepository.findAll().collectList().block();
         assertThat(numeroInventaireList).hasSize(databaseSizeBeforeUpdate);
         NumeroInventaire testNumeroInventaire = numeroInventaireList.get(numeroInventaireList.size() - 1);
-        assertThat(testNumeroInventaire.getZone()).isEqualTo(UPDATED_ZONE);
-        assertThat(testNumeroInventaire.getValeur()).isEqualTo(UPDATED_VALEUR);
+        assertThat(testNumeroInventaire.getType()).isEqualTo(UPDATED_TYPE);
         assertThat(testNumeroInventaire.getDisponible()).isEqualTo(UPDATED_DISPONIBLE);
         assertThat(testNumeroInventaire.getAncienMateriel()).isEqualTo(UPDATED_ANCIEN_MATERIEL);
         assertThat(testNumeroInventaire.getDateModification()).isEqualTo(UPDATED_DATE_MODIFICATION);
+        assertThat(testNumeroInventaire.getCommentaire()).isEqualTo(UPDATED_COMMENTAIRE);
     }
 
     @Test
@@ -348,10 +348,10 @@ class NumeroInventaireResourceIT {
         partialUpdatedNumeroInventaire.setId(numeroInventaire.getId());
 
         partialUpdatedNumeroInventaire
-            .valeur(UPDATED_VALEUR)
             .disponible(UPDATED_DISPONIBLE)
             .ancienMateriel(UPDATED_ANCIEN_MATERIEL)
-            .dateModification(UPDATED_DATE_MODIFICATION);
+            .dateModification(UPDATED_DATE_MODIFICATION)
+            .commentaire(UPDATED_COMMENTAIRE);
 
         webTestClient
             .patch()
@@ -366,11 +366,11 @@ class NumeroInventaireResourceIT {
         List<NumeroInventaire> numeroInventaireList = numeroInventaireRepository.findAll().collectList().block();
         assertThat(numeroInventaireList).hasSize(databaseSizeBeforeUpdate);
         NumeroInventaire testNumeroInventaire = numeroInventaireList.get(numeroInventaireList.size() - 1);
-        assertThat(testNumeroInventaire.getZone()).isEqualTo(DEFAULT_ZONE);
-        assertThat(testNumeroInventaire.getValeur()).isEqualTo(UPDATED_VALEUR);
+        assertThat(testNumeroInventaire.getType()).isEqualTo(DEFAULT_TYPE);
         assertThat(testNumeroInventaire.getDisponible()).isEqualTo(UPDATED_DISPONIBLE);
         assertThat(testNumeroInventaire.getAncienMateriel()).isEqualTo(UPDATED_ANCIEN_MATERIEL);
         assertThat(testNumeroInventaire.getDateModification()).isEqualTo(UPDATED_DATE_MODIFICATION);
+        assertThat(testNumeroInventaire.getCommentaire()).isEqualTo(UPDATED_COMMENTAIRE);
     }
 
     @Test
@@ -385,11 +385,11 @@ class NumeroInventaireResourceIT {
         partialUpdatedNumeroInventaire.setId(numeroInventaire.getId());
 
         partialUpdatedNumeroInventaire
-            .zone(UPDATED_ZONE)
-            .valeur(UPDATED_VALEUR)
+            .type(UPDATED_TYPE)
             .disponible(UPDATED_DISPONIBLE)
             .ancienMateriel(UPDATED_ANCIEN_MATERIEL)
-            .dateModification(UPDATED_DATE_MODIFICATION);
+            .dateModification(UPDATED_DATE_MODIFICATION)
+            .commentaire(UPDATED_COMMENTAIRE);
 
         webTestClient
             .patch()
@@ -404,11 +404,11 @@ class NumeroInventaireResourceIT {
         List<NumeroInventaire> numeroInventaireList = numeroInventaireRepository.findAll().collectList().block();
         assertThat(numeroInventaireList).hasSize(databaseSizeBeforeUpdate);
         NumeroInventaire testNumeroInventaire = numeroInventaireList.get(numeroInventaireList.size() - 1);
-        assertThat(testNumeroInventaire.getZone()).isEqualTo(UPDATED_ZONE);
-        assertThat(testNumeroInventaire.getValeur()).isEqualTo(UPDATED_VALEUR);
+        assertThat(testNumeroInventaire.getType()).isEqualTo(UPDATED_TYPE);
         assertThat(testNumeroInventaire.getDisponible()).isEqualTo(UPDATED_DISPONIBLE);
         assertThat(testNumeroInventaire.getAncienMateriel()).isEqualTo(UPDATED_ANCIEN_MATERIEL);
         assertThat(testNumeroInventaire.getDateModification()).isEqualTo(UPDATED_DATE_MODIFICATION);
+        assertThat(testNumeroInventaire.getCommentaire()).isEqualTo(UPDATED_COMMENTAIRE);
     }
 
     @Test

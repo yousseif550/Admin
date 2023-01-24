@@ -9,8 +9,6 @@ import { of, Subject, from } from 'rxjs';
 import { MaterielFormService } from './materiel-form.service';
 import { MaterielService } from '../service/materiel.service';
 import { IMateriel } from '../materiel.model';
-import { INumeroInventaire } from 'app/entities/numero-inventaire/numero-inventaire.model';
-import { NumeroInventaireService } from 'app/entities/numero-inventaire/service/numero-inventaire.service';
 import { ILocalisation } from 'app/entities/localisation/localisation.model';
 import { LocalisationService } from 'app/entities/localisation/service/localisation.service';
 import { ICollaborateurs } from 'app/entities/collaborateurs/collaborateurs.model';
@@ -24,7 +22,6 @@ describe('Materiel Management Update Component', () => {
   let activatedRoute: ActivatedRoute;
   let materielFormService: MaterielFormService;
   let materielService: MaterielService;
-  let numeroInventaireService: NumeroInventaireService;
   let localisationService: LocalisationService;
   let collaborateursService: CollaborateursService;
 
@@ -49,7 +46,6 @@ describe('Materiel Management Update Component', () => {
     activatedRoute = TestBed.inject(ActivatedRoute);
     materielFormService = TestBed.inject(MaterielFormService);
     materielService = TestBed.inject(MaterielService);
-    numeroInventaireService = TestBed.inject(NumeroInventaireService);
     localisationService = TestBed.inject(LocalisationService);
     collaborateursService = TestBed.inject(CollaborateursService);
 
@@ -57,28 +53,6 @@ describe('Materiel Management Update Component', () => {
   });
 
   describe('ngOnInit', () => {
-    it('Should call NumeroInventaire query and add missing value', () => {
-      const materiel: IMateriel = { id: 'CBA' };
-      const numeroInventaire: INumeroInventaire = { id: '06cdf3c0-5b27-4b0d-af06-68f75fe03a4b' };
-      materiel.numeroInventaire = numeroInventaire;
-
-      const numeroInventaireCollection: INumeroInventaire[] = [{ id: 'c78e6f2d-4544-4ff0-9932-8406bfcc2e54' }];
-      jest.spyOn(numeroInventaireService, 'query').mockReturnValue(of(new HttpResponse({ body: numeroInventaireCollection })));
-      const additionalNumeroInventaires = [numeroInventaire];
-      const expectedCollection: INumeroInventaire[] = [...additionalNumeroInventaires, ...numeroInventaireCollection];
-      jest.spyOn(numeroInventaireService, 'addNumeroInventaireToCollectionIfMissing').mockReturnValue(expectedCollection);
-
-      activatedRoute.data = of({ materiel });
-      comp.ngOnInit();
-
-      expect(numeroInventaireService.query).toHaveBeenCalled();
-      expect(numeroInventaireService.addNumeroInventaireToCollectionIfMissing).toHaveBeenCalledWith(
-        numeroInventaireCollection,
-        ...additionalNumeroInventaires.map(expect.objectContaining)
-      );
-      expect(comp.numeroInventairesSharedCollection).toEqual(expectedCollection);
-    });
-
     it('Should call Localisation query and add missing value', () => {
       const materiel: IMateriel = { id: 'CBA' };
       const localisation: ILocalisation = { id: '2a24990c-8897-46bd-bcc1-0b702031e123' };
@@ -125,8 +99,6 @@ describe('Materiel Management Update Component', () => {
 
     it('Should update editForm', () => {
       const materiel: IMateriel = { id: 'CBA' };
-      const numeroInventaire: INumeroInventaire = { id: '7f8d7f83-5999-40ed-aea2-dad885a70fa2' };
-      materiel.numeroInventaire = numeroInventaire;
       const localisation: ILocalisation = { id: '80d9e66f-cb8e-4bd5-9f5d-fe92feb5fcf9' };
       materiel.localisation = localisation;
       const collaborateurs: ICollaborateurs = { id: 'f05dfd9a-37bb-4e68-ba27-81d159e6f6ca' };
@@ -135,7 +107,6 @@ describe('Materiel Management Update Component', () => {
       activatedRoute.data = of({ materiel });
       comp.ngOnInit();
 
-      expect(comp.numeroInventairesSharedCollection).toContain(numeroInventaire);
       expect(comp.localisationsSharedCollection).toContain(localisation);
       expect(comp.collaborateursSharedCollection).toContain(collaborateurs);
       expect(comp.materiel).toEqual(materiel);
@@ -211,16 +182,6 @@ describe('Materiel Management Update Component', () => {
   });
 
   describe('Compare relationships', () => {
-    describe('compareNumeroInventaire', () => {
-      it('Should forward to numeroInventaireService', () => {
-        const entity = { id: 'ABC' };
-        const entity2 = { id: 'CBA' };
-        jest.spyOn(numeroInventaireService, 'compareNumeroInventaire');
-        comp.compareNumeroInventaire(entity, entity2);
-        expect(numeroInventaireService.compareNumeroInventaire).toHaveBeenCalledWith(entity, entity2);
-      });
-    });
-
     describe('compareLocalisation', () => {
       it('Should forward to localisationService', () => {
         const entity = { id: 'ABC' };

@@ -20,7 +20,7 @@
         </dd>
         <dt><span jhiTranslate="ihmApp.mouvement.type">Type</span></dt>
         <dd>
-          <span jhiTranslate="{{ 'ihmApp.Type.' + mouvement.type }}">{{ mouvement.type }}</span>
+          <span>{{ mouvement.type }}</span>
         </dd>
         <dt><span jhiTranslate="ihmApp.mouvement.source">Source</span></dt>
         <dd>
@@ -33,6 +33,22 @@
         <dt><span jhiTranslate="ihmApp.mouvement.user">User</span></dt>
         <dd>
           <span>{{ mouvement.user }}</span>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.mouvement.commentaire">Commentaire</span></dt>
+        <dd>
+          <span>{{ mouvement.commentaire }}</span>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.mouvement.asset">Asset</span></dt>
+        <dd>
+          <div *ngIf="mouvement.asset">
+            <a [routerLink]="['/materiel', mouvement.asset.id, 'view']">{{ mouvement.asset.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.mouvement.localisation">Localisation</span></dt>
+        <dd>
+          <div *ngIf="mouvement.localisation">
+            <a [routerLink]="['/localisation', mouvement.localisation.id, 'view']">{{ mouvement.localisation.id }}</a>
+          </div>
         </dd>
       </dl>
 

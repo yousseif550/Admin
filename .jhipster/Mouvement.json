@@ -11,8 +11,7 @@
     },
     {
       "fieldName": "type",
-      "fieldType": "Type",
-      "fieldValues": "Demande,Modification,Suppression,Deplacement"
+      "fieldType": "String"
     },
     {
       "fieldName": "source",
@@ -25,6 +24,10 @@
     {
       "fieldName": "user",
       "fieldType": "String"
+    },
+    {
+      "fieldName": "commentaire",
+      "fieldType": "String"
     }
   ],
   "fluentMethods": true,
@@ -32,6 +35,19 @@
   "name": "Mouvement",
   "pagination": "no",
   "readOnly": false,
-  "relationships": [],
+  "relationships": [
+    {
+      "otherEntityName": "materiel",
+      "ownerSide": true,
+      "relationshipName": "asset",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "localisation",
+      "ownerSide": true,
+      "relationshipName": "localisation",
+      "relationshipType": "one-to-one"
+    }
+  ],
   "service": "no"
 }

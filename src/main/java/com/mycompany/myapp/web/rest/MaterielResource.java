@@ -153,9 +153,6 @@ public class MaterielResource {
                         if (materiel.getAsset() != null) {
                             existingMateriel.setAsset(materiel.getAsset());
                         }
-                        if (materiel.getCommentaire() != null) {
-                            existingMateriel.setCommentaire(materiel.getCommentaire());
-                        }
                         if (materiel.getActif() != null) {
                             existingMateriel.setActif(materiel.getActif());
                         }
@@ -165,8 +162,11 @@ public class MaterielResource {
                         if (materiel.getDateRendu() != null) {
                             existingMateriel.setDateRendu(materiel.getDateRendu());
                         }
-                        if (materiel.getIsHS() != null) {
-                            existingMateriel.setIsHS(materiel.getIsHS());
+                        if (materiel.getCommentaire() != null) {
+                            existingMateriel.setCommentaire(materiel.getCommentaire());
+                        }
+                        if (materiel.getIsHs() != null) {
+                            existingMateriel.setIsHs(materiel.getIsHs());
                         }
 
                         return existingMateriel;

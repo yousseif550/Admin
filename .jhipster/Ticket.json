@@ -37,9 +37,9 @@
     },
     {
       "otherEntityName": "collaborateurs",
-      "otherEntityRelationshipName": "ticket",
+      "ownerSide": true,
       "relationshipName": "proprietaire",
-      "relationshipType": "many-to-one"
+      "relationshipType": "one-to-one"
     }
   ],
   "service": "no"

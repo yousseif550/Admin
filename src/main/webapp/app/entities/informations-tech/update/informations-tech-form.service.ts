@@ -18,11 +18,12 @@ type InformationsTechFormDefaults = Pick<NewInformationsTech, 'id'>;
 
 type InformationsTechFormGroupContent = {
   id: FormControl<IInformationsTech['id'] | NewInformationsTech['id']>;
-  pcDom: FormControl<IInformationsTech['pcDom']>;
-  pcDGFiP: FormControl<IInformationsTech['pcDGFiP']>;
-  adresseSSG: FormControl<IInformationsTech['adresseSSG']>;
+  ipdfipConnexion: FormControl<IInformationsTech['ipdfipConnexion']>;
+  ipfixDMOCSS: FormControl<IInformationsTech['ipfixDMOCSS']>;
+  adressMAC: FormControl<IInformationsTech['adressMAC']>;
+  iPTeletravail: FormControl<IInformationsTech['iPTeletravail']>;
   adresseDGFiP: FormControl<IInformationsTech['adresseDGFiP']>;
-  collaborateur: FormControl<IInformationsTech['collaborateur']>;
+  pcDGFiP: FormControl<IInformationsTech['pcDGFiP']>;
 };
 
 export type InformationsTechFormGroup = FormGroup<InformationsTechFormGroupContent>;
@@ -42,11 +43,12 @@ export class InformationsTechFormService {
           validators: [Validators.required],
         }
       ),
-      pcDom: new FormControl(informationsTechRawValue.pcDom),
-      pcDGFiP: new FormControl(informationsTechRawValue.pcDGFiP),
-      adresseSSG: new FormControl(informationsTechRawValue.adresseSSG),
+      ipdfipConnexion: new FormControl(informationsTechRawValue.ipdfipConnexion),
+      ipfixDMOCSS: new FormControl(informationsTechRawValue.ipfixDMOCSS),
+      adressMAC: new FormControl(informationsTechRawValue.adressMAC),
+      iPTeletravail: new FormControl(informationsTechRawValue.iPTeletravail),
       adresseDGFiP: new FormControl(informationsTechRawValue.adresseDGFiP),
-      collaborateur: new FormControl(informationsTechRawValue.collaborateur),
+      pcDGFiP: new FormControl(informationsTechRawValue.pcDGFiP),
     });
   }
 

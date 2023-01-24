@@ -6,6 +6,7 @@ import static org.hamcrest.Matchers.is;
 
 import com.mycompany.myapp.IntegrationTest;
 import com.mycompany.myapp.domain.ExtracDMOCSS;
+import com.mycompany.myapp.domain.enumeration.Etat;
 import com.mycompany.myapp.repository.ExtracDMOCSSRepository;
 import java.time.Duration;
 import java.time.LocalDate;
@@ -40,11 +41,20 @@ class ExtracDMOCSSResourceIT {
     private static final LocalDate DEFAULT_DATE = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_DATE = LocalDate.now(ZoneId.systemDefault());
 
-    private static final String DEFAULT_IP_PC_DG_FI_P = "AAAAAAAAAA";
-    private static final String UPDATED_IP_PC_DG_FI_P = "BBBBBBBBBB";
+    private static final String DEFAULT_IP_PC_DGFIP = "AAAAAAAAAA";
+    private static final String UPDATED_IP_PC_DGFIP = "BBBBBBBBBB";
 
     private static final String DEFAULT_IP_VPN_IPSEC = "AAAAAAAAAA";
     private static final String UPDATED_IP_VPN_IPSEC = "BBBBBBBBBB";
+
+    private static final String DEFAULT_IO_TELETRAVAIL = "AAAAAAAAAA";
+    private static final String UPDATED_IO_TELETRAVAIL = "BBBBBBBBBB";
+
+    private static final Etat DEFAULT_STATUT = Etat.NonRealiser;
+    private static final Etat UPDATED_STATUT = Etat.EnCours;
+
+    private static final String DEFAULT_NUM_VERSION = "AAAAAAAAAA";
+    private static final String UPDATED_NUM_VERSION = "BBBBBBBBBB";
 
     private static final String ENTITY_API_URL = "/api/extrac-dmocsses";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
@@ -69,8 +79,11 @@ class ExtracDMOCSSResourceIT {
             .bureauActuel(DEFAULT_BUREAU_ACTUEL)
             .bureauDeplacement(DEFAULT_BUREAU_DEPLACEMENT)
             .date(DEFAULT_DATE)
-            .ipPcDGFiP(DEFAULT_IP_PC_DG_FI_P)
-            .ipVpnIPSEC(DEFAULT_IP_VPN_IPSEC);
+            .ipPcDgfip(DEFAULT_IP_PC_DGFIP)
+            .ipVpnIPSEC(DEFAULT_IP_VPN_IPSEC)
+            .ioTeletravail(DEFAULT_IO_TELETRAVAIL)
+            .statut(DEFAULT_STATUT)
+            .numVersion(DEFAULT_NUM_VERSION);
         return extracDMOCSS;
     }
 
@@ -86,8 +99,11 @@ class ExtracDMOCSSResourceIT {
             .bureauActuel(UPDATED_BUREAU_ACTUEL)
             .bureauDeplacement(UPDATED_BUREAU_DEPLACEMENT)
             .date(UPDATED_DATE)
-            .ipPcDGFiP(UPDATED_IP_PC_DG_FI_P)
-            .ipVpnIPSEC(UPDATED_IP_VPN_IPSEC);
+            .ipPcDgfip(UPDATED_IP_PC_DGFIP)
+            .ipVpnIPSEC(UPDATED_IP_VPN_IPSEC)
+            .ioTeletravail(UPDATED_IO_TELETRAVAIL)
+            .statut(UPDATED_STATUT)
+            .numVersion(UPDATED_NUM_VERSION);
         return extracDMOCSS;
     }
 
@@ -118,8 +134,11 @@ class ExtracDMOCSSResourceIT {
         assertThat(testExtracDMOCSS.getBureauActuel()).isEqualTo(DEFAULT_BUREAU_ACTUEL);
         assertThat(testExtracDMOCSS.getBureauDeplacement()).isEqualTo(DEFAULT_BUREAU_DEPLACEMENT);
         assertThat(testExtracDMOCSS.getDate()).isEqualTo(DEFAULT_DATE);
-        assertThat(testExtracDMOCSS.getIpPcDGFiP()).isEqualTo(DEFAULT_IP_PC_DG_FI_P);
+        assertThat(testExtracDMOCSS.getIpPcDgfip()).isEqualTo(DEFAULT_IP_PC_DGFIP);
         assertThat(testExtracDMOCSS.getIpVpnIPSEC()).isEqualTo(DEFAULT_IP_VPN_IPSEC);
+        assertThat(testExtracDMOCSS.getIoTeletravail()).isEqualTo(DEFAULT_IO_TELETRAVAIL);
+        assertThat(testExtracDMOCSS.getStatut()).isEqualTo(DEFAULT_STATUT);
+        assertThat(testExtracDMOCSS.getNumVersion()).isEqualTo(DEFAULT_NUM_VERSION);
     }
 
     @Test
@@ -171,8 +190,11 @@ class ExtracDMOCSSResourceIT {
         assertThat(testExtracDMOCSS.getBureauActuel()).isEqualTo(DEFAULT_BUREAU_ACTUEL);
         assertThat(testExtracDMOCSS.getBureauDeplacement()).isEqualTo(DEFAULT_BUREAU_DEPLACEMENT);
         assertThat(testExtracDMOCSS.getDate()).isEqualTo(DEFAULT_DATE);
-        assertThat(testExtracDMOCSS.getIpPcDGFiP()).isEqualTo(DEFAULT_IP_PC_DG_FI_P);
+        assertThat(testExtracDMOCSS.getIpPcDgfip()).isEqualTo(DEFAULT_IP_PC_DGFIP);
         assertThat(testExtracDMOCSS.getIpVpnIPSEC()).isEqualTo(DEFAULT_IP_VPN_IPSEC);
+        assertThat(testExtracDMOCSS.getIoTeletravail()).isEqualTo(DEFAULT_IO_TELETRAVAIL);
+        assertThat(testExtracDMOCSS.getStatut()).isEqualTo(DEFAULT_STATUT);
+        assertThat(testExtracDMOCSS.getNumVersion()).isEqualTo(DEFAULT_NUM_VERSION);
     }
 
     @Test
@@ -201,10 +223,16 @@ class ExtracDMOCSSResourceIT {
             .value(hasItem(DEFAULT_BUREAU_DEPLACEMENT))
             .jsonPath("$.[*].date")
             .value(hasItem(DEFAULT_DATE.toString()))
-            .jsonPath("$.[*].ipPcDGFiP")
-            .value(hasItem(DEFAULT_IP_PC_DG_FI_P))
+            .jsonPath("$.[*].ipPcDgfip")
+            .value(hasItem(DEFAULT_IP_PC_DGFIP))
             .jsonPath("$.[*].ipVpnIPSEC")
-            .value(hasItem(DEFAULT_IP_VPN_IPSEC));
+            .value(hasItem(DEFAULT_IP_VPN_IPSEC))
+            .jsonPath("$.[*].ioTeletravail")
+            .value(hasItem(DEFAULT_IO_TELETRAVAIL))
+            .jsonPath("$.[*].statut")
+            .value(hasItem(DEFAULT_STATUT.toString()))
+            .jsonPath("$.[*].numVersion")
+            .value(hasItem(DEFAULT_NUM_VERSION));
     }
 
     @Test
@@ -233,10 +261,16 @@ class ExtracDMOCSSResourceIT {
             .value(is(DEFAULT_BUREAU_DEPLACEMENT))
             .jsonPath("$.date")
             .value(is(DEFAULT_DATE.toString()))
-            .jsonPath("$.ipPcDGFiP")
-            .value(is(DEFAULT_IP_PC_DG_FI_P))
+            .jsonPath("$.ipPcDgfip")
+            .value(is(DEFAULT_IP_PC_DGFIP))
             .jsonPath("$.ipVpnIPSEC")
-            .value(is(DEFAULT_IP_VPN_IPSEC));
+            .value(is(DEFAULT_IP_VPN_IPSEC))
+            .jsonPath("$.ioTeletravail")
+            .value(is(DEFAULT_IO_TELETRAVAIL))
+            .jsonPath("$.statut")
+            .value(is(DEFAULT_STATUT.toString()))
+            .jsonPath("$.numVersion")
+            .value(is(DEFAULT_NUM_VERSION));
     }
 
     @Test
@@ -265,8 +299,11 @@ class ExtracDMOCSSResourceIT {
             .bureauActuel(UPDATED_BUREAU_ACTUEL)
             .bureauDeplacement(UPDATED_BUREAU_DEPLACEMENT)
             .date(UPDATED_DATE)
-            .ipPcDGFiP(UPDATED_IP_PC_DG_FI_P)
-            .ipVpnIPSEC(UPDATED_IP_VPN_IPSEC);
+            .ipPcDgfip(UPDATED_IP_PC_DGFIP)
+            .ipVpnIPSEC(UPDATED_IP_VPN_IPSEC)
+            .ioTeletravail(UPDATED_IO_TELETRAVAIL)
+            .statut(UPDATED_STATUT)
+            .numVersion(UPDATED_NUM_VERSION);
 
         webTestClient
             .put()
@@ -285,8 +322,11 @@ class ExtracDMOCSSResourceIT {
         assertThat(testExtracDMOCSS.getBureauActuel()).isEqualTo(UPDATED_BUREAU_ACTUEL);
         assertThat(testExtracDMOCSS.getBureauDeplacement()).isEqualTo(UPDATED_BUREAU_DEPLACEMENT);
         assertThat(testExtracDMOCSS.getDate()).isEqualTo(UPDATED_DATE);
-        assertThat(testExtracDMOCSS.getIpPcDGFiP()).isEqualTo(UPDATED_IP_PC_DG_FI_P);
+        assertThat(testExtracDMOCSS.getIpPcDgfip()).isEqualTo(UPDATED_IP_PC_DGFIP);
         assertThat(testExtracDMOCSS.getIpVpnIPSEC()).isEqualTo(UPDATED_IP_VPN_IPSEC);
+        assertThat(testExtracDMOCSS.getIoTeletravail()).isEqualTo(UPDATED_IO_TELETRAVAIL);
+        assertThat(testExtracDMOCSS.getStatut()).isEqualTo(UPDATED_STATUT);
+        assertThat(testExtracDMOCSS.getNumVersion()).isEqualTo(UPDATED_NUM_VERSION);
     }
 
     @Test
@@ -363,7 +403,8 @@ class ExtracDMOCSSResourceIT {
         partialUpdatedExtracDMOCSS
             .adressePhysiqueDGFiP(UPDATED_ADRESSE_PHYSIQUE_DG_FI_P)
             .bureauActuel(UPDATED_BUREAU_ACTUEL)
-            .date(UPDATED_DATE);
+            .date(UPDATED_DATE)
+            .ioTeletravail(UPDATED_IO_TELETRAVAIL);
 
         webTestClient
             .patch()
@@ -382,8 +423,11 @@ class ExtracDMOCSSResourceIT {
         assertThat(testExtracDMOCSS.getBureauActuel()).isEqualTo(UPDATED_BUREAU_ACTUEL);
         assertThat(testExtracDMOCSS.getBureauDeplacement()).isEqualTo(DEFAULT_BUREAU_DEPLACEMENT);
         assertThat(testExtracDMOCSS.getDate()).isEqualTo(UPDATED_DATE);
-        assertThat(testExtracDMOCSS.getIpPcDGFiP()).isEqualTo(DEFAULT_IP_PC_DG_FI_P);
+        assertThat(testExtracDMOCSS.getIpPcDgfip()).isEqualTo(DEFAULT_IP_PC_DGFIP);
         assertThat(testExtracDMOCSS.getIpVpnIPSEC()).isEqualTo(DEFAULT_IP_VPN_IPSEC);
+        assertThat(testExtracDMOCSS.getIoTeletravail()).isEqualTo(UPDATED_IO_TELETRAVAIL);
+        assertThat(testExtracDMOCSS.getStatut()).isEqualTo(DEFAULT_STATUT);
+        assertThat(testExtracDMOCSS.getNumVersion()).isEqualTo(DEFAULT_NUM_VERSION);
     }
 
     @Test
@@ -402,8 +446,11 @@ class ExtracDMOCSSResourceIT {
             .bureauActuel(UPDATED_BUREAU_ACTUEL)
             .bureauDeplacement(UPDATED_BUREAU_DEPLACEMENT)
             .date(UPDATED_DATE)
-            .ipPcDGFiP(UPDATED_IP_PC_DG_FI_P)
-            .ipVpnIPSEC(UPDATED_IP_VPN_IPSEC);
+            .ipPcDgfip(UPDATED_IP_PC_DGFIP)
+            .ipVpnIPSEC(UPDATED_IP_VPN_IPSEC)
+            .ioTeletravail(UPDATED_IO_TELETRAVAIL)
+            .statut(UPDATED_STATUT)
+            .numVersion(UPDATED_NUM_VERSION);
 
         webTestClient
             .patch()
@@ -422,8 +469,11 @@ class ExtracDMOCSSResourceIT {
         assertThat(testExtracDMOCSS.getBureauActuel()).isEqualTo(UPDATED_BUREAU_ACTUEL);
         assertThat(testExtracDMOCSS.getBureauDeplacement()).isEqualTo(UPDATED_BUREAU_DEPLACEMENT);
         assertThat(testExtracDMOCSS.getDate()).isEqualTo(UPDATED_DATE);
-        assertThat(testExtracDMOCSS.getIpPcDGFiP()).isEqualTo(UPDATED_IP_PC_DG_FI_P);
+        assertThat(testExtracDMOCSS.getIpPcDgfip()).isEqualTo(UPDATED_IP_PC_DGFIP);
         assertThat(testExtracDMOCSS.getIpVpnIPSEC()).isEqualTo(UPDATED_IP_VPN_IPSEC);
+        assertThat(testExtracDMOCSS.getIoTeletravail()).isEqualTo(UPDATED_IO_TELETRAVAIL);
+        assertThat(testExtracDMOCSS.getStatut()).isEqualTo(UPDATED_STATUT);
+        assertThat(testExtracDMOCSS.getNumVersion()).isEqualTo(UPDATED_NUM_VERSION);
     }
 
     @Test

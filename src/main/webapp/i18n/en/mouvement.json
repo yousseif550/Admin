@@ -22,7 +22,10 @@
       "type": "Type",
       "source": "Source",
       "destination": "Destination",
-      "user": "User"
+      "user": "User",
+      "commentaire": "Commentaire",
+      "asset": "Asset",
+      "localisation": "Localisation"
     }
   }
 }

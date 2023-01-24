@@ -56,12 +56,6 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="commentaire">
-            <div class="d-flex">
-              <span jhiTranslate="ihmApp.materiel.commentaire">Commentaire</span>
-              <fa-icon class="p-1" icon="sort"></fa-icon>
-            </div>
-          </th>
           <th scope="col" jhiSortBy="actif">
             <div class="d-flex">
               <span jhiTranslate="ihmApp.materiel.actif">Actif</span>
@@ -80,15 +74,15 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="isHS">
+          <th scope="col" jhiSortBy="commentaire">
             <div class="d-flex">
-              <span jhiTranslate="ihmApp.materiel.isHS">Is HS</span>
+              <span jhiTranslate="ihmApp.materiel.commentaire">Commentaire</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="numeroInventaire.id">
+          <th scope="col" jhiSortBy="isHs">
             <div class="d-flex">
-              <span jhiTranslate="ihmApp.materiel.numeroInventaire">Numero Inventaire</span>
+              <span jhiTranslate="ihmApp.materiel.isHs">Is Hs</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
@@ -115,16 +109,11 @@
           <td>{{ materiel.type }}</td>
           <td>{{ materiel.modele }}</td>
           <td>{{ materiel.asset }}</td>
-          <td>{{ materiel.commentaire }}</td>
           <td>{{ materiel.actif }}</td>
           <td>{{ materiel.dateAttribution | formatMediumDate }}</td>
           <td>{{ materiel.dateRendu | formatMediumDate }}</td>
-          <td>{{ materiel.isHS }}</td>
-          <td>
-            <div *ngIf="materiel.numeroInventaire">
-              <a [routerLink]="['/numero-inventaire', materiel.numeroInventaire.id, 'view']">{{ materiel.numeroInventaire.id }}</a>
-            </div>
-          </td>
+          <td>{{ materiel.commentaire }}</td>
+          <td>{{ materiel.isHs }}</td>
           <td>
             <div *ngIf="materiel.localisation">
               <a [routerLink]="['/localisation', materiel.localisation.id, 'view']">{{ materiel.localisation.id }}</a>

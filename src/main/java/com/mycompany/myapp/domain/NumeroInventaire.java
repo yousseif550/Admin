@@ -19,11 +19,8 @@ public class NumeroInventaire implements Serializable {
     @Id
     private String id;
 
-    @Field("zone")
-    private String zone;
-
-    @Field("valeur")
-    private Long valeur;
+    @Field("type")
+    private String type;
 
     @Field("disponible")
     private Boolean disponible;
@@ -34,8 +31,17 @@ public class NumeroInventaire implements Serializable {
     @Field("date_modification")
     private LocalDate dateModification;
 
+    @Field("commentaire")
+    private String commentaire;
+
     @Field("materielActuel")
     private Materiel materielActuel;
+
+    @Field("ancienProprietaire")
+    private Collaborateurs ancienProprietaire;
+
+    @Field("nouveauProprietaire")
+    private Collaborateurs nouveauProprietaire;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -52,30 +58,17 @@ public class NumeroInventaire implements Serializable {
         this.id = id;
     }
 
-    public String getZone() {
-        return this.zone;
+    public String getType() {
+        return this.type;
     }
 
-    public NumeroInventaire zone(String zone) {
-        this.setZone(zone);
+    public NumeroInventaire type(String type) {
+        this.setType(type);
         return this;
     }
 
-    public void setZone(String zone) {
-        this.zone = zone;
-    }
-
-    public Long getValeur() {
-        return this.valeur;
-    }
-
-    public NumeroInventaire valeur(Long valeur) {
-        this.setValeur(valeur);
-        return this;
-    }
-
-    public void setValeur(Long valeur) {
-        this.valeur = valeur;
+    public void setType(String type) {
+        this.type = type;
     }
 
     public Boolean getDisponible() {
@@ -117,6 +110,19 @@ public class NumeroInventaire implements Serializable {
         this.dateModification = dateModification;
     }
 
+    public String getCommentaire() {
+        return this.commentaire;
+    }
+
+    public NumeroInventaire commentaire(String commentaire) {
+        this.setCommentaire(commentaire);
+        return this;
+    }
+
+    public void setCommentaire(String commentaire) {
+        this.commentaire = commentaire;
+    }
+
     public Materiel getMaterielActuel() {
         return this.materielActuel;
     }
@@ -127,6 +133,32 @@ public class NumeroInventaire implements Serializable {
 
     public NumeroInventaire materielActuel(Materiel materiel) {
         this.setMaterielActuel(materiel);
+        return this;
+    }
+
+    public Collaborateurs getAncienProprietaire() {
+        return this.ancienProprietaire;
+    }
+
+    public void setAncienProprietaire(Collaborateurs collaborateurs) {
+        this.ancienProprietaire = collaborateurs;
+    }
+
+    public NumeroInventaire ancienProprietaire(Collaborateurs collaborateurs) {
+        this.setAncienProprietaire(collaborateurs);
+        return this;
+    }
+
+    public Collaborateurs getNouveauProprietaire() {
+        return this.nouveauProprietaire;
+    }
+
+    public void setNouveauProprietaire(Collaborateurs collaborateurs) {
+        this.nouveauProprietaire = collaborateurs;
+    }
+
+    public NumeroInventaire nouveauProprietaire(Collaborateurs collaborateurs) {
+        this.setNouveauProprietaire(collaborateurs);
         return this;
     }
 
@@ -154,11 +186,11 @@ public class NumeroInventaire implements Serializable {
     public String toString() {
         return "NumeroInventaire{" +
             "id=" + getId() +
-            ", zone='" + getZone() + "'" +
-            ", valeur=" + getValeur() +
+            ", type='" + getType() + "'" +
             ", disponible='" + getDisponible() + "'" +
             ", ancienMateriel='" + getAncienMateriel() + "'" +
             ", dateModification='" + getDateModification() + "'" +
+            ", commentaire='" + getCommentaire() + "'" +
             "}";
     }
 }

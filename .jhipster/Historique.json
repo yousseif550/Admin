@@ -6,7 +6,7 @@
   "entityTableName": "historique",
   "fields": [
     {
-      "fieldName": "pC",
+      "fieldName": "pc",
       "fieldType": "String"
     },
     {

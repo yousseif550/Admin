@@ -175,17 +175,12 @@ public class ProjetResource {
     /**
      * {@code GET  /projets} : get all the projets.
      *
-     * @param eagerload flag to eager load entities from relationships (This is applicable for many-to-many).
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of projets in body.
      */
     @GetMapping("/projets")
-    public Mono<List<Projet>> getAllProjets(@RequestParam(required = false, defaultValue = "false") boolean eagerload) {
+    public Mono<List<Projet>> getAllProjets() {
         log.debug("REST request to get all Projets");
-        if (eagerload) {
-            return projetRepository.findAllWithEagerRelationships().collectList();
-        } else {
-            return projetRepository.findAll().collectList();
-        }
+        return projetRepository.findAll().collectList();
     }
 
     /**
@@ -207,7 +202,7 @@ public class ProjetResource {
     @GetMapping("/projets/{id}")
     public Mono<ResponseEntity<Projet>> getProjet(@PathVariable String id) {
         log.debug("REST request to get Projet : {}", id);
-        Mono<Projet> projet = projetRepository.findOneWithEagerRelationships(id);
+        Mono<Projet> projet = projetRepository.findById(id);
         return ResponseUtil.wrapOrNotFound(projet);
     }
 

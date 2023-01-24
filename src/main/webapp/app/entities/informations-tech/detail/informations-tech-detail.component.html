@@ -1,7 +1,9 @@
 <div class="d-flex justify-content-center">
   <div class="col-8">
     <div *ngIf="informationsTech">
-      <h2 data-cy="informationsTechDetailsHeading"><span jhiTranslate="ihmApp.informationsTech.detail.title">Informations Tech</span></h2>
+      <h2 data-cy="informationsTechDetailsHeading">
+        <span jhiTranslate="ihmApp.informationsTech.detail.title">Informations Techniques</span>
+      </h2>
 
       <hr />
 
@@ -14,26 +16,30 @@
         <dd>
           <span>{{ informationsTech.id }}</span>
         </dd>
-        <dt><span jhiTranslate="ihmApp.informationsTech.pcDom">Pc Dom</span></dt>
+        <dt><span jhiTranslate="ihmApp.informationsTech.ipdfipConnexion">Ipdfip Connexion</span></dt>
         <dd>
-          <span>{{ informationsTech.pcDom }}</span>
+          <span>{{ informationsTech.ipdfipConnexion }}</span>
         </dd>
-        <dt><span jhiTranslate="ihmApp.informationsTech.pcDGFiP">Pc DG Fi P</span></dt>
+        <dt><span jhiTranslate="ihmApp.informationsTech.ipfixDMOCSS">Ipfix DMOCSS</span></dt>
         <dd>
-          <span>{{ informationsTech.pcDGFiP }}</span>
+          <span>{{ informationsTech.ipfixDMOCSS }}</span>
         </dd>
-        <dt><span jhiTranslate="ihmApp.informationsTech.adresseSSG">Adresse SSG</span></dt>
+        <dt><span jhiTranslate="ihmApp.informationsTech.adressMAC">Adress MAC</span></dt>
         <dd>
-          <span>{{ informationsTech.adresseSSG }}</span>
+          <span>{{ informationsTech.adressMAC }}</span>
         </dd>
-        <dt><span jhiTranslate="ihmApp.informationsTech.adresseDGFiP">Adresse DG Fi P</span></dt>
+        <dt><span jhiTranslate="ihmApp.informationsTech.iPTeletravail">I P Teletravail</span></dt>
+        <dd>
+          <span>{{ informationsTech.iPTeletravail }}</span>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.informationsTech.adresseDGFiP">Adresse DGFiP</span></dt>
         <dd>
           <span>{{ informationsTech.adresseDGFiP }}</span>
         </dd>
-        <dt><span jhiTranslate="ihmApp.informationsTech.collaborateur">Collaborateur</span></dt>
+        <dt><span jhiTranslate="ihmApp.informationsTech.pcDGFiP">Pc DGFiP</span></dt>
         <dd>
-          <div *ngIf="informationsTech.collaborateur">
-            <a [routerLink]="['/collaborateurs', informationsTech.collaborateur.id, 'view']">{{ informationsTech.collaborateur.id }}</a>
+          <div *ngIf="informationsTech.pcDGFiP">
+            <a [routerLink]="['/materiel', informationsTech.pcDGFiP.id, 'view']">{{ informationsTech.pcDGFiP.id }}</a>
           </div>
         </dd>
       </dl>

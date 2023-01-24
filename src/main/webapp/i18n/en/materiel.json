@@ -21,12 +21,11 @@
       "type": "Type",
       "modele": "Modele",
       "asset": "Asset",
-      "commentaire": "Commentaire",
       "actif": "Actif",
       "dateAttribution": "Date Attribution",
       "dateRendu": "Date Rendu",
-      "isHS": "Is HS",
-      "numeroInventaire": "Numero Inventaire",
+      "commentaire": "Commentaire",
+      "isHs": "Is Hs",
       "localisation": "Localisation",
       "collaborateurs": "Collaborateurs"
     }

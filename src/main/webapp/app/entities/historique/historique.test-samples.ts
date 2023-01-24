@@ -8,14 +8,14 @@ export const sampleWithRequiredData: IHistorique = {
 
 export const sampleWithPartialData: IHistorique = {
   id: '7cac86a1-ca71-492d-85c5-ec6699d21b09',
-  pC: 'SDD',
+  pc: 'SDD',
   zone: 'Unbranded Tuvalu',
   dateMouvement: dayjs('2023-01-02'),
 };
 
 export const sampleWithFullData: IHistorique = {
   id: '7d4ab86a-341e-4c3c-8253-89e3c7e44023',
-  pC: 'Jewelery impactful Credit',
+  pc: 'Jewelery impactful Credit',
   zone: 'solutions',
   dateMouvement: dayjs('2023-01-02'),
 };

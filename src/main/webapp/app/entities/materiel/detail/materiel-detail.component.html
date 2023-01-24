@@ -26,10 +26,6 @@
         <dd>
           <span>{{ materiel.asset }}</span>
         </dd>
-        <dt><span jhiTranslate="ihmApp.materiel.commentaire">Commentaire</span></dt>
-        <dd>
-          <span>{{ materiel.commentaire }}</span>
-        </dd>
         <dt><span jhiTranslate="ihmApp.materiel.actif">Actif</span></dt>
         <dd>
           <span>{{ materiel.actif }}</span>
@@ -42,15 +38,13 @@
         <dd>
           <span>{{ materiel.dateRendu | formatMediumDate }}</span>
         </dd>
-        <dt><span jhiTranslate="ihmApp.materiel.isHS">Is HS</span></dt>
+        <dt><span jhiTranslate="ihmApp.materiel.commentaire">Commentaire</span></dt>
         <dd>
-          <span>{{ materiel.isHS }}</span>
+          <span>{{ materiel.commentaire }}</span>
         </dd>
-        <dt><span jhiTranslate="ihmApp.materiel.numeroInventaire">Numero Inventaire</span></dt>
+        <dt><span jhiTranslate="ihmApp.materiel.isHs">Is Hs</span></dt>
         <dd>
-          <div *ngIf="materiel.numeroInventaire">
-            <a [routerLink]="['/numero-inventaire', materiel.numeroInventaire.id, 'view']">{{ materiel.numeroInventaire.id }}</a>
-          </div>
+          <span>{{ materiel.isHs }}</span>
         </dd>
         <dt><span jhiTranslate="ihmApp.materiel.localisation">Localisation</span></dt>
         <dd>

@@ -1,7 +1,5 @@
 import dayjs from 'dayjs/esm';
 
-import { Type } from 'app/entities/enumerations/type.model';
-
 import { IMouvement, NewMouvement } from './mouvement.model';
 
 export const sampleWithRequiredData: IMouvement = {
@@ -9,18 +7,20 @@ export const sampleWithRequiredData: IMouvement = {
 };
 
 export const sampleWithPartialData: IMouvement = {
-  id: 'd2408572-44dd-4bf4-9329-cfe5818e21d0',
+  id: '24085724-4ddb-4f49-b29c-fe5818e21d01',
   date: dayjs('2023-01-02'),
-  type: Type['Demande'],
+  type: 'transitional Shoes Michigan',
+  commentaire: 'Configuration',
 };
 
 export const sampleWithFullData: IMouvement = {
-  id: 'b4e62709-6f0e-4d8f-b2ad-ee662649a08f',
-  date: dayjs('2023-01-01'),
-  type: Type['Demande'],
-  source: 'Rubber',
-  destination: 'program monitor Brand',
-  user: 'mobile Rufiyaa',
+  id: 'f72adee6-6264-49a0-8fe2-029fccdebb5f',
+  date: dayjs('2023-01-02'),
+  type: 'Account synthesize Loan',
+  source: 'Functionality',
+  destination: 'Saint Accountability implement',
+  user: 'action-items',
+  commentaire: 'compressing',
 };
 
 export const sampleWithNewData: NewMouvement = {

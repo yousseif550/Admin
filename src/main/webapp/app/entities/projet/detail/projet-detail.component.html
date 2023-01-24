@@ -18,7 +18,7 @@
         <dd>
           <span>{{ projet.nom }}</span>
         </dd>
-        <dt><span jhiTranslate="ihmApp.projet.dP">D P</span></dt>
+        <dt><span jhiTranslate="ihmApp.projet.dP">DP</span></dt>
         <dd>
           <span>{{ projet.dP }}</span>
         </dd>
@@ -29,13 +29,6 @@
         <dt><span jhiTranslate="ihmApp.projet.informations">Informations</span></dt>
         <dd>
           <span>{{ projet.informations }}</span>
-        </dd>
-        <dt><span jhiTranslate="ihmApp.projet.collaborateurs">Collaborateurs</span></dt>
-        <dd>
-          <span *ngFor="let collaborateurs of projet.collaborateurs; let last = last">
-            <a [routerLink]="['/collaborateurs', collaborateurs.id, 'view']">{{ collaborateurs.id }}</a
-            >{{ last ? '' : ', ' }}
-          </span>
         </dd>
       </dl>
 

@@ -14,19 +14,18 @@ type PartialWithRequiredKeyOf<T extends { id: unknown }> = Partial<Omit<T, 'id'>
  */
 type MaterielFormGroupInput = IMateriel | PartialWithRequiredKeyOf<NewMateriel>;
 
-type MaterielFormDefaults = Pick<NewMateriel, 'id' | 'actif' | 'isHS'>;
+type MaterielFormDefaults = Pick<NewMateriel, 'id' | 'actif' | 'isHs'>;
 
 type MaterielFormGroupContent = {
   id: FormControl<IMateriel['id'] | NewMateriel['id']>;
   type: FormControl<IMateriel['type']>;
   modele: FormControl<IMateriel['modele']>;
   asset: FormControl<IMateriel['asset']>;
-  commentaire: FormControl<IMateriel['commentaire']>;
   actif: FormControl<IMateriel['actif']>;
   dateAttribution: FormControl<IMateriel['dateAttribution']>;
   dateRendu: FormControl<IMateriel['dateRendu']>;
-  isHS: FormControl<IMateriel['isHS']>;
-  numeroInventaire: FormControl<IMateriel['numeroInventaire']>;
+  commentaire: FormControl<IMateriel['commentaire']>;
+  isHs: FormControl<IMateriel['isHs']>;
   localisation: FormControl<IMateriel['localisation']>;
   collaborateurs: FormControl<IMateriel['collaborateurs']>;
 };
@@ -51,12 +50,11 @@ export class MaterielFormService {
       type: new FormControl(materielRawValue.type),
       modele: new FormControl(materielRawValue.modele),
       asset: new FormControl(materielRawValue.asset),
-      commentaire: new FormControl(materielRawValue.commentaire),
       actif: new FormControl(materielRawValue.actif),
       dateAttribution: new FormControl(materielRawValue.dateAttribution),
       dateRendu: new FormControl(materielRawValue.dateRendu),
-      isHS: new FormControl(materielRawValue.isHS),
-      numeroInventaire: new FormControl(materielRawValue.numeroInventaire),
+      commentaire: new FormControl(materielRawValue.commentaire),
+      isHs: new FormControl(materielRawValue.isHs),
       localisation: new FormControl(materielRawValue.localisation),
       collaborateurs: new FormControl(materielRawValue.collaborateurs),
     });
@@ -80,7 +78,7 @@ export class MaterielFormService {
     return {
       id: null,
       actif: false,
-      isHS: false,
+      isHs: false,
     };
   }
 }

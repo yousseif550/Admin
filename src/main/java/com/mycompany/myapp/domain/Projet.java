@@ -33,7 +33,7 @@ public class Projet implements Serializable {
     private String informations;
 
     @Field("collaborateurs")
-    @JsonIgnoreProperties(value = { "materiels", "tickets", "projets" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "localisation", "projets" }, allowSetters = true)
     private Set<Collaborateurs> collaborateurs = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
@@ -108,6 +108,12 @@ public class Projet implements Serializable {
     }
 
     public void setCollaborateurs(Set<Collaborateurs> collaborateurs) {
+        if (this.collaborateurs != null) {
+            this.collaborateurs.forEach(i -> i.removeProjet(this));
+        }
+        if (collaborateurs != null) {
+            collaborateurs.forEach(i -> i.addProjet(this));
+        }
         this.collaborateurs = collaborateurs;
     }
 

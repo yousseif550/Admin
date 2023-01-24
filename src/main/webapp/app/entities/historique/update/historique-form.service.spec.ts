@@ -20,7 +20,7 @@ describe('Historique Form Service', () => {
         expect(formGroup.controls).toEqual(
           expect.objectContaining({
             id: expect.any(Object),
-            pC: expect.any(Object),
+            pc: expect.any(Object),
             zone: expect.any(Object),
             dateMouvement: expect.any(Object),
             ancienProprietaire: expect.any(Object),
@@ -36,7 +36,7 @@ describe('Historique Form Service', () => {
         expect(formGroup.controls).toEqual(
           expect.objectContaining({
             id: expect.any(Object),
-            pC: expect.any(Object),
+            pc: expect.any(Object),
             zone: expect.any(Object),
             dateMouvement: expect.any(Object),
             ancienProprietaire: expect.any(Object),

@@ -37,9 +37,6 @@ class MaterielResourceIT {
     private static final String DEFAULT_ASSET = "AAAAAAAAAA";
     private static final String UPDATED_ASSET = "BBBBBBBBBB";
 
-    private static final String DEFAULT_COMMENTAIRE = "AAAAAAAAAA";
-    private static final String UPDATED_COMMENTAIRE = "BBBBBBBBBB";
-
     private static final Boolean DEFAULT_ACTIF = false;
     private static final Boolean UPDATED_ACTIF = true;
 
@@ -48,6 +45,9 @@ class MaterielResourceIT {
 
     private static final LocalDate DEFAULT_DATE_RENDU = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_DATE_RENDU = LocalDate.now(ZoneId.systemDefault());
+
+    private static final String DEFAULT_COMMENTAIRE = "AAAAAAAAAA";
+    private static final String UPDATED_COMMENTAIRE = "BBBBBBBBBB";
 
     private static final Boolean DEFAULT_IS_HS = false;
     private static final Boolean UPDATED_IS_HS = true;
@@ -74,11 +74,11 @@ class MaterielResourceIT {
             .type(DEFAULT_TYPE)
             .modele(DEFAULT_MODELE)
             .asset(DEFAULT_ASSET)
-            .commentaire(DEFAULT_COMMENTAIRE)
             .actif(DEFAULT_ACTIF)
             .dateAttribution(DEFAULT_DATE_ATTRIBUTION)
             .dateRendu(DEFAULT_DATE_RENDU)
-            .isHS(DEFAULT_IS_HS);
+            .commentaire(DEFAULT_COMMENTAIRE)
+            .isHs(DEFAULT_IS_HS);
         return materiel;
     }
 
@@ -93,11 +93,11 @@ class MaterielResourceIT {
             .type(UPDATED_TYPE)
             .modele(UPDATED_MODELE)
             .asset(UPDATED_ASSET)
-            .commentaire(UPDATED_COMMENTAIRE)
             .actif(UPDATED_ACTIF)
             .dateAttribution(UPDATED_DATE_ATTRIBUTION)
             .dateRendu(UPDATED_DATE_RENDU)
-            .isHS(UPDATED_IS_HS);
+            .commentaire(UPDATED_COMMENTAIRE)
+            .isHs(UPDATED_IS_HS);
         return materiel;
     }
 
@@ -127,11 +127,11 @@ class MaterielResourceIT {
         assertThat(testMateriel.getType()).isEqualTo(DEFAULT_TYPE);
         assertThat(testMateriel.getModele()).isEqualTo(DEFAULT_MODELE);
         assertThat(testMateriel.getAsset()).isEqualTo(DEFAULT_ASSET);
-        assertThat(testMateriel.getCommentaire()).isEqualTo(DEFAULT_COMMENTAIRE);
         assertThat(testMateriel.getActif()).isEqualTo(DEFAULT_ACTIF);
         assertThat(testMateriel.getDateAttribution()).isEqualTo(DEFAULT_DATE_ATTRIBUTION);
         assertThat(testMateriel.getDateRendu()).isEqualTo(DEFAULT_DATE_RENDU);
-        assertThat(testMateriel.getIsHS()).isEqualTo(DEFAULT_IS_HS);
+        assertThat(testMateriel.getCommentaire()).isEqualTo(DEFAULT_COMMENTAIRE);
+        assertThat(testMateriel.getIsHs()).isEqualTo(DEFAULT_IS_HS);
     }
 
     @Test
@@ -182,11 +182,11 @@ class MaterielResourceIT {
         assertThat(testMateriel.getType()).isEqualTo(DEFAULT_TYPE);
         assertThat(testMateriel.getModele()).isEqualTo(DEFAULT_MODELE);
         assertThat(testMateriel.getAsset()).isEqualTo(DEFAULT_ASSET);
-        assertThat(testMateriel.getCommentaire()).isEqualTo(DEFAULT_COMMENTAIRE);
         assertThat(testMateriel.getActif()).isEqualTo(DEFAULT_ACTIF);
         assertThat(testMateriel.getDateAttribution()).isEqualTo(DEFAULT_DATE_ATTRIBUTION);
         assertThat(testMateriel.getDateRendu()).isEqualTo(DEFAULT_DATE_RENDU);
-        assertThat(testMateriel.getIsHS()).isEqualTo(DEFAULT_IS_HS);
+        assertThat(testMateriel.getCommentaire()).isEqualTo(DEFAULT_COMMENTAIRE);
+        assertThat(testMateriel.getIsHs()).isEqualTo(DEFAULT_IS_HS);
     }
 
     @Test
@@ -213,15 +213,15 @@ class MaterielResourceIT {
             .value(hasItem(DEFAULT_MODELE))
             .jsonPath("$.[*].asset")
             .value(hasItem(DEFAULT_ASSET))
-            .jsonPath("$.[*].commentaire")
-            .value(hasItem(DEFAULT_COMMENTAIRE))
             .jsonPath("$.[*].actif")
             .value(hasItem(DEFAULT_ACTIF.booleanValue()))
             .jsonPath("$.[*].dateAttribution")
             .value(hasItem(DEFAULT_DATE_ATTRIBUTION.toString()))
             .jsonPath("$.[*].dateRendu")
             .value(hasItem(DEFAULT_DATE_RENDU.toString()))
-            .jsonPath("$.[*].isHS")
+            .jsonPath("$.[*].commentaire")
+            .value(hasItem(DEFAULT_COMMENTAIRE))
+            .jsonPath("$.[*].isHs")
             .value(hasItem(DEFAULT_IS_HS.booleanValue()));
     }
 
@@ -249,15 +249,15 @@ class MaterielResourceIT {
             .value(is(DEFAULT_MODELE))
             .jsonPath("$.asset")
             .value(is(DEFAULT_ASSET))
-            .jsonPath("$.commentaire")
-            .value(is(DEFAULT_COMMENTAIRE))
             .jsonPath("$.actif")
             .value(is(DEFAULT_ACTIF.booleanValue()))
             .jsonPath("$.dateAttribution")
             .value(is(DEFAULT_DATE_ATTRIBUTION.toString()))
             .jsonPath("$.dateRendu")
             .value(is(DEFAULT_DATE_RENDU.toString()))
-            .jsonPath("$.isHS")
+            .jsonPath("$.commentaire")
+            .value(is(DEFAULT_COMMENTAIRE))
+            .jsonPath("$.isHs")
             .value(is(DEFAULT_IS_HS.booleanValue()));
     }
 
@@ -286,11 +286,11 @@ class MaterielResourceIT {
             .type(UPDATED_TYPE)
             .modele(UPDATED_MODELE)
             .asset(UPDATED_ASSET)
-            .commentaire(UPDATED_COMMENTAIRE)
             .actif(UPDATED_ACTIF)
             .dateAttribution(UPDATED_DATE_ATTRIBUTION)
             .dateRendu(UPDATED_DATE_RENDU)
-            .isHS(UPDATED_IS_HS);
+            .commentaire(UPDATED_COMMENTAIRE)
+            .isHs(UPDATED_IS_HS);
 
         webTestClient
             .put()
@@ -308,11 +308,11 @@ class MaterielResourceIT {
         assertThat(testMateriel.getType()).isEqualTo(UPDATED_TYPE);
         assertThat(testMateriel.getModele()).isEqualTo(UPDATED_MODELE);
         assertThat(testMateriel.getAsset()).isEqualTo(UPDATED_ASSET);
-        assertThat(testMateriel.getCommentaire()).isEqualTo(UPDATED_COMMENTAIRE);
         assertThat(testMateriel.getActif()).isEqualTo(UPDATED_ACTIF);
         assertThat(testMateriel.getDateAttribution()).isEqualTo(UPDATED_DATE_ATTRIBUTION);
         assertThat(testMateriel.getDateRendu()).isEqualTo(UPDATED_DATE_RENDU);
-        assertThat(testMateriel.getIsHS()).isEqualTo(UPDATED_IS_HS);
+        assertThat(testMateriel.getCommentaire()).isEqualTo(UPDATED_COMMENTAIRE);
+        assertThat(testMateriel.getIsHs()).isEqualTo(UPDATED_IS_HS);
     }
 
     @Test
@@ -389,9 +389,9 @@ class MaterielResourceIT {
         partialUpdatedMateriel
             .type(UPDATED_TYPE)
             .modele(UPDATED_MODELE)
-            .commentaire(UPDATED_COMMENTAIRE)
             .actif(UPDATED_ACTIF)
-            .isHS(UPDATED_IS_HS);
+            .dateAttribution(UPDATED_DATE_ATTRIBUTION)
+            .isHs(UPDATED_IS_HS);
 
         webTestClient
             .patch()
@@ -409,11 +409,11 @@ class MaterielResourceIT {
         assertThat(testMateriel.getType()).isEqualTo(UPDATED_TYPE);
         assertThat(testMateriel.getModele()).isEqualTo(UPDATED_MODELE);
         assertThat(testMateriel.getAsset()).isEqualTo(DEFAULT_ASSET);
-        assertThat(testMateriel.getCommentaire()).isEqualTo(UPDATED_COMMENTAIRE);
         assertThat(testMateriel.getActif()).isEqualTo(UPDATED_ACTIF);
-        assertThat(testMateriel.getDateAttribution()).isEqualTo(DEFAULT_DATE_ATTRIBUTION);
+        assertThat(testMateriel.getDateAttribution()).isEqualTo(UPDATED_DATE_ATTRIBUTION);
         assertThat(testMateriel.getDateRendu()).isEqualTo(DEFAULT_DATE_RENDU);
-        assertThat(testMateriel.getIsHS()).isEqualTo(UPDATED_IS_HS);
+        assertThat(testMateriel.getCommentaire()).isEqualTo(DEFAULT_COMMENTAIRE);
+        assertThat(testMateriel.getIsHs()).isEqualTo(UPDATED_IS_HS);
     }
 
     @Test
@@ -431,11 +431,11 @@ class MaterielResourceIT {
             .type(UPDATED_TYPE)
             .modele(UPDATED_MODELE)
             .asset(UPDATED_ASSET)
-            .commentaire(UPDATED_COMMENTAIRE)
             .actif(UPDATED_ACTIF)
             .dateAttribution(UPDATED_DATE_ATTRIBUTION)
             .dateRendu(UPDATED_DATE_RENDU)
-            .isHS(UPDATED_IS_HS);
+            .commentaire(UPDATED_COMMENTAIRE)
+            .isHs(UPDATED_IS_HS);
 
         webTestClient
             .patch()
@@ -453,11 +453,11 @@ class MaterielResourceIT {
         assertThat(testMateriel.getType()).isEqualTo(UPDATED_TYPE);
         assertThat(testMateriel.getModele()).isEqualTo(UPDATED_MODELE);
         assertThat(testMateriel.getAsset()).isEqualTo(UPDATED_ASSET);
-        assertThat(testMateriel.getCommentaire()).isEqualTo(UPDATED_COMMENTAIRE);
         assertThat(testMateriel.getActif()).isEqualTo(UPDATED_ACTIF);
         assertThat(testMateriel.getDateAttribution()).isEqualTo(UPDATED_DATE_ATTRIBUTION);
         assertThat(testMateriel.getDateRendu()).isEqualTo(UPDATED_DATE_RENDU);
-        assertThat(testMateriel.getIsHS()).isEqualTo(UPDATED_IS_HS);
+        assertThat(testMateriel.getCommentaire()).isEqualTo(UPDATED_COMMENTAIRE);
+        assertThat(testMateriel.getIsHs()).isEqualTo(UPDATED_IS_HS);
     }
 
     @Test

@@ -19,8 +19,8 @@ public class Historique implements Serializable {
     @Id
     private String id;
 
-    @Field("p_c")
-    private String pC;
+    @Field("pc")
+    private String pc;
 
     @Field("zone")
     private String zone;
@@ -52,17 +52,17 @@ public class Historique implements Serializable {
         this.id = id;
     }
 
-    public String getpC() {
-        return this.pC;
+    public String getPc() {
+        return this.pc;
     }
 
-    public Historique pC(String pC) {
-        this.setpC(pC);
+    public Historique pc(String pc) {
+        this.setPc(pc);
         return this;
     }
 
-    public void setpC(String pC) {
-        this.pC = pC;
+    public void setPc(String pc) {
+        this.pc = pc;
     }
 
     public String getZone() {
@@ -154,7 +154,7 @@ public class Historique implements Serializable {
     public String toString() {
         return "Historique{" +
             "id=" + getId() +
-            ", pC='" + getpC() + "'" +
+            ", pc='" + getPc() + "'" +
             ", zone='" + getZone() + "'" +
             ", dateMouvement='" + getDateMouvement() + "'" +
             "}";

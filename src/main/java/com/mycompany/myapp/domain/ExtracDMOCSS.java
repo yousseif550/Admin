@@ -1,6 +1,7 @@
 package com.mycompany.myapp.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.mycompany.myapp.domain.enumeration.Etat;
 import java.io.Serializable;
 import java.time.LocalDate;
 import org.springframework.data.annotation.Id;
@@ -31,11 +32,20 @@ public class ExtracDMOCSS implements Serializable {
     @Field("date")
     private LocalDate date;
 
-    @Field("ip_pc_dg_fi_p")
-    private String ipPcDGFiP;
+    @Field("ip_pc_dgfip")
+    private String ipPcDgfip;
 
     @Field("ip_vpn_ipsec")
     private String ipVpnIPSEC;
+
+    @Field("io_teletravail")
+    private String ioTeletravail;
+
+    @Field("statut")
+    private Etat statut;
+
+    @Field("num_version")
+    private String numVersion;
 
     @Field("collaborateur")
     private Collaborateurs collaborateur;
@@ -113,17 +123,17 @@ public class ExtracDMOCSS implements Serializable {
         this.date = date;
     }
 
-    public String getIpPcDGFiP() {
-        return this.ipPcDGFiP;
+    public String getIpPcDgfip() {
+        return this.ipPcDgfip;
     }
 
-    public ExtracDMOCSS ipPcDGFiP(String ipPcDGFiP) {
-        this.setIpPcDGFiP(ipPcDGFiP);
+    public ExtracDMOCSS ipPcDgfip(String ipPcDgfip) {
+        this.setIpPcDgfip(ipPcDgfip);
         return this;
     }
 
-    public void setIpPcDGFiP(String ipPcDGFiP) {
-        this.ipPcDGFiP = ipPcDGFiP;
+    public void setIpPcDgfip(String ipPcDgfip) {
+        this.ipPcDgfip = ipPcDgfip;
     }
 
     public String getIpVpnIPSEC() {
@@ -137,6 +147,45 @@ public class ExtracDMOCSS implements Serializable {
 
     public void setIpVpnIPSEC(String ipVpnIPSEC) {
         this.ipVpnIPSEC = ipVpnIPSEC;
+    }
+
+    public String getIoTeletravail() {
+        return this.ioTeletravail;
+    }
+
+    public ExtracDMOCSS ioTeletravail(String ioTeletravail) {
+        this.setIoTeletravail(ioTeletravail);
+        return this;
+    }
+
+    public void setIoTeletravail(String ioTeletravail) {
+        this.ioTeletravail = ioTeletravail;
+    }
+
+    public Etat getStatut() {
+        return this.statut;
+    }
+
+    public ExtracDMOCSS statut(Etat statut) {
+        this.setStatut(statut);
+        return this;
+    }
+
+    public void setStatut(Etat statut) {
+        this.statut = statut;
+    }
+
+    public String getNumVersion() {
+        return this.numVersion;
+    }
+
+    public ExtracDMOCSS numVersion(String numVersion) {
+        this.setNumVersion(numVersion);
+        return this;
+    }
+
+    public void setNumVersion(String numVersion) {
+        this.numVersion = numVersion;
     }
 
     public Collaborateurs getCollaborateur() {
@@ -206,8 +255,11 @@ public class ExtracDMOCSS implements Serializable {
             ", bureauActuel='" + getBureauActuel() + "'" +
             ", bureauDeplacement='" + getBureauDeplacement() + "'" +
             ", date='" + getDate() + "'" +
-            ", ipPcDGFiP='" + getIpPcDGFiP() + "'" +
+            ", ipPcDgfip='" + getIpPcDgfip() + "'" +
             ", ipVpnIPSEC='" + getIpVpnIPSEC() + "'" +
+            ", ioTeletravail='" + getIoTeletravail() + "'" +
+            ", statut='" + getStatut() + "'" +
+            ", numVersion='" + getNumVersion() + "'" +
             "}";
     }
 }

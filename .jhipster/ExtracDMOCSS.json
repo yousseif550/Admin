@@ -22,11 +22,24 @@
       "fieldType": "LocalDate"
     },
     {
-      "fieldName": "ipPcDGFiP",
+      "fieldName": "ipPcDgfip",
       "fieldType": "String"
     },
     {
       "fieldName": "ipVpnIPSEC",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ioTeletravail",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "statut",
+      "fieldType": "Etat",
+      "fieldValues": "NonRealiser,EnCours,Envoyer,OK,EnAttenteDeReponse"
+    },
+    {
+      "fieldName": "numVersion",
       "fieldType": "String"
     }
   ],

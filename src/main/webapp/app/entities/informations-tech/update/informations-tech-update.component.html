@@ -6,7 +6,7 @@
         data-cy="InformationsTechCreateUpdateHeading"
         jhiTranslate="ihmApp.informationsTech.home.createOrEditLabel"
       >
-        Create or edit a Informations Tech
+        Create or edit a Informations Techniques
       </h2>
 
       <div>
@@ -18,29 +18,50 @@
         </div>
 
         <div class="row mb-3">
-          <label class="form-label" jhiTranslate="ihmApp.informationsTech.pcDom" for="field_pcDom">Pc Dom</label>
-          <input type="text" class="form-control" name="pcDom" id="field_pcDom" data-cy="pcDom" formControlName="pcDom" />
-        </div>
-
-        <div class="row mb-3">
-          <label class="form-label" jhiTranslate="ihmApp.informationsTech.pcDGFiP" for="field_pcDGFiP">Pc DG Fi P</label>
-          <input type="text" class="form-control" name="pcDGFiP" id="field_pcDGFiP" data-cy="pcDGFiP" formControlName="pcDGFiP" />
-        </div>
-
-        <div class="row mb-3">
-          <label class="form-label" jhiTranslate="ihmApp.informationsTech.adresseSSG" for="field_adresseSSG">Adresse SSG</label>
+          <label class="form-label" jhiTranslate="ihmApp.informationsTech.ipdfipConnexion" for="field_ipdfipConnexion"
+            >Ipdfip Connexion</label
+          >
           <input
             type="text"
             class="form-control"
-            name="adresseSSG"
-            id="field_adresseSSG"
-            data-cy="adresseSSG"
-            formControlName="adresseSSG"
+            name="ipdfipConnexion"
+            id="field_ipdfipConnexion"
+            data-cy="ipdfipConnexion"
+            formControlName="ipdfipConnexion"
           />
         </div>
 
         <div class="row mb-3">
-          <label class="form-label" jhiTranslate="ihmApp.informationsTech.adresseDGFiP" for="field_adresseDGFiP">Adresse DG Fi P</label>
+          <label class="form-label" jhiTranslate="ihmApp.informationsTech.ipfixDMOCSS" for="field_ipfixDMOCSS">Ipfix DMOCSS</label>
+          <input
+            type="text"
+            class="form-control"
+            name="ipfixDMOCSS"
+            id="field_ipfixDMOCSS"
+            data-cy="ipfixDMOCSS"
+            formControlName="ipfixDMOCSS"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ihmApp.informationsTech.adressMAC" for="field_adressMAC">Adress MAC</label>
+          <input type="text" class="form-control" name="adressMAC" id="field_adressMAC" data-cy="adressMAC" formControlName="adressMAC" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ihmApp.informationsTech.iPTeletravail" for="field_iPTeletravail">I P Teletravail</label>
+          <input
+            type="text"
+            class="form-control"
+            name="iPTeletravail"
+            id="field_iPTeletravail"
+            data-cy="iPTeletravail"
+            formControlName="iPTeletravail"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ihmApp.informationsTech.adresseDGFiP" for="field_adresseDGFiP">Adresse DGFiP</label>
           <input
             type="text"
             class="form-control"
@@ -52,19 +73,17 @@
         </div>
 
         <div class="row mb-3">
-          <label class="form-label" jhiTranslate="ihmApp.informationsTech.collaborateur" for="field_collaborateur">Collaborateur</label>
+          <label class="form-label" jhiTranslate="ihmApp.informationsTech.pcDGFiP" for="field_pcDGFiP">Pc DGFiP</label>
           <select
             class="form-control"
-            id="field_collaborateur"
-            data-cy="collaborateur"
-            name="collaborateur"
-            formControlName="collaborateur"
-            [compareWith]="compareCollaborateurs"
+            id="field_pcDGFiP"
+            data-cy="pcDGFiP"
+            name="pcDGFiP"
+            formControlName="pcDGFiP"
+            [compareWith]="compareMateriel"
           >
             <option [ngValue]="null"></option>
-            <option [ngValue]="collaborateursOption" *ngFor="let collaborateursOption of collaborateursSharedCollection">
-              {{ collaborateursOption.nom }}
-            </option>
+            <option [ngValue]="materielOption" *ngFor="let materielOption of materielsSharedCollection">{{ materielOption.asset }}</option>
           </select>
         </div>
       </div>

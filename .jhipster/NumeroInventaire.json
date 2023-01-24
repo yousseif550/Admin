@@ -6,12 +6,8 @@
   "entityTableName": "numero_inventaire",
   "fields": [
     {
-      "fieldName": "zone",
+      "fieldName": "type",
       "fieldType": "String"
-    },
-    {
-      "fieldName": "valeur",
-      "fieldType": "Long"
     },
     {
       "fieldName": "disponible",
@@ -24,6 +20,10 @@
     {
       "fieldName": "dateModification",
       "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "commentaire",
+      "fieldType": "String"
     }
   ],
   "fluentMethods": true,
@@ -36,6 +36,18 @@
       "otherEntityName": "materiel",
       "ownerSide": true,
       "relationshipName": "materielActuel",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "collaborateurs",
+      "ownerSide": true,
+      "relationshipName": "ancienProprietaire",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "collaborateurs",
+      "ownerSide": true,
+      "relationshipName": "nouveauProprietaire",
       "relationshipType": "one-to-one"
     }
   ],

@@ -9,6 +9,8 @@ import { INumeroInventaire } from '../numero-inventaire.model';
 import { NumeroInventaireService } from '../service/numero-inventaire.service';
 import { IMateriel } from 'app/entities/materiel/materiel.model';
 import { MaterielService } from 'app/entities/materiel/service/materiel.service';
+import { ICollaborateurs } from 'app/entities/collaborateurs/collaborateurs.model';
+import { CollaborateursService } from 'app/entities/collaborateurs/service/collaborateurs.service';
 
 @Component({
   selector: 'jhi-numero-inventaire-update',
@@ -19,6 +21,7 @@ export class NumeroInventaireUpdateComponent implements OnInit {
   numeroInventaire: INumeroInventaire | null = null;
 
   materielsSharedCollection: IMateriel[] = [];
+  collaborateursSharedCollection: ICollaborateurs[] = [];
 
   editForm: NumeroInventaireFormGroup = this.numeroInventaireFormService.createNumeroInventaireFormGroup();
 
@@ -26,10 +29,14 @@ export class NumeroInventaireUpdateComponent implements OnInit {
     protected numeroInventaireService: NumeroInventaireService,
     protected numeroInventaireFormService: NumeroInventaireFormService,
     protected materielService: MaterielService,
+    protected collaborateursService: CollaborateursService,
     protected activatedRoute: ActivatedRoute
   ) {}
 
   compareMateriel = (o1: IMateriel | null, o2: IMateriel | null): boolean => this.materielService.compareMateriel(o1, o2);
+
+  compareCollaborateurs = (o1: ICollaborateurs | null, o2: ICollaborateurs | null): boolean =>
+    this.collaborateursService.compareCollaborateurs(o1, o2);
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ numeroInventaire }) => {
@@ -83,6 +90,11 @@ export class NumeroInventaireUpdateComponent implements OnInit {
       this.materielsSharedCollection,
       numeroInventaire.materielActuel
     );
+    this.collaborateursSharedCollection = this.collaborateursService.addCollaborateursToCollectionIfMissing<ICollaborateurs>(
+      this.collaborateursSharedCollection,
+      numeroInventaire.ancienProprietaire,
+      numeroInventaire.nouveauProprietaire
+    );
   }
 
   protected loadRelationshipsOptions(): void {
@@ -95,5 +107,19 @@ export class NumeroInventaireUpdateComponent implements OnInit {
         )
       )
       .subscribe((materiels: IMateriel[]) => (this.materielsSharedCollection = materiels));
+
+    this.collaborateursService
+      .query()
+      .pipe(map((res: HttpResponse<ICollaborateurs[]>) => res.body ?? []))
+      .pipe(
+        map((collaborateurs: ICollaborateurs[]) =>
+          this.collaborateursService.addCollaborateursToCollectionIfMissing<ICollaborateurs>(
+            collaborateurs,
+            this.numeroInventaire?.ancienProprietaire,
+            this.numeroInventaire?.nouveauProprietaire
+          )
+        )
+      )
+      .subscribe((collaborateurs: ICollaborateurs[]) => (this.collaborateursSharedCollection = collaborateurs));
   }
 }

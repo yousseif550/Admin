@@ -145,14 +145,17 @@ public class InformationsTechResource {
                 Mono<InformationsTech> result = informationsTechRepository
                     .findById(informationsTech.getId())
                     .map(existingInformationsTech -> {
-                        if (informationsTech.getPcDom() != null) {
-                            existingInformationsTech.setPcDom(informationsTech.getPcDom());
+                        if (informationsTech.getIpdfipConnexion() != null) {
+                            existingInformationsTech.setIpdfipConnexion(informationsTech.getIpdfipConnexion());
                         }
-                        if (informationsTech.getPcDGFiP() != null) {
-                            existingInformationsTech.setPcDGFiP(informationsTech.getPcDGFiP());
+                        if (informationsTech.getIpfixDMOCSS() != null) {
+                            existingInformationsTech.setIpfixDMOCSS(informationsTech.getIpfixDMOCSS());
                         }
-                        if (informationsTech.getAdresseSSG() != null) {
-                            existingInformationsTech.setAdresseSSG(informationsTech.getAdresseSSG());
+                        if (informationsTech.getAdressMAC() != null) {
+                            existingInformationsTech.setAdressMAC(informationsTech.getAdressMAC());
+                        }
+                        if (informationsTech.getiPTeletravail() != null) {
+                            existingInformationsTech.setiPTeletravail(informationsTech.getiPTeletravail());
                         }
                         if (informationsTech.getAdresseDGFiP() != null) {
                             existingInformationsTech.setAdresseDGFiP(informationsTech.getAdresseDGFiP());

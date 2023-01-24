@@ -1,12 +1,13 @@
-import { ICollaborateurs } from 'app/entities/collaborateurs/collaborateurs.model';
+import { IMateriel } from 'app/entities/materiel/materiel.model';
 
 export interface IInformationsTech {
   id: string;
-  pcDom?: string | null;
-  pcDGFiP?: string | null;
-  adresseSSG?: string | null;
+  ipdfipConnexion?: string | null;
+  ipfixDMOCSS?: string | null;
+  adressMAC?: string | null;
+  iPTeletravail?: string | null;
   adresseDGFiP?: string | null;
-  collaborateur?: Pick<ICollaborateurs, 'id'> | null;
+  pcDGFiP?: Pick<IMateriel, 'id'> | null;
 }
 
 export type NewInformationsTech = Omit<IInformationsTech, 'id'> & { id: null };

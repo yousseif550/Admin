@@ -156,11 +156,20 @@ public class ExtracDMOCSSResource {
                         if (extracDMOCSS.getDate() != null) {
                             existingExtracDMOCSS.setDate(extracDMOCSS.getDate());
                         }
-                        if (extracDMOCSS.getIpPcDGFiP() != null) {
-                            existingExtracDMOCSS.setIpPcDGFiP(extracDMOCSS.getIpPcDGFiP());
+                        if (extracDMOCSS.getIpPcDgfip() != null) {
+                            existingExtracDMOCSS.setIpPcDgfip(extracDMOCSS.getIpPcDgfip());
                         }
                         if (extracDMOCSS.getIpVpnIPSEC() != null) {
                             existingExtracDMOCSS.setIpVpnIPSEC(extracDMOCSS.getIpVpnIPSEC());
+                        }
+                        if (extracDMOCSS.getIoTeletravail() != null) {
+                            existingExtracDMOCSS.setIoTeletravail(extracDMOCSS.getIoTeletravail());
+                        }
+                        if (extracDMOCSS.getStatut() != null) {
+                            existingExtracDMOCSS.setStatut(extracDMOCSS.getStatut());
+                        }
+                        if (extracDMOCSS.getNumVersion() != null) {
+                            existingExtracDMOCSS.setNumVersion(extracDMOCSS.getNumVersion());
                         }
 
                         return existingExtracDMOCSS;

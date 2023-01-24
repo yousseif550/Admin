@@ -25,7 +25,7 @@ public class Collaborateurs implements Serializable {
     private String nom;
 
     @Field("identifiant")
-    private Long identifiant;
+    private String identifiant;
 
     @Field("tel")
     private Long tel;
@@ -42,13 +42,8 @@ public class Collaborateurs implements Serializable {
     @Field("date_sortie")
     private LocalDate dateSortie;
 
-    @Field("materiel")
-    @JsonIgnoreProperties(value = { "numeroInventaire", "localisation", "collaborateurs" }, allowSetters = true)
-    private Set<Materiel> materiels = new HashSet<>();
-
-    @Field("ticket")
-    @JsonIgnoreProperties(value = { "beneficiaire", "proprietaire" }, allowSetters = true)
-    private Set<Ticket> tickets = new HashSet<>();
+    @Field("localisation")
+    private Localisation localisation;
 
     @Field("projets")
     @JsonIgnoreProperties(value = { "collaborateurs" }, allowSetters = true)
@@ -82,16 +77,16 @@ public class Collaborateurs implements Serializable {
         this.nom = nom;
     }
 
-    public Long getIdentifiant() {
+    public String getIdentifiant() {
         return this.identifiant;
     }
 
-    public Collaborateurs identifiant(Long identifiant) {
+    public Collaborateurs identifiant(String identifiant) {
         this.setIdentifiant(identifiant);
         return this;
     }
 
-    public void setIdentifiant(Long identifiant) {
+    public void setIdentifiant(String identifiant) {
         this.identifiant = identifiant;
     }
 
@@ -160,65 +155,16 @@ public class Collaborateurs implements Serializable {
         this.dateSortie = dateSortie;
     }
 
-    public Set<Materiel> getMateriels() {
-        return this.materiels;
+    public Localisation getLocalisation() {
+        return this.localisation;
     }
 
-    public void setMateriels(Set<Materiel> materiels) {
-        if (this.materiels != null) {
-            this.materiels.forEach(i -> i.setCollaborateurs(null));
-        }
-        if (materiels != null) {
-            materiels.forEach(i -> i.setCollaborateurs(this));
-        }
-        this.materiels = materiels;
+    public void setLocalisation(Localisation localisation) {
+        this.localisation = localisation;
     }
 
-    public Collaborateurs materiels(Set<Materiel> materiels) {
-        this.setMateriels(materiels);
-        return this;
-    }
-
-    public Collaborateurs addMateriel(Materiel materiel) {
-        this.materiels.add(materiel);
-        materiel.setCollaborateurs(this);
-        return this;
-    }
-
-    public Collaborateurs removeMateriel(Materiel materiel) {
-        this.materiels.remove(materiel);
-        materiel.setCollaborateurs(null);
-        return this;
-    }
-
-    public Set<Ticket> getTickets() {
-        return this.tickets;
-    }
-
-    public void setTickets(Set<Ticket> tickets) {
-        if (this.tickets != null) {
-            this.tickets.forEach(i -> i.setProprietaire(null));
-        }
-        if (tickets != null) {
-            tickets.forEach(i -> i.setProprietaire(this));
-        }
-        this.tickets = tickets;
-    }
-
-    public Collaborateurs tickets(Set<Ticket> tickets) {
-        this.setTickets(tickets);
-        return this;
-    }
-
-    public Collaborateurs addTicket(Ticket ticket) {
-        this.tickets.add(ticket);
-        ticket.setProprietaire(this);
-        return this;
-    }
-
-    public Collaborateurs removeTicket(Ticket ticket) {
-        this.tickets.remove(ticket);
-        ticket.setProprietaire(null);
+    public Collaborateurs localisation(Localisation localisation) {
+        this.setLocalisation(localisation);
         return this;
     }
 
@@ -227,12 +173,6 @@ public class Collaborateurs implements Serializable {
     }
 
     public void setProjets(Set<Projet> projets) {
-        if (this.projets != null) {
-            this.projets.forEach(i -> i.removeCollaborateurs(this));
-        }
-        if (projets != null) {
-            projets.forEach(i -> i.addCollaborateurs(this));
-        }
         this.projets = projets;
     }
 
@@ -278,7 +218,7 @@ public class Collaborateurs implements Serializable {
         return "Collaborateurs{" +
             "id=" + getId() +
             ", nom='" + getNom() + "'" +
-            ", identifiant=" + getIdentifiant() +
+            ", identifiant='" + getIdentifiant() + "'" +
             ", tel=" + getTel() +
             ", prestataire='" + getPrestataire() + "'" +
             ", isActif='" + getIsActif() + "'" +

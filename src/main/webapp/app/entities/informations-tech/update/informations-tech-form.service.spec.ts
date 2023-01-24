@@ -20,11 +20,12 @@ describe('InformationsTech Form Service', () => {
         expect(formGroup.controls).toEqual(
           expect.objectContaining({
             id: expect.any(Object),
-            pcDom: expect.any(Object),
-            pcDGFiP: expect.any(Object),
-            adresseSSG: expect.any(Object),
+            ipdfipConnexion: expect.any(Object),
+            ipfixDMOCSS: expect.any(Object),
+            adressMAC: expect.any(Object),
+            iPTeletravail: expect.any(Object),
             adresseDGFiP: expect.any(Object),
-            collaborateur: expect.any(Object),
+            pcDGFiP: expect.any(Object),
           })
         );
       });
@@ -35,11 +36,12 @@ describe('InformationsTech Form Service', () => {
         expect(formGroup.controls).toEqual(
           expect.objectContaining({
             id: expect.any(Object),
-            pcDom: expect.any(Object),
-            pcDGFiP: expect.any(Object),
-            adresseSSG: expect.any(Object),
+            ipdfipConnexion: expect.any(Object),
+            ipfixDMOCSS: expect.any(Object),
+            adressMAC: expect.any(Object),
+            iPTeletravail: expect.any(Object),
             adresseDGFiP: expect.any(Object),
-            collaborateur: expect.any(Object),
+            pcDGFiP: expect.any(Object),
           })
         );
       });

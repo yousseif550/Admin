@@ -25,6 +25,7 @@ type CollaborateursFormGroupContent = {
   isActif: FormControl<ICollaborateurs['isActif']>;
   dateEntree: FormControl<ICollaborateurs['dateEntree']>;
   dateSortie: FormControl<ICollaborateurs['dateSortie']>;
+  localisation: FormControl<ICollaborateurs['localisation']>;
   projets: FormControl<ICollaborateurs['projets']>;
 };
 
@@ -52,6 +53,7 @@ export class CollaborateursFormService {
       isActif: new FormControl(collaborateursRawValue.isActif),
       dateEntree: new FormControl(collaborateursRawValue.dateEntree),
       dateSortie: new FormControl(collaborateursRawValue.dateSortie),
+      localisation: new FormControl(collaborateursRawValue.localisation),
       projets: new FormControl(collaborateursRawValue.projets ?? []),
     });
   }

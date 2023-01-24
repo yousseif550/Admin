@@ -28,9 +28,6 @@ public class Materiel implements Serializable {
     @Field("asset")
     private String asset;
 
-    @Field("commentaire")
-    private String commentaire;
-
     @Field("actif")
     private Boolean actif;
 
@@ -40,17 +37,16 @@ public class Materiel implements Serializable {
     @Field("date_rendu")
     private LocalDate dateRendu;
 
-    @Field("is_hs")
-    private Boolean isHS;
+    @Field("commentaire")
+    private String commentaire;
 
-    @Field("numeroInventaire")
-    private NumeroInventaire numeroInventaire;
+    @Field("is_hs")
+    private Boolean isHs;
 
     @Field("localisation")
     private Localisation localisation;
 
     @Field("collaborateurs")
-    @JsonIgnoreProperties(value = { "materiels", "tickets", "projets" }, allowSetters = true)
     private Collaborateurs collaborateurs;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
@@ -107,19 +103,6 @@ public class Materiel implements Serializable {
         this.asset = asset;
     }
 
-    public String getCommentaire() {
-        return this.commentaire;
-    }
-
-    public Materiel commentaire(String commentaire) {
-        this.setCommentaire(commentaire);
-        return this;
-    }
-
-    public void setCommentaire(String commentaire) {
-        this.commentaire = commentaire;
-    }
-
     public Boolean getActif() {
         return this.actif;
     }
@@ -159,30 +142,30 @@ public class Materiel implements Serializable {
         this.dateRendu = dateRendu;
     }
 
-    public Boolean getIsHS() {
-        return this.isHS;
+    public String getCommentaire() {
+        return this.commentaire;
     }
 
-    public Materiel isHS(Boolean isHS) {
-        this.setIsHS(isHS);
+    public Materiel commentaire(String commentaire) {
+        this.setCommentaire(commentaire);
         return this;
     }
 
-    public void setIsHS(Boolean isHS) {
-        this.isHS = isHS;
+    public void setCommentaire(String commentaire) {
+        this.commentaire = commentaire;
     }
 
-    public NumeroInventaire getNumeroInventaire() {
-        return this.numeroInventaire;
+    public Boolean getIsHs() {
+        return this.isHs;
     }
 
-    public void setNumeroInventaire(NumeroInventaire numeroInventaire) {
-        this.numeroInventaire = numeroInventaire;
-    }
-
-    public Materiel numeroInventaire(NumeroInventaire numeroInventaire) {
-        this.setNumeroInventaire(numeroInventaire);
+    public Materiel isHs(Boolean isHs) {
+        this.setIsHs(isHs);
         return this;
+    }
+
+    public void setIsHs(Boolean isHs) {
+        this.isHs = isHs;
     }
 
     public Localisation getLocalisation() {
@@ -238,11 +221,11 @@ public class Materiel implements Serializable {
             ", type='" + getType() + "'" +
             ", modele='" + getModele() + "'" +
             ", asset='" + getAsset() + "'" +
-            ", commentaire='" + getCommentaire() + "'" +
             ", actif='" + getActif() + "'" +
             ", dateAttribution='" + getDateAttribution() + "'" +
             ", dateRendu='" + getDateRendu() + "'" +
-            ", isHS='" + getIsHS() + "'" +
+            ", commentaire='" + getCommentaire() + "'" +
+            ", isHs='" + getIsHs() + "'" +
             "}";
     }
 }

@@ -27,6 +27,7 @@ describe('Collaborateurs Form Service', () => {
             isActif: expect.any(Object),
             dateEntree: expect.any(Object),
             dateSortie: expect.any(Object),
+            localisation: expect.any(Object),
             projets: expect.any(Object),
           })
         );
@@ -45,6 +46,7 @@ describe('Collaborateurs Form Service', () => {
             isActif: expect.any(Object),
             dateEntree: expect.any(Object),
             dateSortie: expect.any(Object),
+            localisation: expect.any(Object),
             projets: expect.any(Object),
           })
         );

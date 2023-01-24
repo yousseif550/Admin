@@ -1,9 +1,10 @@
 entity Mouvement {
   date LocalDate,
-  type Type,
+  type String,
   source String,
   destination String,
-  user String
+  user String,
+  commentaire String,
 }
 
  enum Type {
@@ -35,7 +36,7 @@ entity Suivi {
   
 entity Collaborateurs {
     Nom String,
-    Identifiant Long,
+    Identifiant String,
     Tel Long,
     Prestataire Boolean,
     IsActif Boolean,
@@ -52,9 +53,10 @@ entity Projet {
 }
 
 entity InformationsTech {
-	PcDom String,
-	PcDGFiP String,
-    AdresseSSG String,
+    IpdfipConnexion String,
+    IpfixDMOCSS String,
+    AdressMAC String,
+    IPTeletravail String,
     AdresseDGFiP String,
 }
 
@@ -81,26 +83,26 @@ entity Materiel {
 	Type String,
     Modele String,
     Asset String,
-    Commentaire String,
     Actif Boolean,
     DateAttribution LocalDate,
     DateRendu LocalDate,
     /*Collaborateur String,*/
-    IsHS Boolean
+    Commentaire String,
+    IsHs Boolean
 }
 
 entity Historique {
-    PC String,
+    Pc String,
     Zone String,
     DateMouvement LocalDate
 }
 
 entity NumeroInventaire {
-    Zone String,
-    Valeur Long,
+    Type String,
     Disponible Boolean,
     AncienMateriel String,
-    DateModification LocalDate
+    DateModification LocalDate,
+    Commentaire String
 }
 
 entity ExtracDMOCSS {
@@ -108,28 +110,28 @@ entity ExtracDMOCSS {
     BureauActuel String,
     BureauDeplacement String
     Date LocalDate,
-    IpPcDGFiP String,
+    IpPcDgfip String,
     IpVpnIPSEC String,
-    NMac
-    NMac
+    IoTeletravail String, 
+    Statut Etat,
+    NumVersion String
 }
 	
 
 relationship ManyToMany {
-	Projet{collaborateurs} to Collaborateurs{projet}
-}
-
-relationship ManyToOne {
-    Materiel{collaborateurs} to Collaborateurs{materiel}
-	Ticket{proprietaire} to Collaborateurs{ticket} 
+	Collaborateurs{Projet} to Projet{Collaborateurs}
 }
 
 relationship OneToOne {
-	InformationsTech{Collaborateur} to Collaborateurs
+    Mouvement{Asset} to Materiel
+    Mouvement{Localisation} to Localisation
+	InformationsTech{PcDGFiP} to Materiel
 	Suivi{Collaborateur} to Collaborateurs
-    Materiel{NumeroInventaire} to NumeroInventaire
     Materiel{localisation} to Localisation
+    Materiel{collaborateurs} to Collaborateurs
     NumeroInventaire{materielActuel} to Materiel
+    NumeroInventaire{AncienProprietaire} to Collaborateurs
+    NumeroInventaire{NouveauProprietaire} to Collaborateurs
     Historique{AncienProprietaire} to Collaborateurs
     Historique{NouveauProprietaire} to Collaborateurs
     Historique{materiel} to Materiel
@@ -137,8 +139,6 @@ relationship OneToOne {
     ExtracDMOCSS{materiel} to Materiel
     ExtracDMOCSS{Localisation} to Localisation
 	Ticket{Beneficiaire} to Collaborateurs
+	Ticket{proprietaire} to Collaborateurs
+	Collaborateurs{Localisation} to Localisation
 }
-
-
-
-

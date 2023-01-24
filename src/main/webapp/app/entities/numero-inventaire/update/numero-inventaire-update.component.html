@@ -18,13 +18,8 @@
         </div>
 
         <div class="row mb-3">
-          <label class="form-label" jhiTranslate="ihmApp.numeroInventaire.zone" for="field_zone">Zone</label>
-          <input type="text" class="form-control" name="zone" id="field_zone" data-cy="zone" formControlName="zone" />
-        </div>
-
-        <div class="row mb-3">
-          <label class="form-label" jhiTranslate="ihmApp.numeroInventaire.valeur" for="field_valeur">Valeur</label>
-          <input type="number" class="form-control" name="valeur" id="field_valeur" data-cy="valeur" formControlName="valeur" />
+          <label class="form-label" jhiTranslate="ihmApp.numeroInventaire.type" for="field_type">Type</label>
+          <input type="text" class="form-control" name="type" id="field_type" data-cy="type" formControlName="type" />
         </div>
 
         <div class="row mb-3">
@@ -73,6 +68,18 @@
         </div>
 
         <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ihmApp.numeroInventaire.commentaire" for="field_commentaire">Commentaire</label>
+          <input
+            type="text"
+            class="form-control"
+            name="commentaire"
+            id="field_commentaire"
+            data-cy="commentaire"
+            formControlName="commentaire"
+          />
+        </div>
+
+        <div class="row mb-3">
           <label class="form-label" jhiTranslate="ihmApp.numeroInventaire.materielActuel" for="field_materielActuel">Materiel Actuel</label>
           <select
             class="form-control"
@@ -84,6 +91,44 @@
           >
             <option [ngValue]="null"></option>
             <option [ngValue]="materielOption" *ngFor="let materielOption of materielsSharedCollection">{{ materielOption.asset }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ihmApp.numeroInventaire.ancienProprietaire" for="field_ancienProprietaire"
+            >Ancien Proprietaire</label
+          >
+          <select
+            class="form-control"
+            id="field_ancienProprietaire"
+            data-cy="ancienProprietaire"
+            name="ancienProprietaire"
+            formControlName="ancienProprietaire"
+            [compareWith]="compareCollaborateurs"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="collaborateursOption" *ngFor="let collaborateursOption of collaborateursSharedCollection">
+              {{ collaborateursOption.nom }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ihmApp.numeroInventaire.nouveauProprietaire" for="field_nouveauProprietaire"
+            >Nouveau Proprietaire</label
+          >
+          <select
+            class="form-control"
+            id="field_nouveauProprietaire"
+            data-cy="nouveauProprietaire"
+            name="nouveauProprietaire"
+            formControlName="nouveauProprietaire"
+            [compareWith]="compareCollaborateurs"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="collaborateursOption" *ngFor="let collaborateursOption of collaborateursSharedCollection">
+              {{ collaborateursOption.nom }}
+            </option>
           </select>
         </div>
       </div>

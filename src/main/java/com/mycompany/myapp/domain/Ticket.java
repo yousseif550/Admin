@@ -36,7 +36,6 @@ public class Ticket implements Serializable {
     private Collaborateurs beneficiaire;
 
     @Field("proprietaire")
-    @JsonIgnoreProperties(value = { "materiels", "tickets", "projets" }, allowSetters = true)
     private Collaborateurs proprietaire;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here

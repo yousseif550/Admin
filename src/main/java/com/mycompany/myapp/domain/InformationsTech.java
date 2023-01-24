@@ -18,20 +18,23 @@ public class InformationsTech implements Serializable {
     @Id
     private String id;
 
-    @Field("pc_dom")
-    private String pcDom;
+    @Field("ipdfip_connexion")
+    private String ipdfipConnexion;
 
-    @Field("pc_dg_fi_p")
-    private String pcDGFiP;
+    @Field("ipfix_dmocss")
+    private String ipfixDMOCSS;
 
-    @Field("adresse_ssg")
-    private String adresseSSG;
+    @Field("adress_mac")
+    private String adressMAC;
+
+    @Field("i_p_teletravail")
+    private String iPTeletravail;
 
     @Field("adresse_dg_fi_p")
     private String adresseDGFiP;
 
-    @Field("collaborateur")
-    private Collaborateurs collaborateur;
+    @Field("pcDGFiP")
+    private Materiel pcDGFiP;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -48,43 +51,56 @@ public class InformationsTech implements Serializable {
         this.id = id;
     }
 
-    public String getPcDom() {
-        return this.pcDom;
+    public String getIpdfipConnexion() {
+        return this.ipdfipConnexion;
     }
 
-    public InformationsTech pcDom(String pcDom) {
-        this.setPcDom(pcDom);
+    public InformationsTech ipdfipConnexion(String ipdfipConnexion) {
+        this.setIpdfipConnexion(ipdfipConnexion);
         return this;
     }
 
-    public void setPcDom(String pcDom) {
-        this.pcDom = pcDom;
+    public void setIpdfipConnexion(String ipdfipConnexion) {
+        this.ipdfipConnexion = ipdfipConnexion;
     }
 
-    public String getPcDGFiP() {
-        return this.pcDGFiP;
+    public String getIpfixDMOCSS() {
+        return this.ipfixDMOCSS;
     }
 
-    public InformationsTech pcDGFiP(String pcDGFiP) {
-        this.setPcDGFiP(pcDGFiP);
+    public InformationsTech ipfixDMOCSS(String ipfixDMOCSS) {
+        this.setIpfixDMOCSS(ipfixDMOCSS);
         return this;
     }
 
-    public void setPcDGFiP(String pcDGFiP) {
-        this.pcDGFiP = pcDGFiP;
+    public void setIpfixDMOCSS(String ipfixDMOCSS) {
+        this.ipfixDMOCSS = ipfixDMOCSS;
     }
 
-    public String getAdresseSSG() {
-        return this.adresseSSG;
+    public String getAdressMAC() {
+        return this.adressMAC;
     }
 
-    public InformationsTech adresseSSG(String adresseSSG) {
-        this.setAdresseSSG(adresseSSG);
+    public InformationsTech adressMAC(String adressMAC) {
+        this.setAdressMAC(adressMAC);
         return this;
     }
 
-    public void setAdresseSSG(String adresseSSG) {
-        this.adresseSSG = adresseSSG;
+    public void setAdressMAC(String adressMAC) {
+        this.adressMAC = adressMAC;
+    }
+
+    public String getiPTeletravail() {
+        return this.iPTeletravail;
+    }
+
+    public InformationsTech iPTeletravail(String iPTeletravail) {
+        this.setiPTeletravail(iPTeletravail);
+        return this;
+    }
+
+    public void setiPTeletravail(String iPTeletravail) {
+        this.iPTeletravail = iPTeletravail;
     }
 
     public String getAdresseDGFiP() {
@@ -100,16 +116,16 @@ public class InformationsTech implements Serializable {
         this.adresseDGFiP = adresseDGFiP;
     }
 
-    public Collaborateurs getCollaborateur() {
-        return this.collaborateur;
+    public Materiel getPcDGFiP() {
+        return this.pcDGFiP;
     }
 
-    public void setCollaborateur(Collaborateurs collaborateurs) {
-        this.collaborateur = collaborateurs;
+    public void setPcDGFiP(Materiel materiel) {
+        this.pcDGFiP = materiel;
     }
 
-    public InformationsTech collaborateur(Collaborateurs collaborateurs) {
-        this.setCollaborateur(collaborateurs);
+    public InformationsTech pcDGFiP(Materiel materiel) {
+        this.setPcDGFiP(materiel);
         return this;
     }
 
@@ -137,9 +153,10 @@ public class InformationsTech implements Serializable {
     public String toString() {
         return "InformationsTech{" +
             "id=" + getId() +
-            ", pcDom='" + getPcDom() + "'" +
-            ", pcDGFiP='" + getPcDGFiP() + "'" +
-            ", adresseSSG='" + getAdresseSSG() + "'" +
+            ", ipdfipConnexion='" + getIpdfipConnexion() + "'" +
+            ", ipfixDMOCSS='" + getIpfixDMOCSS() + "'" +
+            ", adressMAC='" + getAdressMAC() + "'" +
+            ", iPTeletravail='" + getiPTeletravail() + "'" +
             ", adresseDGFiP='" + getAdresseDGFiP() + "'" +
             "}";
     }

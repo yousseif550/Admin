@@ -22,8 +22,11 @@ type ExtracDMOCSSFormGroupContent = {
   bureauActuel: FormControl<IExtracDMOCSS['bureauActuel']>;
   bureauDeplacement: FormControl<IExtracDMOCSS['bureauDeplacement']>;
   date: FormControl<IExtracDMOCSS['date']>;
-  ipPcDGFiP: FormControl<IExtracDMOCSS['ipPcDGFiP']>;
+  ipPcDgfip: FormControl<IExtracDMOCSS['ipPcDgfip']>;
   ipVpnIPSEC: FormControl<IExtracDMOCSS['ipVpnIPSEC']>;
+  ioTeletravail: FormControl<IExtracDMOCSS['ioTeletravail']>;
+  statut: FormControl<IExtracDMOCSS['statut']>;
+  numVersion: FormControl<IExtracDMOCSS['numVersion']>;
   collaborateur: FormControl<IExtracDMOCSS['collaborateur']>;
   materiel: FormControl<IExtracDMOCSS['materiel']>;
   localisation: FormControl<IExtracDMOCSS['localisation']>;
@@ -50,8 +53,11 @@ export class ExtracDMOCSSFormService {
       bureauActuel: new FormControl(extracDMOCSSRawValue.bureauActuel),
       bureauDeplacement: new FormControl(extracDMOCSSRawValue.bureauDeplacement),
       date: new FormControl(extracDMOCSSRawValue.date),
-      ipPcDGFiP: new FormControl(extracDMOCSSRawValue.ipPcDGFiP),
+      ipPcDgfip: new FormControl(extracDMOCSSRawValue.ipPcDgfip),
       ipVpnIPSEC: new FormControl(extracDMOCSSRawValue.ipVpnIPSEC),
+      ioTeletravail: new FormControl(extracDMOCSSRawValue.ioTeletravail),
+      statut: new FormControl(extracDMOCSSRawValue.statut),
+      numVersion: new FormControl(extracDMOCSSRawValue.numVersion),
       collaborateur: new FormControl(extracDMOCSSRawValue.collaborateur),
       materiel: new FormControl(extracDMOCSSRawValue.materiel),
       localisation: new FormControl(extracDMOCSSRawValue.localisation),

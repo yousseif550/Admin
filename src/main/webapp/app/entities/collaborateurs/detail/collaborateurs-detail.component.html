@@ -42,6 +42,19 @@
         <dd>
           <span>{{ collaborateurs.dateSortie | formatMediumDate }}</span>
         </dd>
+        <dt><span jhiTranslate="ihmApp.collaborateurs.localisation">Localisation</span></dt>
+        <dd>
+          <div *ngIf="collaborateurs.localisation">
+            <a [routerLink]="['/localisation', collaborateurs.localisation.id, 'view']">{{ collaborateurs.localisation.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.collaborateurs.projet">Projet</span></dt>
+        <dd>
+          <span *ngFor="let projet of collaborateurs.projets; let last = last">
+            <a [routerLink]="['/projet', projet.id, 'view']">{{ projet.id }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
       </dl>
 
       <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">

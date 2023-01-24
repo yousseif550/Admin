@@ -28,8 +28,8 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 @WithMockUser
 class HistoriqueResourceIT {
 
-    private static final String DEFAULT_P_C = "AAAAAAAAAA";
-    private static final String UPDATED_P_C = "BBBBBBBBBB";
+    private static final String DEFAULT_PC = "AAAAAAAAAA";
+    private static final String UPDATED_PC = "BBBBBBBBBB";
 
     private static final String DEFAULT_ZONE = "AAAAAAAAAA";
     private static final String UPDATED_ZONE = "BBBBBBBBBB";
@@ -55,7 +55,7 @@ class HistoriqueResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Historique createEntity() {
-        Historique historique = new Historique().pC(DEFAULT_P_C).zone(DEFAULT_ZONE).dateMouvement(DEFAULT_DATE_MOUVEMENT);
+        Historique historique = new Historique().pc(DEFAULT_PC).zone(DEFAULT_ZONE).dateMouvement(DEFAULT_DATE_MOUVEMENT);
         return historique;
     }
 
@@ -66,7 +66,7 @@ class HistoriqueResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Historique createUpdatedEntity() {
-        Historique historique = new Historique().pC(UPDATED_P_C).zone(UPDATED_ZONE).dateMouvement(UPDATED_DATE_MOUVEMENT);
+        Historique historique = new Historique().pc(UPDATED_PC).zone(UPDATED_ZONE).dateMouvement(UPDATED_DATE_MOUVEMENT);
         return historique;
     }
 
@@ -93,7 +93,7 @@ class HistoriqueResourceIT {
         List<Historique> historiqueList = historiqueRepository.findAll().collectList().block();
         assertThat(historiqueList).hasSize(databaseSizeBeforeCreate + 1);
         Historique testHistorique = historiqueList.get(historiqueList.size() - 1);
-        assertThat(testHistorique.getpC()).isEqualTo(DEFAULT_P_C);
+        assertThat(testHistorique.getPc()).isEqualTo(DEFAULT_PC);
         assertThat(testHistorique.getZone()).isEqualTo(DEFAULT_ZONE);
         assertThat(testHistorique.getDateMouvement()).isEqualTo(DEFAULT_DATE_MOUVEMENT);
     }
@@ -143,7 +143,7 @@ class HistoriqueResourceIT {
         assertThat(historiqueList).isNotNull();
         assertThat(historiqueList).hasSize(1);
         Historique testHistorique = historiqueList.get(0);
-        assertThat(testHistorique.getpC()).isEqualTo(DEFAULT_P_C);
+        assertThat(testHistorique.getPc()).isEqualTo(DEFAULT_PC);
         assertThat(testHistorique.getZone()).isEqualTo(DEFAULT_ZONE);
         assertThat(testHistorique.getDateMouvement()).isEqualTo(DEFAULT_DATE_MOUVEMENT);
     }
@@ -166,8 +166,8 @@ class HistoriqueResourceIT {
             .expectBody()
             .jsonPath("$.[*].id")
             .value(hasItem(historique.getId()))
-            .jsonPath("$.[*].pC")
-            .value(hasItem(DEFAULT_P_C))
+            .jsonPath("$.[*].pc")
+            .value(hasItem(DEFAULT_PC))
             .jsonPath("$.[*].zone")
             .value(hasItem(DEFAULT_ZONE))
             .jsonPath("$.[*].dateMouvement")
@@ -192,8 +192,8 @@ class HistoriqueResourceIT {
             .expectBody()
             .jsonPath("$.id")
             .value(is(historique.getId()))
-            .jsonPath("$.pC")
-            .value(is(DEFAULT_P_C))
+            .jsonPath("$.pc")
+            .value(is(DEFAULT_PC))
             .jsonPath("$.zone")
             .value(is(DEFAULT_ZONE))
             .jsonPath("$.dateMouvement")
@@ -221,7 +221,7 @@ class HistoriqueResourceIT {
 
         // Update the historique
         Historique updatedHistorique = historiqueRepository.findById(historique.getId()).block();
-        updatedHistorique.pC(UPDATED_P_C).zone(UPDATED_ZONE).dateMouvement(UPDATED_DATE_MOUVEMENT);
+        updatedHistorique.pc(UPDATED_PC).zone(UPDATED_ZONE).dateMouvement(UPDATED_DATE_MOUVEMENT);
 
         webTestClient
             .put()
@@ -236,7 +236,7 @@ class HistoriqueResourceIT {
         List<Historique> historiqueList = historiqueRepository.findAll().collectList().block();
         assertThat(historiqueList).hasSize(databaseSizeBeforeUpdate);
         Historique testHistorique = historiqueList.get(historiqueList.size() - 1);
-        assertThat(testHistorique.getpC()).isEqualTo(UPDATED_P_C);
+        assertThat(testHistorique.getPc()).isEqualTo(UPDATED_PC);
         assertThat(testHistorique.getZone()).isEqualTo(UPDATED_ZONE);
         assertThat(testHistorique.getDateMouvement()).isEqualTo(UPDATED_DATE_MOUVEMENT);
     }
@@ -312,7 +312,7 @@ class HistoriqueResourceIT {
         Historique partialUpdatedHistorique = new Historique();
         partialUpdatedHistorique.setId(historique.getId());
 
-        partialUpdatedHistorique.pC(UPDATED_P_C);
+        partialUpdatedHistorique.pc(UPDATED_PC);
 
         webTestClient
             .patch()
@@ -327,7 +327,7 @@ class HistoriqueResourceIT {
         List<Historique> historiqueList = historiqueRepository.findAll().collectList().block();
         assertThat(historiqueList).hasSize(databaseSizeBeforeUpdate);
         Historique testHistorique = historiqueList.get(historiqueList.size() - 1);
-        assertThat(testHistorique.getpC()).isEqualTo(UPDATED_P_C);
+        assertThat(testHistorique.getPc()).isEqualTo(UPDATED_PC);
         assertThat(testHistorique.getZone()).isEqualTo(DEFAULT_ZONE);
         assertThat(testHistorique.getDateMouvement()).isEqualTo(DEFAULT_DATE_MOUVEMENT);
     }
@@ -343,7 +343,7 @@ class HistoriqueResourceIT {
         Historique partialUpdatedHistorique = new Historique();
         partialUpdatedHistorique.setId(historique.getId());
 
-        partialUpdatedHistorique.pC(UPDATED_P_C).zone(UPDATED_ZONE).dateMouvement(UPDATED_DATE_MOUVEMENT);
+        partialUpdatedHistorique.pc(UPDATED_PC).zone(UPDATED_ZONE).dateMouvement(UPDATED_DATE_MOUVEMENT);
 
         webTestClient
             .patch()
@@ -358,7 +358,7 @@ class HistoriqueResourceIT {
         List<Historique> historiqueList = historiqueRepository.findAll().collectList().block();
         assertThat(historiqueList).hasSize(databaseSizeBeforeUpdate);
         Historique testHistorique = historiqueList.get(historiqueList.size() - 1);
-        assertThat(testHistorique.getpC()).isEqualTo(UPDATED_P_C);
+        assertThat(testHistorique.getPc()).isEqualTo(UPDATED_PC);
         assertThat(testHistorique.getZone()).isEqualTo(UPDATED_ZONE);
         assertThat(testHistorique.getDateMouvement()).isEqualTo(UPDATED_DATE_MOUVEMENT);
     }

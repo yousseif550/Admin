@@ -32,10 +32,7 @@
 
         <div class="row mb-3">
           <label class="form-label" jhiTranslate="ihmApp.mouvement.type" for="field_type">Type</label>
-          <select class="form-control" name="type" formControlName="type" id="field_type" data-cy="type">
-            <option [ngValue]="null">{{ 'ihmApp.Type.null' | translate }}</option>
-            <option *ngFor="let type of typeValues" [value]="type">{{ 'ihmApp.Type.' + type | translate }}</option>
-          </select>
+          <input type="text" class="form-control" name="type" id="field_type" data-cy="type" formControlName="type" />
         </div>
 
         <div class="row mb-3">
@@ -58,6 +55,50 @@
         <div class="row mb-3">
           <label class="form-label" jhiTranslate="ihmApp.mouvement.user" for="field_user">User</label>
           <input type="text" class="form-control" name="user" id="field_user" data-cy="user" formControlName="user" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ihmApp.mouvement.commentaire" for="field_commentaire">Commentaire</label>
+          <input
+            type="text"
+            class="form-control"
+            name="commentaire"
+            id="field_commentaire"
+            data-cy="commentaire"
+            formControlName="commentaire"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ihmApp.mouvement.asset" for="field_asset">Asset</label>
+          <select
+            class="form-control"
+            id="field_asset"
+            data-cy="asset"
+            name="asset"
+            formControlName="asset"
+            [compareWith]="compareMateriel"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="materielOption" *ngFor="let materielOption of materielsSharedCollection">{{ materielOption.asset }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ihmApp.mouvement.localisation" for="field_localisation">Localisation</label>
+          <select
+            class="form-control"
+            id="field_localisation"
+            data-cy="localisation"
+            name="localisation"
+            formControlName="localisation"
+            [compareWith]="compareLocalisation"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="localisationOption" *ngFor="let localisationOption of localisationsSharedCollection">
+              {{ localisationOption.batiment }}
+            </option>
+          </select>
         </div>
       </div>
 

@@ -14,13 +14,9 @@
         <dd>
           <span>{{ numeroInventaire.id }}</span>
         </dd>
-        <dt><span jhiTranslate="ihmApp.numeroInventaire.zone">Zone</span></dt>
+        <dt><span jhiTranslate="ihmApp.numeroInventaire.type">Type</span></dt>
         <dd>
-          <span>{{ numeroInventaire.zone }}</span>
-        </dd>
-        <dt><span jhiTranslate="ihmApp.numeroInventaire.valeur">Valeur</span></dt>
-        <dd>
-          <span>{{ numeroInventaire.valeur }}</span>
+          <span>{{ numeroInventaire.type }}</span>
         </dd>
         <dt><span jhiTranslate="ihmApp.numeroInventaire.disponible">Disponible</span></dt>
         <dd>
@@ -34,10 +30,30 @@
         <dd>
           <span>{{ numeroInventaire.dateModification | formatMediumDate }}</span>
         </dd>
+        <dt><span jhiTranslate="ihmApp.numeroInventaire.commentaire">Commentaire</span></dt>
+        <dd>
+          <span>{{ numeroInventaire.commentaire }}</span>
+        </dd>
         <dt><span jhiTranslate="ihmApp.numeroInventaire.materielActuel">Materiel Actuel</span></dt>
         <dd>
           <div *ngIf="numeroInventaire.materielActuel">
             <a [routerLink]="['/materiel', numeroInventaire.materielActuel.id, 'view']">{{ numeroInventaire.materielActuel.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.numeroInventaire.ancienProprietaire">Ancien Proprietaire</span></dt>
+        <dd>
+          <div *ngIf="numeroInventaire.ancienProprietaire">
+            <a [routerLink]="['/collaborateurs', numeroInventaire.ancienProprietaire.id, 'view']">{{
+              numeroInventaire.ancienProprietaire.id
+            }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.numeroInventaire.nouveauProprietaire">Nouveau Proprietaire</span></dt>
+        <dd>
+          <div *ngIf="numeroInventaire.nouveauProprietaire">
+            <a [routerLink]="['/collaborateurs', numeroInventaire.nouveauProprietaire.id, 'view']">{{
+              numeroInventaire.nouveauProprietaire.id
+            }}</a>
           </div>
         </dd>
       </dl>

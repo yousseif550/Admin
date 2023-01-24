@@ -18,12 +18,15 @@
         "title": "Extrac DMOCSS"
       },
       "id": "ID",
-      "adressePhysiqueDGFiP": "Adresse Physique DG Fi P",
+      "adressePhysiqueDGFiP": "Adresse Physique DGFiP",
       "bureauActuel": "Bureau Actuel",
       "bureauDeplacement": "Bureau Deplacement",
       "date": "Date",
-      "ipPcDGFiP": "Ip Pc DG Fi P",
+      "ipPcDgfip": "Ip Pc Dgfip",
       "ipVpnIPSEC": "Ip Vpn IPSEC",
+      "ioTeletravail": "Io Teletravail",
+      "statut": "Statut",
+      "numVersion": "Num Version",
       "collaborateur": "Collaborateur",
       "materiel": "Materiel",
       "localisation": "Localisation"

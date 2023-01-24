@@ -6,7 +6,6 @@ import static org.hamcrest.Matchers.is;
 
 import com.mycompany.myapp.IntegrationTest;
 import com.mycompany.myapp.domain.Mouvement;
-import com.mycompany.myapp.domain.enumeration.Type;
 import com.mycompany.myapp.repository.MouvementRepository;
 import java.time.Duration;
 import java.time.LocalDate;
@@ -32,8 +31,8 @@ class MouvementResourceIT {
     private static final LocalDate DEFAULT_DATE = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_DATE = LocalDate.now(ZoneId.systemDefault());
 
-    private static final Type DEFAULT_TYPE = Type.Demande;
-    private static final Type UPDATED_TYPE = Type.Modification;
+    private static final String DEFAULT_TYPE = "AAAAAAAAAA";
+    private static final String UPDATED_TYPE = "BBBBBBBBBB";
 
     private static final String DEFAULT_SOURCE = "AAAAAAAAAA";
     private static final String UPDATED_SOURCE = "BBBBBBBBBB";
@@ -43,6 +42,9 @@ class MouvementResourceIT {
 
     private static final String DEFAULT_USER = "AAAAAAAAAA";
     private static final String UPDATED_USER = "BBBBBBBBBB";
+
+    private static final String DEFAULT_COMMENTAIRE = "AAAAAAAAAA";
+    private static final String UPDATED_COMMENTAIRE = "BBBBBBBBBB";
 
     private static final String ENTITY_API_URL = "/api/mouvements";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
@@ -67,7 +69,8 @@ class MouvementResourceIT {
             .type(DEFAULT_TYPE)
             .source(DEFAULT_SOURCE)
             .destination(DEFAULT_DESTINATION)
-            .user(DEFAULT_USER);
+            .user(DEFAULT_USER)
+            .commentaire(DEFAULT_COMMENTAIRE);
         return mouvement;
     }
 
@@ -83,7 +86,8 @@ class MouvementResourceIT {
             .type(UPDATED_TYPE)
             .source(UPDATED_SOURCE)
             .destination(UPDATED_DESTINATION)
-            .user(UPDATED_USER);
+            .user(UPDATED_USER)
+            .commentaire(UPDATED_COMMENTAIRE);
         return mouvement;
     }
 
@@ -115,6 +119,7 @@ class MouvementResourceIT {
         assertThat(testMouvement.getSource()).isEqualTo(DEFAULT_SOURCE);
         assertThat(testMouvement.getDestination()).isEqualTo(DEFAULT_DESTINATION);
         assertThat(testMouvement.getUser()).isEqualTo(DEFAULT_USER);
+        assertThat(testMouvement.getCommentaire()).isEqualTo(DEFAULT_COMMENTAIRE);
     }
 
     @Test
@@ -167,6 +172,7 @@ class MouvementResourceIT {
         assertThat(testMouvement.getSource()).isEqualTo(DEFAULT_SOURCE);
         assertThat(testMouvement.getDestination()).isEqualTo(DEFAULT_DESTINATION);
         assertThat(testMouvement.getUser()).isEqualTo(DEFAULT_USER);
+        assertThat(testMouvement.getCommentaire()).isEqualTo(DEFAULT_COMMENTAIRE);
     }
 
     @Test
@@ -190,13 +196,15 @@ class MouvementResourceIT {
             .jsonPath("$.[*].date")
             .value(hasItem(DEFAULT_DATE.toString()))
             .jsonPath("$.[*].type")
-            .value(hasItem(DEFAULT_TYPE.toString()))
+            .value(hasItem(DEFAULT_TYPE))
             .jsonPath("$.[*].source")
             .value(hasItem(DEFAULT_SOURCE))
             .jsonPath("$.[*].destination")
             .value(hasItem(DEFAULT_DESTINATION))
             .jsonPath("$.[*].user")
-            .value(hasItem(DEFAULT_USER));
+            .value(hasItem(DEFAULT_USER))
+            .jsonPath("$.[*].commentaire")
+            .value(hasItem(DEFAULT_COMMENTAIRE));
     }
 
     @Test
@@ -220,13 +228,15 @@ class MouvementResourceIT {
             .jsonPath("$.date")
             .value(is(DEFAULT_DATE.toString()))
             .jsonPath("$.type")
-            .value(is(DEFAULT_TYPE.toString()))
+            .value(is(DEFAULT_TYPE))
             .jsonPath("$.source")
             .value(is(DEFAULT_SOURCE))
             .jsonPath("$.destination")
             .value(is(DEFAULT_DESTINATION))
             .jsonPath("$.user")
-            .value(is(DEFAULT_USER));
+            .value(is(DEFAULT_USER))
+            .jsonPath("$.commentaire")
+            .value(is(DEFAULT_COMMENTAIRE));
     }
 
     @Test
@@ -250,7 +260,13 @@ class MouvementResourceIT {
 
         // Update the mouvement
         Mouvement updatedMouvement = mouvementRepository.findById(mouvement.getId()).block();
-        updatedMouvement.date(UPDATED_DATE).type(UPDATED_TYPE).source(UPDATED_SOURCE).destination(UPDATED_DESTINATION).user(UPDATED_USER);
+        updatedMouvement
+            .date(UPDATED_DATE)
+            .type(UPDATED_TYPE)
+            .source(UPDATED_SOURCE)
+            .destination(UPDATED_DESTINATION)
+            .user(UPDATED_USER)
+            .commentaire(UPDATED_COMMENTAIRE);
 
         webTestClient
             .put()
@@ -270,6 +286,7 @@ class MouvementResourceIT {
         assertThat(testMouvement.getSource()).isEqualTo(UPDATED_SOURCE);
         assertThat(testMouvement.getDestination()).isEqualTo(UPDATED_DESTINATION);
         assertThat(testMouvement.getUser()).isEqualTo(UPDATED_USER);
+        assertThat(testMouvement.getCommentaire()).isEqualTo(UPDATED_COMMENTAIRE);
     }
 
     @Test
@@ -343,7 +360,7 @@ class MouvementResourceIT {
         Mouvement partialUpdatedMouvement = new Mouvement();
         partialUpdatedMouvement.setId(mouvement.getId());
 
-        partialUpdatedMouvement.type(UPDATED_TYPE).source(UPDATED_SOURCE).destination(UPDATED_DESTINATION);
+        partialUpdatedMouvement.type(UPDATED_TYPE).source(UPDATED_SOURCE).destination(UPDATED_DESTINATION).commentaire(UPDATED_COMMENTAIRE);
 
         webTestClient
             .patch()
@@ -363,6 +380,7 @@ class MouvementResourceIT {
         assertThat(testMouvement.getSource()).isEqualTo(UPDATED_SOURCE);
         assertThat(testMouvement.getDestination()).isEqualTo(UPDATED_DESTINATION);
         assertThat(testMouvement.getUser()).isEqualTo(DEFAULT_USER);
+        assertThat(testMouvement.getCommentaire()).isEqualTo(UPDATED_COMMENTAIRE);
     }
 
     @Test
@@ -381,7 +399,8 @@ class MouvementResourceIT {
             .type(UPDATED_TYPE)
             .source(UPDATED_SOURCE)
             .destination(UPDATED_DESTINATION)
-            .user(UPDATED_USER);
+            .user(UPDATED_USER)
+            .commentaire(UPDATED_COMMENTAIRE);
 
         webTestClient
             .patch()
@@ -401,6 +420,7 @@ class MouvementResourceIT {
         assertThat(testMouvement.getSource()).isEqualTo(UPDATED_SOURCE);
         assertThat(testMouvement.getDestination()).isEqualTo(UPDATED_DESTINATION);
         assertThat(testMouvement.getUser()).isEqualTo(UPDATED_USER);
+        assertThat(testMouvement.getCommentaire()).isEqualTo(UPDATED_COMMENTAIRE);
     }
 
     @Test

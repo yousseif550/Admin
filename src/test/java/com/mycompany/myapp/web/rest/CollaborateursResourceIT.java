@@ -3,6 +3,7 @@ package com.mycompany.myapp.web.rest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
 import static org.hamcrest.Matchers.is;
+import static org.mockito.Mockito.*;
 
 import com.mycompany.myapp.IntegrationTest;
 import com.mycompany.myapp.domain.Collaborateurs;
@@ -14,16 +15,25 @@ import java.util.List;
 import java.util.UUID;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWebTestClient;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.reactive.server.WebTestClient;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 /**
  * Integration tests for the {@link CollaborateursResource} REST controller.
  */
 @IntegrationTest
+@ExtendWith(MockitoExtension.class)
 @AutoConfigureWebTestClient(timeout = IntegrationTest.DEFAULT_ENTITY_TIMEOUT)
 @WithMockUser
 class CollaborateursResourceIT {
@@ -31,8 +41,8 @@ class CollaborateursResourceIT {
     private static final String DEFAULT_NOM = "AAAAAAAAAA";
     private static final String UPDATED_NOM = "BBBBBBBBBB";
 
-    private static final Long DEFAULT_IDENTIFIANT = 1L;
-    private static final Long UPDATED_IDENTIFIANT = 2L;
+    private static final String DEFAULT_IDENTIFIANT = "AAAAAAAAAA";
+    private static final String UPDATED_IDENTIFIANT = "BBBBBBBBBB";
 
     private static final Long DEFAULT_TEL = 1L;
     private static final Long UPDATED_TEL = 2L;
@@ -54,6 +64,9 @@ class CollaborateursResourceIT {
 
     @Autowired
     private CollaborateursRepository collaborateursRepository;
+
+    @Mock
+    private CollaborateursRepository collaborateursRepositoryMock;
 
     @Autowired
     private WebTestClient webTestClient;
@@ -203,7 +216,7 @@ class CollaborateursResourceIT {
             .jsonPath("$.[*].nom")
             .value(hasItem(DEFAULT_NOM))
             .jsonPath("$.[*].identifiant")
-            .value(hasItem(DEFAULT_IDENTIFIANT.intValue()))
+            .value(hasItem(DEFAULT_IDENTIFIANT))
             .jsonPath("$.[*].tel")
             .value(hasItem(DEFAULT_TEL.intValue()))
             .jsonPath("$.[*].prestataire")
@@ -214,6 +227,23 @@ class CollaborateursResourceIT {
             .value(hasItem(DEFAULT_DATE_ENTREE.toString()))
             .jsonPath("$.[*].dateSortie")
             .value(hasItem(DEFAULT_DATE_SORTIE.toString()));
+    }
+
+    @SuppressWarnings({ "unchecked" })
+    void getAllCollaborateursWithEagerRelationshipsIsEnabled() {
+        when(collaborateursRepositoryMock.findAllWithEagerRelationships(any())).thenReturn(Flux.empty());
+
+        webTestClient.get().uri(ENTITY_API_URL + "?eagerload=true").exchange().expectStatus().isOk();
+
+        verify(collaborateursRepositoryMock, times(1)).findAllWithEagerRelationships(any());
+    }
+
+    @SuppressWarnings({ "unchecked" })
+    void getAllCollaborateursWithEagerRelationshipsIsNotEnabled() {
+        when(collaborateursRepositoryMock.findAllWithEagerRelationships(any())).thenReturn(Flux.empty());
+
+        webTestClient.get().uri(ENTITY_API_URL + "?eagerload=false").exchange().expectStatus().isOk();
+        verify(collaborateursRepositoryMock, times(1)).findAllWithEagerRelationships(any());
     }
 
     @Test
@@ -237,7 +267,7 @@ class CollaborateursResourceIT {
             .jsonPath("$.nom")
             .value(is(DEFAULT_NOM))
             .jsonPath("$.identifiant")
-            .value(is(DEFAULT_IDENTIFIANT.intValue()))
+            .value(is(DEFAULT_IDENTIFIANT))
             .jsonPath("$.tel")
             .value(is(DEFAULT_TEL.intValue()))
             .jsonPath("$.prestataire")

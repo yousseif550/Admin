@@ -1,13 +1,17 @@
 import dayjs from 'dayjs/esm';
-import { Type } from 'app/entities/enumerations/type.model';
+import { IMateriel } from 'app/entities/materiel/materiel.model';
+import { ILocalisation } from 'app/entities/localisation/localisation.model';
 
 export interface IMouvement {
   id: string;
   date?: dayjs.Dayjs | null;
-  type?: Type | null;
+  type?: string | null;
   source?: string | null;
   destination?: string | null;
   user?: string | null;
+  commentaire?: string | null;
+  asset?: Pick<IMateriel, 'id'> | null;
+  localisation?: Pick<ILocalisation, 'id'> | null;
 }
 
 export type NewMouvement = Omit<IMouvement, 'id'> & { id: null };

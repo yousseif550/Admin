@@ -18,7 +18,7 @@ type HistoriqueFormDefaults = Pick<NewHistorique, 'id'>;
 
 type HistoriqueFormGroupContent = {
   id: FormControl<IHistorique['id'] | NewHistorique['id']>;
-  pC: FormControl<IHistorique['pC']>;
+  pc: FormControl<IHistorique['pc']>;
   zone: FormControl<IHistorique['zone']>;
   dateMouvement: FormControl<IHistorique['dateMouvement']>;
   ancienProprietaire: FormControl<IHistorique['ancienProprietaire']>;
@@ -43,7 +43,7 @@ export class HistoriqueFormService {
           validators: [Validators.required],
         }
       ),
-      pC: new FormControl(historiqueRawValue.pC),
+      pc: new FormControl(historiqueRawValue.pc),
       zone: new FormControl(historiqueRawValue.zone),
       dateMouvement: new FormControl(historiqueRawValue.dateMouvement),
       ancienProprietaire: new FormControl(historiqueRawValue.ancienProprietaire),

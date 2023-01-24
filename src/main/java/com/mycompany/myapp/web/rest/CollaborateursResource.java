@@ -184,12 +184,17 @@ public class CollaborateursResource {
     /**
      * {@code GET  /collaborateurs} : get all the collaborateurs.
      *
+     * @param eagerload flag to eager load entities from relationships (This is applicable for many-to-many).
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of collaborateurs in body.
      */
     @GetMapping("/collaborateurs")
-    public Mono<List<Collaborateurs>> getAllCollaborateurs() {
+    public Mono<List<Collaborateurs>> getAllCollaborateurs(@RequestParam(required = false, defaultValue = "false") boolean eagerload) {
         log.debug("REST request to get all Collaborateurs");
-        return collaborateursRepository.findAll().collectList();
+        if (eagerload) {
+            return collaborateursRepository.findAllWithEagerRelationships().collectList();
+        } else {
+            return collaborateursRepository.findAll().collectList();
+        }
     }
 
     /**
@@ -211,7 +216,7 @@ public class CollaborateursResource {
     @GetMapping("/collaborateurs/{id}")
     public Mono<ResponseEntity<Collaborateurs>> getCollaborateurs(@PathVariable String id) {
         log.debug("REST request to get Collaborateurs : {}", id);
-        Mono<Collaborateurs> collaborateurs = collaborateursRepository.findById(id);
+        Mono<Collaborateurs> collaborateurs = collaborateursRepository.findOneWithEagerRelationships(id);
         return ResponseUtil.wrapOrNotFound(collaborateurs);
     }
 

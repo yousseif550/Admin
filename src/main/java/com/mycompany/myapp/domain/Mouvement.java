@@ -1,6 +1,6 @@
 package com.mycompany.myapp.domain;
 
-import com.mycompany.myapp.domain.enumeration.Type;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import java.time.LocalDate;
 import org.springframework.data.annotation.Id;
@@ -23,7 +23,7 @@ public class Mouvement implements Serializable {
     private LocalDate date;
 
     @Field("type")
-    private Type type;
+    private String type;
 
     @Field("source")
     private String source;
@@ -33,6 +33,15 @@ public class Mouvement implements Serializable {
 
     @Field("user")
     private String user;
+
+    @Field("commentaire")
+    private String commentaire;
+
+    @Field("asset")
+    private Materiel asset;
+
+    @Field("localisation")
+    private Localisation localisation;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -62,16 +71,16 @@ public class Mouvement implements Serializable {
         this.date = date;
     }
 
-    public Type getType() {
+    public String getType() {
         return this.type;
     }
 
-    public Mouvement type(Type type) {
+    public Mouvement type(String type) {
         this.setType(type);
         return this;
     }
 
-    public void setType(Type type) {
+    public void setType(String type) {
         this.type = type;
     }
 
@@ -114,6 +123,45 @@ public class Mouvement implements Serializable {
         this.user = user;
     }
 
+    public String getCommentaire() {
+        return this.commentaire;
+    }
+
+    public Mouvement commentaire(String commentaire) {
+        this.setCommentaire(commentaire);
+        return this;
+    }
+
+    public void setCommentaire(String commentaire) {
+        this.commentaire = commentaire;
+    }
+
+    public Materiel getAsset() {
+        return this.asset;
+    }
+
+    public void setAsset(Materiel materiel) {
+        this.asset = materiel;
+    }
+
+    public Mouvement asset(Materiel materiel) {
+        this.setAsset(materiel);
+        return this;
+    }
+
+    public Localisation getLocalisation() {
+        return this.localisation;
+    }
+
+    public void setLocalisation(Localisation localisation) {
+        this.localisation = localisation;
+    }
+
+    public Mouvement localisation(Localisation localisation) {
+        this.setLocalisation(localisation);
+        return this;
+    }
+
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
     @Override
@@ -143,6 +191,7 @@ public class Mouvement implements Serializable {
             ", source='" + getSource() + "'" +
             ", destination='" + getDestination() + "'" +
             ", user='" + getUser() + "'" +
+            ", commentaire='" + getCommentaire() + "'" +
             "}";
     }
 }

@@ -7,8 +7,6 @@ import { finalize, map } from 'rxjs/operators';
 import { MaterielFormService, MaterielFormGroup } from './materiel-form.service';
 import { IMateriel } from '../materiel.model';
 import { MaterielService } from '../service/materiel.service';
-import { INumeroInventaire } from 'app/entities/numero-inventaire/numero-inventaire.model';
-import { NumeroInventaireService } from 'app/entities/numero-inventaire/service/numero-inventaire.service';
 import { ILocalisation } from 'app/entities/localisation/localisation.model';
 import { LocalisationService } from 'app/entities/localisation/service/localisation.service';
 import { ICollaborateurs } from 'app/entities/collaborateurs/collaborateurs.model';
@@ -22,7 +20,6 @@ export class MaterielUpdateComponent implements OnInit {
   isSaving = false;
   materiel: IMateriel | null = null;
 
-  numeroInventairesSharedCollection: INumeroInventaire[] = [];
   localisationsSharedCollection: ILocalisation[] = [];
   collaborateursSharedCollection: ICollaborateurs[] = [];
 
@@ -31,14 +28,10 @@ export class MaterielUpdateComponent implements OnInit {
   constructor(
     protected materielService: MaterielService,
     protected materielFormService: MaterielFormService,
-    protected numeroInventaireService: NumeroInventaireService,
     protected localisationService: LocalisationService,
     protected collaborateursService: CollaborateursService,
     protected activatedRoute: ActivatedRoute
   ) {}
-
-  compareNumeroInventaire = (o1: INumeroInventaire | null, o2: INumeroInventaire | null): boolean =>
-    this.numeroInventaireService.compareNumeroInventaire(o1, o2);
 
   compareLocalisation = (o1: ILocalisation | null, o2: ILocalisation | null): boolean =>
     this.localisationService.compareLocalisation(o1, o2);
@@ -94,10 +87,6 @@ export class MaterielUpdateComponent implements OnInit {
     this.materiel = materiel;
     this.materielFormService.resetForm(this.editForm, materiel);
 
-    this.numeroInventairesSharedCollection = this.numeroInventaireService.addNumeroInventaireToCollectionIfMissing<INumeroInventaire>(
-      this.numeroInventairesSharedCollection,
-      materiel.numeroInventaire
-    );
     this.localisationsSharedCollection = this.localisationService.addLocalisationToCollectionIfMissing<ILocalisation>(
       this.localisationsSharedCollection,
       materiel.localisation
@@ -109,19 +98,6 @@ export class MaterielUpdateComponent implements OnInit {
   }
 
   protected loadRelationshipsOptions(): void {
-    this.numeroInventaireService
-      .query()
-      .pipe(map((res: HttpResponse<INumeroInventaire[]>) => res.body ?? []))
-      .pipe(
-        map((numeroInventaires: INumeroInventaire[]) =>
-          this.numeroInventaireService.addNumeroInventaireToCollectionIfMissing<INumeroInventaire>(
-            numeroInventaires,
-            this.materiel?.numeroInventaire
-          )
-        )
-      )
-      .subscribe((numeroInventaires: INumeroInventaire[]) => (this.numeroInventairesSharedCollection = numeroInventaires));
-
     this.localisationService
       .query()
       .pipe(map((res: HttpResponse<ILocalisation[]>) => res.body ?? []))

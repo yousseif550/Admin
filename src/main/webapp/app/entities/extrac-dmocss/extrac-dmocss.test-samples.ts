@@ -1,5 +1,7 @@
 import dayjs from 'dayjs/esm';
 
+import { Etat } from 'app/entities/enumerations/etat.model';
+
 import { IExtracDMOCSS, NewExtracDMOCSS } from './extrac-dmocss.model';
 
 export const sampleWithRequiredData: IExtracDMOCSS = {
@@ -7,20 +9,24 @@ export const sampleWithRequiredData: IExtracDMOCSS = {
 };
 
 export const sampleWithPartialData: IExtracDMOCSS = {
-  id: '96004f8b-1e5e-49bc-8cc8-5998a1ed0ce8',
-  adressePhysiqueDGFiP: 'Dollar',
-  date: dayjs('2023-01-02'),
-  ipVpnIPSEC: 'extend',
+  id: '04f8b1e5-e9bc-4ccc-8599-8a1ed0ce81b1',
+  adressePhysiqueDGFiP: 'cohesive',
+  date: dayjs('2023-01-01'),
+  ipVpnIPSEC: 'Markets Loan HTTP',
+  ioTeletravail: 'Architect Applications Frozen',
 };
 
 export const sampleWithFullData: IExtracDMOCSS = {
-  id: 'f609d6e0-2ef7-4be7-803f-38b3eb886491',
-  adressePhysiqueDGFiP: 'Paradigm Southern interactive',
-  bureauActuel: 'York brand bleeding-edge',
-  bureauDeplacement: 'transparent',
-  date: dayjs('2023-01-01'),
-  ipPcDGFiP: 'Fresh Buckinghamshire',
-  ipVpnIPSEC: 'lavender indexing',
+  id: 'b3eb8864-91ff-44a8-8557-4c9ac57357e3',
+  adressePhysiqueDGFiP: 'navigating Creek',
+  bureauActuel: 'Buckinghamshire sticky',
+  bureauDeplacement: 'indexing generate Rustic',
+  date: dayjs('2023-01-02'),
+  ipPcDgfip: 'auxiliary',
+  ipVpnIPSEC: 'rich',
+  ioTeletravail: 'Tasty Optimization invoice',
+  statut: Etat['EnCours'],
+  numVersion: 'generating Assurance',
 };
 
 export const sampleWithNewData: NewExtracDMOCSS = {
