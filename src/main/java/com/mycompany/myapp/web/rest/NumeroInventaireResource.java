@@ -145,14 +145,8 @@ public class NumeroInventaireResource {
                 Mono<NumeroInventaire> result = numeroInventaireRepository
                     .findById(numeroInventaire.getId())
                     .map(existingNumeroInventaire -> {
-                        if (numeroInventaire.getType() != null) {
-                            existingNumeroInventaire.setType(numeroInventaire.getType());
-                        }
                         if (numeroInventaire.getDisponible() != null) {
                             existingNumeroInventaire.setDisponible(numeroInventaire.getDisponible());
-                        }
-                        if (numeroInventaire.getAncienMateriel() != null) {
-                            existingNumeroInventaire.setAncienMateriel(numeroInventaire.getAncienMateriel());
                         }
                         if (numeroInventaire.getDateModification() != null) {
                             existingNumeroInventaire.setDateModification(numeroInventaire.getDateModification());

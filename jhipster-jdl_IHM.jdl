@@ -31,7 +31,7 @@ entity Suivi {
 }
 
  enum Etat {
-    NonRealiser, EnCours, Envoyer, OK, EnAttenteDeReponse
+    OK, NonRealiser, EnCours, Envoyer, EnAttenteDeReponse, Reatribution
   } 
   
 entity Collaborateurs {
@@ -47,7 +47,6 @@ entity Collaborateurs {
 entity Projet {
 	Nom String,
   	/*CollabList String,*/
-    DP String,
     Stucture String,
     Informations String
 }
@@ -98,17 +97,13 @@ entity Historique {
 }
 
 entity NumeroInventaire {
-    Type String,
     Disponible Boolean,
-    AncienMateriel String,
     DateModification LocalDate,
     Commentaire String
 }
 
 entity ExtracDMOCSS {
     AdressePhysiqueDGFiP String,
-    BureauActuel String,
-    BureauDeplacement String
     Date LocalDate,
     IpPcDgfip String,
     IpVpnIPSEC String,
@@ -122,6 +117,7 @@ relationship ManyToMany {
 	Collaborateurs{Projet} to Projet{Collaborateurs}
 }
 
+
 relationship OneToOne {
     Mouvement{Asset} to Materiel
     Mouvement{Localisation} to Localisation
@@ -130,6 +126,7 @@ relationship OneToOne {
     Materiel{localisation} to Localisation
     Materiel{collaborateurs} to Collaborateurs
     NumeroInventaire{materielActuel} to Materiel
+    NumeroInventaire{AncienMateriel} to Materiel
     NumeroInventaire{AncienProprietaire} to Collaborateurs
     NumeroInventaire{NouveauProprietaire} to Collaborateurs
     Historique{AncienProprietaire} to Collaborateurs
@@ -137,8 +134,12 @@ relationship OneToOne {
     Historique{materiel} to Materiel
     ExtracDMOCSS{Collaborateur} to Collaborateurs
     ExtracDMOCSS{materiel} to Materiel
+    ExtracDMOCSS{BureauActuel} to Localisation
+    ExtracDMOCSS{BureauDeplacement} to Localisation
     ExtracDMOCSS{Localisation} to Localisation
 	Ticket{Beneficiaire} to Collaborateurs
 	Ticket{proprietaire} to Collaborateurs
 	Collaborateurs{Localisation} to Localisation
+    Projet{CP} to Collaborateurs
+    Projet{DP} to Collaborateurs
 }

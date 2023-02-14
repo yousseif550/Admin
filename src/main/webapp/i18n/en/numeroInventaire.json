@@ -18,12 +18,11 @@
         "title": "Numero Inventaire"
       },
       "id": "ID",
-      "type": "Type",
       "disponible": "Disponible",
-      "ancienMateriel": "Ancien Materiel",
       "dateModification": "Date Modification",
       "commentaire": "Commentaire",
       "materielActuel": "Materiel Actuel",
+      "ancienMateriel": "Ancien Materiel",
       "ancienProprietaire": "Ancien Proprietaire",
       "nouveauProprietaire": "Nouveau Proprietaire"
     }

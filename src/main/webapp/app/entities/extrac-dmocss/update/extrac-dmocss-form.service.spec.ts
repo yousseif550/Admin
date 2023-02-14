@@ -21,8 +21,6 @@ describe('ExtracDMOCSS Form Service', () => {
           expect.objectContaining({
             id: expect.any(Object),
             adressePhysiqueDGFiP: expect.any(Object),
-            bureauActuel: expect.any(Object),
-            bureauDeplacement: expect.any(Object),
             date: expect.any(Object),
             ipPcDgfip: expect.any(Object),
             ipVpnIPSEC: expect.any(Object),
@@ -31,6 +29,8 @@ describe('ExtracDMOCSS Form Service', () => {
             numVersion: expect.any(Object),
             collaborateur: expect.any(Object),
             materiel: expect.any(Object),
+            bureauActuel: expect.any(Object),
+            bureauDeplacement: expect.any(Object),
             localisation: expect.any(Object),
           })
         );
@@ -43,8 +43,6 @@ describe('ExtracDMOCSS Form Service', () => {
           expect.objectContaining({
             id: expect.any(Object),
             adressePhysiqueDGFiP: expect.any(Object),
-            bureauActuel: expect.any(Object),
-            bureauDeplacement: expect.any(Object),
             date: expect.any(Object),
             ipPcDgfip: expect.any(Object),
             ipVpnIPSEC: expect.any(Object),
@@ -53,6 +51,8 @@ describe('ExtracDMOCSS Form Service', () => {
             numVersion: expect.any(Object),
             collaborateur: expect.any(Object),
             materiel: expect.any(Object),
+            bureauActuel: expect.any(Object),
+            bureauDeplacement: expect.any(Object),
             localisation: expect.any(Object),
           })
         );

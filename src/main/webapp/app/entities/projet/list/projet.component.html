@@ -44,12 +44,6 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="dP">
-            <div class="d-flex">
-              <span jhiTranslate="ihmApp.projet.dP">DP</span>
-              <fa-icon class="p-1" icon="sort"></fa-icon>
-            </div>
-          </th>
           <th scope="col" jhiSortBy="stucture">
             <div class="d-flex">
               <span jhiTranslate="ihmApp.projet.stucture">Stucture</span>
@@ -62,6 +56,18 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
+          <th scope="col" jhiSortBy="cP.id">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.projet.cP">C P</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="dP.id">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.projet.dP">D P</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
           <th scope="col"></th>
         </tr>
       </thead>
@@ -71,9 +77,18 @@
             <a [routerLink]="['/projet', projet.id, 'view']">{{ projet.id }}</a>
           </td>
           <td>{{ projet.nom }}</td>
-          <td>{{ projet.dP }}</td>
           <td>{{ projet.stucture }}</td>
           <td>{{ projet.informations }}</td>
+          <td>
+            <div *ngIf="projet.cP">
+              <a [routerLink]="['/collaborateurs', projet.cP.id, 'view']">{{ projet.cP.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="projet.dP">
+              <a [routerLink]="['/collaborateurs', projet.dP.id, 'view']">{{ projet.dP.id }}</a>
+            </div>
+          </td>
           <td class="text-end">
             <div class="btn-group">
               <button type="submit" [routerLink]="['/projet', projet.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">

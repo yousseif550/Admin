@@ -19,8 +19,6 @@ type ExtracDMOCSSFormDefaults = Pick<NewExtracDMOCSS, 'id'>;
 type ExtracDMOCSSFormGroupContent = {
   id: FormControl<IExtracDMOCSS['id'] | NewExtracDMOCSS['id']>;
   adressePhysiqueDGFiP: FormControl<IExtracDMOCSS['adressePhysiqueDGFiP']>;
-  bureauActuel: FormControl<IExtracDMOCSS['bureauActuel']>;
-  bureauDeplacement: FormControl<IExtracDMOCSS['bureauDeplacement']>;
   date: FormControl<IExtracDMOCSS['date']>;
   ipPcDgfip: FormControl<IExtracDMOCSS['ipPcDgfip']>;
   ipVpnIPSEC: FormControl<IExtracDMOCSS['ipVpnIPSEC']>;
@@ -29,6 +27,8 @@ type ExtracDMOCSSFormGroupContent = {
   numVersion: FormControl<IExtracDMOCSS['numVersion']>;
   collaborateur: FormControl<IExtracDMOCSS['collaborateur']>;
   materiel: FormControl<IExtracDMOCSS['materiel']>;
+  bureauActuel: FormControl<IExtracDMOCSS['bureauActuel']>;
+  bureauDeplacement: FormControl<IExtracDMOCSS['bureauDeplacement']>;
   localisation: FormControl<IExtracDMOCSS['localisation']>;
 };
 
@@ -50,8 +50,6 @@ export class ExtracDMOCSSFormService {
         }
       ),
       adressePhysiqueDGFiP: new FormControl(extracDMOCSSRawValue.adressePhysiqueDGFiP),
-      bureauActuel: new FormControl(extracDMOCSSRawValue.bureauActuel),
-      bureauDeplacement: new FormControl(extracDMOCSSRawValue.bureauDeplacement),
       date: new FormControl(extracDMOCSSRawValue.date),
       ipPcDgfip: new FormControl(extracDMOCSSRawValue.ipPcDgfip),
       ipVpnIPSEC: new FormControl(extracDMOCSSRawValue.ipVpnIPSEC),
@@ -60,6 +58,8 @@ export class ExtracDMOCSSFormService {
       numVersion: new FormControl(extracDMOCSSRawValue.numVersion),
       collaborateur: new FormControl(extracDMOCSSRawValue.collaborateur),
       materiel: new FormControl(extracDMOCSSRawValue.materiel),
+      bureauActuel: new FormControl(extracDMOCSSRawValue.bureauActuel),
+      bureauDeplacement: new FormControl(extracDMOCSSRawValue.bureauDeplacement),
       localisation: new FormControl(extracDMOCSSRawValue.localisation),
     });
   }

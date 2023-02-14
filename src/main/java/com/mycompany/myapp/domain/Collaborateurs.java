@@ -46,7 +46,7 @@ public class Collaborateurs implements Serializable {
     private Localisation localisation;
 
     @Field("projets")
-    @JsonIgnoreProperties(value = { "collaborateurs" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "cP", "dP", "collaborateurs" }, allowSetters = true)
     private Set<Projet> projets = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here

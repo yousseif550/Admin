@@ -57,10 +57,12 @@ describe('NumeroInventaire Management Update Component', () => {
       const numeroInventaire: INumeroInventaire = { id: 'CBA' };
       const materielActuel: IMateriel = { id: '79546128-5f3b-4577-8871-6bebc1657b04' };
       numeroInventaire.materielActuel = materielActuel;
+      const ancienMateriel: IMateriel = { id: '7a7b8264-cce9-4435-b25c-469298d9abae' };
+      numeroInventaire.ancienMateriel = ancienMateriel;
 
-      const materielCollection: IMateriel[] = [{ id: '7a7b8264-cce9-4435-b25c-469298d9abae' }];
+      const materielCollection: IMateriel[] = [{ id: '5da4329f-e85e-4d84-b734-819ecb03eb66' }];
       jest.spyOn(materielService, 'query').mockReturnValue(of(new HttpResponse({ body: materielCollection })));
-      const additionalMateriels = [materielActuel];
+      const additionalMateriels = [materielActuel, ancienMateriel];
       const expectedCollection: IMateriel[] = [...additionalMateriels, ...materielCollection];
       jest.spyOn(materielService, 'addMaterielToCollectionIfMissing').mockReturnValue(expectedCollection);
 
@@ -101,8 +103,10 @@ describe('NumeroInventaire Management Update Component', () => {
 
     it('Should update editForm', () => {
       const numeroInventaire: INumeroInventaire = { id: 'CBA' };
-      const materielActuel: IMateriel = { id: '5da4329f-e85e-4d84-b734-819ecb03eb66' };
+      const materielActuel: IMateriel = { id: '446006e2-923f-4f01-8932-6b71375fcce7' };
       numeroInventaire.materielActuel = materielActuel;
+      const ancienMateriel: IMateriel = { id: '4339f698-86c3-4742-ab44-f8bc056b548a' };
+      numeroInventaire.ancienMateriel = ancienMateriel;
       const ancienProprietaire: ICollaborateurs = { id: 'fd7a117b-0c9e-477f-bb32-891ce1263d19' };
       numeroInventaire.ancienProprietaire = ancienProprietaire;
       const nouveauProprietaire: ICollaborateurs = { id: '87c6e4a9-fdc5-497b-b0f4-b6a9ba165b7b' };
@@ -112,6 +116,7 @@ describe('NumeroInventaire Management Update Component', () => {
       comp.ngOnInit();
 
       expect(comp.materielsSharedCollection).toContain(materielActuel);
+      expect(comp.materielsSharedCollection).toContain(ancienMateriel);
       expect(comp.collaborateursSharedCollection).toContain(ancienProprietaire);
       expect(comp.collaborateursSharedCollection).toContain(nouveauProprietaire);
       expect(comp.numeroInventaire).toEqual(numeroInventaire);

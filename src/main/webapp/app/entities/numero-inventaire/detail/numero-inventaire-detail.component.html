@@ -14,17 +14,9 @@
         <dd>
           <span>{{ numeroInventaire.id }}</span>
         </dd>
-        <dt><span jhiTranslate="ihmApp.numeroInventaire.type">Type</span></dt>
-        <dd>
-          <span>{{ numeroInventaire.type }}</span>
-        </dd>
         <dt><span jhiTranslate="ihmApp.numeroInventaire.disponible">Disponible</span></dt>
         <dd>
           <span>{{ numeroInventaire.disponible }}</span>
-        </dd>
-        <dt><span jhiTranslate="ihmApp.numeroInventaire.ancienMateriel">Ancien Materiel</span></dt>
-        <dd>
-          <span>{{ numeroInventaire.ancienMateriel }}</span>
         </dd>
         <dt><span jhiTranslate="ihmApp.numeroInventaire.dateModification">Date Modification</span></dt>
         <dd>
@@ -38,6 +30,12 @@
         <dd>
           <div *ngIf="numeroInventaire.materielActuel">
             <a [routerLink]="['/materiel', numeroInventaire.materielActuel.id, 'view']">{{ numeroInventaire.materielActuel.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.numeroInventaire.ancienMateriel">Ancien Materiel</span></dt>
+        <dd>
+          <div *ngIf="numeroInventaire.ancienMateriel">
+            <a [routerLink]="['/materiel', numeroInventaire.ancienMateriel.id, 'view']">{{ numeroInventaire.ancienMateriel.id }}</a>
           </div>
         </dd>
         <dt><span jhiTranslate="ihmApp.numeroInventaire.ancienProprietaire">Ancien Proprietaire</span></dt>

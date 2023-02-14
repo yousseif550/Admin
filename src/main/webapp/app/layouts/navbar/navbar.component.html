@@ -46,25 +46,25 @@
             <li>
               <a
                 class="dropdown-item"
-                routerLink="mouvement"
+                routerLink="projet"
                 routerLinkActive="active"
                 [routerLinkActiveOptions]="{ exact: true }"
                 (click)="collapseNavbar()"
               >
                 <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
-                <span jhiTranslate="global.menu.entities.mouvement">Mouvement</span>
+                <span jhiTranslate="global.menu.entities.projet">Projet</span>
               </a>
             </li>
             <li>
               <a
                 class="dropdown-item"
-                routerLink="suivi"
+                routerLink="localisation"
                 routerLinkActive="active"
                 [routerLinkActiveOptions]="{ exact: true }"
                 (click)="collapseNavbar()"
               >
                 <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
-                <span jhiTranslate="global.menu.entities.suivi">Suivi</span>
+                <span jhiTranslate="global.menu.entities.localisation">Localisation</span>
               </a>
             </li>
             <li>
@@ -82,15 +82,40 @@
             <li>
               <a
                 class="dropdown-item"
-                routerLink="projet"
+                routerLink="materiel"
                 routerLinkActive="active"
                 [routerLinkActiveOptions]="{ exact: true }"
                 (click)="collapseNavbar()"
               >
                 <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
-                <span jhiTranslate="global.menu.entities.projet">Projet</span>
+                <span jhiTranslate="global.menu.entities.materiel">Materiel</span>
               </a>
             </li>
+            <li>
+              <a
+                class="dropdown-item"
+                routerLink="suivi"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }"
+                (click)="collapseNavbar()"
+              >
+                <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+                <span jhiTranslate="global.menu.entities.suivi">Suivi</span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                routerLink="mouvement"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }"
+                (click)="collapseNavbar()"
+              >
+                <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+                <span jhiTranslate="global.menu.entities.mouvement">Mouvement</span>
+              </a>
+            </li>
+
             <li>
               <a
                 class="dropdown-item"
@@ -113,30 +138,6 @@
               >
                 <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
                 <span jhiTranslate="global.menu.entities.ticket">Ticket</span>
-              </a>
-            </li>
-            <li>
-              <a
-                class="dropdown-item"
-                routerLink="localisation"
-                routerLinkActive="active"
-                [routerLinkActiveOptions]="{ exact: true }"
-                (click)="collapseNavbar()"
-              >
-                <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
-                <span jhiTranslate="global.menu.entities.localisation">Localisation</span>
-              </a>
-            </li>
-            <li>
-              <a
-                class="dropdown-item"
-                routerLink="materiel"
-                routerLinkActive="active"
-                [routerLinkActiveOptions]="{ exact: true }"
-                (click)="collapseNavbar()"
-              >
-                <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
-                <span jhiTranslate="global.menu.entities.materiel">Materiel</span>
               </a>
             </li>
             <li>

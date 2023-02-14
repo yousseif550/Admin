@@ -2,11 +2,11 @@
   "ihmApp": {
     "extracDMOCSS": {
       "home": {
-        "title": "Extrac DMOCSSES",
+        "title": "Extrac DMOCSS",
         "refreshListLabel": "Refresh list",
         "createLabel": "Create a new Extrac DMOCSS",
         "createOrEditLabel": "Create or edit a Extrac DMOCSS",
-        "notFound": "No Extrac DMOCSSES found"
+        "notFound": "No Extrac DMOCSS found"
       },
       "created": "A new Extrac DMOCSS is created with identifier {{ param }}",
       "updated": "A Extrac DMOCSS is updated with identifier {{ param }}",
@@ -18,9 +18,7 @@
         "title": "Extrac DMOCSS"
       },
       "id": "ID",
-      "adressePhysiqueDGFiP": "Adresse Physique DGFiP",
-      "bureauActuel": "Bureau Actuel",
-      "bureauDeplacement": "Bureau Deplacement",
+      "adressePhysiqueDGFiP": "Adresse Physique DG Fi P",
       "date": "Date",
       "ipPcDgfip": "Ip Pc Dgfip",
       "ipVpnIPSEC": "Ip Vpn IPSEC",
@@ -29,6 +27,8 @@
       "numVersion": "Num Version",
       "collaborateur": "Collaborateur",
       "materiel": "Materiel",
+      "bureauActuel": "Bureau Actuel",
+      "bureauDeplacement": "Bureau Deplacement",
       "localisation": "Localisation"
     }
   }

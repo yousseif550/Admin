@@ -23,14 +23,17 @@ public class Projet implements Serializable {
     @Field("nom")
     private String nom;
 
-    @Field("d_p")
-    private String dP;
-
     @Field("stucture")
     private String stucture;
 
     @Field("informations")
     private String informations;
+
+    @Field("cP")
+    private Collaborateurs cP;
+
+    @Field("dP")
+    private Collaborateurs dP;
 
     @Field("collaborateurs")
     @JsonIgnoreProperties(value = { "localisation", "projets" }, allowSetters = true)
@@ -64,19 +67,6 @@ public class Projet implements Serializable {
         this.nom = nom;
     }
 
-    public String getdP() {
-        return this.dP;
-    }
-
-    public Projet dP(String dP) {
-        this.setdP(dP);
-        return this;
-    }
-
-    public void setdP(String dP) {
-        this.dP = dP;
-    }
-
     public String getStucture() {
         return this.stucture;
     }
@@ -101,6 +91,32 @@ public class Projet implements Serializable {
 
     public void setInformations(String informations) {
         this.informations = informations;
+    }
+
+    public Collaborateurs getCP() {
+        return this.cP;
+    }
+
+    public void setCP(Collaborateurs collaborateurs) {
+        this.cP = collaborateurs;
+    }
+
+    public Projet cP(Collaborateurs collaborateurs) {
+        this.setCP(collaborateurs);
+        return this;
+    }
+
+    public Collaborateurs getDP() {
+        return this.dP;
+    }
+
+    public void setDP(Collaborateurs collaborateurs) {
+        this.dP = collaborateurs;
+    }
+
+    public Projet dP(Collaborateurs collaborateurs) {
+        this.setDP(collaborateurs);
+        return this;
     }
 
     public Set<Collaborateurs> getCollaborateurs() {
@@ -159,7 +175,6 @@ public class Projet implements Serializable {
         return "Projet{" +
             "id=" + getId() +
             ", nom='" + getNom() + "'" +
-            ", dP='" + getdP() + "'" +
             ", stucture='" + getStucture() + "'" +
             ", informations='" + getInformations() + "'" +
             "}";

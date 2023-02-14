@@ -20,12 +20,11 @@ describe('NumeroInventaire Form Service', () => {
         expect(formGroup.controls).toEqual(
           expect.objectContaining({
             id: expect.any(Object),
-            type: expect.any(Object),
             disponible: expect.any(Object),
-            ancienMateriel: expect.any(Object),
             dateModification: expect.any(Object),
             commentaire: expect.any(Object),
             materielActuel: expect.any(Object),
+            ancienMateriel: expect.any(Object),
             ancienProprietaire: expect.any(Object),
             nouveauProprietaire: expect.any(Object),
           })
@@ -38,12 +37,11 @@ describe('NumeroInventaire Form Service', () => {
         expect(formGroup.controls).toEqual(
           expect.objectContaining({
             id: expect.any(Object),
-            type: expect.any(Object),
             disponible: expect.any(Object),
-            ancienMateriel: expect.any(Object),
             dateModification: expect.any(Object),
             commentaire: expect.any(Object),
             materielActuel: expect.any(Object),
+            ancienMateriel: expect.any(Object),
             ancienProprietaire: expect.any(Object),
             nouveauProprietaire: expect.any(Object),
           })

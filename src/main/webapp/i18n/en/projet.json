@@ -19,9 +19,10 @@
       },
       "id": "ID",
       "nom": "Nom",
-      "dP": "DP",
       "stucture": "Stucture",
       "informations": "Informations",
+      "cP": "C P",
+      "dP": "D P",
       "collaborateurs": "Collaborateurs"
     }
   }

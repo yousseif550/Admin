@@ -32,8 +32,8 @@ class TicketResourceIT {
     private static final String DEFAULT_TYPE = "AAAAAAAAAA";
     private static final String UPDATED_TYPE = "BBBBBBBBBB";
 
-    private static final Etat DEFAULT_STATUT = Etat.NonRealiser;
-    private static final Etat UPDATED_STATUT = Etat.EnCours;
+    private static final Etat DEFAULT_STATUT = Etat.OK;
+    private static final Etat UPDATED_STATUT = Etat.NonRealiser;
 
     private static final LocalDate DEFAULT_DATE_CREATION = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_DATE_CREATION = LocalDate.now(ZoneId.systemDefault());

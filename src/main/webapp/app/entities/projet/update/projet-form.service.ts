@@ -19,9 +19,10 @@ type ProjetFormDefaults = Pick<NewProjet, 'id' | 'collaborateurs'>;
 type ProjetFormGroupContent = {
   id: FormControl<IProjet['id'] | NewProjet['id']>;
   nom: FormControl<IProjet['nom']>;
-  dP: FormControl<IProjet['dP']>;
   stucture: FormControl<IProjet['stucture']>;
   informations: FormControl<IProjet['informations']>;
+  cP: FormControl<IProjet['cP']>;
+  dP: FormControl<IProjet['dP']>;
   collaborateurs: FormControl<IProjet['collaborateurs']>;
 };
 
@@ -43,9 +44,10 @@ export class ProjetFormService {
         }
       ),
       nom: new FormControl(projetRawValue.nom),
-      dP: new FormControl(projetRawValue.dP),
       stucture: new FormControl(projetRawValue.stucture),
       informations: new FormControl(projetRawValue.informations),
+      cP: new FormControl(projetRawValue.cP),
+      dP: new FormControl(projetRawValue.dP),
       collaborateurs: new FormControl(projetRawValue.collaborateurs ?? []),
     });
   }

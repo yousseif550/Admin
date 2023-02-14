@@ -7,8 +7,6 @@ import { Etat } from 'app/entities/enumerations/etat.model';
 export interface IExtracDMOCSS {
   id: string;
   adressePhysiqueDGFiP?: string | null;
-  bureauActuel?: string | null;
-  bureauDeplacement?: string | null;
   date?: dayjs.Dayjs | null;
   ipPcDgfip?: string | null;
   ipVpnIPSEC?: string | null;
@@ -17,6 +15,8 @@ export interface IExtracDMOCSS {
   numVersion?: string | null;
   collaborateur?: Pick<ICollaborateurs, 'id'> | null;
   materiel?: Pick<IMateriel, 'id'> | null;
+  bureauActuel?: Pick<ILocalisation, 'id'> | null;
+  bureauDeplacement?: Pick<ILocalisation, 'id'> | null;
   localisation?: Pick<ILocalisation, 'id'> | null;
 }
 

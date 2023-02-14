@@ -19,7 +19,7 @@
 
         <div class="row mb-3">
           <label class="form-label" jhiTranslate="ihmApp.extracDMOCSS.adressePhysiqueDGFiP" for="field_adressePhysiqueDGFiP"
-            >Adresse Physique DGFiP</label
+            >Adresse Physique DG Fi P</label
           >
           <input
             type="text"
@@ -28,32 +28,6 @@
             id="field_adressePhysiqueDGFiP"
             data-cy="adressePhysiqueDGFiP"
             formControlName="adressePhysiqueDGFiP"
-          />
-        </div>
-
-        <div class="row mb-3">
-          <label class="form-label" jhiTranslate="ihmApp.extracDMOCSS.bureauActuel" for="field_bureauActuel">Bureau Actuel</label>
-          <input
-            type="text"
-            class="form-control"
-            name="bureauActuel"
-            id="field_bureauActuel"
-            data-cy="bureauActuel"
-            formControlName="bureauActuel"
-          />
-        </div>
-
-        <div class="row mb-3">
-          <label class="form-label" jhiTranslate="ihmApp.extracDMOCSS.bureauDeplacement" for="field_bureauDeplacement"
-            >Bureau Deplacement</label
-          >
-          <input
-            type="text"
-            class="form-control"
-            name="bureauDeplacement"
-            id="field_bureauDeplacement"
-            data-cy="bureauDeplacement"
-            formControlName="bureauDeplacement"
           />
         </div>
 
@@ -152,6 +126,42 @@
           >
             <option [ngValue]="null"></option>
             <option [ngValue]="materielOption" *ngFor="let materielOption of materielsSharedCollection">{{ materielOption.asset }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ihmApp.extracDMOCSS.bureauActuel" for="field_bureauActuel">Bureau Actuel</label>
+          <select
+            class="form-control"
+            id="field_bureauActuel"
+            data-cy="bureauActuel"
+            name="bureauActuel"
+            formControlName="bureauActuel"
+            [compareWith]="compareLocalisation"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="localisationOption" *ngFor="let localisationOption of localisationsSharedCollection">
+              {{ localisationOption.batiment }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ihmApp.extracDMOCSS.bureauDeplacement" for="field_bureauDeplacement"
+            >Bureau Deplacement</label
+          >
+          <select
+            class="form-control"
+            id="field_bureauDeplacement"
+            data-cy="bureauDeplacement"
+            name="bureauDeplacement"
+            formControlName="bureauDeplacement"
+            [compareWith]="compareLocalisation"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="localisationOption" *ngFor="let localisationOption of localisationsSharedCollection">
+              {{ localisationOption.batiment }}
+            </option>
           </select>
         </div>
 

@@ -18,6 +18,7 @@
         "historique": "Historique",
         "numeroInventaire": "Numero Inventaire",
         "extracDmocss": "Extrac DMOCSS",
+        "informationsTech": "Informations Tech",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

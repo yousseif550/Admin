@@ -19,14 +19,8 @@ public class NumeroInventaire implements Serializable {
     @Id
     private String id;
 
-    @Field("type")
-    private String type;
-
     @Field("disponible")
     private Boolean disponible;
-
-    @Field("ancien_materiel")
-    private String ancienMateriel;
 
     @Field("date_modification")
     private LocalDate dateModification;
@@ -36,6 +30,9 @@ public class NumeroInventaire implements Serializable {
 
     @Field("materielActuel")
     private Materiel materielActuel;
+
+    @Field("ancienMateriel")
+    private Materiel ancienMateriel;
 
     @Field("ancienProprietaire")
     private Collaborateurs ancienProprietaire;
@@ -58,19 +55,6 @@ public class NumeroInventaire implements Serializable {
         this.id = id;
     }
 
-    public String getType() {
-        return this.type;
-    }
-
-    public NumeroInventaire type(String type) {
-        this.setType(type);
-        return this;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
     public Boolean getDisponible() {
         return this.disponible;
     }
@@ -82,19 +66,6 @@ public class NumeroInventaire implements Serializable {
 
     public void setDisponible(Boolean disponible) {
         this.disponible = disponible;
-    }
-
-    public String getAncienMateriel() {
-        return this.ancienMateriel;
-    }
-
-    public NumeroInventaire ancienMateriel(String ancienMateriel) {
-        this.setAncienMateriel(ancienMateriel);
-        return this;
-    }
-
-    public void setAncienMateriel(String ancienMateriel) {
-        this.ancienMateriel = ancienMateriel;
     }
 
     public LocalDate getDateModification() {
@@ -133,6 +104,19 @@ public class NumeroInventaire implements Serializable {
 
     public NumeroInventaire materielActuel(Materiel materiel) {
         this.setMaterielActuel(materiel);
+        return this;
+    }
+
+    public Materiel getAncienMateriel() {
+        return this.ancienMateriel;
+    }
+
+    public void setAncienMateriel(Materiel materiel) {
+        this.ancienMateriel = materiel;
+    }
+
+    public NumeroInventaire ancienMateriel(Materiel materiel) {
+        this.setAncienMateriel(materiel);
         return this;
     }
 
@@ -186,9 +170,7 @@ public class NumeroInventaire implements Serializable {
     public String toString() {
         return "NumeroInventaire{" +
             "id=" + getId() +
-            ", type='" + getType() + "'" +
             ", disponible='" + getDisponible() + "'" +
-            ", ancienMateriel='" + getAncienMateriel() + "'" +
             ", dateModification='" + getDateModification() + "'" +
             ", commentaire='" + getCommentaire() + "'" +
             "}";

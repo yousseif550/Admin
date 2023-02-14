@@ -40,47 +40,47 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 @WithMockUser
 class SuiviResourceIT {
 
-    private static final Etat DEFAULT_ENVOI_KIT_ACCUEIL = Etat.NonRealiser;
-    private static final Etat UPDATED_ENVOI_KIT_ACCUEIL = Etat.EnCours;
+    private static final Etat DEFAULT_ENVOI_KIT_ACCUEIL = Etat.OK;
+    private static final Etat UPDATED_ENVOI_KIT_ACCUEIL = Etat.NonRealiser;
 
-    private static final Etat DEFAULT_DOCUMENT_SIGNER = Etat.NonRealiser;
-    private static final Etat UPDATED_DOCUMENT_SIGNER = Etat.EnCours;
+    private static final Etat DEFAULT_DOCUMENT_SIGNER = Etat.OK;
+    private static final Etat UPDATED_DOCUMENT_SIGNER = Etat.NonRealiser;
 
-    private static final Etat DEFAULT_COMMANDE_PC_DOM = Etat.NonRealiser;
-    private static final Etat UPDATED_COMMANDE_PC_DOM = Etat.EnCours;
+    private static final Etat DEFAULT_COMMANDE_PC_DOM = Etat.OK;
+    private static final Etat UPDATED_COMMANDE_PC_DOM = Etat.NonRealiser;
 
-    private static final Etat DEFAULT_COMPTE_SSG = Etat.NonRealiser;
-    private static final Etat UPDATED_COMPTE_SSG = Etat.EnCours;
+    private static final Etat DEFAULT_COMPTE_SSG = Etat.OK;
+    private static final Etat UPDATED_COMPTE_SSG = Etat.NonRealiser;
 
-    private static final Etat DEFAULT_LISTE_NTIC = Etat.NonRealiser;
-    private static final Etat UPDATED_LISTE_NTIC = Etat.EnCours;
+    private static final Etat DEFAULT_LISTE_NTIC = Etat.OK;
+    private static final Etat UPDATED_LISTE_NTIC = Etat.NonRealiser;
 
-    private static final Etat DEFAULT_ACCES_TEAMS = Etat.NonRealiser;
-    private static final Etat UPDATED_ACCES_TEAMS = Etat.EnCours;
+    private static final Etat DEFAULT_ACCES_TEAMS = Etat.OK;
+    private static final Etat UPDATED_ACCES_TEAMS = Etat.NonRealiser;
 
-    private static final Etat DEFAULT_ACCES_PULSE_DG_FI_P = Etat.NonRealiser;
-    private static final Etat UPDATED_ACCES_PULSE_DG_FI_P = Etat.EnCours;
+    private static final Etat DEFAULT_ACCES_PULSE_DG_FI_P = Etat.OK;
+    private static final Etat UPDATED_ACCES_PULSE_DG_FI_P = Etat.NonRealiser;
 
-    private static final Etat DEFAULT_PROFIL_PC_DOM = Etat.NonRealiser;
-    private static final Etat UPDATED_PROFIL_PC_DOM = Etat.EnCours;
+    private static final Etat DEFAULT_PROFIL_PC_DOM = Etat.OK;
+    private static final Etat UPDATED_PROFIL_PC_DOM = Etat.NonRealiser;
 
-    private static final Etat DEFAULT_COMMANDER_PCDG_FI_P = Etat.NonRealiser;
-    private static final Etat UPDATED_COMMANDER_PCDG_FI_P = Etat.EnCours;
+    private static final Etat DEFAULT_COMMANDER_PCDG_FI_P = Etat.OK;
+    private static final Etat UPDATED_COMMANDER_PCDG_FI_P = Etat.NonRealiser;
 
-    private static final Etat DEFAULT_CREATION_BALPDG_FI_P = Etat.NonRealiser;
-    private static final Etat UPDATED_CREATION_BALPDG_FI_P = Etat.EnCours;
+    private static final Etat DEFAULT_CREATION_BALPDG_FI_P = Etat.OK;
+    private static final Etat UPDATED_CREATION_BALPDG_FI_P = Etat.NonRealiser;
 
-    private static final Etat DEFAULT_CREATION_COMPTE_AD = Etat.NonRealiser;
-    private static final Etat UPDATED_CREATION_COMPTE_AD = Etat.EnCours;
+    private static final Etat DEFAULT_CREATION_COMPTE_AD = Etat.OK;
+    private static final Etat UPDATED_CREATION_COMPTE_AD = Etat.NonRealiser;
 
-    private static final Etat DEFAULT_SOCLAGE_PC = Etat.NonRealiser;
-    private static final Etat UPDATED_SOCLAGE_PC = Etat.EnCours;
+    private static final Etat DEFAULT_SOCLAGE_PC = Etat.OK;
+    private static final Etat UPDATED_SOCLAGE_PC = Etat.NonRealiser;
 
-    private static final Etat DEFAULT_DMOCSS_IP_TT = Etat.NonRealiser;
-    private static final Etat UPDATED_DMOCSS_IP_TT = Etat.EnCours;
+    private static final Etat DEFAULT_DMOCSS_IP_TT = Etat.OK;
+    private static final Etat UPDATED_DMOCSS_IP_TT = Etat.NonRealiser;
 
-    private static final Etat DEFAULT_INSTALLATION_LOGICIEL = Etat.NonRealiser;
-    private static final Etat UPDATED_INSTALLATION_LOGICIEL = Etat.EnCours;
+    private static final Etat DEFAULT_INSTALLATION_LOGICIEL = Etat.OK;
+    private static final Etat UPDATED_INSTALLATION_LOGICIEL = Etat.NonRealiser;
 
     private static final String DEFAULT_COMMENTAIRES = "AAAAAAAAAA";
     private static final String UPDATED_COMMENTAIRES = "BBBBBBBBBB";

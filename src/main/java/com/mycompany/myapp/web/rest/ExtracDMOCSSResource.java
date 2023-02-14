@@ -147,12 +147,6 @@ public class ExtracDMOCSSResource {
                         if (extracDMOCSS.getAdressePhysiqueDGFiP() != null) {
                             existingExtracDMOCSS.setAdressePhysiqueDGFiP(extracDMOCSS.getAdressePhysiqueDGFiP());
                         }
-                        if (extracDMOCSS.getBureauActuel() != null) {
-                            existingExtracDMOCSS.setBureauActuel(extracDMOCSS.getBureauActuel());
-                        }
-                        if (extracDMOCSS.getBureauDeplacement() != null) {
-                            existingExtracDMOCSS.setBureauDeplacement(extracDMOCSS.getBureauDeplacement());
-                        }
                         if (extracDMOCSS.getDate() != null) {
                             existingExtracDMOCSS.setDate(extracDMOCSS.getDate());
                         }

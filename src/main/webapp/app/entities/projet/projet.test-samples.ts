@@ -5,17 +5,15 @@ export const sampleWithRequiredData: IProjet = {
 };
 
 export const sampleWithPartialData: IProjet = {
-  id: 'ecdaa04b-17df-4df5-8516-eda3c4cad5f3',
-  nom: 'XSS enterprise',
-  informations: 'solid protocol Loan',
+  id: 'becdaa04-b17d-4fdf-9851-6eda3c4cad5f',
+  nom: 'invoice',
 };
 
 export const sampleWithFullData: IProjet = {
-  id: '127ee8c6-7df9-4b3b-bc9e-f2159eccdbd3',
-  nom: 'Generic Accounts',
-  dP: 'Assistant',
-  stucture: 'Outdoors algorithm auxiliary',
-  informations: 'solid',
+  id: 'd5cdcce3-5cd9-49a1-a7ee-8c67df9b3bbc',
+  nom: 'Principal Sausages',
+  stucture: 'USB maroon Account',
+  informations: 'Accounts',
 };
 
 export const sampleWithNewData: NewProjet = {

@@ -147,9 +147,6 @@ public class ProjetResource {
                         if (projet.getNom() != null) {
                             existingProjet.setNom(projet.getNom());
                         }
-                        if (projet.getdP() != null) {
-                            existingProjet.setdP(projet.getdP());
-                        }
                         if (projet.getStucture() != null) {
                             existingProjet.setStucture(projet.getStucture());
                         }

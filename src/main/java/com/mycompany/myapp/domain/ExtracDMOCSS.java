@@ -23,12 +23,6 @@ public class ExtracDMOCSS implements Serializable {
     @Field("adresse_physique_dg_fi_p")
     private String adressePhysiqueDGFiP;
 
-    @Field("bureau_actuel")
-    private String bureauActuel;
-
-    @Field("bureau_deplacement")
-    private String bureauDeplacement;
-
     @Field("date")
     private LocalDate date;
 
@@ -52,6 +46,12 @@ public class ExtracDMOCSS implements Serializable {
 
     @Field("materiel")
     private Materiel materiel;
+
+    @Field("bureauActuel")
+    private Localisation bureauActuel;
+
+    @Field("bureauDeplacement")
+    private Localisation bureauDeplacement;
 
     @Field("localisation")
     private Localisation localisation;
@@ -82,32 +82,6 @@ public class ExtracDMOCSS implements Serializable {
 
     public void setAdressePhysiqueDGFiP(String adressePhysiqueDGFiP) {
         this.adressePhysiqueDGFiP = adressePhysiqueDGFiP;
-    }
-
-    public String getBureauActuel() {
-        return this.bureauActuel;
-    }
-
-    public ExtracDMOCSS bureauActuel(String bureauActuel) {
-        this.setBureauActuel(bureauActuel);
-        return this;
-    }
-
-    public void setBureauActuel(String bureauActuel) {
-        this.bureauActuel = bureauActuel;
-    }
-
-    public String getBureauDeplacement() {
-        return this.bureauDeplacement;
-    }
-
-    public ExtracDMOCSS bureauDeplacement(String bureauDeplacement) {
-        this.setBureauDeplacement(bureauDeplacement);
-        return this;
-    }
-
-    public void setBureauDeplacement(String bureauDeplacement) {
-        this.bureauDeplacement = bureauDeplacement;
     }
 
     public LocalDate getDate() {
@@ -214,6 +188,32 @@ public class ExtracDMOCSS implements Serializable {
         return this;
     }
 
+    public Localisation getBureauActuel() {
+        return this.bureauActuel;
+    }
+
+    public void setBureauActuel(Localisation localisation) {
+        this.bureauActuel = localisation;
+    }
+
+    public ExtracDMOCSS bureauActuel(Localisation localisation) {
+        this.setBureauActuel(localisation);
+        return this;
+    }
+
+    public Localisation getBureauDeplacement() {
+        return this.bureauDeplacement;
+    }
+
+    public void setBureauDeplacement(Localisation localisation) {
+        this.bureauDeplacement = localisation;
+    }
+
+    public ExtracDMOCSS bureauDeplacement(Localisation localisation) {
+        this.setBureauDeplacement(localisation);
+        return this;
+    }
+
     public Localisation getLocalisation() {
         return this.localisation;
     }
@@ -252,8 +252,6 @@ public class ExtracDMOCSS implements Serializable {
         return "ExtracDMOCSS{" +
             "id=" + getId() +
             ", adressePhysiqueDGFiP='" + getAdressePhysiqueDGFiP() + "'" +
-            ", bureauActuel='" + getBureauActuel() + "'" +
-            ", bureauDeplacement='" + getBureauDeplacement() + "'" +
             ", date='" + getDate() + "'" +
             ", ipPcDgfip='" + getIpPcDgfip() + "'" +
             ", ipVpnIPSEC='" + getIpVpnIPSEC() + "'" +

@@ -8,72 +8,72 @@
     {
       "fieldName": "envoiKitAccueil",
       "fieldType": "Etat",
-      "fieldValues": "NonRealiser,EnCours,Envoyer,OK,EnAttenteDeReponse"
+      "fieldValues": "OK,NonRealiser,EnCours,Envoyer,EnAttenteDeReponse,Reatribution"
     },
     {
       "fieldName": "documentSigner",
       "fieldType": "Etat",
-      "fieldValues": "NonRealiser,EnCours,Envoyer,OK,EnAttenteDeReponse"
+      "fieldValues": "OK,NonRealiser,EnCours,Envoyer,EnAttenteDeReponse,Reatribution"
     },
     {
       "fieldName": "commandePCDom",
       "fieldType": "Etat",
-      "fieldValues": "NonRealiser,EnCours,Envoyer,OK,EnAttenteDeReponse"
+      "fieldValues": "OK,NonRealiser,EnCours,Envoyer,EnAttenteDeReponse,Reatribution"
     },
     {
       "fieldName": "compteSSG",
       "fieldType": "Etat",
-      "fieldValues": "NonRealiser,EnCours,Envoyer,OK,EnAttenteDeReponse"
+      "fieldValues": "OK,NonRealiser,EnCours,Envoyer,EnAttenteDeReponse,Reatribution"
     },
     {
       "fieldName": "listeNTIC",
       "fieldType": "Etat",
-      "fieldValues": "NonRealiser,EnCours,Envoyer,OK,EnAttenteDeReponse"
+      "fieldValues": "OK,NonRealiser,EnCours,Envoyer,EnAttenteDeReponse,Reatribution"
     },
     {
       "fieldName": "accesTeams",
       "fieldType": "Etat",
-      "fieldValues": "NonRealiser,EnCours,Envoyer,OK,EnAttenteDeReponse"
+      "fieldValues": "OK,NonRealiser,EnCours,Envoyer,EnAttenteDeReponse,Reatribution"
     },
     {
       "fieldName": "accesPulseDGFiP",
       "fieldType": "Etat",
-      "fieldValues": "NonRealiser,EnCours,Envoyer,OK,EnAttenteDeReponse"
+      "fieldValues": "OK,NonRealiser,EnCours,Envoyer,EnAttenteDeReponse,Reatribution"
     },
     {
       "fieldName": "profilPCDom",
       "fieldType": "Etat",
-      "fieldValues": "NonRealiser,EnCours,Envoyer,OK,EnAttenteDeReponse"
+      "fieldValues": "OK,NonRealiser,EnCours,Envoyer,EnAttenteDeReponse,Reatribution"
     },
     {
       "fieldName": "commanderPCDGFiP",
       "fieldType": "Etat",
-      "fieldValues": "NonRealiser,EnCours,Envoyer,OK,EnAttenteDeReponse"
+      "fieldValues": "OK,NonRealiser,EnCours,Envoyer,EnAttenteDeReponse,Reatribution"
     },
     {
       "fieldName": "creationBALPDGFiP",
       "fieldType": "Etat",
-      "fieldValues": "NonRealiser,EnCours,Envoyer,OK,EnAttenteDeReponse"
+      "fieldValues": "OK,NonRealiser,EnCours,Envoyer,EnAttenteDeReponse,Reatribution"
     },
     {
       "fieldName": "creationCompteAD",
       "fieldType": "Etat",
-      "fieldValues": "NonRealiser,EnCours,Envoyer,OK,EnAttenteDeReponse"
+      "fieldValues": "OK,NonRealiser,EnCours,Envoyer,EnAttenteDeReponse,Reatribution"
     },
     {
       "fieldName": "soclagePC",
       "fieldType": "Etat",
-      "fieldValues": "NonRealiser,EnCours,Envoyer,OK,EnAttenteDeReponse"
+      "fieldValues": "OK,NonRealiser,EnCours,Envoyer,EnAttenteDeReponse,Reatribution"
     },
     {
       "fieldName": "dmocssIpTT",
       "fieldType": "Etat",
-      "fieldValues": "NonRealiser,EnCours,Envoyer,OK,EnAttenteDeReponse"
+      "fieldValues": "OK,NonRealiser,EnCours,Envoyer,EnAttenteDeReponse,Reatribution"
     },
     {
       "fieldName": "installationLogiciel",
       "fieldType": "Etat",
-      "fieldValues": "NonRealiser,EnCours,Envoyer,OK,EnAttenteDeReponse"
+      "fieldValues": "OK,NonRealiser,EnCours,Envoyer,EnAttenteDeReponse,Reatribution"
     },
     {
       "fieldName": "commentaires",

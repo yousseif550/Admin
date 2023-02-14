@@ -9,24 +9,22 @@ export const sampleWithRequiredData: IExtracDMOCSS = {
 };
 
 export const sampleWithPartialData: IExtracDMOCSS = {
-  id: '04f8b1e5-e9bc-4ccc-8599-8a1ed0ce81b1',
-  adressePhysiqueDGFiP: 'cohesive',
-  date: dayjs('2023-01-01'),
-  ipVpnIPSEC: 'Markets Loan HTTP',
-  ioTeletravail: 'Architect Applications Frozen',
+  id: '6004f8b1-e5e9-4bcc-8c85-998a1ed0ce81',
+  adressePhysiqueDGFiP: 'Rustic grey parse',
+  ipVpnIPSEC: 'Loan',
+  statut: Etat['Reatribution'],
+  numVersion: 'Salad',
 };
 
 export const sampleWithFullData: IExtracDMOCSS = {
-  id: 'b3eb8864-91ff-44a8-8557-4c9ac57357e3',
-  adressePhysiqueDGFiP: 'navigating Creek',
-  bureauActuel: 'Buckinghamshire sticky',
-  bureauDeplacement: 'indexing generate Rustic',
+  id: '7be7403f-38b3-4eb8-8649-1ff4a845574c',
+  adressePhysiqueDGFiP: 'Loan Extension',
   date: dayjs('2023-01-02'),
-  ipPcDgfip: 'auxiliary',
-  ipVpnIPSEC: 'rich',
-  ioTeletravail: 'Tasty Optimization invoice',
-  statut: Etat['EnCours'],
-  numVersion: 'generating Assurance',
+  ipPcDgfip: 'pink maximize Fresh',
+  ipVpnIPSEC: 'optical lavender',
+  ioTeletravail: 'Hills Colombia Concrete',
+  statut: Etat['OK'],
+  numVersion: 'Licensed',
 };
 
 export const sampleWithNewData: NewExtracDMOCSS = {

@@ -38,21 +38,9 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="type">
-            <div class="d-flex">
-              <span jhiTranslate="ihmApp.numeroInventaire.type">Type</span>
-              <fa-icon class="p-1" icon="sort"></fa-icon>
-            </div>
-          </th>
           <th scope="col" jhiSortBy="disponible">
             <div class="d-flex">
               <span jhiTranslate="ihmApp.numeroInventaire.disponible">Disponible</span>
-              <fa-icon class="p-1" icon="sort"></fa-icon>
-            </div>
-          </th>
-          <th scope="col" jhiSortBy="ancienMateriel">
-            <div class="d-flex">
-              <span jhiTranslate="ihmApp.numeroInventaire.ancienMateriel">Ancien Materiel</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
@@ -71,6 +59,12 @@
           <th scope="col" jhiSortBy="materielActuel.id">
             <div class="d-flex">
               <span jhiTranslate="ihmApp.numeroInventaire.materielActuel">Materiel Actuel</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="ancienMateriel.id">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.numeroInventaire.ancienMateriel">Ancien Materiel</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
@@ -94,14 +88,17 @@
           <td>
             <a [routerLink]="['/numero-inventaire', numeroInventaire.id, 'view']">{{ numeroInventaire.id }}</a>
           </td>
-          <td>{{ numeroInventaire.type }}</td>
           <td>{{ numeroInventaire.disponible }}</td>
-          <td>{{ numeroInventaire.ancienMateriel }}</td>
           <td>{{ numeroInventaire.dateModification | formatMediumDate }}</td>
           <td>{{ numeroInventaire.commentaire }}</td>
           <td>
             <div *ngIf="numeroInventaire.materielActuel">
               <a [routerLink]="['/materiel', numeroInventaire.materielActuel.id, 'view']">{{ numeroInventaire.materielActuel.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="numeroInventaire.ancienMateriel">
+              <a [routerLink]="['/materiel', numeroInventaire.ancienMateriel.id, 'view']">{{ numeroInventaire.ancienMateriel.id }}</a>
             </div>
           </td>
           <td>

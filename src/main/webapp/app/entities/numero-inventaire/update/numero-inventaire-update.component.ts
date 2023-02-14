@@ -88,7 +88,8 @@ export class NumeroInventaireUpdateComponent implements OnInit {
 
     this.materielsSharedCollection = this.materielService.addMaterielToCollectionIfMissing<IMateriel>(
       this.materielsSharedCollection,
-      numeroInventaire.materielActuel
+      numeroInventaire.materielActuel,
+      numeroInventaire.ancienMateriel
     );
     this.collaborateursSharedCollection = this.collaborateursService.addCollaborateursToCollectionIfMissing<ICollaborateurs>(
       this.collaborateursSharedCollection,
@@ -103,7 +104,11 @@ export class NumeroInventaireUpdateComponent implements OnInit {
       .pipe(map((res: HttpResponse<IMateriel[]>) => res.body ?? []))
       .pipe(
         map((materiels: IMateriel[]) =>
-          this.materielService.addMaterielToCollectionIfMissing<IMateriel>(materiels, this.numeroInventaire?.materielActuel)
+          this.materielService.addMaterielToCollectionIfMissing<IMateriel>(
+            materiels,
+            this.numeroInventaire?.materielActuel,
+            this.numeroInventaire?.ancienMateriel
+          )
         )
       )
       .subscribe((materiels: IMateriel[]) => (this.materielsSharedCollection = materiels));

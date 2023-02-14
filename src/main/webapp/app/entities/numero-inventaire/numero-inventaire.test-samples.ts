@@ -7,19 +7,17 @@ export const sampleWithRequiredData: INumeroInventaire = {
 };
 
 export const sampleWithPartialData: INumeroInventaire = {
-  id: '18a99bdc-439b-4ee6-9cdf-a12adb7d9f29',
-  type: 'invoice',
-  disponible: true,
-  ancienMateriel: 'cross-platform',
+  id: '5618a99b-dc43-49be-a61c-dfa12adb7d9f',
+  disponible: false,
+  dateModification: dayjs('2023-01-01'),
+  commentaire: 'invoice',
 };
 
 export const sampleWithFullData: INumeroInventaire = {
-  id: '9c6ee3ca-e8df-4d00-af08-4821ceaa12b0',
-  type: 'networks',
-  disponible: false,
-  ancienMateriel: 'Valley',
+  id: 'e1c579c6-ee3c-4ae8-9fd0-0ef084821cea',
+  disponible: true,
   dateModification: dayjs('2023-01-02'),
-  commentaire: 'up SMTP Forward',
+  commentaire: 'driver',
 };
 
 export const sampleWithNewData: NewNumeroInventaire = {

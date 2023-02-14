@@ -9,6 +9,8 @@ import { of, Subject, from } from 'rxjs';
 import { ProjetFormService } from './projet-form.service';
 import { ProjetService } from '../service/projet.service';
 import { IProjet } from '../projet.model';
+import { ICollaborateurs } from 'app/entities/collaborateurs/collaborateurs.model';
+import { CollaborateursService } from 'app/entities/collaborateurs/service/collaborateurs.service';
 
 import { ProjetUpdateComponent } from './projet-update.component';
 
@@ -18,6 +20,7 @@ describe('Projet Management Update Component', () => {
   let activatedRoute: ActivatedRoute;
   let projetFormService: ProjetFormService;
   let projetService: ProjetService;
+  let collaborateursService: CollaborateursService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -40,17 +43,48 @@ describe('Projet Management Update Component', () => {
     activatedRoute = TestBed.inject(ActivatedRoute);
     projetFormService = TestBed.inject(ProjetFormService);
     projetService = TestBed.inject(ProjetService);
+    collaborateursService = TestBed.inject(CollaborateursService);
 
     comp = fixture.componentInstance;
   });
 
   describe('ngOnInit', () => {
-    it('Should update editForm', () => {
+    it('Should call Collaborateurs query and add missing value', () => {
       const projet: IProjet = { id: 'CBA' };
+      const cP: ICollaborateurs = { id: '0cd436e9-61c8-4320-83de-733e700982ba' };
+      projet.cP = cP;
+      const dP: ICollaborateurs = { id: '0feb0200-3541-493c-b7f6-b4ecd54902f7' };
+      projet.dP = dP;
+
+      const collaborateursCollection: ICollaborateurs[] = [{ id: '1c7b81f1-f52c-411d-892a-5e48e7fef6fa' }];
+      jest.spyOn(collaborateursService, 'query').mockReturnValue(of(new HttpResponse({ body: collaborateursCollection })));
+      const additionalCollaborateurs = [cP, dP];
+      const expectedCollection: ICollaborateurs[] = [...additionalCollaborateurs, ...collaborateursCollection];
+      jest.spyOn(collaborateursService, 'addCollaborateursToCollectionIfMissing').mockReturnValue(expectedCollection);
 
       activatedRoute.data = of({ projet });
       comp.ngOnInit();
 
+      expect(collaborateursService.query).toHaveBeenCalled();
+      expect(collaborateursService.addCollaborateursToCollectionIfMissing).toHaveBeenCalledWith(
+        collaborateursCollection,
+        ...additionalCollaborateurs.map(expect.objectContaining)
+      );
+      expect(comp.collaborateursSharedCollection).toEqual(expectedCollection);
+    });
+
+    it('Should update editForm', () => {
+      const projet: IProjet = { id: 'CBA' };
+      const cP: ICollaborateurs = { id: '321cc246-9fe7-472f-9027-2d1e6d14823b' };
+      projet.cP = cP;
+      const dP: ICollaborateurs = { id: '5c1a8169-869e-4dbc-95d6-af3e175f7dcc' };
+      projet.dP = dP;
+
+      activatedRoute.data = of({ projet });
+      comp.ngOnInit();
+
+      expect(comp.collaborateursSharedCollection).toContain(cP);
+      expect(comp.collaborateursSharedCollection).toContain(dP);
       expect(comp.projet).toEqual(projet);
     });
   });
@@ -120,6 +154,18 @@ describe('Projet Management Update Component', () => {
       expect(projetService.update).toHaveBeenCalled();
       expect(comp.isSaving).toEqual(false);
       expect(comp.previousState).not.toHaveBeenCalled();
+    });
+  });
+
+  describe('Compare relationships', () => {
+    describe('compareCollaborateurs', () => {
+      it('Should forward to collaborateursService', () => {
+        const entity = { id: 'ABC' };
+        const entity2 = { id: 'CBA' };
+        jest.spyOn(collaborateursService, 'compareCollaborateurs');
+        comp.compareCollaborateurs(entity, entity2);
+        expect(collaborateursService.compareCollaborateurs).toHaveBeenCalledWith(entity, entity2);
+      });
     });
   });
 });

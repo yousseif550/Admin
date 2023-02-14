@@ -12,7 +12,7 @@
     {
       "fieldName": "statut",
       "fieldType": "Etat",
-      "fieldValues": "NonRealiser,EnCours,Envoyer,OK,EnAttenteDeReponse"
+      "fieldValues": "OK,NonRealiser,EnCours,Envoyer,EnAttenteDeReponse,Reatribution"
     },
     {
       "fieldName": "dateCreation",

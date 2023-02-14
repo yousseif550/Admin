@@ -6,16 +6,8 @@
   "entityTableName": "numero_inventaire",
   "fields": [
     {
-      "fieldName": "type",
-      "fieldType": "String"
-    },
-    {
       "fieldName": "disponible",
       "fieldType": "Boolean"
-    },
-    {
-      "fieldName": "ancienMateriel",
-      "fieldType": "String"
     },
     {
       "fieldName": "dateModification",
@@ -36,6 +28,12 @@
       "otherEntityName": "materiel",
       "ownerSide": true,
       "relationshipName": "materielActuel",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "materiel",
+      "ownerSide": true,
+      "relationshipName": "ancienMateriel",
       "relationshipType": "one-to-one"
     },
     {

@@ -21,9 +21,10 @@ describe('Projet Form Service', () => {
           expect.objectContaining({
             id: expect.any(Object),
             nom: expect.any(Object),
-            dP: expect.any(Object),
             stucture: expect.any(Object),
             informations: expect.any(Object),
+            cP: expect.any(Object),
+            dP: expect.any(Object),
             collaborateurs: expect.any(Object),
           })
         );
@@ -36,9 +37,10 @@ describe('Projet Form Service', () => {
           expect.objectContaining({
             id: expect.any(Object),
             nom: expect.any(Object),
-            dP: expect.any(Object),
             stucture: expect.any(Object),
             informations: expect.any(Object),
+            cP: expect.any(Object),
+            dP: expect.any(Object),
             collaborateurs: expect.any(Object),
           })
         );

@@ -1,6 +1,6 @@
 <div>
   <h2 id="page-heading" data-cy="InformationsTechHeading">
-    <span jhiTranslate="ihmApp.informationsTech.home.title">Informations Techniques</span>
+    <span jhiTranslate="ihmApp.informationsTech.home.title">Informations Teches</span>
 
     <div class="d-flex justify-content-end">
       <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
@@ -15,7 +15,7 @@
         [routerLink]="['/informations-tech/new']"
       >
         <fa-icon icon="plus"></fa-icon>
-        <span jhiTranslate="ihmApp.informationsTech.home.createLabel"> Create a new Informations Techniques </span>
+        <span jhiTranslate="ihmApp.informationsTech.home.createLabel"> Create a new Informations Tech </span>
       </button>
     </div>
   </h2>
@@ -25,7 +25,7 @@
   <jhi-alert></jhi-alert>
 
   <div class="alert alert-warning" id="no-result" *ngIf="informationsTeches?.length === 0">
-    <span jhiTranslate="ihmApp.informationsTech.home.notFound">No Informations Techniques found</span>
+    <span jhiTranslate="ihmApp.informationsTech.home.notFound">No Informations Teches found</span>
   </div>
 
   <div class="table-responsive table-entities" id="entities" *ngIf="informationsTeches && informationsTeches.length > 0">
@@ -64,13 +64,13 @@
           </th>
           <th scope="col" jhiSortBy="adresseDGFiP">
             <div class="d-flex">
-              <span jhiTranslate="ihmApp.informationsTech.adresseDGFiP">Adresse DGFiP</span>
+              <span jhiTranslate="ihmApp.informationsTech.adresseDGFiP">Adresse DG Fi P</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
           <th scope="col" jhiSortBy="pcDGFiP.id">
             <div class="d-flex">
-              <span jhiTranslate="ihmApp.informationsTech.pcDGFiP">Pc DGFiP</span>
+              <span jhiTranslate="ihmApp.informationsTech.pcDGFiP">Pc DG Fi P</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>

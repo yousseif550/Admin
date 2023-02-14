@@ -32,12 +32,6 @@ class ExtracDMOCSSResourceIT {
     private static final String DEFAULT_ADRESSE_PHYSIQUE_DG_FI_P = "AAAAAAAAAA";
     private static final String UPDATED_ADRESSE_PHYSIQUE_DG_FI_P = "BBBBBBBBBB";
 
-    private static final String DEFAULT_BUREAU_ACTUEL = "AAAAAAAAAA";
-    private static final String UPDATED_BUREAU_ACTUEL = "BBBBBBBBBB";
-
-    private static final String DEFAULT_BUREAU_DEPLACEMENT = "AAAAAAAAAA";
-    private static final String UPDATED_BUREAU_DEPLACEMENT = "BBBBBBBBBB";
-
     private static final LocalDate DEFAULT_DATE = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_DATE = LocalDate.now(ZoneId.systemDefault());
 
@@ -50,8 +44,8 @@ class ExtracDMOCSSResourceIT {
     private static final String DEFAULT_IO_TELETRAVAIL = "AAAAAAAAAA";
     private static final String UPDATED_IO_TELETRAVAIL = "BBBBBBBBBB";
 
-    private static final Etat DEFAULT_STATUT = Etat.NonRealiser;
-    private static final Etat UPDATED_STATUT = Etat.EnCours;
+    private static final Etat DEFAULT_STATUT = Etat.OK;
+    private static final Etat UPDATED_STATUT = Etat.NonRealiser;
 
     private static final String DEFAULT_NUM_VERSION = "AAAAAAAAAA";
     private static final String UPDATED_NUM_VERSION = "BBBBBBBBBB";
@@ -76,8 +70,6 @@ class ExtracDMOCSSResourceIT {
     public static ExtracDMOCSS createEntity() {
         ExtracDMOCSS extracDMOCSS = new ExtracDMOCSS()
             .adressePhysiqueDGFiP(DEFAULT_ADRESSE_PHYSIQUE_DG_FI_P)
-            .bureauActuel(DEFAULT_BUREAU_ACTUEL)
-            .bureauDeplacement(DEFAULT_BUREAU_DEPLACEMENT)
             .date(DEFAULT_DATE)
             .ipPcDgfip(DEFAULT_IP_PC_DGFIP)
             .ipVpnIPSEC(DEFAULT_IP_VPN_IPSEC)
@@ -96,8 +88,6 @@ class ExtracDMOCSSResourceIT {
     public static ExtracDMOCSS createUpdatedEntity() {
         ExtracDMOCSS extracDMOCSS = new ExtracDMOCSS()
             .adressePhysiqueDGFiP(UPDATED_ADRESSE_PHYSIQUE_DG_FI_P)
-            .bureauActuel(UPDATED_BUREAU_ACTUEL)
-            .bureauDeplacement(UPDATED_BUREAU_DEPLACEMENT)
             .date(UPDATED_DATE)
             .ipPcDgfip(UPDATED_IP_PC_DGFIP)
             .ipVpnIPSEC(UPDATED_IP_VPN_IPSEC)
@@ -131,8 +121,6 @@ class ExtracDMOCSSResourceIT {
         assertThat(extracDMOCSSList).hasSize(databaseSizeBeforeCreate + 1);
         ExtracDMOCSS testExtracDMOCSS = extracDMOCSSList.get(extracDMOCSSList.size() - 1);
         assertThat(testExtracDMOCSS.getAdressePhysiqueDGFiP()).isEqualTo(DEFAULT_ADRESSE_PHYSIQUE_DG_FI_P);
-        assertThat(testExtracDMOCSS.getBureauActuel()).isEqualTo(DEFAULT_BUREAU_ACTUEL);
-        assertThat(testExtracDMOCSS.getBureauDeplacement()).isEqualTo(DEFAULT_BUREAU_DEPLACEMENT);
         assertThat(testExtracDMOCSS.getDate()).isEqualTo(DEFAULT_DATE);
         assertThat(testExtracDMOCSS.getIpPcDgfip()).isEqualTo(DEFAULT_IP_PC_DGFIP);
         assertThat(testExtracDMOCSS.getIpVpnIPSEC()).isEqualTo(DEFAULT_IP_VPN_IPSEC);
@@ -187,8 +175,6 @@ class ExtracDMOCSSResourceIT {
         assertThat(extracDMOCSSList).hasSize(1);
         ExtracDMOCSS testExtracDMOCSS = extracDMOCSSList.get(0);
         assertThat(testExtracDMOCSS.getAdressePhysiqueDGFiP()).isEqualTo(DEFAULT_ADRESSE_PHYSIQUE_DG_FI_P);
-        assertThat(testExtracDMOCSS.getBureauActuel()).isEqualTo(DEFAULT_BUREAU_ACTUEL);
-        assertThat(testExtracDMOCSS.getBureauDeplacement()).isEqualTo(DEFAULT_BUREAU_DEPLACEMENT);
         assertThat(testExtracDMOCSS.getDate()).isEqualTo(DEFAULT_DATE);
         assertThat(testExtracDMOCSS.getIpPcDgfip()).isEqualTo(DEFAULT_IP_PC_DGFIP);
         assertThat(testExtracDMOCSS.getIpVpnIPSEC()).isEqualTo(DEFAULT_IP_VPN_IPSEC);
@@ -217,10 +203,6 @@ class ExtracDMOCSSResourceIT {
             .value(hasItem(extracDMOCSS.getId()))
             .jsonPath("$.[*].adressePhysiqueDGFiP")
             .value(hasItem(DEFAULT_ADRESSE_PHYSIQUE_DG_FI_P))
-            .jsonPath("$.[*].bureauActuel")
-            .value(hasItem(DEFAULT_BUREAU_ACTUEL))
-            .jsonPath("$.[*].bureauDeplacement")
-            .value(hasItem(DEFAULT_BUREAU_DEPLACEMENT))
             .jsonPath("$.[*].date")
             .value(hasItem(DEFAULT_DATE.toString()))
             .jsonPath("$.[*].ipPcDgfip")
@@ -255,10 +237,6 @@ class ExtracDMOCSSResourceIT {
             .value(is(extracDMOCSS.getId()))
             .jsonPath("$.adressePhysiqueDGFiP")
             .value(is(DEFAULT_ADRESSE_PHYSIQUE_DG_FI_P))
-            .jsonPath("$.bureauActuel")
-            .value(is(DEFAULT_BUREAU_ACTUEL))
-            .jsonPath("$.bureauDeplacement")
-            .value(is(DEFAULT_BUREAU_DEPLACEMENT))
             .jsonPath("$.date")
             .value(is(DEFAULT_DATE.toString()))
             .jsonPath("$.ipPcDgfip")
@@ -296,8 +274,6 @@ class ExtracDMOCSSResourceIT {
         ExtracDMOCSS updatedExtracDMOCSS = extracDMOCSSRepository.findById(extracDMOCSS.getId()).block();
         updatedExtracDMOCSS
             .adressePhysiqueDGFiP(UPDATED_ADRESSE_PHYSIQUE_DG_FI_P)
-            .bureauActuel(UPDATED_BUREAU_ACTUEL)
-            .bureauDeplacement(UPDATED_BUREAU_DEPLACEMENT)
             .date(UPDATED_DATE)
             .ipPcDgfip(UPDATED_IP_PC_DGFIP)
             .ipVpnIPSEC(UPDATED_IP_VPN_IPSEC)
@@ -319,8 +295,6 @@ class ExtracDMOCSSResourceIT {
         assertThat(extracDMOCSSList).hasSize(databaseSizeBeforeUpdate);
         ExtracDMOCSS testExtracDMOCSS = extracDMOCSSList.get(extracDMOCSSList.size() - 1);
         assertThat(testExtracDMOCSS.getAdressePhysiqueDGFiP()).isEqualTo(UPDATED_ADRESSE_PHYSIQUE_DG_FI_P);
-        assertThat(testExtracDMOCSS.getBureauActuel()).isEqualTo(UPDATED_BUREAU_ACTUEL);
-        assertThat(testExtracDMOCSS.getBureauDeplacement()).isEqualTo(UPDATED_BUREAU_DEPLACEMENT);
         assertThat(testExtracDMOCSS.getDate()).isEqualTo(UPDATED_DATE);
         assertThat(testExtracDMOCSS.getIpPcDgfip()).isEqualTo(UPDATED_IP_PC_DGFIP);
         assertThat(testExtracDMOCSS.getIpVpnIPSEC()).isEqualTo(UPDATED_IP_VPN_IPSEC);
@@ -402,9 +376,9 @@ class ExtracDMOCSSResourceIT {
 
         partialUpdatedExtracDMOCSS
             .adressePhysiqueDGFiP(UPDATED_ADRESSE_PHYSIQUE_DG_FI_P)
-            .bureauActuel(UPDATED_BUREAU_ACTUEL)
             .date(UPDATED_DATE)
-            .ioTeletravail(UPDATED_IO_TELETRAVAIL);
+            .ipVpnIPSEC(UPDATED_IP_VPN_IPSEC)
+            .numVersion(UPDATED_NUM_VERSION);
 
         webTestClient
             .patch()
@@ -420,14 +394,12 @@ class ExtracDMOCSSResourceIT {
         assertThat(extracDMOCSSList).hasSize(databaseSizeBeforeUpdate);
         ExtracDMOCSS testExtracDMOCSS = extracDMOCSSList.get(extracDMOCSSList.size() - 1);
         assertThat(testExtracDMOCSS.getAdressePhysiqueDGFiP()).isEqualTo(UPDATED_ADRESSE_PHYSIQUE_DG_FI_P);
-        assertThat(testExtracDMOCSS.getBureauActuel()).isEqualTo(UPDATED_BUREAU_ACTUEL);
-        assertThat(testExtracDMOCSS.getBureauDeplacement()).isEqualTo(DEFAULT_BUREAU_DEPLACEMENT);
         assertThat(testExtracDMOCSS.getDate()).isEqualTo(UPDATED_DATE);
         assertThat(testExtracDMOCSS.getIpPcDgfip()).isEqualTo(DEFAULT_IP_PC_DGFIP);
-        assertThat(testExtracDMOCSS.getIpVpnIPSEC()).isEqualTo(DEFAULT_IP_VPN_IPSEC);
-        assertThat(testExtracDMOCSS.getIoTeletravail()).isEqualTo(UPDATED_IO_TELETRAVAIL);
+        assertThat(testExtracDMOCSS.getIpVpnIPSEC()).isEqualTo(UPDATED_IP_VPN_IPSEC);
+        assertThat(testExtracDMOCSS.getIoTeletravail()).isEqualTo(DEFAULT_IO_TELETRAVAIL);
         assertThat(testExtracDMOCSS.getStatut()).isEqualTo(DEFAULT_STATUT);
-        assertThat(testExtracDMOCSS.getNumVersion()).isEqualTo(DEFAULT_NUM_VERSION);
+        assertThat(testExtracDMOCSS.getNumVersion()).isEqualTo(UPDATED_NUM_VERSION);
     }
 
     @Test
@@ -443,8 +415,6 @@ class ExtracDMOCSSResourceIT {
 
         partialUpdatedExtracDMOCSS
             .adressePhysiqueDGFiP(UPDATED_ADRESSE_PHYSIQUE_DG_FI_P)
-            .bureauActuel(UPDATED_BUREAU_ACTUEL)
-            .bureauDeplacement(UPDATED_BUREAU_DEPLACEMENT)
             .date(UPDATED_DATE)
             .ipPcDgfip(UPDATED_IP_PC_DGFIP)
             .ipVpnIPSEC(UPDATED_IP_VPN_IPSEC)
@@ -466,8 +436,6 @@ class ExtracDMOCSSResourceIT {
         assertThat(extracDMOCSSList).hasSize(databaseSizeBeforeUpdate);
         ExtracDMOCSS testExtracDMOCSS = extracDMOCSSList.get(extracDMOCSSList.size() - 1);
         assertThat(testExtracDMOCSS.getAdressePhysiqueDGFiP()).isEqualTo(UPDATED_ADRESSE_PHYSIQUE_DG_FI_P);
-        assertThat(testExtracDMOCSS.getBureauActuel()).isEqualTo(UPDATED_BUREAU_ACTUEL);
-        assertThat(testExtracDMOCSS.getBureauDeplacement()).isEqualTo(UPDATED_BUREAU_DEPLACEMENT);
         assertThat(testExtracDMOCSS.getDate()).isEqualTo(UPDATED_DATE);
         assertThat(testExtracDMOCSS.getIpPcDgfip()).isEqualTo(UPDATED_IP_PC_DGFIP);
         assertThat(testExtracDMOCSS.getIpVpnIPSEC()).isEqualTo(UPDATED_IP_VPN_IPSEC);

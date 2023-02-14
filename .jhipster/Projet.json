@@ -10,10 +10,6 @@
       "fieldType": "String"
     },
     {
-      "fieldName": "dP",
-      "fieldType": "String"
-    },
-    {
       "fieldName": "stucture",
       "fieldType": "String"
     },
@@ -28,6 +24,18 @@
   "pagination": "no",
   "readOnly": false,
   "relationships": [
+    {
+      "otherEntityName": "collaborateurs",
+      "ownerSide": true,
+      "relationshipName": "cP",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "collaborateurs",
+      "ownerSide": true,
+      "relationshipName": "dP",
+      "relationshipType": "one-to-one"
+    },
     {
       "otherEntityName": "collaborateurs",
       "otherEntityRelationshipName": "projet",

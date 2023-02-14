@@ -1,11 +1,13 @@
 export enum Etat {
+  OK = 'OK',
+
   NonRealiser = 'NonRealiser',
 
   EnCours = 'EnCours',
 
   Envoyer = 'Envoyer',
 
-  OK = 'OK',
-
   EnAttenteDeReponse = 'EnAttenteDeReponse',
+
+  Reatribution = 'Reatribution',
 }

@@ -14,17 +14,9 @@
         <dd>
           <span>{{ extracDMOCSS.id }}</span>
         </dd>
-        <dt><span jhiTranslate="ihmApp.extracDMOCSS.adressePhysiqueDGFiP">Adresse Physique DGFiP</span></dt>
+        <dt><span jhiTranslate="ihmApp.extracDMOCSS.adressePhysiqueDGFiP">Adresse Physique DG Fi P</span></dt>
         <dd>
           <span>{{ extracDMOCSS.adressePhysiqueDGFiP }}</span>
-        </dd>
-        <dt><span jhiTranslate="ihmApp.extracDMOCSS.bureauActuel">Bureau Actuel</span></dt>
-        <dd>
-          <span>{{ extracDMOCSS.bureauActuel }}</span>
-        </dd>
-        <dt><span jhiTranslate="ihmApp.extracDMOCSS.bureauDeplacement">Bureau Deplacement</span></dt>
-        <dd>
-          <span>{{ extracDMOCSS.bureauDeplacement }}</span>
         </dd>
         <dt><span jhiTranslate="ihmApp.extracDMOCSS.date">Date</span></dt>
         <dd>
@@ -60,6 +52,18 @@
         <dd>
           <div *ngIf="extracDMOCSS.materiel">
             <a [routerLink]="['/materiel', extracDMOCSS.materiel.id, 'view']">{{ extracDMOCSS.materiel.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.extracDMOCSS.bureauActuel">Bureau Actuel</span></dt>
+        <dd>
+          <div *ngIf="extracDMOCSS.bureauActuel">
+            <a [routerLink]="['/localisation', extracDMOCSS.bureauActuel.id, 'view']">{{ extracDMOCSS.bureauActuel.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.extracDMOCSS.bureauDeplacement">Bureau Deplacement</span></dt>
+        <dd>
+          <div *ngIf="extracDMOCSS.bureauDeplacement">
+            <a [routerLink]="['/localisation', extracDMOCSS.bureauDeplacement.id, 'view']">{{ extracDMOCSS.bureauDeplacement.id }}</a>
           </div>
         </dd>
         <dt><span jhiTranslate="ihmApp.extracDMOCSS.localisation">Localisation</span></dt>

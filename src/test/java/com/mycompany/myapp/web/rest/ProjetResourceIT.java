@@ -29,9 +29,6 @@ class ProjetResourceIT {
     private static final String DEFAULT_NOM = "AAAAAAAAAA";
     private static final String UPDATED_NOM = "BBBBBBBBBB";
 
-    private static final String DEFAULT_D_P = "AAAAAAAAAA";
-    private static final String UPDATED_D_P = "BBBBBBBBBB";
-
     private static final String DEFAULT_STUCTURE = "AAAAAAAAAA";
     private static final String UPDATED_STUCTURE = "BBBBBBBBBB";
 
@@ -56,7 +53,7 @@ class ProjetResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Projet createEntity() {
-        Projet projet = new Projet().nom(DEFAULT_NOM).dP(DEFAULT_D_P).stucture(DEFAULT_STUCTURE).informations(DEFAULT_INFORMATIONS);
+        Projet projet = new Projet().nom(DEFAULT_NOM).stucture(DEFAULT_STUCTURE).informations(DEFAULT_INFORMATIONS);
         return projet;
     }
 
@@ -67,7 +64,7 @@ class ProjetResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Projet createUpdatedEntity() {
-        Projet projet = new Projet().nom(UPDATED_NOM).dP(UPDATED_D_P).stucture(UPDATED_STUCTURE).informations(UPDATED_INFORMATIONS);
+        Projet projet = new Projet().nom(UPDATED_NOM).stucture(UPDATED_STUCTURE).informations(UPDATED_INFORMATIONS);
         return projet;
     }
 
@@ -95,7 +92,6 @@ class ProjetResourceIT {
         assertThat(projetList).hasSize(databaseSizeBeforeCreate + 1);
         Projet testProjet = projetList.get(projetList.size() - 1);
         assertThat(testProjet.getNom()).isEqualTo(DEFAULT_NOM);
-        assertThat(testProjet.getdP()).isEqualTo(DEFAULT_D_P);
         assertThat(testProjet.getStucture()).isEqualTo(DEFAULT_STUCTURE);
         assertThat(testProjet.getInformations()).isEqualTo(DEFAULT_INFORMATIONS);
     }
@@ -146,7 +142,6 @@ class ProjetResourceIT {
         assertThat(projetList).hasSize(1);
         Projet testProjet = projetList.get(0);
         assertThat(testProjet.getNom()).isEqualTo(DEFAULT_NOM);
-        assertThat(testProjet.getdP()).isEqualTo(DEFAULT_D_P);
         assertThat(testProjet.getStucture()).isEqualTo(DEFAULT_STUCTURE);
         assertThat(testProjet.getInformations()).isEqualTo(DEFAULT_INFORMATIONS);
     }
@@ -171,8 +166,6 @@ class ProjetResourceIT {
             .value(hasItem(projet.getId()))
             .jsonPath("$.[*].nom")
             .value(hasItem(DEFAULT_NOM))
-            .jsonPath("$.[*].dP")
-            .value(hasItem(DEFAULT_D_P))
             .jsonPath("$.[*].stucture")
             .value(hasItem(DEFAULT_STUCTURE))
             .jsonPath("$.[*].informations")
@@ -199,8 +192,6 @@ class ProjetResourceIT {
             .value(is(projet.getId()))
             .jsonPath("$.nom")
             .value(is(DEFAULT_NOM))
-            .jsonPath("$.dP")
-            .value(is(DEFAULT_D_P))
             .jsonPath("$.stucture")
             .value(is(DEFAULT_STUCTURE))
             .jsonPath("$.informations")
@@ -228,7 +219,7 @@ class ProjetResourceIT {
 
         // Update the projet
         Projet updatedProjet = projetRepository.findById(projet.getId()).block();
-        updatedProjet.nom(UPDATED_NOM).dP(UPDATED_D_P).stucture(UPDATED_STUCTURE).informations(UPDATED_INFORMATIONS);
+        updatedProjet.nom(UPDATED_NOM).stucture(UPDATED_STUCTURE).informations(UPDATED_INFORMATIONS);
 
         webTestClient
             .put()
@@ -244,7 +235,6 @@ class ProjetResourceIT {
         assertThat(projetList).hasSize(databaseSizeBeforeUpdate);
         Projet testProjet = projetList.get(projetList.size() - 1);
         assertThat(testProjet.getNom()).isEqualTo(UPDATED_NOM);
-        assertThat(testProjet.getdP()).isEqualTo(UPDATED_D_P);
         assertThat(testProjet.getStucture()).isEqualTo(UPDATED_STUCTURE);
         assertThat(testProjet.getInformations()).isEqualTo(UPDATED_INFORMATIONS);
     }
@@ -320,7 +310,7 @@ class ProjetResourceIT {
         Projet partialUpdatedProjet = new Projet();
         partialUpdatedProjet.setId(projet.getId());
 
-        partialUpdatedProjet.stucture(UPDATED_STUCTURE);
+        partialUpdatedProjet.informations(UPDATED_INFORMATIONS);
 
         webTestClient
             .patch()
@@ -336,9 +326,8 @@ class ProjetResourceIT {
         assertThat(projetList).hasSize(databaseSizeBeforeUpdate);
         Projet testProjet = projetList.get(projetList.size() - 1);
         assertThat(testProjet.getNom()).isEqualTo(DEFAULT_NOM);
-        assertThat(testProjet.getdP()).isEqualTo(DEFAULT_D_P);
-        assertThat(testProjet.getStucture()).isEqualTo(UPDATED_STUCTURE);
-        assertThat(testProjet.getInformations()).isEqualTo(DEFAULT_INFORMATIONS);
+        assertThat(testProjet.getStucture()).isEqualTo(DEFAULT_STUCTURE);
+        assertThat(testProjet.getInformations()).isEqualTo(UPDATED_INFORMATIONS);
     }
 
     @Test
@@ -352,7 +341,7 @@ class ProjetResourceIT {
         Projet partialUpdatedProjet = new Projet();
         partialUpdatedProjet.setId(projet.getId());
 
-        partialUpdatedProjet.nom(UPDATED_NOM).dP(UPDATED_D_P).stucture(UPDATED_STUCTURE).informations(UPDATED_INFORMATIONS);
+        partialUpdatedProjet.nom(UPDATED_NOM).stucture(UPDATED_STUCTURE).informations(UPDATED_INFORMATIONS);
 
         webTestClient
             .patch()
@@ -368,7 +357,6 @@ class ProjetResourceIT {
         assertThat(projetList).hasSize(databaseSizeBeforeUpdate);
         Projet testProjet = projetList.get(projetList.size() - 1);
         assertThat(testProjet.getNom()).isEqualTo(UPDATED_NOM);
-        assertThat(testProjet.getdP()).isEqualTo(UPDATED_D_P);
         assertThat(testProjet.getStucture()).isEqualTo(UPDATED_STUCTURE);
         assertThat(testProjet.getInformations()).isEqualTo(UPDATED_INFORMATIONS);
     }

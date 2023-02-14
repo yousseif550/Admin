@@ -4,12 +4,11 @@ import { ICollaborateurs } from 'app/entities/collaborateurs/collaborateurs.mode
 
 export interface INumeroInventaire {
   id: string;
-  type?: string | null;
   disponible?: boolean | null;
-  ancienMateriel?: string | null;
   dateModification?: dayjs.Dayjs | null;
   commentaire?: string | null;
   materielActuel?: Pick<IMateriel, 'id'> | null;
+  ancienMateriel?: Pick<IMateriel, 'id'> | null;
   ancienProprietaire?: Pick<ICollaborateurs, 'id'> | null;
   nouveauProprietaire?: Pick<ICollaborateurs, 'id'> | null;
 }
