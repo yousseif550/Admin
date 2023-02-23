@@ -7,6 +7,8 @@ import { finalize, map } from 'rxjs/operators';
 import { MaterielFormService, MaterielFormGroup } from './materiel-form.service';
 import { IMateriel } from '../materiel.model';
 import { MaterielService } from '../service/materiel.service';
+import { ITypemateriel } from 'app/entities/typemateriel/typemateriel.model';
+import { TypematerielService } from 'app/entities/typemateriel/service/typemateriel.service';
 import { ILocalisation } from 'app/entities/localisation/localisation.model';
 import { LocalisationService } from 'app/entities/localisation/service/localisation.service';
 import { ICollaborateurs } from 'app/entities/collaborateurs/collaborateurs.model';
@@ -20,6 +22,7 @@ export class MaterielUpdateComponent implements OnInit {
   isSaving = false;
   materiel: IMateriel | null = null;
 
+  typematerielsSharedCollection: ITypemateriel[] = [];
   localisationsSharedCollection: ILocalisation[] = [];
   collaborateursSharedCollection: ICollaborateurs[] = [];
 
@@ -28,10 +31,14 @@ export class MaterielUpdateComponent implements OnInit {
   constructor(
     protected materielService: MaterielService,
     protected materielFormService: MaterielFormService,
+    protected typematerielService: TypematerielService,
     protected localisationService: LocalisationService,
     protected collaborateursService: CollaborateursService,
     protected activatedRoute: ActivatedRoute
   ) {}
+
+  compareTypemateriel = (o1: ITypemateriel | null, o2: ITypemateriel | null): boolean =>
+    this.typematerielService.compareTypemateriel(o1, o2);
 
   compareLocalisation = (o1: ILocalisation | null, o2: ILocalisation | null): boolean =>
     this.localisationService.compareLocalisation(o1, o2);
@@ -87,17 +94,31 @@ export class MaterielUpdateComponent implements OnInit {
     this.materiel = materiel;
     this.materielFormService.resetForm(this.editForm, materiel);
 
+    this.typematerielsSharedCollection = this.typematerielService.addTypematerielToCollectionIfMissing<ITypemateriel>(
+      this.typematerielsSharedCollection,
+      materiel.objet
+    );
     this.localisationsSharedCollection = this.localisationService.addLocalisationToCollectionIfMissing<ILocalisation>(
       this.localisationsSharedCollection,
       materiel.localisation
     );
     this.collaborateursSharedCollection = this.collaborateursService.addCollaborateursToCollectionIfMissing<ICollaborateurs>(
       this.collaborateursSharedCollection,
-      materiel.collaborateurs
+      materiel.collaborateur
     );
   }
 
   protected loadRelationshipsOptions(): void {
+    this.typematerielService
+      .query()
+      .pipe(map((res: HttpResponse<ITypemateriel[]>) => res.body ?? []))
+      .pipe(
+        map((typemateriels: ITypemateriel[]) =>
+          this.typematerielService.addTypematerielToCollectionIfMissing<ITypemateriel>(typemateriels, this.materiel?.objet)
+        )
+      )
+      .subscribe((typemateriels: ITypemateriel[]) => (this.typematerielsSharedCollection = typemateriels));
+
     this.localisationService
       .query()
       .pipe(map((res: HttpResponse<ILocalisation[]>) => res.body ?? []))
@@ -113,7 +134,7 @@ export class MaterielUpdateComponent implements OnInit {
       .pipe(map((res: HttpResponse<ICollaborateurs[]>) => res.body ?? []))
       .pipe(
         map((collaborateurs: ICollaborateurs[]) =>
-          this.collaborateursService.addCollaborateursToCollectionIfMissing<ICollaborateurs>(collaborateurs, this.materiel?.collaborateurs)
+          this.collaborateursService.addCollaborateursToCollectionIfMissing<ICollaborateurs>(collaborateurs, this.materiel?.collaborateur)
         )
       )
       .subscribe((collaborateurs: ICollaborateurs[]) => (this.collaborateursSharedCollection = collaborateurs));

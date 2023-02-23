@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-center">
-  <div class="col-8">
+  <div class="col-6">
     <div *ngIf="collaborateurs">
       <h2 data-cy="collaborateursDetailsHeading"><span jhiTranslate="ihmApp.collaborateurs.detail.title">Collaborateurs</span></h2>
 
@@ -17,6 +17,10 @@
         <dt><span jhiTranslate="ihmApp.collaborateurs.nom">Nom</span></dt>
         <dd>
           <span>{{ collaborateurs.nom }}</span>
+        </dd>
+        <dt><span jhiTranslate="ihmApp.collaborateurs.prenom">Prenom</span></dt>
+        <dd>
+          <span>{{ collaborateurs.prenom }}</span>
         </dd>
         <dt><span jhiTranslate="ihmApp.collaborateurs.identifiant">Identifiant</span></dt>
         <dd>
@@ -65,5 +69,24 @@
         <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
       </button>
     </div>
+  </div>
+
+  <div class="col-6">
+    <h2>Biens Personnels</h2>
+    <hr />
+    <ul>
+      <div *ngIf="materiels">
+        <span>Assets Matériel Associé</span>
+        <a [routerLink]="['/materiel', materiels.id, 'view']">{{ materiels.asset }}</a>
+      </div>
+
+      <div *ngIf="materiels">
+        <span>Type Obj Matériel Associé</span>
+        <a [routerLink]="['/typemateriel', materiels.objet?.id, 'view']">{{ materiels.objet?.id }}</a>
+      </div>
+    </ul>
+    <!-- <li *ngFor="let materiel of materiels">
+        
+      </li> -->
   </div>
 </div>

@@ -40,7 +40,7 @@
           <select class="form-control" id="field_cP" data-cy="cP" name="cP" formControlName="cP" [compareWith]="compareCollaborateurs">
             <option [ngValue]="null"></option>
             <option [ngValue]="collaborateursOption" *ngFor="let collaborateursOption of collaborateursSharedCollection">
-              {{ collaborateursOption.nom }}
+              {{ collaborateursOption.id }}
             </option>
           </select>
         </div>
@@ -50,7 +50,7 @@
           <select class="form-control" id="field_dP" data-cy="dP" name="dP" formControlName="dP" [compareWith]="compareCollaborateurs">
             <option [ngValue]="null"></option>
             <option [ngValue]="collaborateursOption" *ngFor="let collaborateursOption of collaborateursSharedCollection">
-              {{ collaborateursOption.nom }}
+              {{ collaborateursOption.id }}
             </option>
           </select>
         </div>

@@ -59,6 +59,11 @@ import { RouterModule } from '@angular/router';
         data: { pageTitle: 'ihmApp.extracDMOCSS.home.title' },
         loadChildren: () => import('./extrac-dmocss/extrac-dmocss.module').then(m => m.ExtracDMOCSSModule),
       },
+      {
+        path: 'typemateriel',
+        data: { pageTitle: 'ihmApp.typemateriel.home.title' },
+        loadChildren: () => import('./typemateriel/typemateriel.module').then(m => m.TypematerielModule),
+      },
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ]),
   ],

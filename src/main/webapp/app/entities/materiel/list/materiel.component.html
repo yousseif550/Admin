@@ -38,9 +38,15 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="type">
+          <th scope="col" jhiSortBy="objet.id">
             <div class="d-flex">
-              <span jhiTranslate="ihmApp.materiel.type">Type</span>
+              <span jhiTranslate="ihmApp.materiel.objet">Objet</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="utilisation">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.materiel.utilisation">Utilisation</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
@@ -86,15 +92,16 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
+
           <th scope="col" jhiSortBy="localisation.id">
             <div class="d-flex">
               <span jhiTranslate="ihmApp.materiel.localisation">Localisation</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="collaborateurs.id">
+          <th scope="col" jhiSortBy="collaborateur.id">
             <div class="d-flex">
-              <span jhiTranslate="ihmApp.materiel.collaborateurs">Collaborateurs</span>
+              <span jhiTranslate="ihmApp.materiel.collaborateur">Collaborateur</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
@@ -106,7 +113,12 @@
           <td>
             <a [routerLink]="['/materiel', materiel.id, 'view']">{{ materiel.id }}</a>
           </td>
-          <td>{{ materiel.type }}</td>
+          <td>
+            <div *ngIf="materiel.objet">
+              <a [routerLink]="['/typemateriel', materiel.objet.id, 'view']">{{ materiel.objet.id }}</a>
+            </div>
+          </td>
+          <td>{{ materiel.utilisation }}</td>
           <td>{{ materiel.modele }}</td>
           <td>{{ materiel.asset }}</td>
           <td>{{ materiel.actif }}</td>
@@ -114,14 +126,15 @@
           <td>{{ materiel.dateRendu | formatMediumDate }}</td>
           <td>{{ materiel.commentaire }}</td>
           <td>{{ materiel.isHs }}</td>
+
           <td>
             <div *ngIf="materiel.localisation">
               <a [routerLink]="['/localisation', materiel.localisation.id, 'view']">{{ materiel.localisation.id }}</a>
             </div>
           </td>
           <td>
-            <div *ngIf="materiel.collaborateurs">
-              <a [routerLink]="['/collaborateurs', materiel.collaborateurs.id, 'view']">{{ materiel.collaborateurs.id }}</a>
+            <div *ngIf="materiel.collaborateur">
+              <a [routerLink]="['/collaborateurs', materiel.collaborateur.id, 'view']">{{ materiel.collaborateur.id }}</a>
             </div>
           </td>
           <td class="text-end">
@@ -155,5 +168,23 @@
         </tr>
       </tbody>
     </table>
+  </div>
+  <div class="d-flex justify-content-end">
+    <button
+      id="jh-create-entity"
+      data-cy="entityCreateButton"
+      class="btn btn-primary jh-create-entity create-typemateriel"
+      [routerLink]="['/typemateriel/new']"
+    >
+      <fa-icon icon="plus"></fa-icon>
+      <span jhiTranslate="ihmApp.typemateriel.home.createLabel"> Create a new Typemateriel </span>
+    </button>
+
+    <!-- <span jhiTranslate="ihmApp.typemateriel.home.ViewObject">Refresh list</span> -->
+    <a routerLink="/typemateriel" routerLinkActive="active">
+      <button class="btn btn-info me-2">
+        <span jhiTranslate="ihmApp.typemateriel.home.ViewObject">Typemateriel</span>
+      </button>
+    </a>
   </div>
 </div>

@@ -80,7 +80,7 @@
             [compareWith]="compareMateriel"
           >
             <option [ngValue]="null"></option>
-            <option [ngValue]="materielOption" *ngFor="let materielOption of materielsSharedCollection">{{ materielOption.asset }}</option>
+            <option [ngValue]="materielOption" *ngFor="let materielOption of materielsSharedCollection">{{ materielOption.id }}</option>
           </select>
         </div>
 
@@ -96,7 +96,7 @@
           >
             <option [ngValue]="null"></option>
             <option [ngValue]="localisationOption" *ngFor="let localisationOption of localisationsSharedCollection">
-              {{ localisationOption.batiment }}
+              {{ localisationOption.id }}
             </option>
           </select>
         </div>

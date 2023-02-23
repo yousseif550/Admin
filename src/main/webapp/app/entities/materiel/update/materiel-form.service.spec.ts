@@ -20,7 +20,7 @@ describe('Materiel Form Service', () => {
         expect(formGroup.controls).toEqual(
           expect.objectContaining({
             id: expect.any(Object),
-            type: expect.any(Object),
+            utilisation: expect.any(Object),
             modele: expect.any(Object),
             asset: expect.any(Object),
             actif: expect.any(Object),
@@ -28,8 +28,9 @@ describe('Materiel Form Service', () => {
             dateRendu: expect.any(Object),
             commentaire: expect.any(Object),
             isHs: expect.any(Object),
+            objet: expect.any(Object),
             localisation: expect.any(Object),
-            collaborateurs: expect.any(Object),
+            collaborateur: expect.any(Object),
           })
         );
       });
@@ -40,7 +41,7 @@ describe('Materiel Form Service', () => {
         expect(formGroup.controls).toEqual(
           expect.objectContaining({
             id: expect.any(Object),
-            type: expect.any(Object),
+            utilisation: expect.any(Object),
             modele: expect.any(Object),
             asset: expect.any(Object),
             actif: expect.any(Object),
@@ -48,8 +49,9 @@ describe('Materiel Form Service', () => {
             dateRendu: expect.any(Object),
             commentaire: expect.any(Object),
             isHs: expect.any(Object),
+            objet: expect.any(Object),
             localisation: expect.any(Object),
-            collaborateurs: expect.any(Object),
+            collaborateur: expect.any(Object),
           })
         );
       });

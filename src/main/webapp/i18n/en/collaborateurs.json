@@ -19,6 +19,7 @@
       },
       "id": "ID",
       "nom": "Nom",
+      "prenom": "Prenom",
       "identifiant": "Identifiant",
       "tel": "Tel",
       "prestataire": "Prestataire",
@@ -26,6 +27,7 @@
       "dateEntree": "Date Entree",
       "dateSortie": "Date Sortie",
       "localisation": "Localisation",
+      "materiel": "Materiel",
       "projet": "Projet"
     }
   }

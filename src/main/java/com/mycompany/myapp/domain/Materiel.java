@@ -19,8 +19,8 @@ public class Materiel implements Serializable {
     @Id
     private String id;
 
-    @Field("type")
-    private String type;
+    @Field("utilisation")
+    private String utilisation;
 
     @Field("modele")
     private String modele;
@@ -43,11 +43,14 @@ public class Materiel implements Serializable {
     @Field("is_hs")
     private Boolean isHs;
 
+    @Field("objet")
+    private Typemateriel objet;
+
     @Field("localisation")
     private Localisation localisation;
 
-    @Field("collaborateurs")
-    private Collaborateurs collaborateurs;
+    @Field("collaborateur")
+    private Collaborateurs collaborateur;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -64,17 +67,17 @@ public class Materiel implements Serializable {
         this.id = id;
     }
 
-    public String getType() {
-        return this.type;
+    public String getUtilisation() {
+        return this.utilisation;
     }
 
-    public Materiel type(String type) {
-        this.setType(type);
+    public Materiel utilisation(String utilisation) {
+        this.setUtilisation(utilisation);
         return this;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setUtilisation(String utilisation) {
+        this.utilisation = utilisation;
     }
 
     public String getModele() {
@@ -168,6 +171,19 @@ public class Materiel implements Serializable {
         this.isHs = isHs;
     }
 
+    public Typemateriel getObjet() {
+        return this.objet;
+    }
+
+    public void setObjet(Typemateriel typemateriel) {
+        this.objet = typemateriel;
+    }
+
+    public Materiel objet(Typemateriel typemateriel) {
+        this.setObjet(typemateriel);
+        return this;
+    }
+
     public Localisation getLocalisation() {
         return this.localisation;
     }
@@ -181,16 +197,16 @@ public class Materiel implements Serializable {
         return this;
     }
 
-    public Collaborateurs getCollaborateurs() {
-        return this.collaborateurs;
+    public Collaborateurs getCollaborateur() {
+        return this.collaborateur;
     }
 
-    public void setCollaborateurs(Collaborateurs collaborateurs) {
-        this.collaborateurs = collaborateurs;
+    public void setCollaborateur(Collaborateurs collaborateurs) {
+        this.collaborateur = collaborateurs;
     }
 
-    public Materiel collaborateurs(Collaborateurs collaborateurs) {
-        this.setCollaborateurs(collaborateurs);
+    public Materiel collaborateur(Collaborateurs collaborateurs) {
+        this.setCollaborateur(collaborateurs);
         return this;
     }
 
@@ -218,7 +234,7 @@ public class Materiel implements Serializable {
     public String toString() {
         return "Materiel{" +
             "id=" + getId() +
-            ", type='" + getType() + "'" +
+            ", utilisation='" + getUtilisation() + "'" +
             ", modele='" + getModele() + "'" +
             ", asset='" + getAsset() + "'" +
             ", actif='" + getActif() + "'" +

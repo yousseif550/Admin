@@ -18,7 +18,7 @@ type MaterielFormDefaults = Pick<NewMateriel, 'id' | 'actif' | 'isHs'>;
 
 type MaterielFormGroupContent = {
   id: FormControl<IMateriel['id'] | NewMateriel['id']>;
-  type: FormControl<IMateriel['type']>;
+  utilisation: FormControl<IMateriel['utilisation']>;
   modele: FormControl<IMateriel['modele']>;
   asset: FormControl<IMateriel['asset']>;
   actif: FormControl<IMateriel['actif']>;
@@ -26,8 +26,9 @@ type MaterielFormGroupContent = {
   dateRendu: FormControl<IMateriel['dateRendu']>;
   commentaire: FormControl<IMateriel['commentaire']>;
   isHs: FormControl<IMateriel['isHs']>;
+  objet: FormControl<IMateriel['objet']>;
   localisation: FormControl<IMateriel['localisation']>;
-  collaborateurs: FormControl<IMateriel['collaborateurs']>;
+  collaborateur: FormControl<IMateriel['collaborateur']>;
 };
 
 export type MaterielFormGroup = FormGroup<MaterielFormGroupContent>;
@@ -47,7 +48,7 @@ export class MaterielFormService {
           validators: [Validators.required],
         }
       ),
-      type: new FormControl(materielRawValue.type),
+      utilisation: new FormControl(materielRawValue.utilisation),
       modele: new FormControl(materielRawValue.modele),
       asset: new FormControl(materielRawValue.asset),
       actif: new FormControl(materielRawValue.actif),
@@ -55,8 +56,9 @@ export class MaterielFormService {
       dateRendu: new FormControl(materielRawValue.dateRendu),
       commentaire: new FormControl(materielRawValue.commentaire),
       isHs: new FormControl(materielRawValue.isHs),
+      objet: new FormControl(materielRawValue.objet),
       localisation: new FormControl(materielRawValue.localisation),
-      collaborateurs: new FormControl(materielRawValue.collaborateurs),
+      collaborateur: new FormControl(materielRawValue.collaborateur),
     });
   }
 

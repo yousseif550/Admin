@@ -2,11 +2,11 @@
   "ihmApp": {
     "extracDMOCSS": {
       "home": {
-        "title": "Extrac DMOCSS",
+        "title": "Extrac DMOCSSES",
         "refreshListLabel": "Refresh list",
         "createLabel": "Create a new Extrac DMOCSS",
         "createOrEditLabel": "Create or edit a Extrac DMOCSS",
-        "notFound": "No Extrac DMOCSS found"
+        "notFound": "No Extrac DMOCSSES found"
       },
       "created": "A new Extrac DMOCSS is created with identifier {{ param }}",
       "updated": "A Extrac DMOCSS is updated with identifier {{ param }}",

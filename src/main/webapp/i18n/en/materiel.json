@@ -18,7 +18,7 @@
         "title": "Materiel"
       },
       "id": "ID",
-      "type": "Type",
+      "utilisation": "Utilisation",
       "modele": "Modele",
       "asset": "Asset",
       "actif": "Actif",
@@ -26,8 +26,9 @@
       "dateRendu": "Date Rendu",
       "commentaire": "Commentaire",
       "isHs": "Is Hs",
+      "objet": "Objet",
       "localisation": "Localisation",
-      "collaborateurs": "Collaborateurs"
+      "collaborateur": "Collaborateur"
     }
   }
 }

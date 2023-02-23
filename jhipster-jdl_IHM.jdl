@@ -32,10 +32,11 @@ entity Suivi {
 
  enum Etat {
     OK, NonRealiser, EnCours, Envoyer, EnAttenteDeReponse, Reatribution
-  } 
-  
+} 
+
 entity Collaborateurs {
     Nom String,
+    Prenom String,
     Identifiant String,
     Tel Long,
     Prestataire Boolean,
@@ -78,8 +79,12 @@ entity Localisation {
     Ville String
 }
 
-entity Materiel {
+entity Typemateriel {
 	Type String,
+}
+
+entity Materiel {
+    Utilisation String,
     Modele String,
     Asset String,
     Actif Boolean,
@@ -123,8 +128,9 @@ relationship OneToOne {
     Mouvement{Localisation} to Localisation
 	InformationsTech{PcDGFiP} to Materiel
 	Suivi{Collaborateur} to Collaborateurs
+    Materiel{Objet} to Typemateriel
     Materiel{localisation} to Localisation
-    Materiel{collaborateurs} to Collaborateurs
+    Materiel{collaborateur} to Collaborateurs
     NumeroInventaire{materielActuel} to Materiel
     NumeroInventaire{AncienMateriel} to Materiel
     NumeroInventaire{AncienProprietaire} to Collaborateurs

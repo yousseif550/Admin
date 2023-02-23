@@ -15,7 +15,7 @@ export const sampleWithPartialData: IMateriel = {
 
 export const sampleWithFullData: IMateriel = {
   id: '4ba39874-8776-44d2-89a3-510ce4e6ad51',
-  type: 'Unbranded Brook',
+  utilisation: 'Unbranded Brook',
   modele: 'strategize',
   asset: 'Sleek Indiana',
   actif: false,

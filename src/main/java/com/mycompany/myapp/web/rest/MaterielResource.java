@@ -144,8 +144,8 @@ public class MaterielResource {
                 Mono<Materiel> result = materielRepository
                     .findById(materiel.getId())
                     .map(existingMateriel -> {
-                        if (materiel.getType() != null) {
-                            existingMateriel.setType(materiel.getType());
+                        if (materiel.getUtilisation() != null) {
+                            existingMateriel.setUtilisation(materiel.getUtilisation());
                         }
                         if (materiel.getModele() != null) {
                             existingMateriel.setModele(materiel.getModele());

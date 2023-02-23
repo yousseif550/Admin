@@ -1,0 +1,25 @@
+{
+  "ihmApp": {
+    "typemateriel": {
+      "home": {
+        "ViewObject": "Voir les type d'objet",
+        "title": "Typemateriels",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Typemateriel",
+        "createOrEditLabel": "Create or edit a Typemateriel",
+        "notFound": "No Typemateriels found"
+      },
+      "created": "A new Typemateriel is created with identifier {{ param }}",
+      "updated": "A Typemateriel is updated with identifier {{ param }}",
+      "deleted": "A Typemateriel is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Typemateriel {{ id }}?"
+      },
+      "detail": {
+        "title": "Typemateriel"
+      },
+      "id": "ID",
+      "type": "Type"
+    }
+  }
+}

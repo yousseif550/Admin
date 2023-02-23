@@ -41,6 +41,9 @@ class CollaborateursResourceIT {
     private static final String DEFAULT_NOM = "AAAAAAAAAA";
     private static final String UPDATED_NOM = "BBBBBBBBBB";
 
+    private static final String DEFAULT_PRENOM = "AAAAAAAAAA";
+    private static final String UPDATED_PRENOM = "BBBBBBBBBB";
+
     private static final String DEFAULT_IDENTIFIANT = "AAAAAAAAAA";
     private static final String UPDATED_IDENTIFIANT = "BBBBBBBBBB";
 
@@ -82,6 +85,7 @@ class CollaborateursResourceIT {
     public static Collaborateurs createEntity() {
         Collaborateurs collaborateurs = new Collaborateurs()
             .nom(DEFAULT_NOM)
+            .prenom(DEFAULT_PRENOM)
             .identifiant(DEFAULT_IDENTIFIANT)
             .tel(DEFAULT_TEL)
             .prestataire(DEFAULT_PRESTATAIRE)
@@ -100,6 +104,7 @@ class CollaborateursResourceIT {
     public static Collaborateurs createUpdatedEntity() {
         Collaborateurs collaborateurs = new Collaborateurs()
             .nom(UPDATED_NOM)
+            .prenom(UPDATED_PRENOM)
             .identifiant(UPDATED_IDENTIFIANT)
             .tel(UPDATED_TEL)
             .prestataire(UPDATED_PRESTATAIRE)
@@ -133,6 +138,7 @@ class CollaborateursResourceIT {
         assertThat(collaborateursList).hasSize(databaseSizeBeforeCreate + 1);
         Collaborateurs testCollaborateurs = collaborateursList.get(collaborateursList.size() - 1);
         assertThat(testCollaborateurs.getNom()).isEqualTo(DEFAULT_NOM);
+        assertThat(testCollaborateurs.getPrenom()).isEqualTo(DEFAULT_PRENOM);
         assertThat(testCollaborateurs.getIdentifiant()).isEqualTo(DEFAULT_IDENTIFIANT);
         assertThat(testCollaborateurs.getTel()).isEqualTo(DEFAULT_TEL);
         assertThat(testCollaborateurs.getPrestataire()).isEqualTo(DEFAULT_PRESTATAIRE);
@@ -187,6 +193,7 @@ class CollaborateursResourceIT {
         assertThat(collaborateursList).hasSize(1);
         Collaborateurs testCollaborateurs = collaborateursList.get(0);
         assertThat(testCollaborateurs.getNom()).isEqualTo(DEFAULT_NOM);
+        assertThat(testCollaborateurs.getPrenom()).isEqualTo(DEFAULT_PRENOM);
         assertThat(testCollaborateurs.getIdentifiant()).isEqualTo(DEFAULT_IDENTIFIANT);
         assertThat(testCollaborateurs.getTel()).isEqualTo(DEFAULT_TEL);
         assertThat(testCollaborateurs.getPrestataire()).isEqualTo(DEFAULT_PRESTATAIRE);
@@ -215,6 +222,8 @@ class CollaborateursResourceIT {
             .value(hasItem(collaborateurs.getId()))
             .jsonPath("$.[*].nom")
             .value(hasItem(DEFAULT_NOM))
+            .jsonPath("$.[*].prenom")
+            .value(hasItem(DEFAULT_PRENOM))
             .jsonPath("$.[*].identifiant")
             .value(hasItem(DEFAULT_IDENTIFIANT))
             .jsonPath("$.[*].tel")
@@ -266,6 +275,8 @@ class CollaborateursResourceIT {
             .value(is(collaborateurs.getId()))
             .jsonPath("$.nom")
             .value(is(DEFAULT_NOM))
+            .jsonPath("$.prenom")
+            .value(is(DEFAULT_PRENOM))
             .jsonPath("$.identifiant")
             .value(is(DEFAULT_IDENTIFIANT))
             .jsonPath("$.tel")
@@ -303,6 +314,7 @@ class CollaborateursResourceIT {
         Collaborateurs updatedCollaborateurs = collaborateursRepository.findById(collaborateurs.getId()).block();
         updatedCollaborateurs
             .nom(UPDATED_NOM)
+            .prenom(UPDATED_PRENOM)
             .identifiant(UPDATED_IDENTIFIANT)
             .tel(UPDATED_TEL)
             .prestataire(UPDATED_PRESTATAIRE)
@@ -324,6 +336,7 @@ class CollaborateursResourceIT {
         assertThat(collaborateursList).hasSize(databaseSizeBeforeUpdate);
         Collaborateurs testCollaborateurs = collaborateursList.get(collaborateursList.size() - 1);
         assertThat(testCollaborateurs.getNom()).isEqualTo(UPDATED_NOM);
+        assertThat(testCollaborateurs.getPrenom()).isEqualTo(UPDATED_PRENOM);
         assertThat(testCollaborateurs.getIdentifiant()).isEqualTo(UPDATED_IDENTIFIANT);
         assertThat(testCollaborateurs.getTel()).isEqualTo(UPDATED_TEL);
         assertThat(testCollaborateurs.getPrestataire()).isEqualTo(UPDATED_PRESTATAIRE);
@@ -403,7 +416,7 @@ class CollaborateursResourceIT {
         Collaborateurs partialUpdatedCollaborateurs = new Collaborateurs();
         partialUpdatedCollaborateurs.setId(collaborateurs.getId());
 
-        partialUpdatedCollaborateurs.tel(UPDATED_TEL).dateEntree(UPDATED_DATE_ENTREE).dateSortie(UPDATED_DATE_SORTIE);
+        partialUpdatedCollaborateurs.identifiant(UPDATED_IDENTIFIANT).isActif(UPDATED_IS_ACTIF).dateEntree(UPDATED_DATE_ENTREE);
 
         webTestClient
             .patch()
@@ -419,12 +432,13 @@ class CollaborateursResourceIT {
         assertThat(collaborateursList).hasSize(databaseSizeBeforeUpdate);
         Collaborateurs testCollaborateurs = collaborateursList.get(collaborateursList.size() - 1);
         assertThat(testCollaborateurs.getNom()).isEqualTo(DEFAULT_NOM);
-        assertThat(testCollaborateurs.getIdentifiant()).isEqualTo(DEFAULT_IDENTIFIANT);
-        assertThat(testCollaborateurs.getTel()).isEqualTo(UPDATED_TEL);
+        assertThat(testCollaborateurs.getPrenom()).isEqualTo(DEFAULT_PRENOM);
+        assertThat(testCollaborateurs.getIdentifiant()).isEqualTo(UPDATED_IDENTIFIANT);
+        assertThat(testCollaborateurs.getTel()).isEqualTo(DEFAULT_TEL);
         assertThat(testCollaborateurs.getPrestataire()).isEqualTo(DEFAULT_PRESTATAIRE);
-        assertThat(testCollaborateurs.getIsActif()).isEqualTo(DEFAULT_IS_ACTIF);
+        assertThat(testCollaborateurs.getIsActif()).isEqualTo(UPDATED_IS_ACTIF);
         assertThat(testCollaborateurs.getDateEntree()).isEqualTo(UPDATED_DATE_ENTREE);
-        assertThat(testCollaborateurs.getDateSortie()).isEqualTo(UPDATED_DATE_SORTIE);
+        assertThat(testCollaborateurs.getDateSortie()).isEqualTo(DEFAULT_DATE_SORTIE);
     }
 
     @Test
@@ -440,6 +454,7 @@ class CollaborateursResourceIT {
 
         partialUpdatedCollaborateurs
             .nom(UPDATED_NOM)
+            .prenom(UPDATED_PRENOM)
             .identifiant(UPDATED_IDENTIFIANT)
             .tel(UPDATED_TEL)
             .prestataire(UPDATED_PRESTATAIRE)
@@ -461,6 +476,7 @@ class CollaborateursResourceIT {
         assertThat(collaborateursList).hasSize(databaseSizeBeforeUpdate);
         Collaborateurs testCollaborateurs = collaborateursList.get(collaborateursList.size() - 1);
         assertThat(testCollaborateurs.getNom()).isEqualTo(UPDATED_NOM);
+        assertThat(testCollaborateurs.getPrenom()).isEqualTo(UPDATED_PRENOM);
         assertThat(testCollaborateurs.getIdentifiant()).isEqualTo(UPDATED_IDENTIFIANT);
         assertThat(testCollaborateurs.getTel()).isEqualTo(UPDATED_TEL);
         assertThat(testCollaborateurs.getPrestataire()).isEqualTo(UPDATED_PRESTATAIRE);

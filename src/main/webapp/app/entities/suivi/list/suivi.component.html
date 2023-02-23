@@ -38,14 +38,6 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-
-          <th scope="col" jhiSortBy="collaborateur.id">
-            <div class="d-flex">
-              <span jhiTranslate="ihmApp.suivi.collaborateur">Collaborateur</span>
-              <fa-icon class="p-1" icon="sort"></fa-icon>
-            </div>
-          </th>
-
           <th scope="col" jhiSortBy="envoiKitAccueil">
             <div class="d-flex">
               <span jhiTranslate="ihmApp.suivi.envoiKitAccueil">Envoi Kit Accueil</span>
@@ -136,6 +128,12 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
+          <th scope="col" jhiSortBy="collaborateur.id">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.suivi.collaborateur">Collaborateur</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
           <th scope="col"></th>
         </tr>
       </thead>
@@ -143,11 +141,6 @@
         <tr *ngFor="let suivi of suivis; trackBy: trackId" data-cy="entityTable">
           <td>
             <a [routerLink]="['/suivi', suivi.id, 'view']">{{ suivi.id }}</a>
-          </td>
-          <td>
-            <div *ngIf="suivi.collaborateur">
-              <a [routerLink]="['/collaborateurs', suivi.collaborateur.id, 'view']">{{ suivi.collaborateur.id }}</a>
-            </div>
           </td>
           <td jhiTranslate="{{ 'ihmApp.Etat.' + suivi.envoiKitAccueil }}">{{ suivi.envoiKitAccueil }}</td>
           <td jhiTranslate="{{ 'ihmApp.Etat.' + suivi.documentSigner }}">{{ suivi.documentSigner }}</td>
@@ -164,6 +157,11 @@
           <td jhiTranslate="{{ 'ihmApp.Etat.' + suivi.dmocssIpTT }}">{{ suivi.dmocssIpTT }}</td>
           <td jhiTranslate="{{ 'ihmApp.Etat.' + suivi.installationLogiciel }}">{{ suivi.installationLogiciel }}</td>
           <td>{{ suivi.commentaires }}</td>
+          <td>
+            <div *ngIf="suivi.collaborateur">
+              <a [routerLink]="['/collaborateurs', suivi.collaborateur.id, 'view']">{{ suivi.collaborateur.id }}</a>
+            </div>
+          </td>
           <td class="text-end">
             <div class="btn-group">
               <button type="submit" [routerLink]="['/suivi', suivi.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">

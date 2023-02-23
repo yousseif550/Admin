@@ -28,8 +28,8 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 @WithMockUser
 class MaterielResourceIT {
 
-    private static final String DEFAULT_TYPE = "AAAAAAAAAA";
-    private static final String UPDATED_TYPE = "BBBBBBBBBB";
+    private static final String DEFAULT_UTILISATION = "AAAAAAAAAA";
+    private static final String UPDATED_UTILISATION = "BBBBBBBBBB";
 
     private static final String DEFAULT_MODELE = "AAAAAAAAAA";
     private static final String UPDATED_MODELE = "BBBBBBBBBB";
@@ -71,7 +71,7 @@ class MaterielResourceIT {
      */
     public static Materiel createEntity() {
         Materiel materiel = new Materiel()
-            .type(DEFAULT_TYPE)
+            .utilisation(DEFAULT_UTILISATION)
             .modele(DEFAULT_MODELE)
             .asset(DEFAULT_ASSET)
             .actif(DEFAULT_ACTIF)
@@ -90,7 +90,7 @@ class MaterielResourceIT {
      */
     public static Materiel createUpdatedEntity() {
         Materiel materiel = new Materiel()
-            .type(UPDATED_TYPE)
+            .utilisation(UPDATED_UTILISATION)
             .modele(UPDATED_MODELE)
             .asset(UPDATED_ASSET)
             .actif(UPDATED_ACTIF)
@@ -124,7 +124,7 @@ class MaterielResourceIT {
         List<Materiel> materielList = materielRepository.findAll().collectList().block();
         assertThat(materielList).hasSize(databaseSizeBeforeCreate + 1);
         Materiel testMateriel = materielList.get(materielList.size() - 1);
-        assertThat(testMateriel.getType()).isEqualTo(DEFAULT_TYPE);
+        assertThat(testMateriel.getUtilisation()).isEqualTo(DEFAULT_UTILISATION);
         assertThat(testMateriel.getModele()).isEqualTo(DEFAULT_MODELE);
         assertThat(testMateriel.getAsset()).isEqualTo(DEFAULT_ASSET);
         assertThat(testMateriel.getActif()).isEqualTo(DEFAULT_ACTIF);
@@ -179,7 +179,7 @@ class MaterielResourceIT {
         assertThat(materielList).isNotNull();
         assertThat(materielList).hasSize(1);
         Materiel testMateriel = materielList.get(0);
-        assertThat(testMateriel.getType()).isEqualTo(DEFAULT_TYPE);
+        assertThat(testMateriel.getUtilisation()).isEqualTo(DEFAULT_UTILISATION);
         assertThat(testMateriel.getModele()).isEqualTo(DEFAULT_MODELE);
         assertThat(testMateriel.getAsset()).isEqualTo(DEFAULT_ASSET);
         assertThat(testMateriel.getActif()).isEqualTo(DEFAULT_ACTIF);
@@ -207,8 +207,8 @@ class MaterielResourceIT {
             .expectBody()
             .jsonPath("$.[*].id")
             .value(hasItem(materiel.getId()))
-            .jsonPath("$.[*].type")
-            .value(hasItem(DEFAULT_TYPE))
+            .jsonPath("$.[*].utilisation")
+            .value(hasItem(DEFAULT_UTILISATION))
             .jsonPath("$.[*].modele")
             .value(hasItem(DEFAULT_MODELE))
             .jsonPath("$.[*].asset")
@@ -243,8 +243,8 @@ class MaterielResourceIT {
             .expectBody()
             .jsonPath("$.id")
             .value(is(materiel.getId()))
-            .jsonPath("$.type")
-            .value(is(DEFAULT_TYPE))
+            .jsonPath("$.utilisation")
+            .value(is(DEFAULT_UTILISATION))
             .jsonPath("$.modele")
             .value(is(DEFAULT_MODELE))
             .jsonPath("$.asset")
@@ -283,7 +283,7 @@ class MaterielResourceIT {
         // Update the materiel
         Materiel updatedMateriel = materielRepository.findById(materiel.getId()).block();
         updatedMateriel
-            .type(UPDATED_TYPE)
+            .utilisation(UPDATED_UTILISATION)
             .modele(UPDATED_MODELE)
             .asset(UPDATED_ASSET)
             .actif(UPDATED_ACTIF)
@@ -305,7 +305,7 @@ class MaterielResourceIT {
         List<Materiel> materielList = materielRepository.findAll().collectList().block();
         assertThat(materielList).hasSize(databaseSizeBeforeUpdate);
         Materiel testMateriel = materielList.get(materielList.size() - 1);
-        assertThat(testMateriel.getType()).isEqualTo(UPDATED_TYPE);
+        assertThat(testMateriel.getUtilisation()).isEqualTo(UPDATED_UTILISATION);
         assertThat(testMateriel.getModele()).isEqualTo(UPDATED_MODELE);
         assertThat(testMateriel.getAsset()).isEqualTo(UPDATED_ASSET);
         assertThat(testMateriel.getActif()).isEqualTo(UPDATED_ACTIF);
@@ -387,7 +387,7 @@ class MaterielResourceIT {
         partialUpdatedMateriel.setId(materiel.getId());
 
         partialUpdatedMateriel
-            .type(UPDATED_TYPE)
+            .utilisation(UPDATED_UTILISATION)
             .modele(UPDATED_MODELE)
             .actif(UPDATED_ACTIF)
             .dateAttribution(UPDATED_DATE_ATTRIBUTION)
@@ -406,7 +406,7 @@ class MaterielResourceIT {
         List<Materiel> materielList = materielRepository.findAll().collectList().block();
         assertThat(materielList).hasSize(databaseSizeBeforeUpdate);
         Materiel testMateriel = materielList.get(materielList.size() - 1);
-        assertThat(testMateriel.getType()).isEqualTo(UPDATED_TYPE);
+        assertThat(testMateriel.getUtilisation()).isEqualTo(UPDATED_UTILISATION);
         assertThat(testMateriel.getModele()).isEqualTo(UPDATED_MODELE);
         assertThat(testMateriel.getAsset()).isEqualTo(DEFAULT_ASSET);
         assertThat(testMateriel.getActif()).isEqualTo(UPDATED_ACTIF);
@@ -428,7 +428,7 @@ class MaterielResourceIT {
         partialUpdatedMateriel.setId(materiel.getId());
 
         partialUpdatedMateriel
-            .type(UPDATED_TYPE)
+            .utilisation(UPDATED_UTILISATION)
             .modele(UPDATED_MODELE)
             .asset(UPDATED_ASSET)
             .actif(UPDATED_ACTIF)
@@ -450,7 +450,7 @@ class MaterielResourceIT {
         List<Materiel> materielList = materielRepository.findAll().collectList().block();
         assertThat(materielList).hasSize(databaseSizeBeforeUpdate);
         Materiel testMateriel = materielList.get(materielList.size() - 1);
-        assertThat(testMateriel.getType()).isEqualTo(UPDATED_TYPE);
+        assertThat(testMateriel.getUtilisation()).isEqualTo(UPDATED_UTILISATION);
         assertThat(testMateriel.getModele()).isEqualTo(UPDATED_MODELE);
         assertThat(testMateriel.getAsset()).isEqualTo(UPDATED_ASSET);
         assertThat(testMateriel.getActif()).isEqualTo(UPDATED_ACTIF);

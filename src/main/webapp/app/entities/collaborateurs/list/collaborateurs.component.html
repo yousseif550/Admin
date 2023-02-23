@@ -44,6 +44,12 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
+          <th scope="col" jhiSortBy="prenom">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.collaborateurs.prenom">Prenom</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
           <th scope="col" jhiSortBy="identifiant">
             <div class="d-flex">
               <span jhiTranslate="ihmApp.collaborateurs.identifiant">Identifiant</span>
@@ -101,6 +107,7 @@
             <a [routerLink]="['/collaborateurs', collaborateurs.id, 'view']">{{ collaborateurs.id }}</a>
           </td>
           <td>{{ collaborateurs.nom }}</td>
+          <td>{{ collaborateurs.prenom }}</td>
           <td>{{ collaborateurs.identifiant }}</td>
           <td>{{ collaborateurs.tel }}</td>
           <td>{{ collaborateurs.prestataire }}</td>

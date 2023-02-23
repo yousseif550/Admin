@@ -14,8 +14,15 @@
         </div>
 
         <div class="row mb-3">
-          <label class="form-label" jhiTranslate="ihmApp.materiel.type" for="field_type">Type</label>
-          <input type="text" class="form-control" name="type" id="field_type" data-cy="type" formControlName="type" />
+          <label class="form-label" jhiTranslate="ihmApp.materiel.utilisation" for="field_utilisation">Utilisation</label>
+          <input
+            type="text"
+            class="form-control"
+            name="utilisation"
+            id="field_utilisation"
+            data-cy="utilisation"
+            formControlName="utilisation"
+          />
         </div>
 
         <div class="row mb-3">
@@ -87,6 +94,23 @@
         </div>
 
         <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ihmApp.materiel.objet" for="field_objet">Objet</label>
+          <select
+            class="form-control"
+            id="field_objet"
+            data-cy="objet"
+            name="objet"
+            formControlName="objet"
+            [compareWith]="compareTypemateriel"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="typematerielOption" *ngFor="let typematerielOption of typematerielsSharedCollection">
+              {{ typematerielOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
           <label class="form-label" jhiTranslate="ihmApp.materiel.localisation" for="field_localisation">Localisation</label>
           <select
             class="form-control"
@@ -98,24 +122,24 @@
           >
             <option [ngValue]="null"></option>
             <option [ngValue]="localisationOption" *ngFor="let localisationOption of localisationsSharedCollection">
-              {{ localisationOption.batiment }}
+              {{ localisationOption.id }}
             </option>
           </select>
         </div>
 
         <div class="row mb-3">
-          <label class="form-label" jhiTranslate="ihmApp.materiel.collaborateurs" for="field_collaborateurs">Collaborateurs</label>
+          <label class="form-label" jhiTranslate="ihmApp.materiel.collaborateur" for="field_collaborateur">Collaborateur</label>
           <select
             class="form-control"
-            id="field_collaborateurs"
-            data-cy="collaborateurs"
-            name="collaborateurs"
-            formControlName="collaborateurs"
+            id="field_collaborateur"
+            data-cy="collaborateur"
+            name="collaborateur"
+            formControlName="collaborateur"
             [compareWith]="compareCollaborateurs"
           >
             <option [ngValue]="null"></option>
             <option [ngValue]="collaborateursOption" *ngFor="let collaborateursOption of collaborateursSharedCollection">
-              {{ collaborateursOption.nom }}
+              {{ collaborateursOption.id }}
             </option>
           </select>
         </div>

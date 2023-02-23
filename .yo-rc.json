@@ -30,14 +30,15 @@
       "Materiel",
       "Historique",
       "NumeroInventaire",
-      "ExtracDMOCSS"
+      "ExtracDMOCSS",
+      "Typemateriel"
     ],
     "entitySuffix": "",
     "jhiPrefix": "jhi",
     "jhipsterVersion": "7.9.3",
     "jwtSecretKey": "ZTk5MGIwOTFlZmM1ZWY2NTNhNjMyM2Y4MTNiMDIxNWQ0YWVhY2YyMGNhNmU3NTczMTRkMzRlNjdlNWFlN2MzYzAxYjY5Mjg4OTA1MzM0NDkyNzgzZDZlMWJmNzI2NGM4MGRiZmMwMTEzNzk1ZjY1Y2ExMGUwYjBmNjIzZTM1ZmQ=",
     "languages": ["en"],
-    "lastLiquibaseTimestamp": 1672667566000,
+    "lastLiquibaseTimestamp": 1676473360000,
     "messageBroker": false,
     "microfrontend": false,
     "microfrontends": [],

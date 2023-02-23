@@ -23,6 +23,11 @@
         </div>
 
         <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ihmApp.collaborateurs.prenom" for="field_prenom">Prenom</label>
+          <input type="text" class="form-control" name="prenom" id="field_prenom" data-cy="prenom" formControlName="prenom" />
+        </div>
+
+        <div class="row mb-3">
           <label class="form-label" jhiTranslate="ihmApp.collaborateurs.identifiant" for="field_identifiant">Identifiant</label>
           <input
             type="text"
@@ -102,7 +107,7 @@
           >
             <option [ngValue]="null"></option>
             <option [ngValue]="localisationOption" *ngFor="let localisationOption of localisationsSharedCollection">
-              {{ localisationOption.batiment }}
+              {{ localisationOption.id }}
             </option>
           </select>
         </div>
@@ -118,7 +123,7 @@
             formControlName="projets"
             [compareWith]="compareProjet"
           >
-            <option [ngValue]="projetOption" *ngFor="let projetOption of projetsSharedCollection">{{ projetOption.nom }}</option>
+            <option [ngValue]="projetOption" *ngFor="let projetOption of projetsSharedCollection">{{ projetOption.id }}</option>
           </select>
         </div>
       </div>

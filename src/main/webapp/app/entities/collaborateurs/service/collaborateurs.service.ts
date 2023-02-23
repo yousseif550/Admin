@@ -10,6 +10,7 @@ import { ApplicationConfigService } from 'app/core/config/application-config.ser
 import { createRequestOption } from 'app/core/request/request-util';
 import { ICollaborateurs, NewCollaborateurs } from '../collaborateurs.model';
 
+import { IMateriel } from 'app/entities/materiel/materiel.model';
 export type PartialUpdateCollaborateurs = Partial<ICollaborateurs> & Pick<ICollaborateurs, 'id'>;
 
 type RestOf<T extends ICollaborateurs | NewCollaborateurs> = Omit<T, 'dateEntree' | 'dateSortie'> & {
@@ -31,6 +32,10 @@ export class CollaborateursService {
   protected resourceUrl = this.applicationConfigService.getEndpointFor('api/collaborateurs');
 
   constructor(protected http: HttpClient, protected applicationConfigService: ApplicationConfigService) {}
+
+  getMaterielsForCollaborateur(id: string): Observable<HttpResponse<IMateriel[]>> {
+    return this.http.get<IMateriel[]>(`api/materiels`, { observe: 'response' });
+  }
 
   create(collaborateurs: NewCollaborateurs): Observable<EntityResponseType> {
     const copy = this.convertDateFromClient(collaborateurs);

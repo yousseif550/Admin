@@ -9,6 +9,8 @@ import { of, Subject, from } from 'rxjs';
 import { MaterielFormService } from './materiel-form.service';
 import { MaterielService } from '../service/materiel.service';
 import { IMateriel } from '../materiel.model';
+import { ITypemateriel } from 'app/entities/typemateriel/typemateriel.model';
+import { TypematerielService } from 'app/entities/typemateriel/service/typemateriel.service';
 import { ILocalisation } from 'app/entities/localisation/localisation.model';
 import { LocalisationService } from 'app/entities/localisation/service/localisation.service';
 import { ICollaborateurs } from 'app/entities/collaborateurs/collaborateurs.model';
@@ -22,6 +24,7 @@ describe('Materiel Management Update Component', () => {
   let activatedRoute: ActivatedRoute;
   let materielFormService: MaterielFormService;
   let materielService: MaterielService;
+  let typematerielService: TypematerielService;
   let localisationService: LocalisationService;
   let collaborateursService: CollaborateursService;
 
@@ -46,6 +49,7 @@ describe('Materiel Management Update Component', () => {
     activatedRoute = TestBed.inject(ActivatedRoute);
     materielFormService = TestBed.inject(MaterielFormService);
     materielService = TestBed.inject(MaterielService);
+    typematerielService = TestBed.inject(TypematerielService);
     localisationService = TestBed.inject(LocalisationService);
     collaborateursService = TestBed.inject(CollaborateursService);
 
@@ -53,6 +57,28 @@ describe('Materiel Management Update Component', () => {
   });
 
   describe('ngOnInit', () => {
+    it('Should call Typemateriel query and add missing value', () => {
+      const materiel: IMateriel = { id: 'CBA' };
+      const objet: ITypemateriel = { id: '82c28764-64ac-41fe-a164-6f71e055a8ed' };
+      materiel.objet = objet;
+
+      const typematerielCollection: ITypemateriel[] = [{ id: 'b1c1a0cf-6a86-47f8-9bf6-d37c510ea08e' }];
+      jest.spyOn(typematerielService, 'query').mockReturnValue(of(new HttpResponse({ body: typematerielCollection })));
+      const additionalTypemateriels = [objet];
+      const expectedCollection: ITypemateriel[] = [...additionalTypemateriels, ...typematerielCollection];
+      jest.spyOn(typematerielService, 'addTypematerielToCollectionIfMissing').mockReturnValue(expectedCollection);
+
+      activatedRoute.data = of({ materiel });
+      comp.ngOnInit();
+
+      expect(typematerielService.query).toHaveBeenCalled();
+      expect(typematerielService.addTypematerielToCollectionIfMissing).toHaveBeenCalledWith(
+        typematerielCollection,
+        ...additionalTypemateriels.map(expect.objectContaining)
+      );
+      expect(comp.typematerielsSharedCollection).toEqual(expectedCollection);
+    });
+
     it('Should call Localisation query and add missing value', () => {
       const materiel: IMateriel = { id: 'CBA' };
       const localisation: ILocalisation = { id: '2a24990c-8897-46bd-bcc1-0b702031e123' };
@@ -77,12 +103,12 @@ describe('Materiel Management Update Component', () => {
 
     it('Should call Collaborateurs query and add missing value', () => {
       const materiel: IMateriel = { id: 'CBA' };
-      const collaborateurs: ICollaborateurs = { id: '936d983e-ec8a-4995-a9be-6cce21342c0a' };
-      materiel.collaborateurs = collaborateurs;
+      const collaborateur: ICollaborateurs = { id: '936d983e-ec8a-4995-a9be-6cce21342c0a' };
+      materiel.collaborateur = collaborateur;
 
       const collaborateursCollection: ICollaborateurs[] = [{ id: '78a9579b-4dd0-48f6-97a1-9f95404ed48f' }];
       jest.spyOn(collaborateursService, 'query').mockReturnValue(of(new HttpResponse({ body: collaborateursCollection })));
-      const additionalCollaborateurs = [collaborateurs];
+      const additionalCollaborateurs = [collaborateur];
       const expectedCollection: ICollaborateurs[] = [...additionalCollaborateurs, ...collaborateursCollection];
       jest.spyOn(collaborateursService, 'addCollaborateursToCollectionIfMissing').mockReturnValue(expectedCollection);
 
@@ -99,16 +125,19 @@ describe('Materiel Management Update Component', () => {
 
     it('Should update editForm', () => {
       const materiel: IMateriel = { id: 'CBA' };
+      const objet: ITypemateriel = { id: '744ca728-93f7-4320-a6ff-e32db4245fbf' };
+      materiel.objet = objet;
       const localisation: ILocalisation = { id: '80d9e66f-cb8e-4bd5-9f5d-fe92feb5fcf9' };
       materiel.localisation = localisation;
-      const collaborateurs: ICollaborateurs = { id: 'f05dfd9a-37bb-4e68-ba27-81d159e6f6ca' };
-      materiel.collaborateurs = collaborateurs;
+      const collaborateur: ICollaborateurs = { id: 'f05dfd9a-37bb-4e68-ba27-81d159e6f6ca' };
+      materiel.collaborateur = collaborateur;
 
       activatedRoute.data = of({ materiel });
       comp.ngOnInit();
 
+      expect(comp.typematerielsSharedCollection).toContain(objet);
       expect(comp.localisationsSharedCollection).toContain(localisation);
-      expect(comp.collaborateursSharedCollection).toContain(collaborateurs);
+      expect(comp.collaborateursSharedCollection).toContain(collaborateur);
       expect(comp.materiel).toEqual(materiel);
     });
   });
@@ -182,6 +211,16 @@ describe('Materiel Management Update Component', () => {
   });
 
   describe('Compare relationships', () => {
+    describe('compareTypemateriel', () => {
+      it('Should forward to typematerielService', () => {
+        const entity = { id: 'ABC' };
+        const entity2 = { id: 'CBA' };
+        jest.spyOn(typematerielService, 'compareTypemateriel');
+        comp.compareTypemateriel(entity, entity2);
+        expect(typematerielService.compareTypemateriel).toHaveBeenCalledWith(entity, entity2);
+      });
+    });
+
     describe('compareLocalisation', () => {
       it('Should forward to localisationService', () => {
         const entity = { id: 'ABC' };

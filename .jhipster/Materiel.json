@@ -6,7 +6,7 @@
   "entityTableName": "materiel",
   "fields": [
     {
-      "fieldName": "type",
+      "fieldName": "utilisation",
       "fieldType": "String"
     },
     {
@@ -45,6 +45,12 @@
   "readOnly": false,
   "relationships": [
     {
+      "otherEntityName": "typemateriel",
+      "ownerSide": true,
+      "relationshipName": "objet",
+      "relationshipType": "one-to-one"
+    },
+    {
       "otherEntityName": "localisation",
       "ownerSide": true,
       "relationshipName": "localisation",
@@ -53,7 +59,7 @@
     {
       "otherEntityName": "collaborateurs",
       "ownerSide": true,
-      "relationshipName": "collaborateurs",
+      "relationshipName": "collaborateur",
       "relationshipType": "one-to-one"
     }
   ],
