@@ -16,6 +16,13 @@ export interface ICollaborateurs {
   localisation?: Pick<ILocalisation, 'id'> | null;
   projets?: Pick<IProjet, 'id'>[] | null;
   materiel?: Pick<IMateriel, 'id'> | null;
+  inventaire?: { id: any; asset: any; objet: any } | null;
+}
+
+export interface MyObject {
+  id: any;
+  asset: any;
+  objet: any;
 }
 
 export type NewCollaborateurs = Omit<ICollaborateurs, 'id'> & { id: null };

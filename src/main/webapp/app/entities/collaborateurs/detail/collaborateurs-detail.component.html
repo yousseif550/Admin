@@ -74,19 +74,12 @@
   <div class="col-6">
     <h2>Biens Personnels</h2>
     <hr />
-    <ul>
-      <div *ngIf="materiels">
-        <span>Assets Matériel Associé</span>
-        <a [routerLink]="['/materiel', materiels.id, 'view']">{{ materiels.asset }}</a>
-      </div>
 
-      <div *ngIf="materiels">
-        <span>Type Obj Matériel Associé</span>
-        <a [routerLink]="['/typemateriel', materiels.objet?.id, 'view']">{{ materiels.objet?.id }}</a>
-      </div>
-    </ul>
-    <!-- <li *ngFor="let materiel of materiels">
-        
-      </li> -->
+    <div *ngFor="let item of inventaire | keyvalue">
+      <span>Assets Matériel Associé</span>
+      {{ item.value.objet?.type }}
+      <a [routerLink]="['/materiel', item.value.id, 'view']">{{ item.value.asset }}</a>
+      <hr />
+    </div>
   </div>
 </div>

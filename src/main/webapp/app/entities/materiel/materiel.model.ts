@@ -4,7 +4,7 @@ import { ILocalisation } from 'app/entities/localisation/localisation.model';
 import { ICollaborateurs } from 'app/entities/collaborateurs/collaborateurs.model';
 
 export interface IMateriel {
-  id: string;
+  id: any;
   utilisation?: string | null;
   modele?: string | null;
   asset?: string | null;

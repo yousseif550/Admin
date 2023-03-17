@@ -33,7 +33,7 @@ export class CollaborateursService {
 
   constructor(protected http: HttpClient, protected applicationConfigService: ApplicationConfigService) {}
 
-  getMaterielsForCollaborateur(id: string): Observable<HttpResponse<IMateriel[]>> {
+  getMaterielsForCollaborateur(): Observable<HttpResponse<IMateriel[]>> {
     return this.http.get<IMateriel[]>(`api/materiels`, { observe: 'response' });
   }
 
