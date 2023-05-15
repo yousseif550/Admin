@@ -42,30 +42,35 @@
   "readOnly": false,
   "relationships": [
     {
+      "otherEntityField": "nom",
       "otherEntityName": "collaborateurs",
       "ownerSide": true,
       "relationshipName": "collaborateur",
       "relationshipType": "one-to-one"
     },
     {
+      "otherEntityField": "asset",
       "otherEntityName": "materiel",
       "ownerSide": true,
       "relationshipName": "materiel",
       "relationshipType": "one-to-one"
     },
     {
+      "otherEntityField": "bureau",
       "otherEntityName": "localisation",
       "ownerSide": true,
       "relationshipName": "bureauActuel",
       "relationshipType": "one-to-one"
     },
     {
+      "otherEntityField": "bureau",
       "otherEntityName": "localisation",
       "ownerSide": true,
       "relationshipName": "bureauDeplacement",
       "relationshipType": "one-to-one"
     },
     {
+      "otherEntityField": "batiment",
       "otherEntityName": "localisation",
       "ownerSide": true,
       "relationshipName": "localisation",

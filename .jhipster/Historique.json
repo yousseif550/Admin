@@ -25,18 +25,21 @@
   "readOnly": false,
   "relationships": [
     {
+      "otherEntityField": "nom",
       "otherEntityName": "collaborateurs",
       "ownerSide": true,
       "relationshipName": "ancienProprietaire",
       "relationshipType": "one-to-one"
     },
     {
+      "otherEntityField": "nom",
       "otherEntityName": "collaborateurs",
       "ownerSide": true,
       "relationshipName": "nouveauProprietaire",
       "relationshipType": "one-to-one"
     },
     {
+      "otherEntityField": "asset",
       "otherEntityName": "materiel",
       "ownerSide": true,
       "relationshipName": "materiel",

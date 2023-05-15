@@ -147,9 +147,6 @@ public class CollaborateursResource {
                         if (collaborateurs.getNom() != null) {
                             existingCollaborateurs.setNom(collaborateurs.getNom());
                         }
-                        if (collaborateurs.getPrenom() != null) {
-                            existingCollaborateurs.setPrenom(collaborateurs.getPrenom());
-                        }
                         if (collaborateurs.getIdentifiant() != null) {
                             existingCollaborateurs.setIdentifiant(collaborateurs.getIdentifiant());
                         }

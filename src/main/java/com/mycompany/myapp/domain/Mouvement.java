@@ -37,8 +37,8 @@ public class Mouvement implements Serializable {
     @Field("commentaire")
     private String commentaire;
 
-    @Field("asset")
-    private Materiel asset;
+    @Field("materiel")
+    private Materiel materiel;
 
     @Field("localisation")
     private Localisation localisation;
@@ -136,16 +136,16 @@ public class Mouvement implements Serializable {
         this.commentaire = commentaire;
     }
 
-    public Materiel getAsset() {
-        return this.asset;
+    public Materiel getMateriel() {
+        return this.materiel;
     }
 
-    public void setAsset(Materiel materiel) {
-        this.asset = materiel;
+    public void setMateriel(Materiel materiel) {
+        this.materiel = materiel;
     }
 
-    public Mouvement asset(Materiel materiel) {
-        this.setAsset(materiel);
+    public Mouvement materiel(Materiel materiel) {
+        this.setMateriel(materiel);
         return this;
     }
 

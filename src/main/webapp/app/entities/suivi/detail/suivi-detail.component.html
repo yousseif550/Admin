@@ -77,7 +77,7 @@
         <dt><span jhiTranslate="ihmApp.suivi.collaborateur">Collaborateur</span></dt>
         <dd>
           <div *ngIf="suivi.collaborateur">
-            <a [routerLink]="['/collaborateurs', suivi.collaborateur.id, 'view']">{{ suivi.collaborateur.id }}</a>
+            <a [routerLink]="['/collaborateurs', suivi.collaborateur.id, 'view']">{{ suivi.collaborateur.nom }}</a>
           </div>
         </dd>
       </dl>

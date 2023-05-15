@@ -55,12 +55,12 @@ describe('Mouvement Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call Materiel query and add missing value', () => {
       const mouvement: IMouvement = { id: 'CBA' };
-      const asset: IMateriel = { id: '45c2864c-b8e5-485a-91fd-8e0696435132' };
-      mouvement.asset = asset;
+      const materiel: IMateriel = { id: '45c2864c-b8e5-485a-91fd-8e0696435132' };
+      mouvement.materiel = materiel;
 
       const materielCollection: IMateriel[] = [{ id: '8350b9d7-a0f8-4acf-a837-d33b95bd7d61' }];
       jest.spyOn(materielService, 'query').mockReturnValue(of(new HttpResponse({ body: materielCollection })));
-      const additionalMateriels = [asset];
+      const additionalMateriels = [materiel];
       const expectedCollection: IMateriel[] = [...additionalMateriels, ...materielCollection];
       jest.spyOn(materielService, 'addMaterielToCollectionIfMissing').mockReturnValue(expectedCollection);
 
@@ -99,15 +99,15 @@ describe('Mouvement Management Update Component', () => {
 
     it('Should update editForm', () => {
       const mouvement: IMouvement = { id: 'CBA' };
-      const asset: IMateriel = { id: '7847b3bf-b54c-4a81-a6cb-a44c55f9a9c9' };
-      mouvement.asset = asset;
+      const materiel: IMateriel = { id: '7847b3bf-b54c-4a81-a6cb-a44c55f9a9c9' };
+      mouvement.materiel = materiel;
       const localisation: ILocalisation = { id: '91dfe69a-e9a9-4d85-927d-a0ddfe79d908' };
       mouvement.localisation = localisation;
 
       activatedRoute.data = of({ mouvement });
       comp.ngOnInit();
 
-      expect(comp.materielsSharedCollection).toContain(asset);
+      expect(comp.materielsSharedCollection).toContain(materiel);
       expect(comp.localisationsSharedCollection).toContain(localisation);
       expect(comp.mouvement).toEqual(mouvement);
     });

@@ -49,19 +49,19 @@
         <dt><span jhiTranslate="ihmApp.materiel.objet">Objet</span></dt>
         <dd>
           <div *ngIf="materiel.objet">
-            <a [routerLink]="['/typemateriel', materiel.objet.id, 'view']">{{ materiel.objet.id }}</a>
+            <a [routerLink]="['/typemateriel', materiel.objet.id, 'view']">{{ materiel.objet.type }}</a>
           </div>
         </dd>
         <dt><span jhiTranslate="ihmApp.materiel.localisation">Localisation</span></dt>
         <dd>
           <div *ngIf="materiel.localisation">
-            <a [routerLink]="['/localisation', materiel.localisation.id, 'view']">{{ materiel.localisation.id }}</a>
+            <a [routerLink]="['/localisation', materiel.localisation.id, 'view']">{{ materiel.localisation.batiment }}</a>
           </div>
         </dd>
         <dt><span jhiTranslate="ihmApp.materiel.collaborateur">Collaborateur</span></dt>
         <dd>
           <div *ngIf="materiel.collaborateur">
-            <a [routerLink]="['/collaborateurs', materiel.collaborateur.id, 'view']">{{ materiel.collaborateur.id }}</a>
+            <a [routerLink]="['/collaborateurs', materiel.collaborateur.id, 'view']">{{ materiel.collaborateur.nom }}</a>
           </div>
         </dd>
       </dl>

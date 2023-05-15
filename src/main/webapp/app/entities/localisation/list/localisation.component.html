@@ -32,12 +32,12 @@
     <table class="table table-striped" aria-describedby="page-heading">
       <thead>
         <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
-          <th scope="col" jhiSortBy="id">
+          <!-- <th scope="col" jhiSortBy="id">
             <div class="d-flex">
               <span jhiTranslate="global.field.id">ID</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
-          </th>
+          </th> -->
           <th scope="col" jhiSortBy="batiment">
             <div class="d-flex">
               <span jhiTranslate="ihmApp.localisation.batiment">Batiment</span>
@@ -67,9 +67,9 @@
       </thead>
       <tbody>
         <tr *ngFor="let localisation of localisations; trackBy: trackId" data-cy="entityTable">
-          <td>
+          <!-- <td>
             <a [routerLink]="['/localisation', localisation.id, 'view']">{{ localisation.id }}</a>
-          </td>
+          </td> -->
           <td>{{ localisation.batiment }}</td>
           <td>{{ localisation.bureau }}</td>
           <td>{{ localisation.site }}</td>

@@ -206,12 +206,17 @@ public class SuiviResource {
     /**
      * {@code GET  /suivis} : get all the suivis.
      *
+     * @param eagerload flag to eager load entities from relationships (This is applicable for many-to-many).
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of suivis in body.
      */
     @GetMapping("/suivis")
-    public Mono<List<Suivi>> getAllSuivis() {
+    public Mono<List<Suivi>> getAllSuivis(@RequestParam(required = false, defaultValue = "false") boolean eagerload) {
         log.debug("REST request to get all Suivis");
-        return suiviRepository.findAll().collectList();
+        if (eagerload) {
+            return suiviRepository.findAllWithEagerRelationships().collectList();
+        } else {
+            return suiviRepository.findAll().collectList();
+        }
     }
 
     /**
@@ -233,7 +238,7 @@ public class SuiviResource {
     @GetMapping("/suivis/{id}")
     public Mono<ResponseEntity<Suivi>> getSuivi(@PathVariable String id) {
         log.debug("REST request to get Suivi : {}", id);
-        Mono<Suivi> suivi = suiviRepository.findById(id);
+        Mono<Suivi> suivi = suiviRepository.findOneWithEagerRelationships(id);
         return ResponseUtil.wrapOrNotFound(suivi);
     }
 

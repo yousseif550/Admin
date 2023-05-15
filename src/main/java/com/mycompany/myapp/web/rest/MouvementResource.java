@@ -181,12 +181,17 @@ public class MouvementResource {
     /**
      * {@code GET  /mouvements} : get all the mouvements.
      *
+     * @param eagerload flag to eager load entities from relationships (This is applicable for many-to-many).
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of mouvements in body.
      */
     @GetMapping("/mouvements")
-    public Mono<List<Mouvement>> getAllMouvements() {
+    public Mono<List<Mouvement>> getAllMouvements(@RequestParam(required = false, defaultValue = "false") boolean eagerload) {
         log.debug("REST request to get all Mouvements");
-        return mouvementRepository.findAll().collectList();
+        if (eagerload) {
+            return mouvementRepository.findAllWithEagerRelationships().collectList();
+        } else {
+            return mouvementRepository.findAll().collectList();
+        }
     }
 
     /**
@@ -208,7 +213,7 @@ public class MouvementResource {
     @GetMapping("/mouvements/{id}")
     public Mono<ResponseEntity<Mouvement>> getMouvement(@PathVariable String id) {
         log.debug("REST request to get Mouvement : {}", id);
-        Mono<Mouvement> mouvement = mouvementRepository.findById(id);
+        Mono<Mouvement> mouvement = mouvementRepository.findOneWithEagerRelationships(id);
         return ResponseUtil.wrapOrNotFound(mouvement);
     }
 

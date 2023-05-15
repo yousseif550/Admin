@@ -187,12 +187,17 @@ public class MaterielResource {
     /**
      * {@code GET  /materiels} : get all the materiels.
      *
+     * @param eagerload flag to eager load entities from relationships (This is applicable for many-to-many).
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of materiels in body.
      */
     @GetMapping("/materiels")
-    public Mono<List<Materiel>> getAllMateriels() {
+    public Mono<List<Materiel>> getAllMateriels(@RequestParam(required = false, defaultValue = "false") boolean eagerload) {
         log.debug("REST request to get all Materiels");
-        return materielRepository.findAll().collectList();
+        if (eagerload) {
+            return materielRepository.findAllWithEagerRelationships().collectList();
+        } else {
+            return materielRepository.findAll().collectList();
+        }
     }
 
     /**
@@ -214,7 +219,7 @@ public class MaterielResource {
     @GetMapping("/materiels/{id}")
     public Mono<ResponseEntity<Materiel>> getMateriel(@PathVariable String id) {
         log.debug("REST request to get Materiel : {}", id);
-        Mono<Materiel> materiel = materielRepository.findById(id);
+        Mono<Materiel> materiel = materielRepository.findOneWithEagerRelationships(id);
         return ResponseUtil.wrapOrNotFound(materiel);
     }
 

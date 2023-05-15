@@ -36,7 +36,6 @@ entity Suivi {
 
 entity Collaborateurs {
     Nom String,
-    Prenom String,
     Identifiant String,
     Tel Long,
     Prestataire Boolean,
@@ -119,33 +118,35 @@ entity ExtracDMOCSS {
 	
 
 relationship ManyToMany {
-	Collaborateurs{Projet} to Projet{Collaborateurs}
+	Collaborateurs{Projet(nom)} to Projet{Collaborateurs}
+
 }
 
 
 relationship OneToOne {
-    Mouvement{Asset} to Materiel
-    Mouvement{Localisation} to Localisation
-	InformationsTech{PcDGFiP} to Materiel
-	Suivi{Collaborateur} to Collaborateurs
-    Materiel{Objet} to Typemateriel
-    Materiel{localisation} to Localisation
-    Materiel{collaborateur} to Collaborateurs
-    NumeroInventaire{materielActuel} to Materiel
-    NumeroInventaire{AncienMateriel} to Materiel
-    NumeroInventaire{AncienProprietaire} to Collaborateurs
-    NumeroInventaire{NouveauProprietaire} to Collaborateurs
-    Historique{AncienProprietaire} to Collaborateurs
-    Historique{NouveauProprietaire} to Collaborateurs
-    Historique{materiel} to Materiel
-    ExtracDMOCSS{Collaborateur} to Collaborateurs
-    ExtracDMOCSS{materiel} to Materiel
-    ExtracDMOCSS{BureauActuel} to Localisation
-    ExtracDMOCSS{BureauDeplacement} to Localisation
-    ExtracDMOCSS{Localisation} to Localisation
-	Ticket{Beneficiaire} to Collaborateurs
-	Ticket{proprietaire} to Collaborateurs
-	Collaborateurs{Localisation} to Localisation
-    Projet{CP} to Collaborateurs
-    Projet{DP} to Collaborateurs
+    Mouvement{Materiel(Asset)} to Materiel
+    Mouvement{Localisation(Batiment)} to Localisation
+	InformationsTech{PcDGFiP(Asset)} to Materiel
+	Suivi{Collaborateur(Nom)} to Collaborateurs
+    Materiel{Objet(Type)} to Typemateriel
+    Materiel{localisation(Batiment)} to Localisation
+    Materiel{collaborateur(Nom)} to Collaborateurs
+    NumeroInventaire{materielActuel(Asset)} to Materiel
+    NumeroInventaire{AncienMateriel(Asset)} to Materiel
+    NumeroInventaire{AncienProprietaire(Nom)} to Collaborateurs
+    NumeroInventaire{NouveauProprietaire(Nom)} to Collaborateurs
+    Historique{AncienProprietaire(Nom)} to Collaborateurs
+    Historique{NouveauProprietaire(Nom)} to Collaborateurs
+    Historique{materiel(Asset)} to Materiel
+    ExtracDMOCSS{Collaborateur(Nom)} to Collaborateurs
+    ExtracDMOCSS{materiel(Asset)} to Materiel
+    ExtracDMOCSS{BureauActuel(Bureau)} to Localisation
+    ExtracDMOCSS{BureauDeplacement(Bureau)} to Localisation
+    ExtracDMOCSS{Localisation(Batiment)} to Localisation
+	Ticket{Beneficiaire(Nom)} to Collaborateurs
+	Ticket{proprietaire(Nom)} to Collaborateurs
+	Collaborateurs{Localisation(Batiment)}  to Localisation
+    Projet{CP(Nom)} to Collaborateurs
+    Projet{DP(Nom)} to Collaborateurs
+    
 }

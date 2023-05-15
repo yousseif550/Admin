@@ -24,7 +24,7 @@ type MouvementFormGroupContent = {
   destination: FormControl<IMouvement['destination']>;
   user: FormControl<IMouvement['user']>;
   commentaire: FormControl<IMouvement['commentaire']>;
-  asset: FormControl<IMouvement['asset']>;
+  materiel: FormControl<IMouvement['materiel']>;
   localisation: FormControl<IMouvement['localisation']>;
 };
 
@@ -51,7 +51,7 @@ export class MouvementFormService {
       destination: new FormControl(mouvementRawValue.destination),
       user: new FormControl(mouvementRawValue.user),
       commentaire: new FormControl(mouvementRawValue.commentaire),
-      asset: new FormControl(mouvementRawValue.asset),
+      materiel: new FormControl(mouvementRawValue.materiel),
       localisation: new FormControl(mouvementRawValue.localisation),
     });
   }

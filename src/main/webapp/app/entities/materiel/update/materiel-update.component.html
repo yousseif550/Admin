@@ -105,7 +105,7 @@
           >
             <option [ngValue]="null"></option>
             <option [ngValue]="typematerielOption" *ngFor="let typematerielOption of typematerielsSharedCollection">
-              {{ typematerielOption.id }}
+              {{ typematerielOption.type }}
             </option>
           </select>
         </div>
@@ -122,7 +122,7 @@
           >
             <option [ngValue]="null"></option>
             <option [ngValue]="localisationOption" *ngFor="let localisationOption of localisationsSharedCollection">
-              {{ localisationOption.id }}
+              {{ localisationOption.batiment }}
             </option>
           </select>
         </div>
@@ -139,7 +139,7 @@
           >
             <option [ngValue]="null"></option>
             <option [ngValue]="collaborateursOption" *ngFor="let collaborateursOption of collaborateursSharedCollection">
-              {{ collaborateursOption.id }}
+              {{ collaborateursOption.nom }}
             </option>
           </select>
         </div>

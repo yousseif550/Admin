@@ -175,12 +175,17 @@ public class TicketResource {
     /**
      * {@code GET  /tickets} : get all the tickets.
      *
+     * @param eagerload flag to eager load entities from relationships (This is applicable for many-to-many).
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of tickets in body.
      */
     @GetMapping("/tickets")
-    public Mono<List<Ticket>> getAllTickets() {
+    public Mono<List<Ticket>> getAllTickets(@RequestParam(required = false, defaultValue = "false") boolean eagerload) {
         log.debug("REST request to get all Tickets");
-        return ticketRepository.findAll().collectList();
+        if (eagerload) {
+            return ticketRepository.findAllWithEagerRelationships().collectList();
+        } else {
+            return ticketRepository.findAll().collectList();
+        }
     }
 
     /**
@@ -202,7 +207,7 @@ public class TicketResource {
     @GetMapping("/tickets/{id}")
     public Mono<ResponseEntity<Ticket>> getTicket(@PathVariable String id) {
         log.debug("REST request to get Ticket : {}", id);
-        Mono<Ticket> ticket = ticketRepository.findById(id);
+        Mono<Ticket> ticket = ticketRepository.findOneWithEagerRelationships(id);
         return ResponseUtil.wrapOrNotFound(ticket);
     }
 

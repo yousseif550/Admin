@@ -10,8 +10,8 @@ export interface IMouvement {
   destination?: string | null;
   user?: string | null;
   commentaire?: string | null;
-  asset?: Pick<IMateriel, 'id'> | null;
-  localisation?: Pick<ILocalisation, 'id'> | null;
+  materiel?: Pick<IMateriel, 'id' | 'asset'> | null;
+  localisation?: Pick<ILocalisation, 'id' | 'batiment'> | null;
 }
 
 export type NewMouvement = Omit<IMouvement, 'id'> & { id: null };

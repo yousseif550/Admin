@@ -15,7 +15,6 @@ export class CollaborateursDetailComponent implements OnInit {
   collaborateurs: ICollaborateurs | null = null;
   materiels: IMateriel | null = null;
   inventaire: MyObject | null = null;
-  myobject: MyObject | null = null;
 
   constructor(protected activatedRoute: ActivatedRoute, private collaborateurService: CollaborateursService) {}
 

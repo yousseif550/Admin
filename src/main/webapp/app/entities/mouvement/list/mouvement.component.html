@@ -32,12 +32,12 @@
     <table class="table table-striped" aria-describedby="page-heading">
       <thead>
         <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
-          <th scope="col" jhiSortBy="id">
+          <!-- <th scope="col" jhiSortBy="id">
             <div class="d-flex">
               <span jhiTranslate="global.field.id">ID</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
-          </th>
+          </th> -->
           <th scope="col" jhiSortBy="date">
             <div class="d-flex">
               <span jhiTranslate="ihmApp.mouvement.date">Date</span>
@@ -74,13 +74,13 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="asset.id">
+          <th scope="col" jhiSortBy="materiel.asset">
             <div class="d-flex">
-              <span jhiTranslate="ihmApp.mouvement.asset">Asset</span>
+              <span jhiTranslate="ihmApp.mouvement.materiel">Materiel</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="localisation.id">
+          <th scope="col" jhiSortBy="localisation.batiment">
             <div class="d-flex">
               <span jhiTranslate="ihmApp.mouvement.localisation">Localisation</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
@@ -91,9 +91,9 @@
       </thead>
       <tbody>
         <tr *ngFor="let mouvement of mouvements; trackBy: trackId" data-cy="entityTable">
-          <td>
+          <!-- <td>
             <a [routerLink]="['/mouvement', mouvement.id, 'view']">{{ mouvement.id }}</a>
-          </td>
+          </td> -->
           <td>{{ mouvement.date | formatMediumDate }}</td>
           <td>{{ mouvement.type }}</td>
           <td>{{ mouvement.source }}</td>
@@ -101,13 +101,13 @@
           <td>{{ mouvement.user }}</td>
           <td>{{ mouvement.commentaire }}</td>
           <td>
-            <div *ngIf="mouvement.asset">
-              <a [routerLink]="['/materiel', mouvement.asset.id, 'view']">{{ mouvement.asset.id }}</a>
+            <div *ngIf="mouvement.materiel">
+              <a [routerLink]="['/materiel', mouvement.materiel.id, 'view']">{{ mouvement.materiel.asset }}</a>
             </div>
           </td>
           <td>
             <div *ngIf="mouvement.localisation">
-              <a [routerLink]="['/localisation', mouvement.localisation.id, 'view']">{{ mouvement.localisation.id }}</a>
+              <a [routerLink]="['/localisation', mouvement.localisation.id, 'view']">{{ mouvement.localisation.batiment }}</a>
             </div>
           </td>
           <td class="text-end">

@@ -45,18 +45,21 @@
   "readOnly": false,
   "relationships": [
     {
+      "otherEntityField": "type",
       "otherEntityName": "typemateriel",
       "ownerSide": true,
       "relationshipName": "objet",
       "relationshipType": "one-to-one"
     },
     {
+      "otherEntityField": "batiment",
       "otherEntityName": "localisation",
       "ownerSide": true,
       "relationshipName": "localisation",
       "relationshipType": "one-to-one"
     },
     {
+      "otherEntityField": "nom",
       "otherEntityName": "collaborateurs",
       "ownerSide": true,
       "relationshipName": "collaborateur",

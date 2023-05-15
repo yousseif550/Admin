@@ -24,7 +24,7 @@
       "destination": "Destination",
       "user": "User",
       "commentaire": "Commentaire",
-      "asset": "Asset",
+      "materiel": "Materiel",
       "localisation": "Localisation"
     }
   }

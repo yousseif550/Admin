@@ -179,12 +179,19 @@ public class InformationsTechResource {
     /**
      * {@code GET  /informations-teches} : get all the informationsTeches.
      *
+     * @param eagerload flag to eager load entities from relationships (This is applicable for many-to-many).
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of informationsTeches in body.
      */
     @GetMapping("/informations-teches")
-    public Mono<List<InformationsTech>> getAllInformationsTeches() {
+    public Mono<List<InformationsTech>> getAllInformationsTeches(
+        @RequestParam(required = false, defaultValue = "false") boolean eagerload
+    ) {
         log.debug("REST request to get all InformationsTeches");
-        return informationsTechRepository.findAll().collectList();
+        if (eagerload) {
+            return informationsTechRepository.findAllWithEagerRelationships().collectList();
+        } else {
+            return informationsTechRepository.findAll().collectList();
+        }
     }
 
     /**
@@ -206,7 +213,7 @@ public class InformationsTechResource {
     @GetMapping("/informations-teches/{id}")
     public Mono<ResponseEntity<InformationsTech>> getInformationsTech(@PathVariable String id) {
         log.debug("REST request to get InformationsTech : {}", id);
-        Mono<InformationsTech> informationsTech = informationsTechRepository.findById(id);
+        Mono<InformationsTech> informationsTech = informationsTechRepository.findOneWithEagerRelationships(id);
         return ResponseUtil.wrapOrNotFound(informationsTech);
     }
 

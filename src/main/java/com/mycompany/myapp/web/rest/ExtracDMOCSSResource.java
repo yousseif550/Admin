@@ -184,12 +184,17 @@ public class ExtracDMOCSSResource {
     /**
      * {@code GET  /extrac-dmocsses} : get all the extracDMOCSSES.
      *
+     * @param eagerload flag to eager load entities from relationships (This is applicable for many-to-many).
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of extracDMOCSSES in body.
      */
     @GetMapping("/extrac-dmocsses")
-    public Mono<List<ExtracDMOCSS>> getAllExtracDMOCSSES() {
+    public Mono<List<ExtracDMOCSS>> getAllExtracDMOCSSES(@RequestParam(required = false, defaultValue = "false") boolean eagerload) {
         log.debug("REST request to get all ExtracDMOCSSES");
-        return extracDMOCSSRepository.findAll().collectList();
+        if (eagerload) {
+            return extracDMOCSSRepository.findAllWithEagerRelationships().collectList();
+        } else {
+            return extracDMOCSSRepository.findAll().collectList();
+        }
     }
 
     /**
@@ -211,7 +216,7 @@ public class ExtracDMOCSSResource {
     @GetMapping("/extrac-dmocsses/{id}")
     public Mono<ResponseEntity<ExtracDMOCSS>> getExtracDMOCSS(@PathVariable String id) {
         log.debug("REST request to get ExtracDMOCSS : {}", id);
-        Mono<ExtracDMOCSS> extracDMOCSS = extracDMOCSSRepository.findById(id);
+        Mono<ExtracDMOCSS> extracDMOCSS = extracDMOCSSRepository.findOneWithEagerRelationships(id);
         return ResponseUtil.wrapOrNotFound(extracDMOCSS);
     }
 

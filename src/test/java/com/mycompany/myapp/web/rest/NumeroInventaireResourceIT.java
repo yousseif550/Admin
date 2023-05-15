@@ -3,6 +3,7 @@ package com.mycompany.myapp.web.rest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
 import static org.hamcrest.Matchers.is;
+import static org.mockito.Mockito.*;
 
 import com.mycompany.myapp.IntegrationTest;
 import com.mycompany.myapp.domain.NumeroInventaire;
@@ -14,16 +15,25 @@ import java.util.List;
 import java.util.UUID;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWebTestClient;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.reactive.server.WebTestClient;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 /**
  * Integration tests for the {@link NumeroInventaireResource} REST controller.
  */
 @IntegrationTest
+@ExtendWith(MockitoExtension.class)
 @AutoConfigureWebTestClient(timeout = IntegrationTest.DEFAULT_ENTITY_TIMEOUT)
 @WithMockUser
 class NumeroInventaireResourceIT {
@@ -42,6 +52,9 @@ class NumeroInventaireResourceIT {
 
     @Autowired
     private NumeroInventaireRepository numeroInventaireRepository;
+
+    @Mock
+    private NumeroInventaireRepository numeroInventaireRepositoryMock;
 
     @Autowired
     private WebTestClient webTestClient;
@@ -178,6 +191,23 @@ class NumeroInventaireResourceIT {
             .value(hasItem(DEFAULT_DATE_MODIFICATION.toString()))
             .jsonPath("$.[*].commentaire")
             .value(hasItem(DEFAULT_COMMENTAIRE));
+    }
+
+    @SuppressWarnings({ "unchecked" })
+    void getAllNumeroInventairesWithEagerRelationshipsIsEnabled() {
+        when(numeroInventaireRepositoryMock.findAllWithEagerRelationships(any())).thenReturn(Flux.empty());
+
+        webTestClient.get().uri(ENTITY_API_URL + "?eagerload=true").exchange().expectStatus().isOk();
+
+        verify(numeroInventaireRepositoryMock, times(1)).findAllWithEagerRelationships(any());
+    }
+
+    @SuppressWarnings({ "unchecked" })
+    void getAllNumeroInventairesWithEagerRelationshipsIsNotEnabled() {
+        when(numeroInventaireRepositoryMock.findAllWithEagerRelationships(any())).thenReturn(Flux.empty());
+
+        webTestClient.get().uri(ENTITY_API_URL + "?eagerload=false").exchange().expectStatus().isOk();
+        verify(numeroInventaireRepositoryMock, times(1)).findAllWithEagerRelationships(any());
     }
 
     @Test

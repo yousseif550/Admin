@@ -30,12 +30,14 @@
   "readOnly": false,
   "relationships": [
     {
+      "otherEntityField": "nom",
       "otherEntityName": "collaborateurs",
       "ownerSide": true,
       "relationshipName": "beneficiaire",
       "relationshipType": "one-to-one"
     },
     {
+      "otherEntityField": "nom",
       "otherEntityName": "collaborateurs",
       "ownerSide": true,
       "relationshipName": "proprietaire",

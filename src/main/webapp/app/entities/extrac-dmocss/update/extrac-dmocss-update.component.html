@@ -109,7 +109,7 @@
           >
             <option [ngValue]="null"></option>
             <option [ngValue]="collaborateursOption" *ngFor="let collaborateursOption of collaborateursSharedCollection">
-              {{ collaborateursOption.id }}
+              {{ collaborateursOption.nom }}
             </option>
           </select>
         </div>
@@ -125,7 +125,7 @@
             [compareWith]="compareMateriel"
           >
             <option [ngValue]="null"></option>
-            <option [ngValue]="materielOption" *ngFor="let materielOption of materielsSharedCollection">{{ materielOption.id }}</option>
+            <option [ngValue]="materielOption" *ngFor="let materielOption of materielsSharedCollection">{{ materielOption.asset }}</option>
           </select>
         </div>
 
@@ -141,7 +141,7 @@
           >
             <option [ngValue]="null"></option>
             <option [ngValue]="localisationOption" *ngFor="let localisationOption of localisationsSharedCollection">
-              {{ localisationOption.id }}
+              {{ localisationOption.bureau }}
             </option>
           </select>
         </div>
@@ -160,7 +160,7 @@
           >
             <option [ngValue]="null"></option>
             <option [ngValue]="localisationOption" *ngFor="let localisationOption of localisationsSharedCollection">
-              {{ localisationOption.id }}
+              {{ localisationOption.bureau }}
             </option>
           </select>
         </div>
@@ -177,7 +177,7 @@
           >
             <option [ngValue]="null"></option>
             <option [ngValue]="localisationOption" *ngFor="let localisationOption of localisationsSharedCollection">
-              {{ localisationOption.id }}
+              {{ localisationOption.batiment }}
             </option>
           </select>
         </div>

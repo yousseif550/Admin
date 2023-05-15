@@ -173,12 +173,17 @@ public class NumeroInventaireResource {
     /**
      * {@code GET  /numero-inventaires} : get all the numeroInventaires.
      *
+     * @param eagerload flag to eager load entities from relationships (This is applicable for many-to-many).
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of numeroInventaires in body.
      */
     @GetMapping("/numero-inventaires")
-    public Mono<List<NumeroInventaire>> getAllNumeroInventaires() {
+    public Mono<List<NumeroInventaire>> getAllNumeroInventaires(@RequestParam(required = false, defaultValue = "false") boolean eagerload) {
         log.debug("REST request to get all NumeroInventaires");
-        return numeroInventaireRepository.findAll().collectList();
+        if (eagerload) {
+            return numeroInventaireRepository.findAllWithEagerRelationships().collectList();
+        } else {
+            return numeroInventaireRepository.findAll().collectList();
+        }
     }
 
     /**
@@ -200,7 +205,7 @@ public class NumeroInventaireResource {
     @GetMapping("/numero-inventaires/{id}")
     public Mono<ResponseEntity<NumeroInventaire>> getNumeroInventaire(@PathVariable String id) {
         log.debug("REST request to get NumeroInventaire : {}", id);
-        Mono<NumeroInventaire> numeroInventaire = numeroInventaireRepository.findById(id);
+        Mono<NumeroInventaire> numeroInventaire = numeroInventaireRepository.findOneWithEagerRelationships(id);
         return ResponseUtil.wrapOrNotFound(numeroInventaire);
     }
 

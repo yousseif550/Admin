@@ -33,6 +33,7 @@
   "readOnly": false,
   "relationships": [
     {
+      "otherEntityField": "asset",
       "otherEntityName": "materiel",
       "ownerSide": true,
       "relationshipName": "pcDGFiP",

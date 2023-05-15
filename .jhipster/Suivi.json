@@ -87,6 +87,7 @@
   "readOnly": false,
   "relationships": [
     {
+      "otherEntityField": "nom",
       "otherEntityName": "collaborateurs",
       "ownerSide": true,
       "relationshipName": "collaborateur",

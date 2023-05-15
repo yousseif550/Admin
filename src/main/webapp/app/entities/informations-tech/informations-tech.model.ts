@@ -7,7 +7,7 @@ export interface IInformationsTech {
   adressMAC?: string | null;
   iPTeletravail?: string | null;
   adresseDGFiP?: string | null;
-  pcDGFiP?: Pick<IMateriel, 'id'> | null;
+  pcDGFiP?: Pick<IMateriel, 'id' | 'asset'> | null;
 }
 
 export type NewInformationsTech = Omit<IInformationsTech, 'id'> & { id: null };

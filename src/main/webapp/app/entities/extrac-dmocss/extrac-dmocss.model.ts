@@ -13,11 +13,11 @@ export interface IExtracDMOCSS {
   ioTeletravail?: string | null;
   statut?: Etat | null;
   numVersion?: string | null;
-  collaborateur?: Pick<ICollaborateurs, 'id'> | null;
-  materiel?: Pick<IMateriel, 'id'> | null;
-  bureauActuel?: Pick<ILocalisation, 'id'> | null;
-  bureauDeplacement?: Pick<ILocalisation, 'id'> | null;
-  localisation?: Pick<ILocalisation, 'id'> | null;
+  collaborateur?: Pick<ICollaborateurs, 'id' | 'nom'> | null;
+  materiel?: Pick<IMateriel, 'id' | 'asset'> | null;
+  bureauActuel?: Pick<ILocalisation, 'id' | 'bureau'> | null;
+  bureauDeplacement?: Pick<ILocalisation, 'id' | 'bureau'> | null;
+  localisation?: Pick<ILocalisation, 'id' | 'batiment'> | null;
 }
 
 export type NewExtracDMOCSS = Omit<IExtracDMOCSS, 'id'> & { id: null };

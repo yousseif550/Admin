@@ -45,31 +45,31 @@
         <dt><span jhiTranslate="ihmApp.extracDMOCSS.collaborateur">Collaborateur</span></dt>
         <dd>
           <div *ngIf="extracDMOCSS.collaborateur">
-            <a [routerLink]="['/collaborateurs', extracDMOCSS.collaborateur.id, 'view']">{{ extracDMOCSS.collaborateur.id }}</a>
+            <a [routerLink]="['/collaborateurs', extracDMOCSS.collaborateur.id, 'view']">{{ extracDMOCSS.collaborateur.nom }}</a>
           </div>
         </dd>
         <dt><span jhiTranslate="ihmApp.extracDMOCSS.materiel">Materiel</span></dt>
         <dd>
           <div *ngIf="extracDMOCSS.materiel">
-            <a [routerLink]="['/materiel', extracDMOCSS.materiel.id, 'view']">{{ extracDMOCSS.materiel.id }}</a>
+            <a [routerLink]="['/materiel', extracDMOCSS.materiel.id, 'view']">{{ extracDMOCSS.materiel.asset }}</a>
           </div>
         </dd>
         <dt><span jhiTranslate="ihmApp.extracDMOCSS.bureauActuel">Bureau Actuel</span></dt>
         <dd>
           <div *ngIf="extracDMOCSS.bureauActuel">
-            <a [routerLink]="['/localisation', extracDMOCSS.bureauActuel.id, 'view']">{{ extracDMOCSS.bureauActuel.id }}</a>
+            <a [routerLink]="['/localisation', extracDMOCSS.bureauActuel.id, 'view']">{{ extracDMOCSS.bureauActuel.bureau }}</a>
           </div>
         </dd>
         <dt><span jhiTranslate="ihmApp.extracDMOCSS.bureauDeplacement">Bureau Deplacement</span></dt>
         <dd>
           <div *ngIf="extracDMOCSS.bureauDeplacement">
-            <a [routerLink]="['/localisation', extracDMOCSS.bureauDeplacement.id, 'view']">{{ extracDMOCSS.bureauDeplacement.id }}</a>
+            <a [routerLink]="['/localisation', extracDMOCSS.bureauDeplacement.id, 'view']">{{ extracDMOCSS.bureauDeplacement.bureau }}</a>
           </div>
         </dd>
         <dt><span jhiTranslate="ihmApp.extracDMOCSS.localisation">Localisation</span></dt>
         <dd>
           <div *ngIf="extracDMOCSS.localisation">
-            <a [routerLink]="['/localisation', extracDMOCSS.localisation.id, 'view']">{{ extracDMOCSS.localisation.id }}</a>
+            <a [routerLink]="['/localisation', extracDMOCSS.localisation.id, 'view']">{{ extracDMOCSS.localisation.batiment }}</a>
           </div>
         </dd>
       </dl>

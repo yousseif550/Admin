@@ -33,13 +33,13 @@
         <dt><span jhiTranslate="ihmApp.ticket.beneficiaire">Beneficiaire</span></dt>
         <dd>
           <div *ngIf="ticket.beneficiaire">
-            <a [routerLink]="['/collaborateurs', ticket.beneficiaire.id, 'view']">{{ ticket.beneficiaire.id }}</a>
+            <a [routerLink]="['/collaborateurs', ticket.beneficiaire.id, 'view']">{{ ticket.beneficiaire.nom }}</a>
           </div>
         </dd>
         <dt><span jhiTranslate="ihmApp.ticket.proprietaire">Proprietaire</span></dt>
         <dd>
           <div *ngIf="ticket.proprietaire">
-            <a [routerLink]="['/collaborateurs', ticket.proprietaire.id, 'view']">{{ ticket.proprietaire.id }}</a>
+            <a [routerLink]="['/collaborateurs', ticket.proprietaire.id, 'view']">{{ ticket.proprietaire.nom }}</a>
           </div>
         </dd>
       </dl>

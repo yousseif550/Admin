@@ -2,7 +2,6 @@
   "ihmApp": {
     "typemateriel": {
       "home": {
-        "ViewObject": "Voir les type d'objet",
         "title": "Typemateriels",
         "refreshListLabel": "Refresh list",
         "createLabel": "Create a new Typemateriel",

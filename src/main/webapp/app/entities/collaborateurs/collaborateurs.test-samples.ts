@@ -7,21 +7,19 @@ export const sampleWithRequiredData: ICollaborateurs = {
 };
 
 export const sampleWithPartialData: ICollaborateurs = {
-  id: '625f1194-8bc8-4eb3-bb04-a26418d41afe',
-  prenom: 'reboot Jewelery',
-  tel: 57879,
-  dateSortie: dayjs('2023-01-02'),
+  id: 'a625f119-48bc-48eb-b7b0-4a26418d41af',
+  identifiant: 'Grenadines Supervisor multi-byte',
+  prestataire: true,
 };
 
 export const sampleWithFullData: ICollaborateurs = {
-  id: 'fa78e39c-13e9-4f2c-a798-10fed19c63f9',
-  nom: 'invoice Barbados',
-  prenom: 'Planner override',
-  identifiant: 'red',
-  tel: 26445,
+  id: 'a78e39c1-3e9f-42c6-b981-0fed19c63f96',
+  nom: 'program Cotton',
+  identifiant: 'override Mouse',
+  tel: 62376,
   prestataire: false,
-  isActif: true,
-  dateEntree: dayjs('2023-01-02'),
+  isActif: false,
+  dateEntree: dayjs('2023-01-01'),
   dateSortie: dayjs('2023-01-02'),
 };
 

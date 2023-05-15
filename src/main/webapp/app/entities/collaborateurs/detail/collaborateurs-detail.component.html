@@ -18,10 +18,6 @@
         <dd>
           <span>{{ collaborateurs.nom }}</span>
         </dd>
-        <dt><span jhiTranslate="ihmApp.collaborateurs.prenom">Prenom</span></dt>
-        <dd>
-          <span>{{ collaborateurs.prenom }}</span>
-        </dd>
         <dt><span jhiTranslate="ihmApp.collaborateurs.identifiant">Identifiant</span></dt>
         <dd>
           <span>{{ collaborateurs.identifiant }}</span>
@@ -49,13 +45,13 @@
         <dt><span jhiTranslate="ihmApp.collaborateurs.localisation">Localisation</span></dt>
         <dd>
           <div *ngIf="collaborateurs.localisation">
-            <a [routerLink]="['/localisation', collaborateurs.localisation.id, 'view']">{{ collaborateurs.localisation.id }}</a>
+            <a [routerLink]="['/localisation', collaborateurs.localisation.id, 'view']">{{ collaborateurs.localisation.batiment }}</a>
           </div>
         </dd>
         <dt><span jhiTranslate="ihmApp.collaborateurs.projet">Projet</span></dt>
         <dd>
           <span *ngFor="let projet of collaborateurs.projets; let last = last">
-            <a [routerLink]="['/projet', projet.id, 'view']">{{ projet.id }}</a
+            <a [routerLink]="['/projet', projet.id, 'view']">{{ projet.nom }}</a
             >{{ last ? '' : ', ' }}
           </span>
         </dd>
@@ -76,7 +72,7 @@
     <hr />
 
     <div *ngFor="let item of inventaire | keyvalue">
-      <span>Assets Matériel Associé</span>
+      <span>Assets Matériel Associé : </span>
       {{ item.value.objet?.type }}
       <a [routerLink]="['/materiel', item.value.id, 'view']">{{ item.value.asset }}</a>
       <hr />

@@ -37,12 +37,14 @@
   "readOnly": false,
   "relationships": [
     {
+      "otherEntityField": "asset",
       "otherEntityName": "materiel",
       "ownerSide": true,
-      "relationshipName": "asset",
+      "relationshipName": "materiel",
       "relationshipType": "one-to-one"
     },
     {
+      "otherEntityField": "batiment",
       "otherEntityName": "localisation",
       "ownerSide": true,
       "relationshipName": "localisation",

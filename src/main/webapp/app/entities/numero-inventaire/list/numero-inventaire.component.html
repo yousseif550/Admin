@@ -32,12 +32,12 @@
     <table class="table table-striped" aria-describedby="page-heading">
       <thead>
         <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
-          <th scope="col" jhiSortBy="id">
+          <!-- <th scope="col" jhiSortBy="id">
             <div class="d-flex">
               <span jhiTranslate="global.field.id">ID</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
-          </th>
+          </th> -->
           <th scope="col" jhiSortBy="disponible">
             <div class="d-flex">
               <span jhiTranslate="ihmApp.numeroInventaire.disponible">Disponible</span>
@@ -56,25 +56,25 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="materielActuel.id">
+          <th scope="col" jhiSortBy="materielActuel.asset">
             <div class="d-flex">
               <span jhiTranslate="ihmApp.numeroInventaire.materielActuel">Materiel Actuel</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="ancienMateriel.id">
+          <th scope="col" jhiSortBy="ancienMateriel.asset">
             <div class="d-flex">
               <span jhiTranslate="ihmApp.numeroInventaire.ancienMateriel">Ancien Materiel</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="ancienProprietaire.id">
+          <th scope="col" jhiSortBy="ancienProprietaire.nom">
             <div class="d-flex">
               <span jhiTranslate="ihmApp.numeroInventaire.ancienProprietaire">Ancien Proprietaire</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="nouveauProprietaire.id">
+          <th scope="col" jhiSortBy="nouveauProprietaire.nom">
             <div class="d-flex">
               <span jhiTranslate="ihmApp.numeroInventaire.nouveauProprietaire">Nouveau Proprietaire</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
@@ -93,25 +93,25 @@
           <td>{{ numeroInventaire.commentaire }}</td>
           <td>
             <div *ngIf="numeroInventaire.materielActuel">
-              <a [routerLink]="['/materiel', numeroInventaire.materielActuel.id, 'view']">{{ numeroInventaire.materielActuel.id }}</a>
+              <a [routerLink]="['/materiel', numeroInventaire.materielActuel.id, 'view']">{{ numeroInventaire.materielActuel.asset }}</a>
             </div>
           </td>
           <td>
             <div *ngIf="numeroInventaire.ancienMateriel">
-              <a [routerLink]="['/materiel', numeroInventaire.ancienMateriel.id, 'view']">{{ numeroInventaire.ancienMateriel.id }}</a>
+              <a [routerLink]="['/materiel', numeroInventaire.ancienMateriel.id, 'view']">{{ numeroInventaire.ancienMateriel.asset }}</a>
             </div>
           </td>
           <td>
             <div *ngIf="numeroInventaire.ancienProprietaire">
               <a [routerLink]="['/collaborateurs', numeroInventaire.ancienProprietaire.id, 'view']">{{
-                numeroInventaire.ancienProprietaire.id
+                numeroInventaire.ancienProprietaire.nom
               }}</a>
             </div>
           </td>
           <td>
             <div *ngIf="numeroInventaire.nouveauProprietaire">
               <a [routerLink]="['/collaborateurs', numeroInventaire.nouveauProprietaire.id, 'view']">{{
-                numeroInventaire.nouveauProprietaire.id
+                numeroInventaire.nouveauProprietaire.nom
               }}</a>
             </div>
           </td>

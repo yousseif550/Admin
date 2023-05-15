@@ -29,20 +29,20 @@
         <dt><span jhiTranslate="ihmApp.numeroInventaire.materielActuel">Materiel Actuel</span></dt>
         <dd>
           <div *ngIf="numeroInventaire.materielActuel">
-            <a [routerLink]="['/materiel', numeroInventaire.materielActuel.id, 'view']">{{ numeroInventaire.materielActuel.id }}</a>
+            <a [routerLink]="['/materiel', numeroInventaire.materielActuel.id, 'view']">{{ numeroInventaire.materielActuel.asset }}</a>
           </div>
         </dd>
         <dt><span jhiTranslate="ihmApp.numeroInventaire.ancienMateriel">Ancien Materiel</span></dt>
         <dd>
           <div *ngIf="numeroInventaire.ancienMateriel">
-            <a [routerLink]="['/materiel', numeroInventaire.ancienMateriel.id, 'view']">{{ numeroInventaire.ancienMateriel.id }}</a>
+            <a [routerLink]="['/materiel', numeroInventaire.ancienMateriel.id, 'view']">{{ numeroInventaire.ancienMateriel.asset }}</a>
           </div>
         </dd>
         <dt><span jhiTranslate="ihmApp.numeroInventaire.ancienProprietaire">Ancien Proprietaire</span></dt>
         <dd>
           <div *ngIf="numeroInventaire.ancienProprietaire">
             <a [routerLink]="['/collaborateurs', numeroInventaire.ancienProprietaire.id, 'view']">{{
-              numeroInventaire.ancienProprietaire.id
+              numeroInventaire.ancienProprietaire.nom
             }}</a>
           </div>
         </dd>
@@ -50,7 +50,7 @@
         <dd>
           <div *ngIf="numeroInventaire.nouveauProprietaire">
             <a [routerLink]="['/collaborateurs', numeroInventaire.nouveauProprietaire.id, 'view']">{{
-              numeroInventaire.nouveauProprietaire.id
+              numeroInventaire.nouveauProprietaire.nom
             }}</a>
           </div>
         </dd>

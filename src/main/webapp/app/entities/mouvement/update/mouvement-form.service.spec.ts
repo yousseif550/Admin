@@ -26,7 +26,7 @@ describe('Mouvement Form Service', () => {
             destination: expect.any(Object),
             user: expect.any(Object),
             commentaire: expect.any(Object),
-            asset: expect.any(Object),
+            materiel: expect.any(Object),
             localisation: expect.any(Object),
           })
         );
@@ -44,7 +44,7 @@ describe('Mouvement Form Service', () => {
             destination: expect.any(Object),
             user: expect.any(Object),
             commentaire: expect.any(Object),
-            asset: expect.any(Object),
+            materiel: expect.any(Object),
             localisation: expect.any(Object),
           })
         );

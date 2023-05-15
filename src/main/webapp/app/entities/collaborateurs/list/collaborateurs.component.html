@@ -32,21 +32,15 @@
     <table class="table table-striped" aria-describedby="page-heading">
       <thead>
         <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
-          <th scope="col" jhiSortBy="id">
+          <!-- <th scope="col" jhiSortBy="id">
             <div class="d-flex">
               <span jhiTranslate="global.field.id">ID</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
-          </th>
+          </th> -->
           <th scope="col" jhiSortBy="nom">
             <div class="d-flex">
               <span jhiTranslate="ihmApp.collaborateurs.nom">Nom</span>
-              <fa-icon class="p-1" icon="sort"></fa-icon>
-            </div>
-          </th>
-          <th scope="col" jhiSortBy="prenom">
-            <div class="d-flex">
-              <span jhiTranslate="ihmApp.collaborateurs.prenom">Prenom</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
@@ -86,13 +80,13 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="localisation.id">
+          <th scope="col" jhiSortBy="localisation.batiment">
             <div class="d-flex">
               <span jhiTranslate="ihmApp.collaborateurs.localisation">Localisation</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="projet.id">
+          <th scope="col" jhiSortBy="projet.nom">
             <div class="d-flex">
               <span jhiTranslate="ihmApp.collaborateurs.projet">Projet</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
@@ -103,11 +97,10 @@
       </thead>
       <tbody>
         <tr *ngFor="let collaborateurs of collaborateurs; trackBy: trackId" data-cy="entityTable">
-          <td>
+          <!--  <td>
             <a [routerLink]="['/collaborateurs', collaborateurs.id, 'view']">{{ collaborateurs.id }}</a>
-          </td>
+          </td> -->
           <td>{{ collaborateurs.nom }}</td>
-          <td>{{ collaborateurs.prenom }}</td>
           <td>{{ collaborateurs.identifiant }}</td>
           <td>{{ collaborateurs.tel }}</td>
           <td>{{ collaborateurs.prestataire }}</td>
@@ -116,12 +109,12 @@
           <td>{{ collaborateurs.dateSortie | formatMediumDate }}</td>
           <td>
             <div *ngIf="collaborateurs.localisation">
-              <a [routerLink]="['/localisation', collaborateurs.localisation.id, 'view']">{{ collaborateurs.localisation.id }}</a>
+              <a [routerLink]="['/localisation', collaborateurs.localisation.id, 'view']">{{ collaborateurs.localisation.batiment }}</a>
             </div>
           </td>
           <td>
             <span *ngFor="let projet of collaborateurs.projets; let last = last">
-              <a class="form-control-static" [routerLink]="['/projet', projet.id, 'view']">{{ projet.id }}</a
+              <a class="form-control-static" [routerLink]="['/projet', projet.id, 'view']">{{ projet.nom }}</a
               >{{ last ? '' : ', ' }}
             </span>
           </td>

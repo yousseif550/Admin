@@ -8,8 +8,8 @@ export interface ITicket {
   statut?: Etat | null;
   dateCreation?: dayjs.Dayjs | null;
   dateFin?: dayjs.Dayjs | null;
-  beneficiaire?: Pick<ICollaborateurs, 'id'> | null;
-  proprietaire?: Pick<ICollaborateurs, 'id'> | null;
+  beneficiaire?: Pick<ICollaborateurs, 'id' | 'nom'> | null;
+  proprietaire?: Pick<ICollaborateurs, 'id' | 'nom'> | null;
 }
 
 export type NewTicket = Omit<ITicket, 'id'> & { id: null };

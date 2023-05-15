@@ -32,12 +32,12 @@
     <table class="table table-striped" aria-describedby="page-heading">
       <thead>
         <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
-          <th scope="col" jhiSortBy="id">
+          <!-- <th scope="col" jhiSortBy="id">
             <div class="d-flex">
               <span jhiTranslate="global.field.id">ID</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
-          </th>
+          </th> -->
           <th scope="col" jhiSortBy="nom">
             <div class="d-flex">
               <span jhiTranslate="ihmApp.projet.nom">Nom</span>
@@ -56,13 +56,13 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="cP.id">
+          <th scope="col" jhiSortBy="cP.nom">
             <div class="d-flex">
               <span jhiTranslate="ihmApp.projet.cP">C P</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="dP.id">
+          <th scope="col" jhiSortBy="dP.nom">
             <div class="d-flex">
               <span jhiTranslate="ihmApp.projet.dP">D P</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
@@ -73,20 +73,20 @@
       </thead>
       <tbody>
         <tr *ngFor="let projet of projets; trackBy: trackId" data-cy="entityTable">
-          <td>
+          <!--  <td>
             <a [routerLink]="['/projet', projet.id, 'view']">{{ projet.id }}</a>
-          </td>
+          </td> -->
           <td>{{ projet.nom }}</td>
           <td>{{ projet.stucture }}</td>
           <td>{{ projet.informations }}</td>
           <td>
             <div *ngIf="projet.cP">
-              <a [routerLink]="['/collaborateurs', projet.cP.id, 'view']">{{ projet.cP.id }}</a>
+              <a [routerLink]="['/collaborateurs', projet.cP.id, 'view']">{{ projet.cP.nom }}</a>
             </div>
           </td>
           <td>
             <div *ngIf="projet.dP">
-              <a [routerLink]="['/collaborateurs', projet.dP.id, 'view']">{{ projet.dP.id }}</a>
+              <a [routerLink]="['/collaborateurs', projet.dP.id, 'view']">{{ projet.dP.nom }}</a>
             </div>
           </td>
           <td class="text-end">

@@ -172,12 +172,17 @@ public class HistoriqueResource {
     /**
      * {@code GET  /historiques} : get all the historiques.
      *
+     * @param eagerload flag to eager load entities from relationships (This is applicable for many-to-many).
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of historiques in body.
      */
     @GetMapping("/historiques")
-    public Mono<List<Historique>> getAllHistoriques() {
+    public Mono<List<Historique>> getAllHistoriques(@RequestParam(required = false, defaultValue = "false") boolean eagerload) {
         log.debug("REST request to get all Historiques");
-        return historiqueRepository.findAll().collectList();
+        if (eagerload) {
+            return historiqueRepository.findAllWithEagerRelationships().collectList();
+        } else {
+            return historiqueRepository.findAll().collectList();
+        }
     }
 
     /**
@@ -199,7 +204,7 @@ public class HistoriqueResource {
     @GetMapping("/historiques/{id}")
     public Mono<ResponseEntity<Historique>> getHistorique(@PathVariable String id) {
         log.debug("REST request to get Historique : {}", id);
-        Mono<Historique> historique = historiqueRepository.findById(id);
+        Mono<Historique> historique = historiqueRepository.findOneWithEagerRelationships(id);
         return ResponseUtil.wrapOrNotFound(historique);
     }
 

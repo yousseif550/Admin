@@ -32,12 +32,12 @@
     <table class="table table-striped" aria-describedby="page-heading">
       <thead>
         <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
-          <th scope="col" jhiSortBy="id">
+          <!-- <th scope="col" jhiSortBy="id">
             <div class="d-flex">
               <span jhiTranslate="global.field.id">ID</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
-          </th>
+          </th> -->
           <th scope="col" jhiSortBy="envoiKitAccueil">
             <div class="d-flex">
               <span jhiTranslate="ihmApp.suivi.envoiKitAccueil">Envoi Kit Accueil</span>
@@ -128,7 +128,7 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="collaborateur.id">
+          <th scope="col" jhiSortBy="collaborateur.nom">
             <div class="d-flex">
               <span jhiTranslate="ihmApp.suivi.collaborateur">Collaborateur</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
@@ -139,9 +139,9 @@
       </thead>
       <tbody>
         <tr *ngFor="let suivi of suivis; trackBy: trackId" data-cy="entityTable">
-          <td>
+          <!-- <td>
             <a [routerLink]="['/suivi', suivi.id, 'view']">{{ suivi.id }}</a>
-          </td>
+          </td> -->
           <td jhiTranslate="{{ 'ihmApp.Etat.' + suivi.envoiKitAccueil }}">{{ suivi.envoiKitAccueil }}</td>
           <td jhiTranslate="{{ 'ihmApp.Etat.' + suivi.documentSigner }}">{{ suivi.documentSigner }}</td>
           <td jhiTranslate="{{ 'ihmApp.Etat.' + suivi.commandePCDom }}">{{ suivi.commandePCDom }}</td>
@@ -159,7 +159,7 @@
           <td>{{ suivi.commentaires }}</td>
           <td>
             <div *ngIf="suivi.collaborateur">
-              <a [routerLink]="['/collaborateurs', suivi.collaborateur.id, 'view']">{{ suivi.collaborateur.id }}</a>
+              <a [routerLink]="['/collaborateurs', suivi.collaborateur.id, 'view']">{{ suivi.collaborateur.nom }}</a>
             </div>
           </td>
           <td class="text-end">

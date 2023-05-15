@@ -18,7 +18,7 @@ export interface ISuivi {
   dmocssIpTT?: Etat | null;
   installationLogiciel?: Etat | null;
   commentaires?: string | null;
-  collaborateur?: Pick<ICollaborateurs, 'id'> | null;
+  collaborateur?: Pick<ICollaborateurs, 'id' | 'nom'> | null;
 }
 
 export type NewSuivi = Omit<ISuivi, 'id'> & { id: null };

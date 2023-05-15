@@ -29,19 +29,19 @@
         <dt><span jhiTranslate="ihmApp.historique.ancienProprietaire">Ancien Proprietaire</span></dt>
         <dd>
           <div *ngIf="historique.ancienProprietaire">
-            <a [routerLink]="['/collaborateurs', historique.ancienProprietaire.id, 'view']">{{ historique.ancienProprietaire.id }}</a>
+            <a [routerLink]="['/collaborateurs', historique.ancienProprietaire.id, 'view']">{{ historique.ancienProprietaire.nom }}</a>
           </div>
         </dd>
         <dt><span jhiTranslate="ihmApp.historique.nouveauProprietaire">Nouveau Proprietaire</span></dt>
         <dd>
           <div *ngIf="historique.nouveauProprietaire">
-            <a [routerLink]="['/collaborateurs', historique.nouveauProprietaire.id, 'view']">{{ historique.nouveauProprietaire.id }}</a>
+            <a [routerLink]="['/collaborateurs', historique.nouveauProprietaire.id, 'view']">{{ historique.nouveauProprietaire.nom }}</a>
           </div>
         </dd>
         <dt><span jhiTranslate="ihmApp.historique.materiel">Materiel</span></dt>
         <dd>
           <div *ngIf="historique.materiel">
-            <a [routerLink]="['/materiel', historique.materiel.id, 'view']">{{ historique.materiel.id }}</a>
+            <a [routerLink]="['/materiel', historique.materiel.id, 'view']">{{ historique.materiel.asset }}</a>
           </div>
         </dd>
       </dl>

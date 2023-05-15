@@ -7,9 +7,9 @@ export interface IHistorique {
   pc?: string | null;
   zone?: string | null;
   dateMouvement?: dayjs.Dayjs | null;
-  ancienProprietaire?: Pick<ICollaborateurs, 'id'> | null;
-  nouveauProprietaire?: Pick<ICollaborateurs, 'id'> | null;
-  materiel?: Pick<IMateriel, 'id'> | null;
+  ancienProprietaire?: Pick<ICollaborateurs, 'id' | 'nom'> | null;
+  nouveauProprietaire?: Pick<ICollaborateurs, 'id' | 'nom'> | null;
+  materiel?: Pick<IMateriel, 'id' | 'asset'> | null;
 }
 
 export type NewHistorique = Omit<IHistorique, 'id'> & { id: null };

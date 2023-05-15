@@ -70,17 +70,17 @@
         </div>
 
         <div class="row mb-3">
-          <label class="form-label" jhiTranslate="ihmApp.mouvement.asset" for="field_asset">Asset</label>
+          <label class="form-label" jhiTranslate="ihmApp.mouvement.materiel" for="field_materiel">Materiel</label>
           <select
             class="form-control"
-            id="field_asset"
-            data-cy="asset"
-            name="asset"
-            formControlName="asset"
+            id="field_materiel"
+            data-cy="materiel"
+            name="materiel"
+            formControlName="materiel"
             [compareWith]="compareMateriel"
           >
             <option [ngValue]="null"></option>
-            <option [ngValue]="materielOption" *ngFor="let materielOption of materielsSharedCollection">{{ materielOption.id }}</option>
+            <option [ngValue]="materielOption" *ngFor="let materielOption of materielsSharedCollection">{{ materielOption.asset }}</option>
           </select>
         </div>
 
@@ -96,7 +96,7 @@
           >
             <option [ngValue]="null"></option>
             <option [ngValue]="localisationOption" *ngFor="let localisationOption of localisationsSharedCollection">
-              {{ localisationOption.id }}
+              {{ localisationOption.batiment }}
             </option>
           </select>
         </div>

@@ -24,9 +24,6 @@ public class Collaborateurs implements Serializable {
     @Field("nom")
     private String nom;
 
-    @Field("prenom")
-    private String prenom;
-
     @Field("identifiant")
     private String identifiant;
 
@@ -78,19 +75,6 @@ public class Collaborateurs implements Serializable {
 
     public void setNom(String nom) {
         this.nom = nom;
-    }
-
-    public String getPrenom() {
-        return this.prenom;
-    }
-
-    public Collaborateurs prenom(String prenom) {
-        this.setPrenom(prenom);
-        return this;
-    }
-
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
     }
 
     public String getIdentifiant() {
@@ -234,7 +218,6 @@ public class Collaborateurs implements Serializable {
         return "Collaborateurs{" +
             "id=" + getId() +
             ", nom='" + getNom() + "'" +
-            ", prenom='" + getPrenom() + "'" +
             ", identifiant='" + getIdentifiant() + "'" +
             ", tel=" + getTel() +
             ", prestataire='" + getPrestataire() + "'" +

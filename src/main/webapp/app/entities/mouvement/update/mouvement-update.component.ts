@@ -88,7 +88,7 @@ export class MouvementUpdateComponent implements OnInit {
 
     this.materielsSharedCollection = this.materielService.addMaterielToCollectionIfMissing<IMateriel>(
       this.materielsSharedCollection,
-      mouvement.asset
+      mouvement.materiel
     );
     this.localisationsSharedCollection = this.localisationService.addLocalisationToCollectionIfMissing<ILocalisation>(
       this.localisationsSharedCollection,
@@ -101,7 +101,9 @@ export class MouvementUpdateComponent implements OnInit {
       .query()
       .pipe(map((res: HttpResponse<IMateriel[]>) => res.body ?? []))
       .pipe(
-        map((materiels: IMateriel[]) => this.materielService.addMaterielToCollectionIfMissing<IMateriel>(materiels, this.mouvement?.asset))
+        map((materiels: IMateriel[]) =>
+          this.materielService.addMaterielToCollectionIfMissing<IMateriel>(materiels, this.mouvement?.materiel)
+        )
       )
       .subscribe((materiels: IMateriel[]) => (this.materielsSharedCollection = materiels));
 

@@ -38,16 +38,16 @@
         <dd>
           <span>{{ mouvement.commentaire }}</span>
         </dd>
-        <dt><span jhiTranslate="ihmApp.mouvement.asset">Asset</span></dt>
+        <dt><span jhiTranslate="ihmApp.mouvement.materiel">Materiel</span></dt>
         <dd>
-          <div *ngIf="mouvement.asset">
-            <a [routerLink]="['/materiel', mouvement.asset.id, 'view']">{{ mouvement.asset.id }}</a>
+          <div *ngIf="mouvement.materiel">
+            <a [routerLink]="['/materiel', mouvement.materiel.id, 'view']">{{ mouvement.materiel.asset }}</a>
           </div>
         </dd>
         <dt><span jhiTranslate="ihmApp.mouvement.localisation">Localisation</span></dt>
         <dd>
           <div *ngIf="mouvement.localisation">
-            <a [routerLink]="['/localisation', mouvement.localisation.id, 'view']">{{ mouvement.localisation.id }}</a>
+            <a [routerLink]="['/localisation', mouvement.localisation.id, 'view']">{{ mouvement.localisation.batiment }}</a>
           </div>
         </dd>
       </dl>

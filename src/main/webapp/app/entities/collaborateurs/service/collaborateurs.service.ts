@@ -36,7 +36,6 @@ export class CollaborateursService {
   getMaterielsForCollaborateur(): Observable<HttpResponse<IMateriel[]>> {
     return this.http.get<IMateriel[]>(`api/materiels`, { observe: 'response' });
   }
-
   create(collaborateurs: NewCollaborateurs): Observable<EntityResponseType> {
     const copy = this.convertDateFromClient(collaborateurs);
     return this.http

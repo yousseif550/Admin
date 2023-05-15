@@ -25,12 +25,14 @@
   "readOnly": false,
   "relationships": [
     {
+      "otherEntityField": "nom",
       "otherEntityName": "collaborateurs",
       "ownerSide": true,
       "relationshipName": "cP",
       "relationshipType": "one-to-one"
     },
     {
+      "otherEntityField": "nom",
       "otherEntityName": "collaborateurs",
       "ownerSide": true,
       "relationshipName": "dP",

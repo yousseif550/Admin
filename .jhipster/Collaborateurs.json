@@ -10,10 +10,6 @@
       "fieldType": "String"
     },
     {
-      "fieldName": "prenom",
-      "fieldType": "String"
-    },
-    {
       "fieldName": "identifiant",
       "fieldType": "String"
     },
@@ -45,12 +41,14 @@
   "readOnly": false,
   "relationships": [
     {
+      "otherEntityField": "batiment",
       "otherEntityName": "localisation",
       "ownerSide": true,
       "relationshipName": "localisation",
       "relationshipType": "one-to-one"
     },
     {
+      "otherEntityField": "nom",
       "otherEntityName": "projet",
       "otherEntityRelationshipName": "collaborateurs",
       "ownerSide": true,

@@ -25,24 +25,28 @@
   "readOnly": false,
   "relationships": [
     {
+      "otherEntityField": "asset",
       "otherEntityName": "materiel",
       "ownerSide": true,
       "relationshipName": "materielActuel",
       "relationshipType": "one-to-one"
     },
     {
+      "otherEntityField": "asset",
       "otherEntityName": "materiel",
       "ownerSide": true,
       "relationshipName": "ancienMateriel",
       "relationshipType": "one-to-one"
     },
     {
+      "otherEntityField": "nom",
       "otherEntityName": "collaborateurs",
       "ownerSide": true,
       "relationshipName": "ancienProprietaire",
       "relationshipType": "one-to-one"
     },
     {
+      "otherEntityField": "nom",
       "otherEntityName": "collaborateurs",
       "ownerSide": true,
       "relationshipName": "nouveauProprietaire",

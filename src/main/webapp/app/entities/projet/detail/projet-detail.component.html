@@ -29,13 +29,13 @@
         <dt><span jhiTranslate="ihmApp.projet.cP">C P</span></dt>
         <dd>
           <div *ngIf="projet.cP">
-            <a [routerLink]="['/collaborateurs', projet.cP.id, 'view']">{{ projet.cP.id }}</a>
+            <a [routerLink]="['/collaborateurs', projet.cP.id, 'view']">{{ projet.cP.nom }}</a>
           </div>
         </dd>
         <dt><span jhiTranslate="ihmApp.projet.dP">D P</span></dt>
         <dd>
           <div *ngIf="projet.dP">
-            <a [routerLink]="['/collaborateurs', projet.dP.id, 'view']">{{ projet.dP.id }}</a>
+            <a [routerLink]="['/collaborateurs', projet.dP.id, 'view']">{{ projet.dP.nom }}</a>
           </div>
         </dd>
       </dl>

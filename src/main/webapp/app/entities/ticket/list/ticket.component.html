@@ -32,12 +32,12 @@
     <table class="table table-striped" aria-describedby="page-heading">
       <thead>
         <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
-          <th scope="col" jhiSortBy="id">
+          <!-- <th scope="col" jhiSortBy="id">
             <div class="d-flex">
               <span jhiTranslate="global.field.id">ID</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
-          </th>
+          </th> -->
           <th scope="col" jhiSortBy="type">
             <div class="d-flex">
               <span jhiTranslate="ihmApp.ticket.type">Type</span>
@@ -62,13 +62,13 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="beneficiaire.id">
+          <th scope="col" jhiSortBy="beneficiaire.nom">
             <div class="d-flex">
               <span jhiTranslate="ihmApp.ticket.beneficiaire">Beneficiaire</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="proprietaire.id">
+          <th scope="col" jhiSortBy="proprietaire.nom">
             <div class="d-flex">
               <span jhiTranslate="ihmApp.ticket.proprietaire">Proprietaire</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
@@ -79,21 +79,21 @@
       </thead>
       <tbody>
         <tr *ngFor="let ticket of tickets; trackBy: trackId" data-cy="entityTable">
-          <td>
+          <!-- <td>
             <a [routerLink]="['/ticket', ticket.id, 'view']">{{ ticket.id }}</a>
-          </td>
+          </td> -->
           <td>{{ ticket.type }}</td>
           <td jhiTranslate="{{ 'ihmApp.Etat.' + ticket.statut }}">{{ ticket.statut }}</td>
           <td>{{ ticket.dateCreation | formatMediumDate }}</td>
           <td>{{ ticket.dateFin | formatMediumDate }}</td>
           <td>
             <div *ngIf="ticket.beneficiaire">
-              <a [routerLink]="['/collaborateurs', ticket.beneficiaire.id, 'view']">{{ ticket.beneficiaire.id }}</a>
+              <a [routerLink]="['/collaborateurs', ticket.beneficiaire.id, 'view']">{{ ticket.beneficiaire.nom }}</a>
             </div>
           </td>
           <td>
             <div *ngIf="ticket.proprietaire">
-              <a [routerLink]="['/collaborateurs', ticket.proprietaire.id, 'view']">{{ ticket.proprietaire.id }}</a>
+              <a [routerLink]="['/collaborateurs', ticket.proprietaire.id, 'view']">{{ ticket.proprietaire.nom }}</a>
             </div>
           </td>
           <td class="text-end">

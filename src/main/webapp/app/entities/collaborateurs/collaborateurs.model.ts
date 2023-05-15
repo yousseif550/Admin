@@ -6,17 +6,15 @@ import { IMateriel } from 'app/entities/materiel/materiel.model';
 export interface ICollaborateurs {
   id: string;
   nom?: string | null;
-  prenom?: string | null;
   identifiant?: string | null;
   tel?: number | null;
   prestataire?: boolean | null;
   isActif?: boolean | null;
   dateEntree?: dayjs.Dayjs | null;
   dateSortie?: dayjs.Dayjs | null;
-  localisation?: Pick<ILocalisation, 'id'> | null;
-  projets?: Pick<IProjet, 'id'>[] | null;
+  localisation?: Pick<ILocalisation, 'id' | 'batiment'> | null;
+  projets?: Pick<IProjet, 'id' | 'nom'>[] | null;
   materiel?: Pick<IMateriel, 'id'> | null;
-  inventaire?: { id: any; asset: any; objet: any } | null;
 }
 
 export interface MyObject {
@@ -24,5 +22,4 @@ export interface MyObject {
   asset: any;
   objet: any;
 }
-
 export type NewCollaborateurs = Omit<ICollaborateurs, 'id'> & { id: null };
