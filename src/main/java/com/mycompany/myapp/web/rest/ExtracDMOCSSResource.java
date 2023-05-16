@@ -150,14 +150,17 @@ public class ExtracDMOCSSResource {
                         if (extracDMOCSS.getDate() != null) {
                             existingExtracDMOCSS.setDate(extracDMOCSS.getDate());
                         }
+                        if (extracDMOCSS.getBureauDeplacement() != null) {
+                            existingExtracDMOCSS.setBureauDeplacement(extracDMOCSS.getBureauDeplacement());
+                        }
                         if (extracDMOCSS.getIpPcDgfip() != null) {
                             existingExtracDMOCSS.setIpPcDgfip(extracDMOCSS.getIpPcDgfip());
                         }
                         if (extracDMOCSS.getIpVpnIPSEC() != null) {
                             existingExtracDMOCSS.setIpVpnIPSEC(extracDMOCSS.getIpVpnIPSEC());
                         }
-                        if (extracDMOCSS.getIoTeletravail() != null) {
-                            existingExtracDMOCSS.setIoTeletravail(extracDMOCSS.getIoTeletravail());
+                        if (extracDMOCSS.getIpTeletravail() != null) {
+                            existingExtracDMOCSS.setIpTeletravail(extracDMOCSS.getIpTeletravail());
                         }
                         if (extracDMOCSS.getStatut() != null) {
                             existingExtracDMOCSS.setStatut(extracDMOCSS.getStatut());

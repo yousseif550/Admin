@@ -18,10 +18,6 @@
       "fieldType": "String"
     },
     {
-      "fieldName": "actif",
-      "fieldType": "Boolean"
-    },
-    {
       "fieldName": "dateAttribution",
       "fieldType": "LocalDate"
     },
@@ -30,12 +26,44 @@
       "fieldType": "LocalDate"
     },
     {
-      "fieldName": "commentaire",
-      "fieldType": "String"
+      "fieldName": "actif",
+      "fieldType": "Boolean"
     },
     {
       "fieldName": "isHs",
       "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "cleAntiVol",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "adressMAC",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "stationDgfip",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ipdfip",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "iPTeletravail",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "bios",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "majBios",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "commentaire",
+      "fieldType": "String"
     }
   ],
   "fluentMethods": true,

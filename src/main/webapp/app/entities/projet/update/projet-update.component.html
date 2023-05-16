@@ -36,8 +36,8 @@
         </div>
 
         <div class="row mb-3">
-          <label class="form-label" jhiTranslate="ihmApp.projet.cP" for="field_cP">C P</label>
-          <select class="form-control" id="field_cP" data-cy="cP" name="cP" formControlName="cP" [compareWith]="compareCollaborateurs">
+          <label class="form-label" jhiTranslate="ihmApp.projet.cp" for="field_cp">Cp</label>
+          <select class="form-control" id="field_cp" data-cy="cp" name="cp" formControlName="cp" [compareWith]="compareCollaborateurs">
             <option [ngValue]="null"></option>
             <option [ngValue]="collaborateursOption" *ngFor="let collaborateursOption of collaborateursSharedCollection">
               {{ collaborateursOption.nom }}
@@ -46,8 +46,8 @@
         </div>
 
         <div class="row mb-3">
-          <label class="form-label" jhiTranslate="ihmApp.projet.dP" for="field_dP">D P</label>
-          <select class="form-control" id="field_dP" data-cy="dP" name="dP" formControlName="dP" [compareWith]="compareCollaborateurs">
+          <label class="form-label" jhiTranslate="ihmApp.projet.dp" for="field_dp">Dp</label>
+          <select class="form-control" id="field_dp" data-cy="dp" name="dp" formControlName="dp" [compareWith]="compareCollaborateurs">
             <option [ngValue]="null"></option>
             <option [ngValue]="collaborateursOption" *ngFor="let collaborateursOption of collaborateursSharedCollection">
               {{ collaborateursOption.nom }}

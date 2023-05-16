@@ -28,14 +28,14 @@
       "otherEntityField": "nom",
       "otherEntityName": "collaborateurs",
       "ownerSide": true,
-      "relationshipName": "cP",
+      "relationshipName": "cp",
       "relationshipType": "one-to-one"
     },
     {
       "otherEntityField": "nom",
       "otherEntityName": "collaborateurs",
       "ownerSide": true,
-      "relationshipName": "dP",
+      "relationshipName": "dp",
       "relationshipType": "one-to-one"
     },
     {

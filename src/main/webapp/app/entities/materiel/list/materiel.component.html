@@ -32,12 +32,12 @@
     <table class="table table-striped" aria-describedby="page-heading">
       <thead>
         <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
-          <!-- <th scope="col" jhiSortBy="id">
+          <th scope="col" jhiSortBy="id">
             <div class="d-flex">
               <span jhiTranslate="global.field.id">ID</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
-          </th> -->
+          </th>
           <th scope="col" jhiSortBy="utilisation">
             <div class="d-flex">
               <span jhiTranslate="ihmApp.materiel.utilisation">Utilisation</span>
@@ -56,12 +56,6 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="actif">
-            <div class="d-flex">
-              <span jhiTranslate="ihmApp.materiel.actif">Actif</span>
-              <fa-icon class="p-1" icon="sort"></fa-icon>
-            </div>
-          </th>
           <th scope="col" jhiSortBy="dateAttribution">
             <div class="d-flex">
               <span jhiTranslate="ihmApp.materiel.dateAttribution">Date Attribution</span>
@@ -74,15 +68,63 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="commentaire">
+          <th scope="col" jhiSortBy="actif">
             <div class="d-flex">
-              <span jhiTranslate="ihmApp.materiel.commentaire">Commentaire</span>
+              <span jhiTranslate="ihmApp.materiel.actif">Actif</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
           <th scope="col" jhiSortBy="isHs">
             <div class="d-flex">
               <span jhiTranslate="ihmApp.materiel.isHs">Is Hs</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="cleAntiVol">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.materiel.cleAntiVol">Cle Anti Vol</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="adressMAC">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.materiel.adressMAC">Adress MAC</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="stationDgfip">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.materiel.stationDgfip">Station Dgfip</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="ipdfip">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.materiel.ipdfip">Ipdfip</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="iPTeletravail">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.materiel.iPTeletravail">I P Teletravail</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="bios">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.materiel.bios">Bios</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="majBios">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.materiel.majBios">Maj Bios</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="commentaire">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.materiel.commentaire">Commentaire</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
@@ -109,17 +151,24 @@
       </thead>
       <tbody>
         <tr *ngFor="let materiel of materiels; trackBy: trackId" data-cy="entityTable">
-          <!-- <td>
+          <td>
             <a [routerLink]="['/materiel', materiel.id, 'view']">{{ materiel.id }}</a>
-          </td> -->
+          </td>
           <td>{{ materiel.utilisation }}</td>
           <td>{{ materiel.modele }}</td>
           <td>{{ materiel.asset }}</td>
-          <td>{{ materiel.actif }}</td>
           <td>{{ materiel.dateAttribution | formatMediumDate }}</td>
           <td>{{ materiel.dateRendu | formatMediumDate }}</td>
-          <td>{{ materiel.commentaire }}</td>
+          <td>{{ materiel.actif }}</td>
           <td>{{ materiel.isHs }}</td>
+          <td>{{ materiel.cleAntiVol }}</td>
+          <td>{{ materiel.adressMAC }}</td>
+          <td>{{ materiel.stationDgfip }}</td>
+          <td>{{ materiel.ipdfip }}</td>
+          <td>{{ materiel.iPTeletravail }}</td>
+          <td>{{ materiel.bios }}</td>
+          <td>{{ materiel.majBios }}</td>
+          <td>{{ materiel.commentaire }}</td>
           <td>
             <div *ngIf="materiel.objet">
               <a [routerLink]="['/typemateriel', materiel.objet.id, 'view']">{{ materiel.objet.type }}</a>
@@ -166,5 +215,24 @@
         </tr>
       </tbody>
     </table>
+  </div>
+
+  <div class="d-flex justify-content-end">
+    <button
+      id="jh-create-entity"
+      data-cy="entityCreateButton"
+      class="btn btn-primary jh-create-entity create-typemateriel"
+      [routerLink]="['/typemateriel/new']"
+    >
+      <fa-icon icon="plus"></fa-icon>
+      <span jhiTranslate="ihmApp.typemateriel.home.createLabel"> Create a new Typemateriel </span>
+    </button>
+
+    <!-- <span jhiTranslate="ihmApp.typemateriel.home.ViewObject">Refresh list</span> -->
+    <a routerLink="/typemateriel" routerLinkActive="active">
+      <button class="btn btn-info me-2">
+        <span>Voir les Types de materiel</span>
+      </button>
+    </a>
   </div>
 </div>

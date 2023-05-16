@@ -19,7 +19,8 @@ type LocalisationFormDefaults = Pick<NewLocalisation, 'id'>;
 type LocalisationFormGroupContent = {
   id: FormControl<ILocalisation['id'] | NewLocalisation['id']>;
   batiment: FormControl<ILocalisation['batiment']>;
-  bureau: FormControl<ILocalisation['bureau']>;
+  bureauOrigine: FormControl<ILocalisation['bureauOrigine']>;
+  bureauStockage: FormControl<ILocalisation['bureauStockage']>;
   site: FormControl<ILocalisation['site']>;
   ville: FormControl<ILocalisation['ville']>;
 };
@@ -42,7 +43,8 @@ export class LocalisationFormService {
         }
       ),
       batiment: new FormControl(localisationRawValue.batiment),
-      bureau: new FormControl(localisationRawValue.bureau),
+      bureauOrigine: new FormControl(localisationRawValue.bureauOrigine),
+      bureauStockage: new FormControl(localisationRawValue.bureauStockage),
       site: new FormControl(localisationRawValue.site),
       ville: new FormControl(localisationRawValue.ville),
     });

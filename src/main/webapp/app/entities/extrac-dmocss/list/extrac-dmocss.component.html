@@ -32,12 +32,12 @@
     <table class="table table-striped" aria-describedby="page-heading">
       <thead>
         <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
-          <!-- <th scope="col" jhiSortBy="id">
+          <th scope="col" jhiSortBy="id">
             <div class="d-flex">
               <span jhiTranslate="global.field.id">ID</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
-          </th> -->
+          </th>
           <th scope="col" jhiSortBy="adressePhysiqueDGFiP">
             <div class="d-flex">
               <span jhiTranslate="ihmApp.extracDMOCSS.adressePhysiqueDGFiP">Adresse Physique DG Fi P</span>
@@ -47,6 +47,12 @@
           <th scope="col" jhiSortBy="date">
             <div class="d-flex">
               <span jhiTranslate="ihmApp.extracDMOCSS.date">Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="bureauDeplacement">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.extracDMOCSS.bureauDeplacement">Bureau Deplacement</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
@@ -62,9 +68,9 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="ioTeletravail">
+          <th scope="col" jhiSortBy="ipTeletravail">
             <div class="d-flex">
-              <span jhiTranslate="ihmApp.extracDMOCSS.ioTeletravail">Io Teletravail</span>
+              <span jhiTranslate="ihmApp.extracDMOCSS.ipTeletravail">Ip Teletravail</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
@@ -92,15 +98,9 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="bureauActuel.bureau">
+          <th scope="col" jhiSortBy="bureauActuel.bureauOrigine">
             <div class="d-flex">
               <span jhiTranslate="ihmApp.extracDMOCSS.bureauActuel">Bureau Actuel</span>
-              <fa-icon class="p-1" icon="sort"></fa-icon>
-            </div>
-          </th>
-          <th scope="col" jhiSortBy="bureauDeplacement.bureau">
-            <div class="d-flex">
-              <span jhiTranslate="ihmApp.extracDMOCSS.bureauDeplacement">Bureau Deplacement</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
@@ -115,14 +115,15 @@
       </thead>
       <tbody>
         <tr *ngFor="let extracDMOCSS of extracDMOCSSES; trackBy: trackId" data-cy="entityTable">
-          <!-- <td>
+          <td>
             <a [routerLink]="['/extrac-dmocss', extracDMOCSS.id, 'view']">{{ extracDMOCSS.id }}</a>
-          </td> -->
+          </td>
           <td>{{ extracDMOCSS.adressePhysiqueDGFiP }}</td>
           <td>{{ extracDMOCSS.date | formatMediumDate }}</td>
+          <td>{{ extracDMOCSS.bureauDeplacement }}</td>
           <td>{{ extracDMOCSS.ipPcDgfip }}</td>
           <td>{{ extracDMOCSS.ipVpnIPSEC }}</td>
-          <td>{{ extracDMOCSS.ioTeletravail }}</td>
+          <td>{{ extracDMOCSS.ipTeletravail }}</td>
           <td jhiTranslate="{{ 'ihmApp.Etat.' + extracDMOCSS.statut }}">{{ extracDMOCSS.statut }}</td>
           <td>{{ extracDMOCSS.numVersion }}</td>
           <td>
@@ -137,12 +138,7 @@
           </td>
           <td>
             <div *ngIf="extracDMOCSS.bureauActuel">
-              <a [routerLink]="['/localisation', extracDMOCSS.bureauActuel.id, 'view']">{{ extracDMOCSS.bureauActuel.bureau }}</a>
-            </div>
-          </td>
-          <td>
-            <div *ngIf="extracDMOCSS.bureauDeplacement">
-              <a [routerLink]="['/localisation', extracDMOCSS.bureauDeplacement.id, 'view']">{{ extracDMOCSS.bureauDeplacement.bureau }}</a>
+              <a [routerLink]="['/localisation', extracDMOCSS.bureauActuel.id, 'view']">{{ extracDMOCSS.bureauActuel.bureauOrigine }}</a>
             </div>
           </td>
           <td>

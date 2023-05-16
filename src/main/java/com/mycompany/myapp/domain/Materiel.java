@@ -28,20 +28,41 @@ public class Materiel implements Serializable {
     @Field("asset")
     private String asset;
 
-    @Field("actif")
-    private Boolean actif;
-
     @Field("date_attribution")
     private LocalDate dateAttribution;
 
     @Field("date_rendu")
     private LocalDate dateRendu;
 
-    @Field("commentaire")
-    private String commentaire;
+    @Field("actif")
+    private Boolean actif;
 
     @Field("is_hs")
     private Boolean isHs;
+
+    @Field("cle_anti_vol")
+    private String cleAntiVol;
+
+    @Field("adress_mac")
+    private String adressMAC;
+
+    @Field("station_dgfip")
+    private String stationDgfip;
+
+    @Field("ipdfip")
+    private String ipdfip;
+
+    @Field("i_p_teletravail")
+    private String iPTeletravail;
+
+    @Field("bios")
+    private String bios;
+
+    @Field("maj_bios")
+    private Boolean majBios;
+
+    @Field("commentaire")
+    private String commentaire;
 
     @Field("objet")
     private Typemateriel objet;
@@ -106,19 +127,6 @@ public class Materiel implements Serializable {
         this.asset = asset;
     }
 
-    public Boolean getActif() {
-        return this.actif;
-    }
-
-    public Materiel actif(Boolean actif) {
-        this.setActif(actif);
-        return this;
-    }
-
-    public void setActif(Boolean actif) {
-        this.actif = actif;
-    }
-
     public LocalDate getDateAttribution() {
         return this.dateAttribution;
     }
@@ -145,17 +153,17 @@ public class Materiel implements Serializable {
         this.dateRendu = dateRendu;
     }
 
-    public String getCommentaire() {
-        return this.commentaire;
+    public Boolean getActif() {
+        return this.actif;
     }
 
-    public Materiel commentaire(String commentaire) {
-        this.setCommentaire(commentaire);
+    public Materiel actif(Boolean actif) {
+        this.setActif(actif);
         return this;
     }
 
-    public void setCommentaire(String commentaire) {
-        this.commentaire = commentaire;
+    public void setActif(Boolean actif) {
+        this.actif = actif;
     }
 
     public Boolean getIsHs() {
@@ -169,6 +177,110 @@ public class Materiel implements Serializable {
 
     public void setIsHs(Boolean isHs) {
         this.isHs = isHs;
+    }
+
+    public String getCleAntiVol() {
+        return this.cleAntiVol;
+    }
+
+    public Materiel cleAntiVol(String cleAntiVol) {
+        this.setCleAntiVol(cleAntiVol);
+        return this;
+    }
+
+    public void setCleAntiVol(String cleAntiVol) {
+        this.cleAntiVol = cleAntiVol;
+    }
+
+    public String getAdressMAC() {
+        return this.adressMAC;
+    }
+
+    public Materiel adressMAC(String adressMAC) {
+        this.setAdressMAC(adressMAC);
+        return this;
+    }
+
+    public void setAdressMAC(String adressMAC) {
+        this.adressMAC = adressMAC;
+    }
+
+    public String getStationDgfip() {
+        return this.stationDgfip;
+    }
+
+    public Materiel stationDgfip(String stationDgfip) {
+        this.setStationDgfip(stationDgfip);
+        return this;
+    }
+
+    public void setStationDgfip(String stationDgfip) {
+        this.stationDgfip = stationDgfip;
+    }
+
+    public String getIpdfip() {
+        return this.ipdfip;
+    }
+
+    public Materiel ipdfip(String ipdfip) {
+        this.setIpdfip(ipdfip);
+        return this;
+    }
+
+    public void setIpdfip(String ipdfip) {
+        this.ipdfip = ipdfip;
+    }
+
+    public String getiPTeletravail() {
+        return this.iPTeletravail;
+    }
+
+    public Materiel iPTeletravail(String iPTeletravail) {
+        this.setiPTeletravail(iPTeletravail);
+        return this;
+    }
+
+    public void setiPTeletravail(String iPTeletravail) {
+        this.iPTeletravail = iPTeletravail;
+    }
+
+    public String getBios() {
+        return this.bios;
+    }
+
+    public Materiel bios(String bios) {
+        this.setBios(bios);
+        return this;
+    }
+
+    public void setBios(String bios) {
+        this.bios = bios;
+    }
+
+    public Boolean getMajBios() {
+        return this.majBios;
+    }
+
+    public Materiel majBios(Boolean majBios) {
+        this.setMajBios(majBios);
+        return this;
+    }
+
+    public void setMajBios(Boolean majBios) {
+        this.majBios = majBios;
+    }
+
+    public String getCommentaire() {
+        return this.commentaire;
+    }
+
+    public Materiel commentaire(String commentaire) {
+        this.setCommentaire(commentaire);
+        return this;
+    }
+
+    public void setCommentaire(String commentaire) {
+        this.commentaire = commentaire;
     }
 
     public Typemateriel getObjet() {
@@ -237,11 +349,18 @@ public class Materiel implements Serializable {
             ", utilisation='" + getUtilisation() + "'" +
             ", modele='" + getModele() + "'" +
             ", asset='" + getAsset() + "'" +
-            ", actif='" + getActif() + "'" +
             ", dateAttribution='" + getDateAttribution() + "'" +
             ", dateRendu='" + getDateRendu() + "'" +
-            ", commentaire='" + getCommentaire() + "'" +
+            ", actif='" + getActif() + "'" +
             ", isHs='" + getIsHs() + "'" +
+            ", cleAntiVol='" + getCleAntiVol() + "'" +
+            ", adressMAC='" + getAdressMAC() + "'" +
+            ", stationDgfip='" + getStationDgfip() + "'" +
+            ", ipdfip='" + getIpdfip() + "'" +
+            ", iPTeletravail='" + getiPTeletravail() + "'" +
+            ", bios='" + getBios() + "'" +
+            ", majBios='" + getMajBios() + "'" +
+            ", commentaire='" + getCommentaire() + "'" +
             "}";
     }
 }

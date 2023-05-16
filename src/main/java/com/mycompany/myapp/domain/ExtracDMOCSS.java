@@ -26,14 +26,17 @@ public class ExtracDMOCSS implements Serializable {
     @Field("date")
     private LocalDate date;
 
+    @Field("bureau_deplacement")
+    private String bureauDeplacement;
+
     @Field("ip_pc_dgfip")
     private String ipPcDgfip;
 
     @Field("ip_vpn_ipsec")
     private String ipVpnIPSEC;
 
-    @Field("io_teletravail")
-    private String ioTeletravail;
+    @Field("ip_teletravail")
+    private String ipTeletravail;
 
     @Field("statut")
     private Etat statut;
@@ -49,9 +52,6 @@ public class ExtracDMOCSS implements Serializable {
 
     @Field("bureauActuel")
     private Localisation bureauActuel;
-
-    @Field("bureauDeplacement")
-    private Localisation bureauDeplacement;
 
     @Field("localisation")
     private Localisation localisation;
@@ -97,6 +97,19 @@ public class ExtracDMOCSS implements Serializable {
         this.date = date;
     }
 
+    public String getBureauDeplacement() {
+        return this.bureauDeplacement;
+    }
+
+    public ExtracDMOCSS bureauDeplacement(String bureauDeplacement) {
+        this.setBureauDeplacement(bureauDeplacement);
+        return this;
+    }
+
+    public void setBureauDeplacement(String bureauDeplacement) {
+        this.bureauDeplacement = bureauDeplacement;
+    }
+
     public String getIpPcDgfip() {
         return this.ipPcDgfip;
     }
@@ -123,17 +136,17 @@ public class ExtracDMOCSS implements Serializable {
         this.ipVpnIPSEC = ipVpnIPSEC;
     }
 
-    public String getIoTeletravail() {
-        return this.ioTeletravail;
+    public String getIpTeletravail() {
+        return this.ipTeletravail;
     }
 
-    public ExtracDMOCSS ioTeletravail(String ioTeletravail) {
-        this.setIoTeletravail(ioTeletravail);
+    public ExtracDMOCSS ipTeletravail(String ipTeletravail) {
+        this.setIpTeletravail(ipTeletravail);
         return this;
     }
 
-    public void setIoTeletravail(String ioTeletravail) {
-        this.ioTeletravail = ioTeletravail;
+    public void setIpTeletravail(String ipTeletravail) {
+        this.ipTeletravail = ipTeletravail;
     }
 
     public Etat getStatut() {
@@ -201,19 +214,6 @@ public class ExtracDMOCSS implements Serializable {
         return this;
     }
 
-    public Localisation getBureauDeplacement() {
-        return this.bureauDeplacement;
-    }
-
-    public void setBureauDeplacement(Localisation localisation) {
-        this.bureauDeplacement = localisation;
-    }
-
-    public ExtracDMOCSS bureauDeplacement(Localisation localisation) {
-        this.setBureauDeplacement(localisation);
-        return this;
-    }
-
     public Localisation getLocalisation() {
         return this.localisation;
     }
@@ -253,9 +253,10 @@ public class ExtracDMOCSS implements Serializable {
             "id=" + getId() +
             ", adressePhysiqueDGFiP='" + getAdressePhysiqueDGFiP() + "'" +
             ", date='" + getDate() + "'" +
+            ", bureauDeplacement='" + getBureauDeplacement() + "'" +
             ", ipPcDgfip='" + getIpPcDgfip() + "'" +
             ", ipVpnIPSEC='" + getIpVpnIPSEC() + "'" +
-            ", ioTeletravail='" + getIoTeletravail() + "'" +
+            ", ipTeletravail='" + getIpTeletravail() + "'" +
             ", statut='" + getStatut() + "'" +
             ", numVersion='" + getNumVersion() + "'" +
             "}";

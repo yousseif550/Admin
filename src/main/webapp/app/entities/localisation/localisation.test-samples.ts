@@ -5,17 +5,18 @@ export const sampleWithRequiredData: ILocalisation = {
 };
 
 export const sampleWithPartialData: ILocalisation = {
-  id: '4d1321bc-6140-4bc1-a4bd-66499df78604',
-  bureau: 'help-desk Christmas',
-  ville: 'Implementation structure',
+  id: 'd1321bc6-140b-4c1e-8bd6-6499df786047',
+  bureauOrigine: 'e-markets',
+  site: 'Knolls',
 };
 
 export const sampleWithFullData: ILocalisation = {
-  id: 'b7274ebd-7092-4c37-9dff-32390ce75d98',
-  batiment: 'redundant navigating',
-  bureau: 'Iowa calculating',
-  site: 'Practical',
-  ville: 'mission-critical Borders Pike',
+  id: '384e6b72-74eb-4d70-92c3-75dff32390ce',
+  batiment: 'user-centric Kiribati',
+  bureauOrigine: 'Jewelery Planner',
+  bureauStockage: 'gold',
+  site: 'analyzer Gorgeous port',
+  ville: 'Borders Pike',
 };
 
 export const sampleWithNewData: NewLocalisation = {

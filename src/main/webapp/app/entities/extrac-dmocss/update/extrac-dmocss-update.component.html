@@ -49,6 +49,20 @@
         </div>
 
         <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ihmApp.extracDMOCSS.bureauDeplacement" for="field_bureauDeplacement"
+            >Bureau Deplacement</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="bureauDeplacement"
+            id="field_bureauDeplacement"
+            data-cy="bureauDeplacement"
+            formControlName="bureauDeplacement"
+          />
+        </div>
+
+        <div class="row mb-3">
           <label class="form-label" jhiTranslate="ihmApp.extracDMOCSS.ipPcDgfip" for="field_ipPcDgfip">Ip Pc Dgfip</label>
           <input type="text" class="form-control" name="ipPcDgfip" id="field_ipPcDgfip" data-cy="ipPcDgfip" formControlName="ipPcDgfip" />
         </div>
@@ -66,14 +80,14 @@
         </div>
 
         <div class="row mb-3">
-          <label class="form-label" jhiTranslate="ihmApp.extracDMOCSS.ioTeletravail" for="field_ioTeletravail">Io Teletravail</label>
+          <label class="form-label" jhiTranslate="ihmApp.extracDMOCSS.ipTeletravail" for="field_ipTeletravail">Ip Teletravail</label>
           <input
             type="text"
             class="form-control"
-            name="ioTeletravail"
-            id="field_ioTeletravail"
-            data-cy="ioTeletravail"
-            formControlName="ioTeletravail"
+            name="ipTeletravail"
+            id="field_ipTeletravail"
+            data-cy="ipTeletravail"
+            formControlName="ipTeletravail"
           />
         </div>
 
@@ -141,26 +155,7 @@
           >
             <option [ngValue]="null"></option>
             <option [ngValue]="localisationOption" *ngFor="let localisationOption of localisationsSharedCollection">
-              {{ localisationOption.bureau }}
-            </option>
-          </select>
-        </div>
-
-        <div class="row mb-3">
-          <label class="form-label" jhiTranslate="ihmApp.extracDMOCSS.bureauDeplacement" for="field_bureauDeplacement"
-            >Bureau Deplacement</label
-          >
-          <select
-            class="form-control"
-            id="field_bureauDeplacement"
-            data-cy="bureauDeplacement"
-            name="bureauDeplacement"
-            formControlName="bureauDeplacement"
-            [compareWith]="compareLocalisation"
-          >
-            <option [ngValue]="null"></option>
-            <option [ngValue]="localisationOption" *ngFor="let localisationOption of localisationsSharedCollection">
-              {{ localisationOption.bureau }}
+              {{ localisationOption.bureauOrigine }}
             </option>
           </select>
         </div>

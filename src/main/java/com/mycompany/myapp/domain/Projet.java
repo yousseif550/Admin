@@ -29,11 +29,11 @@ public class Projet implements Serializable {
     @Field("informations")
     private String informations;
 
-    @Field("cP")
-    private Collaborateurs cP;
+    @Field("cp")
+    private Collaborateurs cp;
 
-    @Field("dP")
-    private Collaborateurs dP;
+    @Field("dp")
+    private Collaborateurs dp;
 
     @Field("collaborateurs")
     @JsonIgnoreProperties(value = { "localisation", "projets" }, allowSetters = true)
@@ -93,29 +93,29 @@ public class Projet implements Serializable {
         this.informations = informations;
     }
 
-    public Collaborateurs getCP() {
-        return this.cP;
+    public Collaborateurs getCp() {
+        return this.cp;
     }
 
-    public void setCP(Collaborateurs collaborateurs) {
-        this.cP = collaborateurs;
+    public void setCp(Collaborateurs collaborateurs) {
+        this.cp = collaborateurs;
     }
 
-    public Projet cP(Collaborateurs collaborateurs) {
-        this.setCP(collaborateurs);
+    public Projet cp(Collaborateurs collaborateurs) {
+        this.setCp(collaborateurs);
         return this;
     }
 
-    public Collaborateurs getDP() {
-        return this.dP;
+    public Collaborateurs getDp() {
+        return this.dp;
     }
 
-    public void setDP(Collaborateurs collaborateurs) {
-        this.dP = collaborateurs;
+    public void setDp(Collaborateurs collaborateurs) {
+        this.dp = collaborateurs;
     }
 
-    public Projet dP(Collaborateurs collaborateurs) {
-        this.setDP(collaborateurs);
+    public Projet dp(Collaborateurs collaborateurs) {
+        this.setDp(collaborateurs);
         return this;
     }
 

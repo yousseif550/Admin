@@ -106,7 +106,6 @@ export class ExtracDMOCSSUpdateComponent implements OnInit {
     this.localisationsSharedCollection = this.localisationService.addLocalisationToCollectionIfMissing<ILocalisation>(
       this.localisationsSharedCollection,
       extracDMOCSS.bureauActuel,
-      extracDMOCSS.bureauDeplacement,
       extracDMOCSS.localisation
     );
   }
@@ -143,7 +142,6 @@ export class ExtracDMOCSSUpdateComponent implements OnInit {
           this.localisationService.addLocalisationToCollectionIfMissing<ILocalisation>(
             localisations,
             this.extracDMOCSS?.bureauActuel,
-            this.extracDMOCSS?.bureauDeplacement,
             this.extracDMOCSS?.localisation
           )
         )

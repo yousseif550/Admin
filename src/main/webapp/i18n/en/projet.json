@@ -21,8 +21,8 @@
       "nom": "Nom",
       "stucture": "Stucture",
       "informations": "Informations",
-      "cP": "C P",
-      "dP": "D P",
+      "cp": "Cp",
+      "dp": "Dp",
       "collaborateurs": "Collaborateurs"
     }
   }

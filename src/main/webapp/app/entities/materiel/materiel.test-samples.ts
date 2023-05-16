@@ -7,22 +7,33 @@ export const sampleWithRequiredData: IMateriel = {
 };
 
 export const sampleWithPartialData: IMateriel = {
-  id: '156bfede-941e-4162-9ef8-ac350afd538d',
-  modele: 'THX Israeli markets',
-  asset: 'optical Global network',
-  commentaire: 'Future Towels Account',
+  id: 'e941e162-9ef8-4ac3-90af-d538deeada56',
+  modele: 'Rustic optical',
+  asset: 'Buckinghamshire Vermont Future',
+  isHs: false,
+  iPTeletravail: 'Account',
+  bios: 'unleash alarm',
+  majBios: true,
+  commentaire: 'Bedfordshire Berkshire',
 };
 
 export const sampleWithFullData: IMateriel = {
-  id: '4ba39874-8776-44d2-89a3-510ce4e6ad51',
-  utilisation: 'Unbranded Brook',
-  modele: 'strategize',
-  asset: 'Sleek Indiana',
-  actif: false,
-  dateAttribution: dayjs('2023-01-01'),
+  id: '4d289a35-10ce-44e6-ad51-91e270206617',
+  utilisation: 'Berkshire',
+  modele: 'withdrawal',
+  asset: 'Netherlands Cotton',
+  dateAttribution: dayjs('2023-01-02'),
   dateRendu: dayjs('2023-01-02'),
-  commentaire: 'Checking array',
-  isHs: true,
+  actif: true,
+  isHs: false,
+  cleAntiVol: 'discrete Account capacitor',
+  adressMAC: 'Principal Sleek',
+  stationDgfip: 'transmit sky Uruguay',
+  ipdfip: 'Finland Concrete',
+  iPTeletravail: 'feed',
+  bios: 'Pants',
+  majBios: true,
+  commentaire: 'Metal Philippine',
 };
 
 export const sampleWithNewData: NewMateriel = {

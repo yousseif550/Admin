@@ -21,7 +21,8 @@ describe('Localisation Form Service', () => {
           expect.objectContaining({
             id: expect.any(Object),
             batiment: expect.any(Object),
-            bureau: expect.any(Object),
+            bureauOrigine: expect.any(Object),
+            bureauStockage: expect.any(Object),
             site: expect.any(Object),
             ville: expect.any(Object),
           })
@@ -35,7 +36,8 @@ describe('Localisation Form Service', () => {
           expect.objectContaining({
             id: expect.any(Object),
             batiment: expect.any(Object),
-            bureau: expect.any(Object),
+            bureauOrigine: expect.any(Object),
+            bureauStockage: expect.any(Object),
             site: expect.any(Object),
             ville: expect.any(Object),
           })

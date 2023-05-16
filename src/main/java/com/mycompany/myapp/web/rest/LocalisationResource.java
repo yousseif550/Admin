@@ -147,8 +147,11 @@ public class LocalisationResource {
                         if (localisation.getBatiment() != null) {
                             existingLocalisation.setBatiment(localisation.getBatiment());
                         }
-                        if (localisation.getBureau() != null) {
-                            existingLocalisation.setBureau(localisation.getBureau());
+                        if (localisation.getBureauOrigine() != null) {
+                            existingLocalisation.setBureauOrigine(localisation.getBureauOrigine());
+                        }
+                        if (localisation.getBureauStockage() != null) {
+                            existingLocalisation.setBureauStockage(localisation.getBureauStockage());
                         }
                         if (localisation.getSite() != null) {
                             existingLocalisation.setSite(localisation.getSite());

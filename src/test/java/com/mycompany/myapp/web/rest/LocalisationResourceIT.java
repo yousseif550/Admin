@@ -29,8 +29,11 @@ class LocalisationResourceIT {
     private static final String DEFAULT_BATIMENT = "AAAAAAAAAA";
     private static final String UPDATED_BATIMENT = "BBBBBBBBBB";
 
-    private static final String DEFAULT_BUREAU = "AAAAAAAAAA";
-    private static final String UPDATED_BUREAU = "BBBBBBBBBB";
+    private static final String DEFAULT_BUREAU_ORIGINE = "AAAAAAAAAA";
+    private static final String UPDATED_BUREAU_ORIGINE = "BBBBBBBBBB";
+
+    private static final String DEFAULT_BUREAU_STOCKAGE = "AAAAAAAAAA";
+    private static final String UPDATED_BUREAU_STOCKAGE = "BBBBBBBBBB";
 
     private static final String DEFAULT_SITE = "AAAAAAAAAA";
     private static final String UPDATED_SITE = "BBBBBBBBBB";
@@ -58,7 +61,8 @@ class LocalisationResourceIT {
     public static Localisation createEntity() {
         Localisation localisation = new Localisation()
             .batiment(DEFAULT_BATIMENT)
-            .bureau(DEFAULT_BUREAU)
+            .bureauOrigine(DEFAULT_BUREAU_ORIGINE)
+            .bureauStockage(DEFAULT_BUREAU_STOCKAGE)
             .site(DEFAULT_SITE)
             .ville(DEFAULT_VILLE);
         return localisation;
@@ -73,7 +77,8 @@ class LocalisationResourceIT {
     public static Localisation createUpdatedEntity() {
         Localisation localisation = new Localisation()
             .batiment(UPDATED_BATIMENT)
-            .bureau(UPDATED_BUREAU)
+            .bureauOrigine(UPDATED_BUREAU_ORIGINE)
+            .bureauStockage(UPDATED_BUREAU_STOCKAGE)
             .site(UPDATED_SITE)
             .ville(UPDATED_VILLE);
         return localisation;
@@ -103,7 +108,8 @@ class LocalisationResourceIT {
         assertThat(localisationList).hasSize(databaseSizeBeforeCreate + 1);
         Localisation testLocalisation = localisationList.get(localisationList.size() - 1);
         assertThat(testLocalisation.getBatiment()).isEqualTo(DEFAULT_BATIMENT);
-        assertThat(testLocalisation.getBureau()).isEqualTo(DEFAULT_BUREAU);
+        assertThat(testLocalisation.getBureauOrigine()).isEqualTo(DEFAULT_BUREAU_ORIGINE);
+        assertThat(testLocalisation.getBureauStockage()).isEqualTo(DEFAULT_BUREAU_STOCKAGE);
         assertThat(testLocalisation.getSite()).isEqualTo(DEFAULT_SITE);
         assertThat(testLocalisation.getVille()).isEqualTo(DEFAULT_VILLE);
     }
@@ -154,7 +160,8 @@ class LocalisationResourceIT {
         assertThat(localisationList).hasSize(1);
         Localisation testLocalisation = localisationList.get(0);
         assertThat(testLocalisation.getBatiment()).isEqualTo(DEFAULT_BATIMENT);
-        assertThat(testLocalisation.getBureau()).isEqualTo(DEFAULT_BUREAU);
+        assertThat(testLocalisation.getBureauOrigine()).isEqualTo(DEFAULT_BUREAU_ORIGINE);
+        assertThat(testLocalisation.getBureauStockage()).isEqualTo(DEFAULT_BUREAU_STOCKAGE);
         assertThat(testLocalisation.getSite()).isEqualTo(DEFAULT_SITE);
         assertThat(testLocalisation.getVille()).isEqualTo(DEFAULT_VILLE);
     }
@@ -179,8 +186,10 @@ class LocalisationResourceIT {
             .value(hasItem(localisation.getId()))
             .jsonPath("$.[*].batiment")
             .value(hasItem(DEFAULT_BATIMENT))
-            .jsonPath("$.[*].bureau")
-            .value(hasItem(DEFAULT_BUREAU))
+            .jsonPath("$.[*].bureauOrigine")
+            .value(hasItem(DEFAULT_BUREAU_ORIGINE))
+            .jsonPath("$.[*].bureauStockage")
+            .value(hasItem(DEFAULT_BUREAU_STOCKAGE))
             .jsonPath("$.[*].site")
             .value(hasItem(DEFAULT_SITE))
             .jsonPath("$.[*].ville")
@@ -207,8 +216,10 @@ class LocalisationResourceIT {
             .value(is(localisation.getId()))
             .jsonPath("$.batiment")
             .value(is(DEFAULT_BATIMENT))
-            .jsonPath("$.bureau")
-            .value(is(DEFAULT_BUREAU))
+            .jsonPath("$.bureauOrigine")
+            .value(is(DEFAULT_BUREAU_ORIGINE))
+            .jsonPath("$.bureauStockage")
+            .value(is(DEFAULT_BUREAU_STOCKAGE))
             .jsonPath("$.site")
             .value(is(DEFAULT_SITE))
             .jsonPath("$.ville")
@@ -236,7 +247,12 @@ class LocalisationResourceIT {
 
         // Update the localisation
         Localisation updatedLocalisation = localisationRepository.findById(localisation.getId()).block();
-        updatedLocalisation.batiment(UPDATED_BATIMENT).bureau(UPDATED_BUREAU).site(UPDATED_SITE).ville(UPDATED_VILLE);
+        updatedLocalisation
+            .batiment(UPDATED_BATIMENT)
+            .bureauOrigine(UPDATED_BUREAU_ORIGINE)
+            .bureauStockage(UPDATED_BUREAU_STOCKAGE)
+            .site(UPDATED_SITE)
+            .ville(UPDATED_VILLE);
 
         webTestClient
             .put()
@@ -252,7 +268,8 @@ class LocalisationResourceIT {
         assertThat(localisationList).hasSize(databaseSizeBeforeUpdate);
         Localisation testLocalisation = localisationList.get(localisationList.size() - 1);
         assertThat(testLocalisation.getBatiment()).isEqualTo(UPDATED_BATIMENT);
-        assertThat(testLocalisation.getBureau()).isEqualTo(UPDATED_BUREAU);
+        assertThat(testLocalisation.getBureauOrigine()).isEqualTo(UPDATED_BUREAU_ORIGINE);
+        assertThat(testLocalisation.getBureauStockage()).isEqualTo(UPDATED_BUREAU_STOCKAGE);
         assertThat(testLocalisation.getSite()).isEqualTo(UPDATED_SITE);
         assertThat(testLocalisation.getVille()).isEqualTo(UPDATED_VILLE);
     }
@@ -328,7 +345,7 @@ class LocalisationResourceIT {
         Localisation partialUpdatedLocalisation = new Localisation();
         partialUpdatedLocalisation.setId(localisation.getId());
 
-        partialUpdatedLocalisation.bureau(UPDATED_BUREAU).ville(UPDATED_VILLE);
+        partialUpdatedLocalisation.bureauOrigine(UPDATED_BUREAU_ORIGINE).site(UPDATED_SITE);
 
         webTestClient
             .patch()
@@ -344,9 +361,10 @@ class LocalisationResourceIT {
         assertThat(localisationList).hasSize(databaseSizeBeforeUpdate);
         Localisation testLocalisation = localisationList.get(localisationList.size() - 1);
         assertThat(testLocalisation.getBatiment()).isEqualTo(DEFAULT_BATIMENT);
-        assertThat(testLocalisation.getBureau()).isEqualTo(UPDATED_BUREAU);
-        assertThat(testLocalisation.getSite()).isEqualTo(DEFAULT_SITE);
-        assertThat(testLocalisation.getVille()).isEqualTo(UPDATED_VILLE);
+        assertThat(testLocalisation.getBureauOrigine()).isEqualTo(UPDATED_BUREAU_ORIGINE);
+        assertThat(testLocalisation.getBureauStockage()).isEqualTo(DEFAULT_BUREAU_STOCKAGE);
+        assertThat(testLocalisation.getSite()).isEqualTo(UPDATED_SITE);
+        assertThat(testLocalisation.getVille()).isEqualTo(DEFAULT_VILLE);
     }
 
     @Test
@@ -360,7 +378,12 @@ class LocalisationResourceIT {
         Localisation partialUpdatedLocalisation = new Localisation();
         partialUpdatedLocalisation.setId(localisation.getId());
 
-        partialUpdatedLocalisation.batiment(UPDATED_BATIMENT).bureau(UPDATED_BUREAU).site(UPDATED_SITE).ville(UPDATED_VILLE);
+        partialUpdatedLocalisation
+            .batiment(UPDATED_BATIMENT)
+            .bureauOrigine(UPDATED_BUREAU_ORIGINE)
+            .bureauStockage(UPDATED_BUREAU_STOCKAGE)
+            .site(UPDATED_SITE)
+            .ville(UPDATED_VILLE);
 
         webTestClient
             .patch()
@@ -376,7 +399,8 @@ class LocalisationResourceIT {
         assertThat(localisationList).hasSize(databaseSizeBeforeUpdate);
         Localisation testLocalisation = localisationList.get(localisationList.size() - 1);
         assertThat(testLocalisation.getBatiment()).isEqualTo(UPDATED_BATIMENT);
-        assertThat(testLocalisation.getBureau()).isEqualTo(UPDATED_BUREAU);
+        assertThat(testLocalisation.getBureauOrigine()).isEqualTo(UPDATED_BUREAU_ORIGINE);
+        assertThat(testLocalisation.getBureauStockage()).isEqualTo(UPDATED_BUREAU_STOCKAGE);
         assertThat(testLocalisation.getSite()).isEqualTo(UPDATED_SITE);
         assertThat(testLocalisation.getVille()).isEqualTo(UPDATED_VILLE);
     }

@@ -24,6 +24,9 @@ public class Collaborateurs implements Serializable {
     @Field("nom")
     private String nom;
 
+    @Field("societe")
+    private String societe;
+
     @Field("identifiant")
     private String identifiant;
 
@@ -46,7 +49,7 @@ public class Collaborateurs implements Serializable {
     private Localisation localisation;
 
     @Field("projets")
-    @JsonIgnoreProperties(value = { "cP", "dP", "collaborateurs" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "cp", "dp", "collaborateurs" }, allowSetters = true)
     private Set<Projet> projets = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
@@ -75,6 +78,19 @@ public class Collaborateurs implements Serializable {
 
     public void setNom(String nom) {
         this.nom = nom;
+    }
+
+    public String getSociete() {
+        return this.societe;
+    }
+
+    public Collaborateurs societe(String societe) {
+        this.setSociete(societe);
+        return this;
+    }
+
+    public void setSociete(String societe) {
+        this.societe = societe;
     }
 
     public String getIdentifiant() {
@@ -218,6 +234,7 @@ public class Collaborateurs implements Serializable {
         return "Collaborateurs{" +
             "id=" + getId() +
             ", nom='" + getNom() + "'" +
+            ", societe='" + getSociete() + "'" +
             ", identifiant='" + getIdentifiant() + "'" +
             ", tel=" + getTel() +
             ", prestataire='" + getPrestataire() + "'" +

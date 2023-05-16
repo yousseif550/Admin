@@ -23,8 +23,8 @@ describe('Projet Form Service', () => {
             nom: expect.any(Object),
             stucture: expect.any(Object),
             informations: expect.any(Object),
-            cP: expect.any(Object),
-            dP: expect.any(Object),
+            cp: expect.any(Object),
+            dp: expect.any(Object),
             collaborateurs: expect.any(Object),
           })
         );
@@ -39,8 +39,8 @@ describe('Projet Form Service', () => {
             nom: expect.any(Object),
             stucture: expect.any(Object),
             informations: expect.any(Object),
-            cP: expect.any(Object),
-            dP: expect.any(Object),
+            cp: expect.any(Object),
+            dp: expect.any(Object),
             collaborateurs: expect.any(Object),
           })
         );

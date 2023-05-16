@@ -105,14 +105,12 @@ describe('ExtracDMOCSS Management Update Component', () => {
       const extracDMOCSS: IExtracDMOCSS = { id: 'CBA' };
       const bureauActuel: ILocalisation = { id: 'd733fedc-74c1-4408-9642-ce0bc4a1431d' };
       extracDMOCSS.bureauActuel = bureauActuel;
-      const bureauDeplacement: ILocalisation = { id: '67ccda90-ee4f-4eb6-955c-7a23355b46d3' };
-      extracDMOCSS.bureauDeplacement = bureauDeplacement;
-      const localisation: ILocalisation = { id: '06de5713-244c-4f9c-96bd-73ea6f883d9f' };
+      const localisation: ILocalisation = { id: '67ccda90-ee4f-4eb6-955c-7a23355b46d3' };
       extracDMOCSS.localisation = localisation;
 
-      const localisationCollection: ILocalisation[] = [{ id: '6b9f3dd9-24af-4e02-b041-e8c4e89c1aa6' }];
+      const localisationCollection: ILocalisation[] = [{ id: '06de5713-244c-4f9c-96bd-73ea6f883d9f' }];
       jest.spyOn(localisationService, 'query').mockReturnValue(of(new HttpResponse({ body: localisationCollection })));
-      const additionalLocalisations = [bureauActuel, bureauDeplacement, localisation];
+      const additionalLocalisations = [bureauActuel, localisation];
       const expectedCollection: ILocalisation[] = [...additionalLocalisations, ...localisationCollection];
       jest.spyOn(localisationService, 'addLocalisationToCollectionIfMissing').mockReturnValue(expectedCollection);
 
@@ -133,11 +131,9 @@ describe('ExtracDMOCSS Management Update Component', () => {
       extracDMOCSS.collaborateur = collaborateur;
       const materiel: IMateriel = { id: '026788e0-6edf-4d0c-99e7-4d41e6f72650' };
       extracDMOCSS.materiel = materiel;
-      const bureauActuel: ILocalisation = { id: 'e3e6232f-6787-4c70-b7f5-d575861faaab' };
+      const bureauActuel: ILocalisation = { id: '6b9f3dd9-24af-4e02-b041-e8c4e89c1aa6' };
       extracDMOCSS.bureauActuel = bureauActuel;
-      const bureauDeplacement: ILocalisation = { id: '65095bbc-e78f-453a-acf4-8341d9e9b2e7' };
-      extracDMOCSS.bureauDeplacement = bureauDeplacement;
-      const localisation: ILocalisation = { id: '1c84cdf6-cfbb-4265-bba6-0edbcbb2f384' };
+      const localisation: ILocalisation = { id: 'e3e6232f-6787-4c70-b7f5-d575861faaab' };
       extracDMOCSS.localisation = localisation;
 
       activatedRoute.data = of({ extracDMOCSS });
@@ -146,7 +142,6 @@ describe('ExtracDMOCSS Management Update Component', () => {
       expect(comp.collaborateursSharedCollection).toContain(collaborateur);
       expect(comp.materielsSharedCollection).toContain(materiel);
       expect(comp.localisationsSharedCollection).toContain(bureauActuel);
-      expect(comp.localisationsSharedCollection).toContain(bureauDeplacement);
       expect(comp.localisationsSharedCollection).toContain(localisation);
       expect(comp.extracDMOCSS).toEqual(extracDMOCSS);
     });

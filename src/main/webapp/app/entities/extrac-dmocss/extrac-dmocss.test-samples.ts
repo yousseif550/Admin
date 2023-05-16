@@ -9,22 +9,23 @@ export const sampleWithRequiredData: IExtracDMOCSS = {
 };
 
 export const sampleWithPartialData: IExtracDMOCSS = {
-  id: '6004f8b1-e5e9-4bcc-8c85-998a1ed0ce81',
-  adressePhysiqueDGFiP: 'Rustic grey parse',
-  ipVpnIPSEC: 'Loan',
-  statut: Etat['Reatribution'],
-  numVersion: 'Salad',
+  id: '004f8b1e-5e9b-4ccc-8859-98a1ed0ce81b',
+  adressePhysiqueDGFiP: 'Concrete',
+  ipPcDgfip: '1080p utilize',
+  ipTeletravail: 'e-business Salad models',
+  statut: Etat['EnCours'],
 };
 
 export const sampleWithFullData: IExtracDMOCSS = {
-  id: '7be7403f-38b3-4eb8-8649-1ff4a845574c',
-  adressePhysiqueDGFiP: 'Loan Extension',
-  date: dayjs('2023-01-02'),
-  ipPcDgfip: 'pink maximize Fresh',
-  ipVpnIPSEC: 'optical lavender',
-  ioTeletravail: 'Hills Colombia Concrete',
-  statut: Etat['OK'],
-  numVersion: 'Licensed',
+  id: '403f38b3-eb88-4649-9ff4-a845574c9ac5',
+  adressePhysiqueDGFiP: 'grey Implementation',
+  date: dayjs('2023-01-01'),
+  bureauDeplacement: 'Investment AI',
+  ipPcDgfip: 'PCI Creative Hills',
+  ipVpnIPSEC: 'green Open-source',
+  ipTeletravail: 'Licensed',
+  statut: Etat['NonRealiser'],
+  numVersion: 'rich',
 };
 
 export const sampleWithNewData: NewExtracDMOCSS = {

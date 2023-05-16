@@ -22,6 +22,10 @@
         <dd>
           <span>{{ extracDMOCSS.date | formatMediumDate }}</span>
         </dd>
+        <dt><span jhiTranslate="ihmApp.extracDMOCSS.bureauDeplacement">Bureau Deplacement</span></dt>
+        <dd>
+          <span>{{ extracDMOCSS.bureauDeplacement }}</span>
+        </dd>
         <dt><span jhiTranslate="ihmApp.extracDMOCSS.ipPcDgfip">Ip Pc Dgfip</span></dt>
         <dd>
           <span>{{ extracDMOCSS.ipPcDgfip }}</span>
@@ -30,9 +34,9 @@
         <dd>
           <span>{{ extracDMOCSS.ipVpnIPSEC }}</span>
         </dd>
-        <dt><span jhiTranslate="ihmApp.extracDMOCSS.ioTeletravail">Io Teletravail</span></dt>
+        <dt><span jhiTranslate="ihmApp.extracDMOCSS.ipTeletravail">Ip Teletravail</span></dt>
         <dd>
-          <span>{{ extracDMOCSS.ioTeletravail }}</span>
+          <span>{{ extracDMOCSS.ipTeletravail }}</span>
         </dd>
         <dt><span jhiTranslate="ihmApp.extracDMOCSS.statut">Statut</span></dt>
         <dd>
@@ -57,13 +61,7 @@
         <dt><span jhiTranslate="ihmApp.extracDMOCSS.bureauActuel">Bureau Actuel</span></dt>
         <dd>
           <div *ngIf="extracDMOCSS.bureauActuel">
-            <a [routerLink]="['/localisation', extracDMOCSS.bureauActuel.id, 'view']">{{ extracDMOCSS.bureauActuel.bureau }}</a>
-          </div>
-        </dd>
-        <dt><span jhiTranslate="ihmApp.extracDMOCSS.bureauDeplacement">Bureau Deplacement</span></dt>
-        <dd>
-          <div *ngIf="extracDMOCSS.bureauDeplacement">
-            <a [routerLink]="['/localisation', extracDMOCSS.bureauDeplacement.id, 'view']">{{ extracDMOCSS.bureauDeplacement.bureau }}</a>
+            <a [routerLink]="['/localisation', extracDMOCSS.bureauActuel.id, 'view']">{{ extracDMOCSS.bureauActuel.bureauOrigine }}</a>
           </div>
         </dd>
         <dt><span jhiTranslate="ihmApp.extracDMOCSS.localisation">Localisation</span></dt>

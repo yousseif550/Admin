@@ -21,6 +21,7 @@ describe('Collaborateurs Form Service', () => {
           expect.objectContaining({
             id: expect.any(Object),
             nom: expect.any(Object),
+            societe: expect.any(Object),
             identifiant: expect.any(Object),
             tel: expect.any(Object),
             prestataire: expect.any(Object),
@@ -40,6 +41,7 @@ describe('Collaborateurs Form Service', () => {
           expect.objectContaining({
             id: expect.any(Object),
             nom: expect.any(Object),
+            societe: expect.any(Object),
             identifiant: expect.any(Object),
             tel: expect.any(Object),
             prestataire: expect.any(Object),

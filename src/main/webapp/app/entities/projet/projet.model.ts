@@ -5,8 +5,8 @@ export interface IProjet {
   nom?: string | null;
   stucture?: string | null;
   informations?: string | null;
-  cP?: Pick<ICollaborateurs, 'id' | 'nom'> | null;
-  dP?: Pick<ICollaborateurs, 'id' | 'nom'> | null;
+  cp?: Pick<ICollaborateurs, 'id' | 'nom'> | null;
+  dp?: Pick<ICollaborateurs, 'id' | 'nom'> | null;
   collaborateurs?: Pick<ICollaborateurs, 'id'>[] | null;
 }
 

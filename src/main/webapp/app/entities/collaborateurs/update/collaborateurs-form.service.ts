@@ -19,6 +19,7 @@ type CollaborateursFormDefaults = Pick<NewCollaborateurs, 'id' | 'prestataire' |
 type CollaborateursFormGroupContent = {
   id: FormControl<ICollaborateurs['id'] | NewCollaborateurs['id']>;
   nom: FormControl<ICollaborateurs['nom']>;
+  societe: FormControl<ICollaborateurs['societe']>;
   identifiant: FormControl<ICollaborateurs['identifiant']>;
   tel: FormControl<ICollaborateurs['tel']>;
   prestataire: FormControl<ICollaborateurs['prestataire']>;
@@ -47,6 +48,7 @@ export class CollaborateursFormService {
         }
       ),
       nom: new FormControl(collaborateursRawValue.nom),
+      societe: new FormControl(collaborateursRawValue.societe),
       identifiant: new FormControl(collaborateursRawValue.identifiant),
       tel: new FormControl(collaborateursRawValue.tel),
       prestataire: new FormControl(collaborateursRawValue.prestataire),

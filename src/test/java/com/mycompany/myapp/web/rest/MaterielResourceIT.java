@@ -47,20 +47,41 @@ class MaterielResourceIT {
     private static final String DEFAULT_ASSET = "AAAAAAAAAA";
     private static final String UPDATED_ASSET = "BBBBBBBBBB";
 
-    private static final Boolean DEFAULT_ACTIF = false;
-    private static final Boolean UPDATED_ACTIF = true;
-
     private static final LocalDate DEFAULT_DATE_ATTRIBUTION = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_DATE_ATTRIBUTION = LocalDate.now(ZoneId.systemDefault());
 
     private static final LocalDate DEFAULT_DATE_RENDU = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_DATE_RENDU = LocalDate.now(ZoneId.systemDefault());
 
-    private static final String DEFAULT_COMMENTAIRE = "AAAAAAAAAA";
-    private static final String UPDATED_COMMENTAIRE = "BBBBBBBBBB";
+    private static final Boolean DEFAULT_ACTIF = false;
+    private static final Boolean UPDATED_ACTIF = true;
 
     private static final Boolean DEFAULT_IS_HS = false;
     private static final Boolean UPDATED_IS_HS = true;
+
+    private static final String DEFAULT_CLE_ANTI_VOL = "AAAAAAAAAA";
+    private static final String UPDATED_CLE_ANTI_VOL = "BBBBBBBBBB";
+
+    private static final String DEFAULT_ADRESS_MAC = "AAAAAAAAAA";
+    private static final String UPDATED_ADRESS_MAC = "BBBBBBBBBB";
+
+    private static final String DEFAULT_STATION_DGFIP = "AAAAAAAAAA";
+    private static final String UPDATED_STATION_DGFIP = "BBBBBBBBBB";
+
+    private static final String DEFAULT_IPDFIP = "AAAAAAAAAA";
+    private static final String UPDATED_IPDFIP = "BBBBBBBBBB";
+
+    private static final String DEFAULT_I_P_TELETRAVAIL = "AAAAAAAAAA";
+    private static final String UPDATED_I_P_TELETRAVAIL = "BBBBBBBBBB";
+
+    private static final String DEFAULT_BIOS = "AAAAAAAAAA";
+    private static final String UPDATED_BIOS = "BBBBBBBBBB";
+
+    private static final Boolean DEFAULT_MAJ_BIOS = false;
+    private static final Boolean UPDATED_MAJ_BIOS = true;
+
+    private static final String DEFAULT_COMMENTAIRE = "AAAAAAAAAA";
+    private static final String UPDATED_COMMENTAIRE = "BBBBBBBBBB";
 
     private static final String ENTITY_API_URL = "/api/materiels";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
@@ -87,11 +108,18 @@ class MaterielResourceIT {
             .utilisation(DEFAULT_UTILISATION)
             .modele(DEFAULT_MODELE)
             .asset(DEFAULT_ASSET)
-            .actif(DEFAULT_ACTIF)
             .dateAttribution(DEFAULT_DATE_ATTRIBUTION)
             .dateRendu(DEFAULT_DATE_RENDU)
-            .commentaire(DEFAULT_COMMENTAIRE)
-            .isHs(DEFAULT_IS_HS);
+            .actif(DEFAULT_ACTIF)
+            .isHs(DEFAULT_IS_HS)
+            .cleAntiVol(DEFAULT_CLE_ANTI_VOL)
+            .adressMAC(DEFAULT_ADRESS_MAC)
+            .stationDgfip(DEFAULT_STATION_DGFIP)
+            .ipdfip(DEFAULT_IPDFIP)
+            .iPTeletravail(DEFAULT_I_P_TELETRAVAIL)
+            .bios(DEFAULT_BIOS)
+            .majBios(DEFAULT_MAJ_BIOS)
+            .commentaire(DEFAULT_COMMENTAIRE);
         return materiel;
     }
 
@@ -106,11 +134,18 @@ class MaterielResourceIT {
             .utilisation(UPDATED_UTILISATION)
             .modele(UPDATED_MODELE)
             .asset(UPDATED_ASSET)
-            .actif(UPDATED_ACTIF)
             .dateAttribution(UPDATED_DATE_ATTRIBUTION)
             .dateRendu(UPDATED_DATE_RENDU)
-            .commentaire(UPDATED_COMMENTAIRE)
-            .isHs(UPDATED_IS_HS);
+            .actif(UPDATED_ACTIF)
+            .isHs(UPDATED_IS_HS)
+            .cleAntiVol(UPDATED_CLE_ANTI_VOL)
+            .adressMAC(UPDATED_ADRESS_MAC)
+            .stationDgfip(UPDATED_STATION_DGFIP)
+            .ipdfip(UPDATED_IPDFIP)
+            .iPTeletravail(UPDATED_I_P_TELETRAVAIL)
+            .bios(UPDATED_BIOS)
+            .majBios(UPDATED_MAJ_BIOS)
+            .commentaire(UPDATED_COMMENTAIRE);
         return materiel;
     }
 
@@ -140,11 +175,18 @@ class MaterielResourceIT {
         assertThat(testMateriel.getUtilisation()).isEqualTo(DEFAULT_UTILISATION);
         assertThat(testMateriel.getModele()).isEqualTo(DEFAULT_MODELE);
         assertThat(testMateriel.getAsset()).isEqualTo(DEFAULT_ASSET);
-        assertThat(testMateriel.getActif()).isEqualTo(DEFAULT_ACTIF);
         assertThat(testMateriel.getDateAttribution()).isEqualTo(DEFAULT_DATE_ATTRIBUTION);
         assertThat(testMateriel.getDateRendu()).isEqualTo(DEFAULT_DATE_RENDU);
-        assertThat(testMateriel.getCommentaire()).isEqualTo(DEFAULT_COMMENTAIRE);
+        assertThat(testMateriel.getActif()).isEqualTo(DEFAULT_ACTIF);
         assertThat(testMateriel.getIsHs()).isEqualTo(DEFAULT_IS_HS);
+        assertThat(testMateriel.getCleAntiVol()).isEqualTo(DEFAULT_CLE_ANTI_VOL);
+        assertThat(testMateriel.getAdressMAC()).isEqualTo(DEFAULT_ADRESS_MAC);
+        assertThat(testMateriel.getStationDgfip()).isEqualTo(DEFAULT_STATION_DGFIP);
+        assertThat(testMateriel.getIpdfip()).isEqualTo(DEFAULT_IPDFIP);
+        assertThat(testMateriel.getiPTeletravail()).isEqualTo(DEFAULT_I_P_TELETRAVAIL);
+        assertThat(testMateriel.getBios()).isEqualTo(DEFAULT_BIOS);
+        assertThat(testMateriel.getMajBios()).isEqualTo(DEFAULT_MAJ_BIOS);
+        assertThat(testMateriel.getCommentaire()).isEqualTo(DEFAULT_COMMENTAIRE);
     }
 
     @Test
@@ -195,11 +237,18 @@ class MaterielResourceIT {
         assertThat(testMateriel.getUtilisation()).isEqualTo(DEFAULT_UTILISATION);
         assertThat(testMateriel.getModele()).isEqualTo(DEFAULT_MODELE);
         assertThat(testMateriel.getAsset()).isEqualTo(DEFAULT_ASSET);
-        assertThat(testMateriel.getActif()).isEqualTo(DEFAULT_ACTIF);
         assertThat(testMateriel.getDateAttribution()).isEqualTo(DEFAULT_DATE_ATTRIBUTION);
         assertThat(testMateriel.getDateRendu()).isEqualTo(DEFAULT_DATE_RENDU);
-        assertThat(testMateriel.getCommentaire()).isEqualTo(DEFAULT_COMMENTAIRE);
+        assertThat(testMateriel.getActif()).isEqualTo(DEFAULT_ACTIF);
         assertThat(testMateriel.getIsHs()).isEqualTo(DEFAULT_IS_HS);
+        assertThat(testMateriel.getCleAntiVol()).isEqualTo(DEFAULT_CLE_ANTI_VOL);
+        assertThat(testMateriel.getAdressMAC()).isEqualTo(DEFAULT_ADRESS_MAC);
+        assertThat(testMateriel.getStationDgfip()).isEqualTo(DEFAULT_STATION_DGFIP);
+        assertThat(testMateriel.getIpdfip()).isEqualTo(DEFAULT_IPDFIP);
+        assertThat(testMateriel.getiPTeletravail()).isEqualTo(DEFAULT_I_P_TELETRAVAIL);
+        assertThat(testMateriel.getBios()).isEqualTo(DEFAULT_BIOS);
+        assertThat(testMateriel.getMajBios()).isEqualTo(DEFAULT_MAJ_BIOS);
+        assertThat(testMateriel.getCommentaire()).isEqualTo(DEFAULT_COMMENTAIRE);
     }
 
     @Test
@@ -226,16 +275,30 @@ class MaterielResourceIT {
             .value(hasItem(DEFAULT_MODELE))
             .jsonPath("$.[*].asset")
             .value(hasItem(DEFAULT_ASSET))
-            .jsonPath("$.[*].actif")
-            .value(hasItem(DEFAULT_ACTIF.booleanValue()))
             .jsonPath("$.[*].dateAttribution")
             .value(hasItem(DEFAULT_DATE_ATTRIBUTION.toString()))
             .jsonPath("$.[*].dateRendu")
             .value(hasItem(DEFAULT_DATE_RENDU.toString()))
-            .jsonPath("$.[*].commentaire")
-            .value(hasItem(DEFAULT_COMMENTAIRE))
+            .jsonPath("$.[*].actif")
+            .value(hasItem(DEFAULT_ACTIF.booleanValue()))
             .jsonPath("$.[*].isHs")
-            .value(hasItem(DEFAULT_IS_HS.booleanValue()));
+            .value(hasItem(DEFAULT_IS_HS.booleanValue()))
+            .jsonPath("$.[*].cleAntiVol")
+            .value(hasItem(DEFAULT_CLE_ANTI_VOL))
+            .jsonPath("$.[*].adressMAC")
+            .value(hasItem(DEFAULT_ADRESS_MAC))
+            .jsonPath("$.[*].stationDgfip")
+            .value(hasItem(DEFAULT_STATION_DGFIP))
+            .jsonPath("$.[*].ipdfip")
+            .value(hasItem(DEFAULT_IPDFIP))
+            .jsonPath("$.[*].iPTeletravail")
+            .value(hasItem(DEFAULT_I_P_TELETRAVAIL))
+            .jsonPath("$.[*].bios")
+            .value(hasItem(DEFAULT_BIOS))
+            .jsonPath("$.[*].majBios")
+            .value(hasItem(DEFAULT_MAJ_BIOS.booleanValue()))
+            .jsonPath("$.[*].commentaire")
+            .value(hasItem(DEFAULT_COMMENTAIRE));
     }
 
     @SuppressWarnings({ "unchecked" })
@@ -279,16 +342,30 @@ class MaterielResourceIT {
             .value(is(DEFAULT_MODELE))
             .jsonPath("$.asset")
             .value(is(DEFAULT_ASSET))
-            .jsonPath("$.actif")
-            .value(is(DEFAULT_ACTIF.booleanValue()))
             .jsonPath("$.dateAttribution")
             .value(is(DEFAULT_DATE_ATTRIBUTION.toString()))
             .jsonPath("$.dateRendu")
             .value(is(DEFAULT_DATE_RENDU.toString()))
-            .jsonPath("$.commentaire")
-            .value(is(DEFAULT_COMMENTAIRE))
+            .jsonPath("$.actif")
+            .value(is(DEFAULT_ACTIF.booleanValue()))
             .jsonPath("$.isHs")
-            .value(is(DEFAULT_IS_HS.booleanValue()));
+            .value(is(DEFAULT_IS_HS.booleanValue()))
+            .jsonPath("$.cleAntiVol")
+            .value(is(DEFAULT_CLE_ANTI_VOL))
+            .jsonPath("$.adressMAC")
+            .value(is(DEFAULT_ADRESS_MAC))
+            .jsonPath("$.stationDgfip")
+            .value(is(DEFAULT_STATION_DGFIP))
+            .jsonPath("$.ipdfip")
+            .value(is(DEFAULT_IPDFIP))
+            .jsonPath("$.iPTeletravail")
+            .value(is(DEFAULT_I_P_TELETRAVAIL))
+            .jsonPath("$.bios")
+            .value(is(DEFAULT_BIOS))
+            .jsonPath("$.majBios")
+            .value(is(DEFAULT_MAJ_BIOS.booleanValue()))
+            .jsonPath("$.commentaire")
+            .value(is(DEFAULT_COMMENTAIRE));
     }
 
     @Test
@@ -316,11 +393,18 @@ class MaterielResourceIT {
             .utilisation(UPDATED_UTILISATION)
             .modele(UPDATED_MODELE)
             .asset(UPDATED_ASSET)
-            .actif(UPDATED_ACTIF)
             .dateAttribution(UPDATED_DATE_ATTRIBUTION)
             .dateRendu(UPDATED_DATE_RENDU)
-            .commentaire(UPDATED_COMMENTAIRE)
-            .isHs(UPDATED_IS_HS);
+            .actif(UPDATED_ACTIF)
+            .isHs(UPDATED_IS_HS)
+            .cleAntiVol(UPDATED_CLE_ANTI_VOL)
+            .adressMAC(UPDATED_ADRESS_MAC)
+            .stationDgfip(UPDATED_STATION_DGFIP)
+            .ipdfip(UPDATED_IPDFIP)
+            .iPTeletravail(UPDATED_I_P_TELETRAVAIL)
+            .bios(UPDATED_BIOS)
+            .majBios(UPDATED_MAJ_BIOS)
+            .commentaire(UPDATED_COMMENTAIRE);
 
         webTestClient
             .put()
@@ -338,11 +422,18 @@ class MaterielResourceIT {
         assertThat(testMateriel.getUtilisation()).isEqualTo(UPDATED_UTILISATION);
         assertThat(testMateriel.getModele()).isEqualTo(UPDATED_MODELE);
         assertThat(testMateriel.getAsset()).isEqualTo(UPDATED_ASSET);
-        assertThat(testMateriel.getActif()).isEqualTo(UPDATED_ACTIF);
         assertThat(testMateriel.getDateAttribution()).isEqualTo(UPDATED_DATE_ATTRIBUTION);
         assertThat(testMateriel.getDateRendu()).isEqualTo(UPDATED_DATE_RENDU);
-        assertThat(testMateriel.getCommentaire()).isEqualTo(UPDATED_COMMENTAIRE);
+        assertThat(testMateriel.getActif()).isEqualTo(UPDATED_ACTIF);
         assertThat(testMateriel.getIsHs()).isEqualTo(UPDATED_IS_HS);
+        assertThat(testMateriel.getCleAntiVol()).isEqualTo(UPDATED_CLE_ANTI_VOL);
+        assertThat(testMateriel.getAdressMAC()).isEqualTo(UPDATED_ADRESS_MAC);
+        assertThat(testMateriel.getStationDgfip()).isEqualTo(UPDATED_STATION_DGFIP);
+        assertThat(testMateriel.getIpdfip()).isEqualTo(UPDATED_IPDFIP);
+        assertThat(testMateriel.getiPTeletravail()).isEqualTo(UPDATED_I_P_TELETRAVAIL);
+        assertThat(testMateriel.getBios()).isEqualTo(UPDATED_BIOS);
+        assertThat(testMateriel.getMajBios()).isEqualTo(UPDATED_MAJ_BIOS);
+        assertThat(testMateriel.getCommentaire()).isEqualTo(UPDATED_COMMENTAIRE);
     }
 
     @Test
@@ -419,9 +510,13 @@ class MaterielResourceIT {
         partialUpdatedMateriel
             .utilisation(UPDATED_UTILISATION)
             .modele(UPDATED_MODELE)
-            .actif(UPDATED_ACTIF)
             .dateAttribution(UPDATED_DATE_ATTRIBUTION)
-            .isHs(UPDATED_IS_HS);
+            .dateRendu(UPDATED_DATE_RENDU)
+            .cleAntiVol(UPDATED_CLE_ANTI_VOL)
+            .adressMAC(UPDATED_ADRESS_MAC)
+            .stationDgfip(UPDATED_STATION_DGFIP)
+            .ipdfip(UPDATED_IPDFIP)
+            .commentaire(UPDATED_COMMENTAIRE);
 
         webTestClient
             .patch()
@@ -439,11 +534,18 @@ class MaterielResourceIT {
         assertThat(testMateriel.getUtilisation()).isEqualTo(UPDATED_UTILISATION);
         assertThat(testMateriel.getModele()).isEqualTo(UPDATED_MODELE);
         assertThat(testMateriel.getAsset()).isEqualTo(DEFAULT_ASSET);
-        assertThat(testMateriel.getActif()).isEqualTo(UPDATED_ACTIF);
         assertThat(testMateriel.getDateAttribution()).isEqualTo(UPDATED_DATE_ATTRIBUTION);
-        assertThat(testMateriel.getDateRendu()).isEqualTo(DEFAULT_DATE_RENDU);
-        assertThat(testMateriel.getCommentaire()).isEqualTo(DEFAULT_COMMENTAIRE);
-        assertThat(testMateriel.getIsHs()).isEqualTo(UPDATED_IS_HS);
+        assertThat(testMateriel.getDateRendu()).isEqualTo(UPDATED_DATE_RENDU);
+        assertThat(testMateriel.getActif()).isEqualTo(DEFAULT_ACTIF);
+        assertThat(testMateriel.getIsHs()).isEqualTo(DEFAULT_IS_HS);
+        assertThat(testMateriel.getCleAntiVol()).isEqualTo(UPDATED_CLE_ANTI_VOL);
+        assertThat(testMateriel.getAdressMAC()).isEqualTo(UPDATED_ADRESS_MAC);
+        assertThat(testMateriel.getStationDgfip()).isEqualTo(UPDATED_STATION_DGFIP);
+        assertThat(testMateriel.getIpdfip()).isEqualTo(UPDATED_IPDFIP);
+        assertThat(testMateriel.getiPTeletravail()).isEqualTo(DEFAULT_I_P_TELETRAVAIL);
+        assertThat(testMateriel.getBios()).isEqualTo(DEFAULT_BIOS);
+        assertThat(testMateriel.getMajBios()).isEqualTo(DEFAULT_MAJ_BIOS);
+        assertThat(testMateriel.getCommentaire()).isEqualTo(UPDATED_COMMENTAIRE);
     }
 
     @Test
@@ -461,11 +563,18 @@ class MaterielResourceIT {
             .utilisation(UPDATED_UTILISATION)
             .modele(UPDATED_MODELE)
             .asset(UPDATED_ASSET)
-            .actif(UPDATED_ACTIF)
             .dateAttribution(UPDATED_DATE_ATTRIBUTION)
             .dateRendu(UPDATED_DATE_RENDU)
-            .commentaire(UPDATED_COMMENTAIRE)
-            .isHs(UPDATED_IS_HS);
+            .actif(UPDATED_ACTIF)
+            .isHs(UPDATED_IS_HS)
+            .cleAntiVol(UPDATED_CLE_ANTI_VOL)
+            .adressMAC(UPDATED_ADRESS_MAC)
+            .stationDgfip(UPDATED_STATION_DGFIP)
+            .ipdfip(UPDATED_IPDFIP)
+            .iPTeletravail(UPDATED_I_P_TELETRAVAIL)
+            .bios(UPDATED_BIOS)
+            .majBios(UPDATED_MAJ_BIOS)
+            .commentaire(UPDATED_COMMENTAIRE);
 
         webTestClient
             .patch()
@@ -483,11 +592,18 @@ class MaterielResourceIT {
         assertThat(testMateriel.getUtilisation()).isEqualTo(UPDATED_UTILISATION);
         assertThat(testMateriel.getModele()).isEqualTo(UPDATED_MODELE);
         assertThat(testMateriel.getAsset()).isEqualTo(UPDATED_ASSET);
-        assertThat(testMateriel.getActif()).isEqualTo(UPDATED_ACTIF);
         assertThat(testMateriel.getDateAttribution()).isEqualTo(UPDATED_DATE_ATTRIBUTION);
         assertThat(testMateriel.getDateRendu()).isEqualTo(UPDATED_DATE_RENDU);
-        assertThat(testMateriel.getCommentaire()).isEqualTo(UPDATED_COMMENTAIRE);
+        assertThat(testMateriel.getActif()).isEqualTo(UPDATED_ACTIF);
         assertThat(testMateriel.getIsHs()).isEqualTo(UPDATED_IS_HS);
+        assertThat(testMateriel.getCleAntiVol()).isEqualTo(UPDATED_CLE_ANTI_VOL);
+        assertThat(testMateriel.getAdressMAC()).isEqualTo(UPDATED_ADRESS_MAC);
+        assertThat(testMateriel.getStationDgfip()).isEqualTo(UPDATED_STATION_DGFIP);
+        assertThat(testMateriel.getIpdfip()).isEqualTo(UPDATED_IPDFIP);
+        assertThat(testMateriel.getiPTeletravail()).isEqualTo(UPDATED_I_P_TELETRAVAIL);
+        assertThat(testMateriel.getBios()).isEqualTo(UPDATED_BIOS);
+        assertThat(testMateriel.getMajBios()).isEqualTo(UPDATED_MAJ_BIOS);
+        assertThat(testMateriel.getCommentaire()).isEqualTo(UPDATED_COMMENTAIRE);
     }
 
     @Test

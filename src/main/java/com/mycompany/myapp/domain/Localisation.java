@@ -20,8 +20,11 @@ public class Localisation implements Serializable {
     @Field("batiment")
     private String batiment;
 
-    @Field("bureau")
-    private String bureau;
+    @Field("bureau_origine")
+    private String bureauOrigine;
+
+    @Field("bureau_stockage")
+    private String bureauStockage;
 
     @Field("site")
     private String site;
@@ -57,17 +60,30 @@ public class Localisation implements Serializable {
         this.batiment = batiment;
     }
 
-    public String getBureau() {
-        return this.bureau;
+    public String getBureauOrigine() {
+        return this.bureauOrigine;
     }
 
-    public Localisation bureau(String bureau) {
-        this.setBureau(bureau);
+    public Localisation bureauOrigine(String bureauOrigine) {
+        this.setBureauOrigine(bureauOrigine);
         return this;
     }
 
-    public void setBureau(String bureau) {
-        this.bureau = bureau;
+    public void setBureauOrigine(String bureauOrigine) {
+        this.bureauOrigine = bureauOrigine;
+    }
+
+    public String getBureauStockage() {
+        return this.bureauStockage;
+    }
+
+    public Localisation bureauStockage(String bureauStockage) {
+        this.setBureauStockage(bureauStockage);
+        return this;
+    }
+
+    public void setBureauStockage(String bureauStockage) {
+        this.bureauStockage = bureauStockage;
     }
 
     public String getSite() {
@@ -121,7 +137,8 @@ public class Localisation implements Serializable {
         return "Localisation{" +
             "id=" + getId() +
             ", batiment='" + getBatiment() + "'" +
-            ", bureau='" + getBureau() + "'" +
+            ", bureauOrigine='" + getBureauOrigine() + "'" +
+            ", bureauStockage='" + getBureauStockage() + "'" +
             ", site='" + getSite() + "'" +
             ", ville='" + getVille() + "'" +
             "}";

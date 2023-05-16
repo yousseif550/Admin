@@ -20,15 +20,15 @@
       "id": "ID",
       "adressePhysiqueDGFiP": "Adresse Physique DG Fi P",
       "date": "Date",
+      "bureauDeplacement": "Bureau Deplacement",
       "ipPcDgfip": "Ip Pc Dgfip",
       "ipVpnIPSEC": "Ip Vpn IPSEC",
-      "ioTeletravail": "Io Teletravail",
+      "ipTeletravail": "Ip Teletravail",
       "statut": "Statut",
       "numVersion": "Num Version",
       "collaborateur": "Collaborateur",
       "materiel": "Materiel",
       "bureauActuel": "Bureau Actuel",
-      "bureauDeplacement": "Bureau Deplacement",
       "localisation": "Localisation"
     }
   }

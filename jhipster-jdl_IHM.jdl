@@ -36,6 +36,7 @@ entity Suivi {
 
 entity Collaborateurs {
     Nom String,
+    Societe String,
     Identifiant String,
     Tel Long,
     Prestataire Boolean,
@@ -46,34 +47,23 @@ entity Collaborateurs {
 
 entity Projet {
 	Nom String,
-  	/*CollabList String,*/
     Stucture String,
-    Informations String
+    Informations String,
 }
 
-entity InformationsTech {
-    IpdfipConnexion String,
-    IpfixDMOCSS String,
-    AdressMAC String,
-    IPTeletravail String,
-    AdresseDGFiP String,
-}
 
 entity Ticket {
     Type String,
-    /*Proprietaire String,*/
     Statut Etat,
     DateCreation LocalDate,
     DateFin LocalDate
 }
 
-/* enum TypeTicket {
-    PCDGFiP, PCDomicile, AccesPulse, ActivationAD
-  } */
   
 entity Localisation {
 	Batiment String,
-	Bureau String,
+	BureauOrigine String,
+    BureauStockage String,
     Site String,
     Ville String
 }
@@ -86,12 +76,18 @@ entity Materiel {
     Utilisation String,
     Modele String,
     Asset String,
-    Actif Boolean,
     DateAttribution LocalDate,
     DateRendu LocalDate,
-    /*Collaborateur String,*/
+    Actif Boolean,
+    IsHs Boolean,
+    CleAntiVol String,
+    AdressMAC String,
+    StationDgfip String,
+    Ipdfip String,
+    IPTeletravail String,
+    Bios String,
+    MajBios Boolean,
     Commentaire String,
-    IsHs Boolean
 }
 
 entity Historique {
@@ -109,16 +105,17 @@ entity NumeroInventaire {
 entity ExtracDMOCSS {
     AdressePhysiqueDGFiP String,
     Date LocalDate,
+    BureauDeplacement String,
     IpPcDgfip String,
     IpVpnIPSEC String,
-    IoTeletravail String, 
+    IpTeletravail String, 
     Statut Etat,
     NumVersion String
 }
 	
 
 relationship ManyToMany {
-	Collaborateurs{Projet(nom)} to Projet{Collaborateurs}
+	Collaborateurs{Projet(Nom)} to Projet{Collaborateurs}
 
 }
 
@@ -126,7 +123,6 @@ relationship ManyToMany {
 relationship OneToOne {
     Mouvement{Materiel(Asset)} to Materiel
     Mouvement{Localisation(Batiment)} to Localisation
-	InformationsTech{PcDGFiP(Asset)} to Materiel
 	Suivi{Collaborateur(Nom)} to Collaborateurs
     Materiel{Objet(Type)} to Typemateriel
     Materiel{localisation(Batiment)} to Localisation
@@ -140,13 +136,12 @@ relationship OneToOne {
     Historique{materiel(Asset)} to Materiel
     ExtracDMOCSS{Collaborateur(Nom)} to Collaborateurs
     ExtracDMOCSS{materiel(Asset)} to Materiel
-    ExtracDMOCSS{BureauActuel(Bureau)} to Localisation
-    ExtracDMOCSS{BureauDeplacement(Bureau)} to Localisation
+    ExtracDMOCSS{BureauActuel(BureauOrigine)} to Localisation
     ExtracDMOCSS{Localisation(Batiment)} to Localisation
 	Ticket{Beneficiaire(Nom)} to Collaborateurs
 	Ticket{proprietaire(Nom)} to Collaborateurs
-	Collaborateurs{Localisation(Batiment)}  to Localisation
-    Projet{CP(Nom)} to Collaborateurs
-    Projet{DP(Nom)} to Collaborateurs
+	Collaborateurs{Localisation(Batiment)} to Localisation
+    Projet{cp(Nom)} to Collaborateurs
+    Projet{dp(Nom)} to Collaborateurs
     
 }

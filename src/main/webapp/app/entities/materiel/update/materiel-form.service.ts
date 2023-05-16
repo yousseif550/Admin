@@ -14,18 +14,25 @@ type PartialWithRequiredKeyOf<T extends { id: unknown }> = Partial<Omit<T, 'id'>
  */
 type MaterielFormGroupInput = IMateriel | PartialWithRequiredKeyOf<NewMateriel>;
 
-type MaterielFormDefaults = Pick<NewMateriel, 'id' | 'actif' | 'isHs'>;
+type MaterielFormDefaults = Pick<NewMateriel, 'id' | 'actif' | 'isHs' | 'majBios'>;
 
 type MaterielFormGroupContent = {
   id: FormControl<IMateriel['id'] | NewMateriel['id']>;
   utilisation: FormControl<IMateriel['utilisation']>;
   modele: FormControl<IMateriel['modele']>;
   asset: FormControl<IMateriel['asset']>;
-  actif: FormControl<IMateriel['actif']>;
   dateAttribution: FormControl<IMateriel['dateAttribution']>;
   dateRendu: FormControl<IMateriel['dateRendu']>;
-  commentaire: FormControl<IMateriel['commentaire']>;
+  actif: FormControl<IMateriel['actif']>;
   isHs: FormControl<IMateriel['isHs']>;
+  cleAntiVol: FormControl<IMateriel['cleAntiVol']>;
+  adressMAC: FormControl<IMateriel['adressMAC']>;
+  stationDgfip: FormControl<IMateriel['stationDgfip']>;
+  ipdfip: FormControl<IMateriel['ipdfip']>;
+  iPTeletravail: FormControl<IMateriel['iPTeletravail']>;
+  bios: FormControl<IMateriel['bios']>;
+  majBios: FormControl<IMateriel['majBios']>;
+  commentaire: FormControl<IMateriel['commentaire']>;
   objet: FormControl<IMateriel['objet']>;
   localisation: FormControl<IMateriel['localisation']>;
   collaborateur: FormControl<IMateriel['collaborateur']>;
@@ -51,11 +58,18 @@ export class MaterielFormService {
       utilisation: new FormControl(materielRawValue.utilisation),
       modele: new FormControl(materielRawValue.modele),
       asset: new FormControl(materielRawValue.asset),
-      actif: new FormControl(materielRawValue.actif),
       dateAttribution: new FormControl(materielRawValue.dateAttribution),
       dateRendu: new FormControl(materielRawValue.dateRendu),
-      commentaire: new FormControl(materielRawValue.commentaire),
+      actif: new FormControl(materielRawValue.actif),
       isHs: new FormControl(materielRawValue.isHs),
+      cleAntiVol: new FormControl(materielRawValue.cleAntiVol),
+      adressMAC: new FormControl(materielRawValue.adressMAC),
+      stationDgfip: new FormControl(materielRawValue.stationDgfip),
+      ipdfip: new FormControl(materielRawValue.ipdfip),
+      iPTeletravail: new FormControl(materielRawValue.iPTeletravail),
+      bios: new FormControl(materielRawValue.bios),
+      majBios: new FormControl(materielRawValue.majBios),
+      commentaire: new FormControl(materielRawValue.commentaire),
       objet: new FormControl(materielRawValue.objet),
       localisation: new FormControl(materielRawValue.localisation),
       collaborateur: new FormControl(materielRawValue.collaborateur),
@@ -81,6 +95,7 @@ export class MaterielFormService {
       id: null,
       actif: false,
       isHs: false,
+      majBios: false,
     };
   }
 }

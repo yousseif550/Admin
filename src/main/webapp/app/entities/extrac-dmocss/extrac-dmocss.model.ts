@@ -8,15 +8,15 @@ export interface IExtracDMOCSS {
   id: string;
   adressePhysiqueDGFiP?: string | null;
   date?: dayjs.Dayjs | null;
+  bureauDeplacement?: string | null;
   ipPcDgfip?: string | null;
   ipVpnIPSEC?: string | null;
-  ioTeletravail?: string | null;
+  ipTeletravail?: string | null;
   statut?: Etat | null;
   numVersion?: string | null;
   collaborateur?: Pick<ICollaborateurs, 'id' | 'nom'> | null;
   materiel?: Pick<IMateriel, 'id' | 'asset'> | null;
-  bureauActuel?: Pick<ILocalisation, 'id' | 'bureau'> | null;
-  bureauDeplacement?: Pick<ILocalisation, 'id' | 'bureau'> | null;
+  bureauActuel?: Pick<ILocalisation, 'id' | 'bureauOrigine'> | null;
   localisation?: Pick<ILocalisation, 'id' | 'batiment'> | null;
 }
 

@@ -51,14 +51,14 @@ describe('Projet Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call Collaborateurs query and add missing value', () => {
       const projet: IProjet = { id: 'CBA' };
-      const cP: ICollaborateurs = { id: '0cd436e9-61c8-4320-83de-733e700982ba' };
-      projet.cP = cP;
-      const dP: ICollaborateurs = { id: '0feb0200-3541-493c-b7f6-b4ecd54902f7' };
-      projet.dP = dP;
+      const cp: ICollaborateurs = { id: '0cd436e9-61c8-4320-83de-733e700982ba' };
+      projet.cp = cp;
+      const dp: ICollaborateurs = { id: '0feb0200-3541-493c-b7f6-b4ecd54902f7' };
+      projet.dp = dp;
 
       const collaborateursCollection: ICollaborateurs[] = [{ id: '1c7b81f1-f52c-411d-892a-5e48e7fef6fa' }];
       jest.spyOn(collaborateursService, 'query').mockReturnValue(of(new HttpResponse({ body: collaborateursCollection })));
-      const additionalCollaborateurs = [cP, dP];
+      const additionalCollaborateurs = [cp, dp];
       const expectedCollection: ICollaborateurs[] = [...additionalCollaborateurs, ...collaborateursCollection];
       jest.spyOn(collaborateursService, 'addCollaborateursToCollectionIfMissing').mockReturnValue(expectedCollection);
 
@@ -75,16 +75,16 @@ describe('Projet Management Update Component', () => {
 
     it('Should update editForm', () => {
       const projet: IProjet = { id: 'CBA' };
-      const cP: ICollaborateurs = { id: '321cc246-9fe7-472f-9027-2d1e6d14823b' };
-      projet.cP = cP;
-      const dP: ICollaborateurs = { id: '5c1a8169-869e-4dbc-95d6-af3e175f7dcc' };
-      projet.dP = dP;
+      const cp: ICollaborateurs = { id: '321cc246-9fe7-472f-9027-2d1e6d14823b' };
+      projet.cp = cp;
+      const dp: ICollaborateurs = { id: '5c1a8169-869e-4dbc-95d6-af3e175f7dcc' };
+      projet.dp = dp;
 
       activatedRoute.data = of({ projet });
       comp.ngOnInit();
 
-      expect(comp.collaborateursSharedCollection).toContain(cP);
-      expect(comp.collaborateursSharedCollection).toContain(dP);
+      expect(comp.collaborateursSharedCollection).toContain(cp);
+      expect(comp.collaborateursSharedCollection).toContain(dp);
       expect(comp.projet).toEqual(projet);
     });
   });

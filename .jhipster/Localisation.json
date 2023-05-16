@@ -10,7 +10,11 @@
       "fieldType": "String"
     },
     {
-      "fieldName": "bureau",
+      "fieldName": "bureauOrigine",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "bureauStockage",
       "fieldType": "String"
     },
     {

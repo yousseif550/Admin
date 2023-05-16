@@ -21,8 +21,8 @@ type ProjetFormGroupContent = {
   nom: FormControl<IProjet['nom']>;
   stucture: FormControl<IProjet['stucture']>;
   informations: FormControl<IProjet['informations']>;
-  cP: FormControl<IProjet['cP']>;
-  dP: FormControl<IProjet['dP']>;
+  cp: FormControl<IProjet['cp']>;
+  dp: FormControl<IProjet['dp']>;
   collaborateurs: FormControl<IProjet['collaborateurs']>;
 };
 
@@ -46,8 +46,8 @@ export class ProjetFormService {
       nom: new FormControl(projetRawValue.nom),
       stucture: new FormControl(projetRawValue.stucture),
       informations: new FormControl(projetRawValue.informations),
-      cP: new FormControl(projetRawValue.cP),
-      dP: new FormControl(projetRawValue.dP),
+      cp: new FormControl(projetRawValue.cp),
+      dp: new FormControl(projetRawValue.dp),
       collaborateurs: new FormControl(projetRawValue.collaborateurs ?? []),
     });
   }

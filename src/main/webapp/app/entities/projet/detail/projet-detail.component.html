@@ -26,16 +26,16 @@
         <dd>
           <span>{{ projet.informations }}</span>
         </dd>
-        <dt><span jhiTranslate="ihmApp.projet.cP">C P</span></dt>
+        <dt><span jhiTranslate="ihmApp.projet.cp">Cp</span></dt>
         <dd>
-          <div *ngIf="projet.cP">
-            <a [routerLink]="['/collaborateurs', projet.cP.id, 'view']">{{ projet.cP.nom }}</a>
+          <div *ngIf="projet.cp">
+            <a [routerLink]="['/collaborateurs', projet.cp.id, 'view']">{{ projet.cp.nom }}</a>
           </div>
         </dd>
-        <dt><span jhiTranslate="ihmApp.projet.dP">D P</span></dt>
+        <dt><span jhiTranslate="ihmApp.projet.dp">Dp</span></dt>
         <dd>
-          <div *ngIf="projet.dP">
-            <a [routerLink]="['/collaborateurs', projet.dP.id, 'view']">{{ projet.dP.nom }}</a>
+          <div *ngIf="projet.dp">
+            <a [routerLink]="['/collaborateurs', projet.dp.id, 'view']">{{ projet.dp.nom }}</a>
           </div>
         </dd>
       </dl>

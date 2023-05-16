@@ -32,12 +32,12 @@
     <table class="table table-striped" aria-describedby="page-heading">
       <thead>
         <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
-          <!-- <th scope="col" jhiSortBy="id">
+          <th scope="col" jhiSortBy="id">
             <div class="d-flex">
               <span jhiTranslate="global.field.id">ID</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
-          </th> -->
+          </th>
           <th scope="col" jhiSortBy="ipdfipConnexion">
             <div class="d-flex">
               <span jhiTranslate="ihmApp.informationsTech.ipdfipConnexion">Ipdfip Connexion</span>
@@ -79,9 +79,9 @@
       </thead>
       <tbody>
         <tr *ngFor="let informationsTech of informationsTeches; trackBy: trackId" data-cy="entityTable">
-          <!-- <td>
+          <td>
             <a [routerLink]="['/informations-tech', informationsTech.id, 'view']">{{ informationsTech.id }}</a>
-          </td> -->
+          </td>
           <td>{{ informationsTech.ipdfipConnexion }}</td>
           <td>{{ informationsTech.ipfixDMOCSS }}</td>
           <td>{{ informationsTech.adressMAC }}</td>

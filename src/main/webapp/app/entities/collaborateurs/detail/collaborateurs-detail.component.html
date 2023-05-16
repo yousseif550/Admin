@@ -18,6 +18,10 @@
         <dd>
           <span>{{ collaborateurs.nom }}</span>
         </dd>
+        <dt><span jhiTranslate="ihmApp.collaborateurs.societe">Societe</span></dt>
+        <dd>
+          <span>{{ collaborateurs.societe }}</span>
+        </dd>
         <dt><span jhiTranslate="ihmApp.collaborateurs.identifiant">Identifiant</span></dt>
         <dd>
           <span>{{ collaborateurs.identifiant }}</span>
@@ -60,10 +64,6 @@
       <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
         <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
       </button>
-
-      <button type="button" [routerLink]="['/collaborateurs', collaborateurs.id, 'edit']" class="btn btn-primary">
-        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
-      </button>
     </div>
   </div>
 
@@ -72,7 +72,7 @@
     <hr />
 
     <div *ngFor="let item of inventaire | keyvalue">
-      <span>Assets Matériel Associé : </span>
+      <span>Matériel Associé : </span>
       {{ item.value.objet?.type }}
       <a [routerLink]="['/materiel', item.value.id, 'view']">{{ item.value.asset }}</a>
       <hr />

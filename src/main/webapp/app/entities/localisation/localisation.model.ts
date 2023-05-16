@@ -1,7 +1,8 @@
 export interface ILocalisation {
   id: string;
   batiment?: string | null;
-  bureau?: string | null;
+  bureauOrigine?: string | null;
+  bureauStockage?: string | null;
   site?: string | null;
   ville?: string | null;
 }

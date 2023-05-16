@@ -32,12 +32,12 @@
     <table class="table table-striped" aria-describedby="page-heading">
       <thead>
         <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
-          <!-- <th scope="col" jhiSortBy="id">
+          <th scope="col" jhiSortBy="id">
             <div class="d-flex">
               <span jhiTranslate="global.field.id">ID</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
-          </th> -->
+          </th>
           <th scope="col" jhiSortBy="type">
             <div class="d-flex">
               <span jhiTranslate="ihmApp.ticket.type">Type</span>
@@ -79,9 +79,9 @@
       </thead>
       <tbody>
         <tr *ngFor="let ticket of tickets; trackBy: trackId" data-cy="entityTable">
-          <!-- <td>
+          <td>
             <a [routerLink]="['/ticket', ticket.id, 'view']">{{ ticket.id }}</a>
-          </td> -->
+          </td>
           <td>{{ ticket.type }}</td>
           <td jhiTranslate="{{ 'ihmApp.Etat.' + ticket.statut }}">{{ ticket.statut }}</td>
           <td>{{ ticket.dateCreation | formatMediumDate }}</td>

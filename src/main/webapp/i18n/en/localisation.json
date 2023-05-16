@@ -19,7 +19,8 @@
       },
       "id": "ID",
       "batiment": "Batiment",
-      "bureau": "Bureau",
+      "bureauOrigine": "Bureau Origine",
+      "bureauStockage": "Bureau Stockage",
       "site": "Site",
       "ville": "Ville"
     }

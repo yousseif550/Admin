@@ -32,15 +32,21 @@
     <table class="table table-striped" aria-describedby="page-heading">
       <thead>
         <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
-          <!-- <th scope="col" jhiSortBy="id">
+          <th scope="col" jhiSortBy="id">
             <div class="d-flex">
               <span jhiTranslate="global.field.id">ID</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
-          </th> -->
+          </th>
           <th scope="col" jhiSortBy="nom">
             <div class="d-flex">
               <span jhiTranslate="ihmApp.collaborateurs.nom">Nom</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="societe">
+            <div class="d-flex">
+              <span jhiTranslate="ihmApp.collaborateurs.societe">Societe</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
@@ -97,10 +103,11 @@
       </thead>
       <tbody>
         <tr *ngFor="let collaborateurs of collaborateurs; trackBy: trackId" data-cy="entityTable">
-          <!--  <td>
+          <td>
             <a [routerLink]="['/collaborateurs', collaborateurs.id, 'view']">{{ collaborateurs.id }}</a>
-          </td> -->
+          </td>
           <td>{{ collaborateurs.nom }}</td>
+          <td>{{ collaborateurs.societe }}</td>
           <td>{{ collaborateurs.identifiant }}</td>
           <td>{{ collaborateurs.tel }}</td>
           <td>{{ collaborateurs.prestataire }}</td>

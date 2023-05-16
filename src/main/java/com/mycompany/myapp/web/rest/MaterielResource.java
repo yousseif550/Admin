@@ -153,20 +153,41 @@ public class MaterielResource {
                         if (materiel.getAsset() != null) {
                             existingMateriel.setAsset(materiel.getAsset());
                         }
-                        if (materiel.getActif() != null) {
-                            existingMateriel.setActif(materiel.getActif());
-                        }
                         if (materiel.getDateAttribution() != null) {
                             existingMateriel.setDateAttribution(materiel.getDateAttribution());
                         }
                         if (materiel.getDateRendu() != null) {
                             existingMateriel.setDateRendu(materiel.getDateRendu());
                         }
-                        if (materiel.getCommentaire() != null) {
-                            existingMateriel.setCommentaire(materiel.getCommentaire());
+                        if (materiel.getActif() != null) {
+                            existingMateriel.setActif(materiel.getActif());
                         }
                         if (materiel.getIsHs() != null) {
                             existingMateriel.setIsHs(materiel.getIsHs());
+                        }
+                        if (materiel.getCleAntiVol() != null) {
+                            existingMateriel.setCleAntiVol(materiel.getCleAntiVol());
+                        }
+                        if (materiel.getAdressMAC() != null) {
+                            existingMateriel.setAdressMAC(materiel.getAdressMAC());
+                        }
+                        if (materiel.getStationDgfip() != null) {
+                            existingMateriel.setStationDgfip(materiel.getStationDgfip());
+                        }
+                        if (materiel.getIpdfip() != null) {
+                            existingMateriel.setIpdfip(materiel.getIpdfip());
+                        }
+                        if (materiel.getiPTeletravail() != null) {
+                            existingMateriel.setiPTeletravail(materiel.getiPTeletravail());
+                        }
+                        if (materiel.getBios() != null) {
+                            existingMateriel.setBios(materiel.getBios());
+                        }
+                        if (materiel.getMajBios() != null) {
+                            existingMateriel.setMajBios(materiel.getMajBios());
+                        }
+                        if (materiel.getCommentaire() != null) {
+                            existingMateriel.setCommentaire(materiel.getCommentaire());
                         }
 
                         return existingMateriel;

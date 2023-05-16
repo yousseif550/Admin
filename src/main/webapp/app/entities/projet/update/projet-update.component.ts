@@ -82,8 +82,8 @@ export class ProjetUpdateComponent implements OnInit {
 
     this.collaborateursSharedCollection = this.collaborateursService.addCollaborateursToCollectionIfMissing<ICollaborateurs>(
       this.collaborateursSharedCollection,
-      projet.cP,
-      projet.dP
+      projet.cp,
+      projet.dp
     );
   }
 
@@ -95,8 +95,8 @@ export class ProjetUpdateComponent implements OnInit {
         map((collaborateurs: ICollaborateurs[]) =>
           this.collaborateursService.addCollaborateursToCollectionIfMissing<ICollaborateurs>(
             collaborateurs,
-            this.projet?.cP,
-            this.projet?.dP
+            this.projet?.cp,
+            this.projet?.dp
           )
         )
       )
