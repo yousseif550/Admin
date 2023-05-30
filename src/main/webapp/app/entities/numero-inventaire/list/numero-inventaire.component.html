@@ -32,12 +32,6 @@
     <table class="table table-striped" aria-describedby="page-heading">
       <thead>
         <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
-          <th scope="col" jhiSortBy="id">
-            <div class="d-flex">
-              <span jhiTranslate="global.field.id">ID</span>
-              <fa-icon class="p-1" icon="sort"></fa-icon>
-            </div>
-          </th>
           <th scope="col" jhiSortBy="disponible">
             <div class="d-flex">
               <span jhiTranslate="ihmApp.numeroInventaire.disponible">Disponible</span>
@@ -85,9 +79,6 @@
       </thead>
       <tbody>
         <tr *ngFor="let numeroInventaire of numeroInventaires; trackBy: trackId" data-cy="entityTable">
-          <td>
-            <a [routerLink]="['/numero-inventaire', numeroInventaire.id, 'view']">{{ numeroInventaire.id }}</a>
-          </td>
           <td>{{ numeroInventaire.disponible }}</td>
           <td>{{ numeroInventaire.dateModification | formatMediumDate }}</td>
           <td>{{ numeroInventaire.commentaire }}</td>

@@ -32,12 +32,6 @@
     <table class="table table-striped" aria-describedby="page-heading">
       <thead>
         <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
-          <th scope="col" jhiSortBy="id">
-            <div class="d-flex">
-              <span jhiTranslate="global.field.id">ID</span>
-              <fa-icon class="p-1" icon="sort"></fa-icon>
-            </div>
-          </th>
           <th scope="col" jhiSortBy="envoiKitAccueil">
             <div class="d-flex">
               <span jhiTranslate="ihmApp.suivi.envoiKitAccueil">Envoi Kit Accueil</span>
@@ -139,9 +133,6 @@
       </thead>
       <tbody>
         <tr *ngFor="let suivi of suivis; trackBy: trackId" data-cy="entityTable">
-          <td>
-            <a [routerLink]="['/suivi', suivi.id, 'view']">{{ suivi.id }}</a>
-          </td>
           <td jhiTranslate="{{ 'ihmApp.Etat.' + suivi.envoiKitAccueil }}">{{ suivi.envoiKitAccueil }}</td>
           <td jhiTranslate="{{ 'ihmApp.Etat.' + suivi.documentSigner }}">{{ suivi.documentSigner }}</td>
           <td jhiTranslate="{{ 'ihmApp.Etat.' + suivi.commandePCDom }}">{{ suivi.commandePCDom }}</td>

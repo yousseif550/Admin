@@ -32,12 +32,6 @@
     <table class="table table-striped" aria-describedby="page-heading">
       <thead>
         <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
-          <th scope="col" jhiSortBy="id">
-            <div class="d-flex">
-              <span jhiTranslate="global.field.id">ID</span>
-              <fa-icon class="p-1" icon="sort"></fa-icon>
-            </div>
-          </th>
           <th scope="col" jhiSortBy="utilisation">
             <div class="d-flex">
               <span jhiTranslate="ihmApp.materiel.utilisation">Utilisation</span>
@@ -151,9 +145,6 @@
       </thead>
       <tbody>
         <tr *ngFor="let materiel of materiels; trackBy: trackId" data-cy="entityTable">
-          <td>
-            <a [routerLink]="['/materiel', materiel.id, 'view']">{{ materiel.id }}</a>
-          </td>
           <td>{{ materiel.utilisation }}</td>
           <td>{{ materiel.modele }}</td>
           <td>{{ materiel.asset }}</td>

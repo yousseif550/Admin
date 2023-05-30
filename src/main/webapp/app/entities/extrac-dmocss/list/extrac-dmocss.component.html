@@ -32,12 +32,6 @@
     <table class="table table-striped" aria-describedby="page-heading">
       <thead>
         <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
-          <th scope="col" jhiSortBy="id">
-            <div class="d-flex">
-              <span jhiTranslate="global.field.id">ID</span>
-              <fa-icon class="p-1" icon="sort"></fa-icon>
-            </div>
-          </th>
           <th scope="col" jhiSortBy="adressePhysiqueDGFiP">
             <div class="d-flex">
               <span jhiTranslate="ihmApp.extracDMOCSS.adressePhysiqueDGFiP">Adresse Physique DG Fi P</span>
@@ -115,9 +109,6 @@
       </thead>
       <tbody>
         <tr *ngFor="let extracDMOCSS of extracDMOCSSES; trackBy: trackId" data-cy="entityTable">
-          <td>
-            <a [routerLink]="['/extrac-dmocss', extracDMOCSS.id, 'view']">{{ extracDMOCSS.id }}</a>
-          </td>
           <td>{{ extracDMOCSS.adressePhysiqueDGFiP }}</td>
           <td>{{ extracDMOCSS.date | formatMediumDate }}</td>
           <td>{{ extracDMOCSS.bureauDeplacement }}</td>
