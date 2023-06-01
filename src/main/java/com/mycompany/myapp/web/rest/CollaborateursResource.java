@@ -150,8 +150,8 @@ public class CollaborateursResource {
                         if (collaborateurs.getSociete() != null) {
                             existingCollaborateurs.setSociete(collaborateurs.getSociete());
                         }
-                        if (collaborateurs.getIdentifiant() != null) {
-                            existingCollaborateurs.setIdentifiant(collaborateurs.getIdentifiant());
+                        if (collaborateurs.getEmail() != null) {
+                            existingCollaborateurs.setEmail(collaborateurs.getEmail());
                         }
                         if (collaborateurs.getTel() != null) {
                             existingCollaborateurs.setTel(collaborateurs.getTel());

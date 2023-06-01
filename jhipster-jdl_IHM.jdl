@@ -37,7 +37,7 @@ entity Suivi {
 entity Collaborateurs {
     Nom String,
     Societe String,
-    Identifiant String,
+    Email String,
     Tel Long,
     Prestataire Boolean,
     IsActif Boolean,

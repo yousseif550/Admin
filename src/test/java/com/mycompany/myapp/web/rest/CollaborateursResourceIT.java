@@ -44,8 +44,8 @@ class CollaborateursResourceIT {
     private static final String DEFAULT_SOCIETE = "AAAAAAAAAA";
     private static final String UPDATED_SOCIETE = "BBBBBBBBBB";
 
-    private static final String DEFAULT_IDENTIFIANT = "AAAAAAAAAA";
-    private static final String UPDATED_IDENTIFIANT = "BBBBBBBBBB";
+    private static final String DEFAULT_Email = "AAAAAAAAAA";
+    private static final String UPDATED_Email = "BBBBBBBBBB";
 
     private static final Long DEFAULT_TEL = 1L;
     private static final Long UPDATED_TEL = 2L;
@@ -86,7 +86,7 @@ class CollaborateursResourceIT {
         Collaborateurs collaborateurs = new Collaborateurs()
             .nom(DEFAULT_NOM)
             .societe(DEFAULT_SOCIETE)
-            .identifiant(DEFAULT_IDENTIFIANT)
+            .Email(DEFAULT_Email)
             .tel(DEFAULT_TEL)
             .prestataire(DEFAULT_PRESTATAIRE)
             .isActif(DEFAULT_IS_ACTIF)
@@ -105,7 +105,7 @@ class CollaborateursResourceIT {
         Collaborateurs collaborateurs = new Collaborateurs()
             .nom(UPDATED_NOM)
             .societe(UPDATED_SOCIETE)
-            .identifiant(UPDATED_IDENTIFIANT)
+            .Email(UPDATED_Email)
             .tel(UPDATED_TEL)
             .prestataire(UPDATED_PRESTATAIRE)
             .isActif(UPDATED_IS_ACTIF)
@@ -139,7 +139,7 @@ class CollaborateursResourceIT {
         Collaborateurs testCollaborateurs = collaborateursList.get(collaborateursList.size() - 1);
         assertThat(testCollaborateurs.getNom()).isEqualTo(DEFAULT_NOM);
         assertThat(testCollaborateurs.getSociete()).isEqualTo(DEFAULT_SOCIETE);
-        assertThat(testCollaborateurs.getIdentifiant()).isEqualTo(DEFAULT_IDENTIFIANT);
+        assertThat(testCollaborateurs.getEmail()).isEqualTo(DEFAULT_Email);
         assertThat(testCollaborateurs.getTel()).isEqualTo(DEFAULT_TEL);
         assertThat(testCollaborateurs.getPrestataire()).isEqualTo(DEFAULT_PRESTATAIRE);
         assertThat(testCollaborateurs.getIsActif()).isEqualTo(DEFAULT_IS_ACTIF);
@@ -194,7 +194,7 @@ class CollaborateursResourceIT {
         Collaborateurs testCollaborateurs = collaborateursList.get(0);
         assertThat(testCollaborateurs.getNom()).isEqualTo(DEFAULT_NOM);
         assertThat(testCollaborateurs.getSociete()).isEqualTo(DEFAULT_SOCIETE);
-        assertThat(testCollaborateurs.getIdentifiant()).isEqualTo(DEFAULT_IDENTIFIANT);
+        assertThat(testCollaborateurs.getEmail()).isEqualTo(DEFAULT_Email);
         assertThat(testCollaborateurs.getTel()).isEqualTo(DEFAULT_TEL);
         assertThat(testCollaborateurs.getPrestataire()).isEqualTo(DEFAULT_PRESTATAIRE);
         assertThat(testCollaborateurs.getIsActif()).isEqualTo(DEFAULT_IS_ACTIF);
@@ -224,8 +224,8 @@ class CollaborateursResourceIT {
             .value(hasItem(DEFAULT_NOM))
             .jsonPath("$.[*].societe")
             .value(hasItem(DEFAULT_SOCIETE))
-            .jsonPath("$.[*].identifiant")
-            .value(hasItem(DEFAULT_IDENTIFIANT))
+            .jsonPath("$.[*].Email")
+            .value(hasItem(DEFAULT_Email))
             .jsonPath("$.[*].tel")
             .value(hasItem(DEFAULT_TEL.intValue()))
             .jsonPath("$.[*].prestataire")
@@ -277,8 +277,8 @@ class CollaborateursResourceIT {
             .value(is(DEFAULT_NOM))
             .jsonPath("$.societe")
             .value(is(DEFAULT_SOCIETE))
-            .jsonPath("$.identifiant")
-            .value(is(DEFAULT_IDENTIFIANT))
+            .jsonPath("$.Email")
+            .value(is(DEFAULT_Email))
             .jsonPath("$.tel")
             .value(is(DEFAULT_TEL.intValue()))
             .jsonPath("$.prestataire")
@@ -315,7 +315,7 @@ class CollaborateursResourceIT {
         updatedCollaborateurs
             .nom(UPDATED_NOM)
             .societe(UPDATED_SOCIETE)
-            .identifiant(UPDATED_IDENTIFIANT)
+            .Email(UPDATED_Email)
             .tel(UPDATED_TEL)
             .prestataire(UPDATED_PRESTATAIRE)
             .isActif(UPDATED_IS_ACTIF)
@@ -337,7 +337,7 @@ class CollaborateursResourceIT {
         Collaborateurs testCollaborateurs = collaborateursList.get(collaborateursList.size() - 1);
         assertThat(testCollaborateurs.getNom()).isEqualTo(UPDATED_NOM);
         assertThat(testCollaborateurs.getSociete()).isEqualTo(UPDATED_SOCIETE);
-        assertThat(testCollaborateurs.getIdentifiant()).isEqualTo(UPDATED_IDENTIFIANT);
+        assertThat(testCollaborateurs.getEmail()).isEqualTo(UPDATED_Email);
         assertThat(testCollaborateurs.getTel()).isEqualTo(UPDATED_TEL);
         assertThat(testCollaborateurs.getPrestataire()).isEqualTo(UPDATED_PRESTATAIRE);
         assertThat(testCollaborateurs.getIsActif()).isEqualTo(UPDATED_IS_ACTIF);
@@ -416,7 +416,7 @@ class CollaborateursResourceIT {
         Collaborateurs partialUpdatedCollaborateurs = new Collaborateurs();
         partialUpdatedCollaborateurs.setId(collaborateurs.getId());
 
-        partialUpdatedCollaborateurs.identifiant(UPDATED_IDENTIFIANT).isActif(UPDATED_IS_ACTIF).dateEntree(UPDATED_DATE_ENTREE);
+        partialUpdatedCollaborateurs.Email(UPDATED_Email).isActif(UPDATED_IS_ACTIF).dateEntree(UPDATED_DATE_ENTREE);
 
         webTestClient
             .patch()
@@ -433,7 +433,7 @@ class CollaborateursResourceIT {
         Collaborateurs testCollaborateurs = collaborateursList.get(collaborateursList.size() - 1);
         assertThat(testCollaborateurs.getNom()).isEqualTo(DEFAULT_NOM);
         assertThat(testCollaborateurs.getSociete()).isEqualTo(DEFAULT_SOCIETE);
-        assertThat(testCollaborateurs.getIdentifiant()).isEqualTo(UPDATED_IDENTIFIANT);
+        assertThat(testCollaborateurs.getEmail()).isEqualTo(UPDATED_Email);
         assertThat(testCollaborateurs.getTel()).isEqualTo(DEFAULT_TEL);
         assertThat(testCollaborateurs.getPrestataire()).isEqualTo(DEFAULT_PRESTATAIRE);
         assertThat(testCollaborateurs.getIsActif()).isEqualTo(UPDATED_IS_ACTIF);
@@ -455,7 +455,7 @@ class CollaborateursResourceIT {
         partialUpdatedCollaborateurs
             .nom(UPDATED_NOM)
             .societe(UPDATED_SOCIETE)
-            .identifiant(UPDATED_IDENTIFIANT)
+            .Email(UPDATED_Email)
             .tel(UPDATED_TEL)
             .prestataire(UPDATED_PRESTATAIRE)
             .isActif(UPDATED_IS_ACTIF)
@@ -477,7 +477,7 @@ class CollaborateursResourceIT {
         Collaborateurs testCollaborateurs = collaborateursList.get(collaborateursList.size() - 1);
         assertThat(testCollaborateurs.getNom()).isEqualTo(UPDATED_NOM);
         assertThat(testCollaborateurs.getSociete()).isEqualTo(UPDATED_SOCIETE);
-        assertThat(testCollaborateurs.getIdentifiant()).isEqualTo(UPDATED_IDENTIFIANT);
+        assertThat(testCollaborateurs.getEmail()).isEqualTo(UPDATED_Email);
         assertThat(testCollaborateurs.getTel()).isEqualTo(UPDATED_TEL);
         assertThat(testCollaborateurs.getPrestataire()).isEqualTo(UPDATED_PRESTATAIRE);
         assertThat(testCollaborateurs.getIsActif()).isEqualTo(UPDATED_IS_ACTIF);

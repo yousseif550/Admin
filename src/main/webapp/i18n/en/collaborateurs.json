@@ -20,7 +20,7 @@
       "id": "ID",
       "nom": "Nom",
       "societe": "Societe",
-      "identifiant": "Identifiant",
+      "Email": "Email",
       "tel": "Tel",
       "prestataire": "Prestataire",
       "isActif": "Is Actif",

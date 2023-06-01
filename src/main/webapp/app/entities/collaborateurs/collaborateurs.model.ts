@@ -7,7 +7,7 @@ export interface ICollaborateurs {
   id: string;
   nom?: string | null;
   societe?: string | null;
-  identifiant?: string | null;
+  Email?: string | null;
   tel?: number | null;
   prestataire?: boolean | null;
   isActif?: boolean | null;
