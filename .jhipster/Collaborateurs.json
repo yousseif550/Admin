@@ -14,7 +14,7 @@
       "fieldType": "String"
     },
     {
-      "fieldName": "Email",
+      "fieldName": "email",
       "fieldType": "String"
     },
     {

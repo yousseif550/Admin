@@ -86,7 +86,7 @@ class CollaborateursResourceIT {
         Collaborateurs collaborateurs = new Collaborateurs()
             .nom(DEFAULT_NOM)
             .societe(DEFAULT_SOCIETE)
-            .Email(DEFAULT_Email)
+            .email(DEFAULT_Email)
             .tel(DEFAULT_TEL)
             .prestataire(DEFAULT_PRESTATAIRE)
             .isActif(DEFAULT_IS_ACTIF)
@@ -105,7 +105,7 @@ class CollaborateursResourceIT {
         Collaborateurs collaborateurs = new Collaborateurs()
             .nom(UPDATED_NOM)
             .societe(UPDATED_SOCIETE)
-            .Email(UPDATED_Email)
+            .email(UPDATED_Email)
             .tel(UPDATED_TEL)
             .prestataire(UPDATED_PRESTATAIRE)
             .isActif(UPDATED_IS_ACTIF)
@@ -224,7 +224,7 @@ class CollaborateursResourceIT {
             .value(hasItem(DEFAULT_NOM))
             .jsonPath("$.[*].societe")
             .value(hasItem(DEFAULT_SOCIETE))
-            .jsonPath("$.[*].Email")
+            .jsonPath("$.[*].email")
             .value(hasItem(DEFAULT_Email))
             .jsonPath("$.[*].tel")
             .value(hasItem(DEFAULT_TEL.intValue()))
@@ -277,7 +277,7 @@ class CollaborateursResourceIT {
             .value(is(DEFAULT_NOM))
             .jsonPath("$.societe")
             .value(is(DEFAULT_SOCIETE))
-            .jsonPath("$.Email")
+            .jsonPath("$.email")
             .value(is(DEFAULT_Email))
             .jsonPath("$.tel")
             .value(is(DEFAULT_TEL.intValue()))
@@ -315,7 +315,7 @@ class CollaborateursResourceIT {
         updatedCollaborateurs
             .nom(UPDATED_NOM)
             .societe(UPDATED_SOCIETE)
-            .Email(UPDATED_Email)
+            .email(UPDATED_Email)
             .tel(UPDATED_TEL)
             .prestataire(UPDATED_PRESTATAIRE)
             .isActif(UPDATED_IS_ACTIF)
@@ -416,7 +416,7 @@ class CollaborateursResourceIT {
         Collaborateurs partialUpdatedCollaborateurs = new Collaborateurs();
         partialUpdatedCollaborateurs.setId(collaborateurs.getId());
 
-        partialUpdatedCollaborateurs.Email(UPDATED_Email).isActif(UPDATED_IS_ACTIF).dateEntree(UPDATED_DATE_ENTREE);
+        partialUpdatedCollaborateurs.email(UPDATED_Email).isActif(UPDATED_IS_ACTIF).dateEntree(UPDATED_DATE_ENTREE);
 
         webTestClient
             .patch()
@@ -455,7 +455,7 @@ class CollaborateursResourceIT {
         partialUpdatedCollaborateurs
             .nom(UPDATED_NOM)
             .societe(UPDATED_SOCIETE)
-            .Email(UPDATED_Email)
+            .email(UPDATED_Email)
             .tel(UPDATED_TEL)
             .prestataire(UPDATED_PRESTATAIRE)
             .isActif(UPDATED_IS_ACTIF)

@@ -27,8 +27,8 @@ public class Collaborateurs implements Serializable {
     @Field("societe")
     private String societe;
 
-    @Field("Email")
-    private String Email;
+    @Field("email")
+    private String email;
 
     @Field("tel")
     private Long tel;
@@ -94,16 +94,16 @@ public class Collaborateurs implements Serializable {
     }
 
     public String getEmail() {
-        return this.Email;
+        return this.email;
     }
 
-    public Collaborateurs Email(String Email) {
-        this.setEmail(Email);
+    public Collaborateurs email(String email) {
+        this.setEmail(email);
         return this;
     }
 
-    public void setEmail(String Email) {
-        this.Email = Email;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public Long getTel() {
@@ -235,7 +235,7 @@ public class Collaborateurs implements Serializable {
             "id=" + getId() +
             ", nom='" + getNom() + "'" +
             ", societe='" + getSociete() + "'" +
-            ", Email='" + getEmail() + "'" +
+            ", email='" + getEmail() + "'" +
             ", tel=" + getTel() +
             ", prestataire='" + getPrestataire() + "'" +
             ", isActif='" + getIsActif() + "'" +

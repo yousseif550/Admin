@@ -20,7 +20,7 @@ type CollaborateursFormGroupContent = {
   id: FormControl<ICollaborateurs['id'] | NewCollaborateurs['id']>;
   nom: FormControl<ICollaborateurs['nom']>;
   societe: FormControl<ICollaborateurs['societe']>;
-  Email: FormControl<ICollaborateurs['Email']>;
+  email: FormControl<ICollaborateurs['email']>;
   tel: FormControl<ICollaborateurs['tel']>;
   prestataire: FormControl<ICollaborateurs['prestataire']>;
   isActif: FormControl<ICollaborateurs['isActif']>;
@@ -49,7 +49,7 @@ export class CollaborateursFormService {
       ),
       nom: new FormControl(collaborateursRawValue.nom),
       societe: new FormControl(collaborateursRawValue.societe),
-      Email: new FormControl(collaborateursRawValue.Email),
+      email: new FormControl(collaborateursRawValue.email),
       tel: new FormControl(collaborateursRawValue.tel),
       prestataire: new FormControl(collaborateursRawValue.prestataire),
       isActif: new FormControl(collaborateursRawValue.isActif),

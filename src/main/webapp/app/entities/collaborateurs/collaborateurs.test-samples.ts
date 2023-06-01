@@ -17,7 +17,7 @@ export const sampleWithFullData: ICollaborateurs = {
   id: 'fa78e39c-13e9-4f2c-a798-10fed19c63f9',
   nom: 'invoice Barbados',
   societe: 'Planner override',
-  Email: 'red',
+  email: 'red',
   tel: 26445,
   prestataire: false,
   isActif: true,

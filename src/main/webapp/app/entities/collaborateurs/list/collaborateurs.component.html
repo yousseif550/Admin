@@ -44,9 +44,9 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="Email">
+          <th scope="col" jhiSortBy="email">
             <div class="d-flex">
-              <span jhiTranslate="ihmApp.collaborateurs.Email">Email</span>
+              <span jhiTranslate="ihmApp.collaborateurs.email">Email</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
@@ -99,7 +99,7 @@
         <tr *ngFor="let collaborateurs of collaborateurs; trackBy: trackId" data-cy="entityTable">
           <td>{{ collaborateurs.nom }}</td>
           <td>{{ collaborateurs.societe }}</td>
-          <td>{{ collaborateurs.Email }}</td>
+          <td>{{ collaborateurs.email }}</td>
           <td>{{ collaborateurs.tel }}</td>
           <td>{{ collaborateurs.prestataire }}</td>
           <td>{{ collaborateurs.isActif }}</td>
